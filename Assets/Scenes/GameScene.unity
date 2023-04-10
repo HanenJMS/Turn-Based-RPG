@@ -461,6 +461,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &642116043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 642116045}
+  - component: {fileID: 642116046}
+  m_Layer: 0
+  m_Name: LevelGrid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &642116045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642116043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &642116046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642116043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d293e1b45249cb499791c62299ddffe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 233377807006941194, guid: e31f76b2f0fe1a2419f0832c93f99264, type: 3}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +570,7 @@ PrefabInstance:
     - target: {fileID: 4404704848333840682, guid: 7cc81d36b307dd24fa47e740c421b282,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.0299997
+      value: 5.18
       objectReference: {fileID: 0}
     - target: {fileID: 4404704848333840682, guid: 7cc81d36b307dd24fa47e740c421b282,
         type: 3}
@@ -535,7 +580,7 @@ PrefabInstance:
     - target: {fileID: 4404704848333840682, guid: 7cc81d36b307dd24fa47e740c421b282,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.69
+      value: 6.05
       objectReference: {fileID: 0}
     - target: {fileID: 4404704848333840682, guid: 7cc81d36b307dd24fa47e740c421b282,
         type: 3}
@@ -590,7 +635,7 @@ GameObject:
   - component: {fileID: 983058945}
   - component: {fileID: 983058946}
   m_Layer: 0
-  m_Name: GridSystem
+  m_Name: Testing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -623,7 +668,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e5043f716dc1b4fb1029c80f127e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 233377807006941194, guid: e31f76b2f0fe1a2419f0832c93f99264, type: 3}
 --- !u!1 &1382347178
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,7 +912,7 @@ PrefabInstance:
     - target: {fileID: 4404704848333840682, guid: 7cc81d36b307dd24fa47e740c421b282,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.13
+      value: 12.82
       objectReference: {fileID: 0}
     - target: {fileID: 4404704848333840682, guid: 7cc81d36b307dd24fa47e740c421b282,
         type: 3}
@@ -878,7 +922,7 @@ PrefabInstance:
     - target: {fileID: 4404704848333840682, guid: 7cc81d36b307dd24fa47e740c421b282,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.69
+      value: 5.51
       objectReference: {fileID: 0}
     - target: {fileID: 4404704848333840682, guid: 7cc81d36b307dd24fa47e740c421b282,
         type: 3}

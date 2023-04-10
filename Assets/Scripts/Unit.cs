@@ -5,13 +5,19 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     Vector3 targetPosition;
+    GridPosition currentGridPosition;
     float moveSpeed = 5.5f;
-    float stoppingDistance = 1f;
+    float stoppingDistance = 0.1f;
     float rotationSpeed = 50f;
     [SerializeField] Animator animator;
     private void Awake()
     {
         targetPosition = transform.position;
+    }
+    private void Start()
+    {
+        currentGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+        LevelGrid.Instance.AddUnitAtGridPosition(currentGridPosition, this);
     }
     private void Update()
     {
@@ -28,7 +34,12 @@ public class Unit : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
         }
-
+        GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+        if (newGridPosition != currentGridPosition)
+        {
+            LevelGrid.Instance.UnitMovedGridPosition(this, currentGridPosition, newGridPosition);
+            currentGridPosition = newGridPosition;
+        }
     }
     bool IsWithinDistance()
     {
