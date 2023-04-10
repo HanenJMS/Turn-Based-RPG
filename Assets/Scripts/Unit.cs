@@ -9,6 +9,10 @@ public class Unit : MonoBehaviour
     float stoppingDistance = 1f;
     float rotationSpeed = 50f;
     [SerializeField] Animator animator;
+    private void Awake()
+    {
+        targetPosition = transform.position;
+    }
     private void Update()
     {
 
@@ -24,16 +28,13 @@ public class Unit : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
         }
-        if(Input.GetMouseButtonDown(0))
-        {
-            targetPosition = MouseWorld.GetMousePosition();
-        }
+
     }
     bool IsWithinDistance()
     {
         return Vector3.Distance(transform.position, targetPosition) < stoppingDistance;
     }
-    void Move(Vector3 destination)
+    public void Move(Vector3 destination)
     {
         targetPosition = destination;
     }
