@@ -11,27 +11,35 @@ public class MoveAction : BaseAction
     float stoppingDistance = 0.01f;
     float moveSpeed = 5.5f;
     // Start is called before the first frame update
-    void Start()
+    protected override void Awake()
     {
+        base.Awake();
         targetPosition = transform.position;
     }
 
     // Update is called once per frame
-    void Update()
+
+    public override bool IsRunning()
     {
         if (!IsWithinDistance())
         {
-            Vector3 moveDirection = (targetPosition - transform.position).normalized;
-            transform.position += moveDirection * moveSpeed * Time.deltaTime;
-            transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotationSpeed);
             GetAnimator().SetBool("isRunning", true);
-
+            return true;
         }
         else
         {
             GetAnimator().SetBool("isRunning", false);
         }
+        return false;
     }
+
+    protected override void PerformLogic()
+    {
+        Vector3 moveDirection = (targetPosition - transform.position).normalized;
+        transform.position += moveDirection * moveSpeed * Time.deltaTime;
+        transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotationSpeed);
+    }
+
     public override List<GridPosition> GetValidGridPositionList()
     {
         List<GridPosition> validGridPositions = new List<GridPosition>();
@@ -52,12 +60,13 @@ public class MoveAction : BaseAction
     }
     bool IsWithinDistance()
     {
-        return Vector3.Distance(transform.position, targetPosition) < stoppingDistance;
+        return Vector3.Distance(transform.position, targetPosition) <= stoppingDistance;
     }
-    public void Move(GridPosition destination)
+    public bool Move(GridPosition destination)
     {
-        if (!IsValidActionGridPosition(destination)) return;
+        if (!IsValidActionGridPosition(destination)) return false;
         targetPosition = LevelGrid.Instance.GetWorldPosition(destination);
-        
+        if (targetPosition == null) return false;
+        return IsRunning();
     }
 }

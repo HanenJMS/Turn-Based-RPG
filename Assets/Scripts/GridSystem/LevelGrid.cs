@@ -60,5 +60,6 @@ public class LevelGrid : MonoBehaviour
         GridObject gridObject = gridSystem.GetGridObject(gridPosition);
         return gridObject.HasUnits();
     }
+    public Dictionary<GridPosition, GridObject> GetGridObjects() => gridSystem.GetGridObjects();
 }
 

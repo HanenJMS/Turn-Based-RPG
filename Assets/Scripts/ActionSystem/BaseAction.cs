@@ -4,11 +4,16 @@ using UnityEngine;
 
 public abstract class BaseAction : MonoBehaviour
 {
-    public Unit unit { get; private set; }
+    protected Unit unit { get; private set; }
     [SerializeField] Animator animator;
-    private void Awake()
+    protected virtual void Awake()
     {
         unit = GetComponent<Unit>();
+    }
+    private void Update()
+    {
+        if (!IsRunning()) return;
+        PerformLogic();
     }
     public Animator GetAnimator() 
     {
@@ -20,4 +25,6 @@ public abstract class BaseAction : MonoBehaviour
         return validGridPositionList.Contains(gridPosition);
     }
     public abstract List<GridPosition> GetValidGridPositionList();
+    public abstract bool IsRunning();
+    protected abstract void PerformLogic();
 }

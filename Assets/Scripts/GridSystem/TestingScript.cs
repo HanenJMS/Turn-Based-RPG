@@ -10,7 +10,7 @@ public class TestingScript : MonoBehaviour
         List<GridPosition> list = new List<GridPosition>();
         if(Input.GetKeyDown(KeyCode.T))
         {
-            unit.GetBaseAction().GetValidGridPositionList();
+            
         }
     }
 }

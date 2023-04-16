@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class GridSystem : MonoBehaviour
@@ -44,7 +45,7 @@ public class GridSystem : MonoBehaviour
             for(int z = 0; z < height; z++)
             {
                 GridPosition gridPosition = new GridPosition(x, z);
-                Transform debugTransform = GameObject.Instantiate(prefab, GetWorldPosition(gridPosition), Quaternion.identity);
+                Transform debugTransform = GameObject.Instantiate(prefab, GetWorldPosition(gridPosition), Quaternion.identity, LevelGrid.Instance.transform);
                 GridDebugObject gdo = debugTransform.GetComponent<GridDebugObject>();
                 gdo.SetGridObject(GetGridObject(gridPosition));
             }
@@ -58,5 +59,6 @@ public class GridSystem : MonoBehaviour
     {
         if(gridPosition == null) return false;
         return grid.ContainsKey(gridPosition);
-    }    
+    }
+    public Dictionary<GridPosition, GridObject> GetGridObjects() => grid;
 }
