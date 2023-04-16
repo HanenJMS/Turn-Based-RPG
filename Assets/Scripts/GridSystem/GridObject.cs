@@ -28,6 +28,10 @@ public class GridObject
             units.Remove(unit);
         }    
     }
+    public bool HasUnits()
+    {
+        return units.Count > 0;
+    }
     public override string ToString()
     {
         string unitNames = "";

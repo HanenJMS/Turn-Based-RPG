@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    Vector3 targetPosition;
+
     GridPosition currentGridPosition;
-    float moveSpeed = 5.5f;
-    float stoppingDistance = 0.1f;
-    float rotationSpeed = 50f;
-    [SerializeField] Animator animator;
+    MoveAction moveAction;
     private void Awake()
     {
-        targetPosition = transform.position;
+        moveAction = GetComponent<MoveAction>();
     }
     private void Start()
     {
@@ -21,19 +19,6 @@ public class Unit : MonoBehaviour
     }
     private void Update()
     {
-
-        if (!IsWithinDistance())
-        {
-            Vector3 moveDirection = (targetPosition - transform.position).normalized;
-            transform.position += moveDirection * moveSpeed * Time.deltaTime;
-            transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotationSpeed);
-            animator.SetBool("isRunning", true);
-
-        }
-        else
-        {
-            animator.SetBool("isRunning", false);
-        }
         GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         if (newGridPosition != currentGridPosition)
         {
@@ -41,12 +26,16 @@ public class Unit : MonoBehaviour
             currentGridPosition = newGridPosition;
         }
     }
-    bool IsWithinDistance()
+    public void Move(GridPosition destination)
     {
-        return Vector3.Distance(transform.position, targetPosition) < stoppingDistance;
+        moveAction.Move(destination);
     }
-    public void Move(Vector3 destination)
+    public BaseAction GetBaseAction()
     {
-        targetPosition = destination;
+        return moveAction;
+    }
+    public GridPosition GetUnitGridPosition()
+    {
+        return currentGridPosition;
     }
 }

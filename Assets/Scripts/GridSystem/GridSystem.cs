@@ -54,4 +54,9 @@ public class GridSystem : MonoBehaviour
     {
         return grid[gridPosition];
     }
+    public bool IsValidGridPosition(GridPosition gridPosition)
+    {
+        if(gridPosition == null) return false;
+        return grid.ContainsKey(gridPosition);
+    }    
 }

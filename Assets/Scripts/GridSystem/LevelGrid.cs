@@ -16,15 +16,16 @@ public class LevelGrid : MonoBehaviour
             return;
         }
         Instance = this;
-    }
-    private void Start()
-    {
         gridSystem = new GridSystem(10, 10, 2f);
         gridSystem.CreateDebugObjects(prefab);
     }
+    private void Start()
+    {
+
+    }
     private void Update()
     {
-        Debug.Log(gridSystem.GetGridPosition(MouseWorld.GetMousePosition()));
+        //Debug.Log(gridSystem.GetGridPosition(MouseWorld.GetMousePosition()));
     }
 
     public void AddUnitAtGridPosition(GridPosition gridPosition, Unit unit)
@@ -38,6 +39,7 @@ public class LevelGrid : MonoBehaviour
         return gridObject.GetUnits();
     }
     public GridPosition GetGridPosition(Vector3 worldPosition) => gridSystem.GetGridPosition(worldPosition);
+    public Vector3 GetWorldPosition(GridPosition gridPosition) => gridSystem.GetWorldPosition(gridPosition);
     public void RemoveUnitAtGridPosition(GridPosition gridPosition, Unit unit)
     {
         GridObject gridObject = gridSystem.GetGridObject(gridPosition);
@@ -47,6 +49,16 @@ public class LevelGrid : MonoBehaviour
     {
         RemoveUnitAtGridPosition(fromPosition, unit);
         AddUnitAtGridPosition(toPosition, unit);
+    }
+    public bool IsValidGridPosition(GridPosition gridPosition)
+    {
+        return gridSystem.IsValidGridPosition(gridPosition);
+    }
+    
+    public bool HasObjectOnGridPosition(GridPosition gridPosition)
+    {
+        GridObject gridObject = gridSystem.GetGridObject(gridPosition);
+        return gridObject.HasUnits();
     }
 }
 
