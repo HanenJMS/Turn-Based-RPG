@@ -10,6 +10,9 @@ public class MoveAction : BaseAction
     float rotationSpeed = 50f;
     float stoppingDistance = 0.01f;
     float moveSpeed = 5.5f;
+    
+
+
     // Start is called before the first frame update
     protected override void Awake()
     {
@@ -68,5 +71,15 @@ public class MoveAction : BaseAction
         targetPosition = LevelGrid.Instance.GetWorldPosition(destination);
         if (targetPosition == null) return false;
         return IsRunning();
+    }
+
+    public override string GetActionName()
+    {
+        return "Move";
+    }
+
+    public override void Execute(GridPosition destination)
+    {
+        Move(destination);
     }
 }

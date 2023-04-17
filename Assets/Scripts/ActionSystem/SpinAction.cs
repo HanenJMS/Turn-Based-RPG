@@ -6,10 +6,13 @@ public class SpinAction : BaseAction
 {
     float totalSpinAmount = 360f;
     float currentSpunAmount = float.MaxValue;
-    
+
     public override List<GridPosition> GetValidGridPositionList()
     {
-        return new List<GridPosition>();
+        return new List<GridPosition> 
+        { 
+            unit.GetUnitGridPosition()
+        };
     }
     public override bool IsRunning()
     {   
@@ -33,5 +36,16 @@ public class SpinAction : BaseAction
     {
         currentSpunAmount = 0f;
         return IsRunning();
+    }
+
+    public override string GetActionName()
+    {
+        return "Spin";
+    }
+
+    public override void Execute(GridPosition gridPosition)
+    {
+        if(IsValidActionGridPosition(gridPosition))
+            Spin();
     }
 }
