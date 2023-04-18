@@ -10,6 +10,7 @@ public class UnitActionSystem : MonoBehaviour
     [SerializeField] LayerMask unitLayerMask;
     public Action OnSelectedUnitChanged;
     public Action OnSelectedActionChanged;
+    public Action OnTimerPaused;
 
     private void Awake()
     {

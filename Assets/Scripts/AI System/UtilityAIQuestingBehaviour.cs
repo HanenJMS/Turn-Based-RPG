@@ -28,8 +28,8 @@ public class UtilityAIQuestingBehaviour : MonoBehaviour
 
     private void ChangeStateOrAddState()
     {
-        expectedQuestThreshold = CalculateQuestThreshold();
-        agent.AddState(state, expectedQuestThreshold);
+        //expectedQuestThreshold = CalculateQuestThreshold();
+        //agent.AddState(state, expectedQuestThreshold);
     }
 
     private int CalculateQuestThreshold()
