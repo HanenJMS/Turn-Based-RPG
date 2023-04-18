@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4404704848333840682}
   - component: {fileID: 4404704848333840681}
   - component: {fileID: 7653526715353110653}
+  - component: {fileID: 3403416158165580101}
+  - component: {fileID: 6434037281533198659}
   m_Layer: 7
   m_Name: Unit
   m_TagString: Untagged
@@ -47,7 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae506ae4f559d04fbed0b7b3e170279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 4355556843212210407}
 --- !u!65 &7653526715353110653
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61,6 +62,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1.6688936, z: 0.5}
   m_Center: {x: 0, y: 0.85944676, z: 0}
+--- !u!114 &3403416158165580101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4404704848333840683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1513e4160dda343499bc7342917a1dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4355556843212210407}
+  maxMoveDistance: 5
+--- !u!114 &6434037281533198659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4404704848333840683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f7e48ccfa8e84409cc306c1adde84d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4355556843212210407}
 --- !u!1 &7112514862484543407
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,6 +644,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: c86ab66652aaff7448ddba101f75150a, type: 2}
+    - target: {fileID: 95328103556620382, guid: e0331453113676149a9c0b2bc03e60de,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 95328103556620382, guid: e0331453113676149a9c0b2bc03e60de,
         type: 3}
       propertyPath: m_ApplyRootMotion
