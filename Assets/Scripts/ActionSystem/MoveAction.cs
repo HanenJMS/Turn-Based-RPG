@@ -10,8 +10,8 @@ public class MoveAction : BaseAction
     float rotationSpeed = 50f;
     float stoppingDistance = 0.01f;
     float moveSpeed = 5.5f;
-    
 
+    bool isRunning = false;
 
     // Start is called before the first frame update
     protected override void Awake()
@@ -24,18 +24,23 @@ public class MoveAction : BaseAction
 
     public override bool IsRunning()
     {
-        if (!IsWithinDistance())
+        if(!isRunning)
         {
-            GetAnimator().SetBool("isRunning", true);
-            return true;
+            StopRunning();
         }
-        else
-        {
-            GetAnimator().SetBool("isRunning", false);
-        }
-        return false;
+        return IsWithinDistance();
     }
 
+    private void StartRunning()
+    {
+        GetAnimator().SetBool("isRunning", true);
+        isRunning = true;
+    }
+    private void StopRunning()
+    {
+        GetAnimator().SetBool("isRunning", false);
+        isRunning = false;
+    }
     protected override void PerformLogic()
     {
         Vector3 moveDirection = (targetPosition - transform.position).normalized;
@@ -65,11 +70,12 @@ public class MoveAction : BaseAction
     {
         return Vector3.Distance(transform.position, targetPosition) <= stoppingDistance;
     }
-    public bool Move(GridPosition destination)
+    bool Move(GridPosition destination)
     {
         if (!IsValidActionGridPosition(destination)) return false;
         targetPosition = LevelGrid.Instance.GetWorldPosition(destination);
         if (targetPosition == null) return false;
+        StartRunning();
         return IsRunning();
     }
 
@@ -81,5 +87,10 @@ public class MoveAction : BaseAction
     public override void Execute(GridPosition destination)
     {
         Move(destination);
+    }
+
+    public override void Cancel()
+    {
+        StopRunning();
     }
 }

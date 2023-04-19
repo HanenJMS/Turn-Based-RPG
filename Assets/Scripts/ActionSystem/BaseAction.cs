@@ -29,6 +29,7 @@ public abstract class BaseAction : MonoBehaviour
     public abstract List<GridPosition> GetValidGridPositionList();
     public abstract bool IsRunning();
     public abstract void Execute(GridPosition gridPosition);
+    public abstract void Cancel();
     protected abstract void PerformLogic();
     
 }

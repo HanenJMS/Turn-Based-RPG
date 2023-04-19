@@ -19,6 +19,7 @@ public class CameraController : MonoBehaviour
         cineMachineTransposer = cinemachineCamera.GetCinemachineComponent<CinemachineTransposer>();
         targetFollowOffset = cineMachineTransposer.m_FollowOffset;
     }
+    
     private void Update()
     {
         HandleCameraMovement();
@@ -38,7 +39,7 @@ public class CameraController : MonoBehaviour
         }
         float zoomSpeed = 5f;
         targetFollowOffset.y = Mathf.Clamp(targetFollowOffset.y, MIN_FOLLOW_Y, MAX_FOLLOW_Y);
-        cineMachineTransposer.m_FollowOffset = Vector3.Lerp(cineMachineTransposer.m_FollowOffset, targetFollowOffset, Time.deltaTime * zoomSpeed);
+        cineMachineTransposer.m_FollowOffset = Vector3.Lerp(cineMachineTransposer.m_FollowOffset, targetFollowOffset, Time.unscaledDeltaTime * zoomSpeed);
     }
 
     private void HandleCameraRotation()
@@ -52,7 +53,7 @@ public class CameraController : MonoBehaviour
         {
             rotationVector.y = +1f;
         }
-        transform.eulerAngles += rotationVector * Time.deltaTime * rotationSpeed;
+        transform.eulerAngles += rotationVector * Time.unscaledDeltaTime * rotationSpeed;
     }
 
     private void HandleCameraMovement()
@@ -76,6 +77,6 @@ public class CameraController : MonoBehaviour
         }
 
         Vector3 moveVector = transform.forward * inputMoveDirection.z + transform.right * inputMoveDirection.x;
-        transform.position += moveVector * moveSpeed * Time.deltaTime;
+        transform.position += moveVector * moveSpeed * Time.unscaledDeltaTime;
     }
 }

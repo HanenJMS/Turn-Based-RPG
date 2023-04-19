@@ -572,7 +572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShowDebugText: 0
   m_ShowCameraFrustum: 1
-  m_IgnoreTimeScale: 0
+  m_IgnoreTimeScale: 1
   m_WorldUpOverride: {fileID: 0}
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
@@ -831,6 +831,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMeshProUGUI: {fileID: 1937537030}
   pauseButton: {fileID: 184414845}
+--- !u!1 &488095762 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4404704848333840683, guid: 7cc81d36b307dd24fa47e740c421b282,
+    type: 3}
+  m_PrefabInstance: {fileID: 844993113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &488095767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488095762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b788fcd4d0ac22c45b4d0abc582fdde2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1836369170}
+  shootRange: 5
 --- !u!1 &600275106
 GameObject:
   m_ObjectHideFlags: 0

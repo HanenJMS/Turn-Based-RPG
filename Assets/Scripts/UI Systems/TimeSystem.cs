@@ -35,6 +35,10 @@ public class TimeSystem : MonoBehaviour
     }
     private void Update()
     {
+        if(onPause)
+        {
+            return;
+        }
         if(Input.GetKeyDown(KeyCode.Space))
         {
             StartSlowMotion();
@@ -50,12 +54,11 @@ public class TimeSystem : MonoBehaviour
         onPause = !onPause;
         if(onPause)
         {
-            StartSlowMotion();
             Time.timeScale = 0f;
         }
-        else
+        else if(!onPause)
         {
-            Time.timeScale = StartTimeScale;
+            StopSlowMotion();
         }
     }
     void StopSlowMotion()

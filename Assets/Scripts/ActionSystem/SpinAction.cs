@@ -48,4 +48,9 @@ public class SpinAction : BaseAction
         if(IsValidActionGridPosition(gridPosition))
             Spin();
     }
+
+    public override void Cancel()
+    {
+        throw new System.NotImplementedException();
+    }
 }
