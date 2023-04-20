@@ -19,6 +19,7 @@ public class TimeSystem : MonoBehaviour
     float slowDurationTime = 2f;
     string currentTime = "00:00:00";
     bool onPause = false;
+    bool onAction = false;
     private void Awake()
     {
         if (Instance != null)
@@ -39,13 +40,13 @@ public class TimeSystem : MonoBehaviour
         {
             return;
         }
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKey(KeyCode.Space))
         {
-            StartSlowMotion();
+            ExecuteSlowMotion(true);
         }
         if(Input.GetKeyUp(KeyCode.Space))
         {
-            StopSlowMotion();
+            ExecuteSlowMotion(false);
         }
         PerformLogic();
     }
@@ -61,6 +62,11 @@ public class TimeSystem : MonoBehaviour
             StopSlowMotion();
         }
     }
+    public void ExecuteSlowMotion(bool update)
+    {
+        onAction = update;
+        
+    }
     void StopSlowMotion()
     {
         Time.timeScale = StartTimeScale;
@@ -73,6 +79,14 @@ public class TimeSystem : MonoBehaviour
     }
     private void PerformLogic()
     {
+        if (onAction)
+        {
+            StartSlowMotion();
+        }
+        else if (!onAction)
+        {
+            StopSlowMotion();
+        }
         sec += Time.deltaTime * 1f;
         OnTimerChanged?.Invoke();
         if (sec >= standardMinute)

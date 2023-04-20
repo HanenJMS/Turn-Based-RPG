@@ -22,7 +22,7 @@ public class UnitSelectedVisual : MonoBehaviour
     }
     void UpdateVisual()
     {
-        if (UnitActionSystem.Instance.GetSelectedUnit() == unit)
+        if (UnitActionSystem.Instance.GetSelectedUnitList().Contains(unit))
         {
             renderer.enabled = true;
         }

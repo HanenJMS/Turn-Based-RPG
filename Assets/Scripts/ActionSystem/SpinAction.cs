@@ -15,12 +15,8 @@ public class SpinAction : BaseAction
         };
     }
     public override bool IsRunning()
-    {   
-        if(currentSpunAmount < totalSpinAmount)
-        {
-            return true;
-        }
-        return false;
+    {
+        return currentSpunAmount < totalSpinAmount;
     }
 
     protected override void PerformLogic()
@@ -32,8 +28,9 @@ public class SpinAction : BaseAction
         transform.eulerAngles += new Vector3(0, spinAddAmount, 0);
     }
 
-    public bool Spin()
+    public bool Spin(GridPosition gridPosition)
     {
+        if (!IsValidActionGridPosition(gridPosition)) return false;
         currentSpunAmount = 0f;
         return IsRunning();
     }
@@ -45,12 +42,6 @@ public class SpinAction : BaseAction
 
     public override void Execute(GridPosition gridPosition)
     {
-        if(IsValidActionGridPosition(gridPosition))
-            Spin();
-    }
-
-    public override void Cancel()
-    {
-        throw new System.NotImplementedException();
+        isRunning = Spin(gridPosition);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class BaseAction : MonoBehaviour
 {
     protected Unit unit { get; private set; }
+    protected bool isRunning = true;
     
     [SerializeField] Animator animator;
     protected virtual void Awake()
@@ -13,7 +14,8 @@ public abstract class BaseAction : MonoBehaviour
     }
     private void Update()
     {
-        if (!IsRunning()) return;
+        if (!isRunning) return;
+        isRunning = IsRunning();
         PerformLogic();
     }
     public Animator GetAnimator() 
@@ -29,7 +31,10 @@ public abstract class BaseAction : MonoBehaviour
     public abstract List<GridPosition> GetValidGridPositionList();
     public abstract bool IsRunning();
     public abstract void Execute(GridPosition gridPosition);
-    public abstract void Cancel();
+    public virtual void Cancel()
+    {
+        isRunning = false;
+    }
     protected abstract void PerformLogic();
     
 }

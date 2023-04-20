@@ -34,4 +34,22 @@ public class Unit : MonoBehaviour
     {
         return currentGridPosition;
     }
+    public BaseAction GetMoveAction()
+    {
+        BaseAction moveAction = null;
+        if (actions.Count <= 0)
+        {
+            Debug.Log($"Missing MoveAction on {this.transform.name} on {this.transform.position}");
+            return moveAction;
+        }
+        foreach(BaseAction action in actions)
+        {
+            if(action is MoveAction)
+            {
+                moveAction = action;
+                return action;
+            }
+        }
+        return moveAction;
+    }
 }

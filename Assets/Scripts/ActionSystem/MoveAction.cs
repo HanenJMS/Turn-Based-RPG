@@ -11,8 +11,6 @@ public class MoveAction : BaseAction
     float stoppingDistance = 0.01f;
     float moveSpeed = 5.5f;
 
-    bool isRunning = false;
-
     // Start is called before the first frame update
     protected override void Awake()
     {
@@ -24,22 +22,26 @@ public class MoveAction : BaseAction
 
     public override bool IsRunning()
     {
-        if(!isRunning)
+        if(IsWithinDistance())
         {
             StopRunning();
+            return false;
         }
-        return IsWithinDistance();
+        else
+        {
+            StartRunning();
+            return true;
+        }
     }
 
     private void StartRunning()
     {
         GetAnimator().SetBool("isRunning", true);
-        isRunning = true;
     }
     private void StopRunning()
     {
+        targetPosition = transform.position;
         GetAnimator().SetBool("isRunning", false);
-        isRunning = false;
     }
     protected override void PerformLogic()
     {
@@ -47,7 +49,11 @@ public class MoveAction : BaseAction
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
         transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotationSpeed);
     }
-
+    public override void Cancel()
+    {
+        base.Cancel();
+        StopRunning();
+    }
     public override List<GridPosition> GetValidGridPositionList()
     {
         List<GridPosition> validGridPositions = new List<GridPosition>();
@@ -75,10 +81,8 @@ public class MoveAction : BaseAction
         if (!IsValidActionGridPosition(destination)) return false;
         targetPosition = LevelGrid.Instance.GetWorldPosition(destination);
         if (targetPosition == null) return false;
-        StartRunning();
         return IsRunning();
     }
-
     public override string GetActionName()
     {
         return "Move";
@@ -86,11 +90,6 @@ public class MoveAction : BaseAction
 
     public override void Execute(GridPosition destination)
     {
-        Move(destination);
-    }
-
-    public override void Cancel()
-    {
-        StopRunning();
+        isRunning = Move(destination);
     }
 }
