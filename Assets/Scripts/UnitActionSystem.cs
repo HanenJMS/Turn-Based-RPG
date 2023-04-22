@@ -77,22 +77,16 @@ public class UnitActionSystem : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            startPosition = MouseWorld.GetMousePosition();
-            
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (!Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, unitLayerMask)) return false;
+            if (!hit.transform.TryGetComponent<Unit>(out Unit unit)) return false;
+            if (unit == selectedUnit) return false;
+            SetSelectedUnit(unit);
+            return true;
+
         }
         if (Input.GetMouseButtonUp(0))
         {
-            LevelGrid.Instance.GetGridPosition(MouseWorld.GetMousePosition());
-            Collider[] colliderArray = Physics.OverlapBox(startPosition, MouseWorld.GetMousePosition(), Quaternion.identity, unitLayerMask);
-            selectedUnitList.Clear();
-            Debug.Log(colliderArray.Length);
-            foreach(Collider collider in colliderArray)
-            {
-                if (!collider.TryGetComponent<Unit>(out Unit unit)) continue;
-                selectedUnitList.Add(unit);
-            }
-            Debug.Log(selectedUnitList.Count);
-            if (selectedUnitList.Count > 0) return true;
         }
         return false;
     }
@@ -106,10 +100,6 @@ public class UnitActionSystem : MonoBehaviour
     public Unit GetSelectedUnit()
     {
         return selectedUnit;
-    }
-    public List<Unit> GetSelectedUnitList()
-    {
-        return selectedUnitList;
     }
     public BaseAction GetCurrentAction()
     {

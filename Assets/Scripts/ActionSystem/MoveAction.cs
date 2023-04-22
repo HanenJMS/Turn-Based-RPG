@@ -8,7 +8,7 @@ public class MoveAction : BaseAction
     Vector3 targetPosition;
     [SerializeField] int maxMoveDistance = 5;
     float rotationSpeed = 50f;
-    float stoppingDistance = 0.01f;
+    float stoppingDistance = 0.1f;
     float moveSpeed = 5.5f;
 
     // Start is called before the first frame update
@@ -40,7 +40,6 @@ public class MoveAction : BaseAction
     }
     private void StopRunning()
     {
-        targetPosition = transform.position;
         GetAnimator().SetBool("isRunning", false);
     }
     protected override void PerformLogic()

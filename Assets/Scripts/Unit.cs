@@ -8,6 +8,7 @@ public class Unit : MonoBehaviour
 
     GridPosition currentGridPosition;
     List<BaseAction> actions;
+    bool isSelected = false;
     private void Awake()
     {
         actions = new List<BaseAction>(GetComponents<BaseAction>()); 
@@ -51,5 +52,13 @@ public class Unit : MonoBehaviour
             }
         }
         return moveAction;
+    }
+    public void SetIsSelected(bool isSelected)
+    {
+        this.isSelected = isSelected;
+    }
+    public bool IsSelected()
+    {
+        return isSelected;
     }
 }

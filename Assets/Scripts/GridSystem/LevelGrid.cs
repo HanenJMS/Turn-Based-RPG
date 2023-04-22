@@ -6,7 +6,8 @@ public class LevelGrid : MonoBehaviour
 {
     public static LevelGrid Instance { get; private set; }
     [SerializeField] Transform prefab;
-    
+    [SerializeField] int gridWidth = 10, gridHeight = 10;
+    [SerializeField] float cellSize = 2f;
     GridSystem gridSystem;
     private void Awake()
     {
@@ -16,7 +17,7 @@ public class LevelGrid : MonoBehaviour
             return;
         }
         Instance = this;
-        gridSystem = new GridSystem(10, 10, 2f);
+        gridSystem = new GridSystem(gridWidth, gridHeight, cellSize);
         gridSystem.CreateDebugObjects(prefab);
     }
     private void Start()
@@ -31,19 +32,19 @@ public class LevelGrid : MonoBehaviour
     public void AddUnitAtGridPosition(GridPosition gridPosition, Unit unit)
     {
         GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-        gridObject.AddUnit(unit);
+        gridObject.AddObject(unit.gameObject);
     }
-    public List<Unit> GetUnitAtGridPosition(GridPosition gridPosition)
+    public List<GameObject> GetUnitAtGridPosition(GridPosition gridPosition)
     {
         GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-        return gridObject.GetUnits();
+        return gridObject.GetGameObjects();
     }
     public GridPosition GetGridPosition(Vector3 worldPosition) => gridSystem.GetGridPosition(worldPosition);
     public Vector3 GetWorldPosition(GridPosition gridPosition) => gridSystem.GetWorldPosition(gridPosition);
     public void RemoveUnitAtGridPosition(GridPosition gridPosition, Unit unit)
     {
         GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-        gridObject.RemoveUnit(unit);
+        gridObject.RemoveGameObject(unit.gameObject);
     }
     public void UnitMovedGridPosition(Unit unit, GridPosition fromPosition, GridPosition toPosition)
     {
@@ -58,8 +59,12 @@ public class LevelGrid : MonoBehaviour
     public bool HasObjectOnGridPosition(GridPosition gridPosition)
     {
         GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-        return gridObject.HasUnits();
+        return gridObject.HasObject();
     }
     public Dictionary<GridPosition, GridObject> GetGridObjects() => gridSystem.GetGridObjects();
+    public float GetCellSize()
+    {
+        return cellSize;
+    }
 }
 

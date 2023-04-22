@@ -12,9 +12,13 @@ public abstract class BaseAction : MonoBehaviour
     {
         unit = GetComponent<Unit>();
     }
-    private void Update()
+    private void FixedUpdate()
     {
-        if (!isRunning) return;
+        if (!isRunning)
+        {
+            Cancel();
+            return;
+        }
         isRunning = IsRunning();
         PerformLogic();
     }

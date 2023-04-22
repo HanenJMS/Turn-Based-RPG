@@ -1,15 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class ShootAction : BaseAction
 {
     [SerializeField] int shootRange = 5;
     Unit unitTarget;
     Vector3 targetPosition;
-    float totalSpinAmount = 360f;
+    float rotationSpeed = 10f;
     float currentSpunAmount = float.MaxValue;
     public override string GetActionName()
     {
@@ -30,7 +27,7 @@ public class ShootAction : BaseAction
                 if (!LevelGrid.Instance.IsValidGridPosition(validatingGridPosition)) continue;
                 if (unitGridPosition == validatingGridPosition) continue;
                 if (!LevelGrid.Instance.HasObjectOnGridPosition(validatingGridPosition)) continue;
-                if (!LevelGrid.Instance.GetGridObjects()[validatingGridPosition].GetUnits()[0] == unit) continue;
+                //if (.Contains(unit)) continue;
                 validGridPositions.Add(validatingGridPosition);
             }
         }
@@ -43,20 +40,24 @@ public class ShootAction : BaseAction
     bool Shoot(GridPosition gridPosition)
     {
         if (!IsValidActionGridPosition(gridPosition)) return false;
-        currentSpunAmount = 0f;
+        unitTarget = LevelGrid.Instance.GetGridObjects()[gridPosition].GetGameObjects()[0].GetComponent<Unit>();
+
         return IsRunning();
     }
     public override bool IsRunning()
     {
-        return currentSpunAmount < totalSpinAmount;
+        if (unitTarget != null) return true;
+        if (unitTarget == null) return false;
+        return false;
     }
     protected override void PerformLogic()
     {
-        float spinAddAmount = 360f * Time.deltaTime;
-
-        currentSpunAmount += spinAddAmount;
-        currentSpunAmount = Mathf.Clamp(currentSpunAmount, 0, totalSpinAmount);
-        transform.eulerAngles += new Vector3(0, spinAddAmount, 0);
+        Vector3 facingDirection = (unitTarget.transform.position - transform.position).normalized;
+        transform.forward = Vector3.Lerp(transform.forward, facingDirection, Time.deltaTime * rotationSpeed);
     }
-
+    public override void Cancel()
+    {
+        base.Cancel();
+        unitTarget = null;
+    }
 }
