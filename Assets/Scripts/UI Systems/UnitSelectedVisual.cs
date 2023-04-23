@@ -13,26 +13,19 @@ public class UnitSelectedVisual : MonoBehaviour
     }
     private void Start()
     {
-        UnitActionSystem.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSelectedUnitChanged;
+        unit.OnUnitSelected += UnitOnUnitSelected_OnUnitSelected;
         UpdateVisual();
     }
-    void UnitActionSystem_OnSelectedUnitChanged()
+    void UnitOnUnitSelected_OnUnitSelected()
     {
         UpdateVisual();
     }
     void UpdateVisual()
     {
-        if (unit.IsSelected())
-        {
-            renderer.enabled = true;
-        }
-        else
-        {
-            renderer.enabled = false;
-        }
+        renderer.enabled = unit.IsSelected();
     }
     private void OnDestroy()
     {
-        UnitActionSystem.Instance.OnSelectedUnitChanged -= UnitActionSystem_OnSelectedUnitChanged;
+        unit.OnUnitSelected -= UnitOnUnitSelected_OnUnitSelected;
     }
 }

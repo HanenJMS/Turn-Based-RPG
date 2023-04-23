@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,6 +8,7 @@ public class Unit : MonoBehaviour
 {
 
     GridPosition currentGridPosition;
+    public Action OnUnitSelected;
     List<BaseAction> actions;
     bool isSelected = false;
     private void Awake()
@@ -53,9 +55,15 @@ public class Unit : MonoBehaviour
         }
         return moveAction;
     }
+
+    public void MoveTo(GridPosition destination)
+    {
+        GetMoveAction().Execute(destination);
+    }
     public void SetIsSelected(bool isSelected)
     {
         this.isSelected = isSelected;
+        OnUnitSelected?.Invoke();
     }
     public bool IsSelected()
     {

@@ -34,7 +34,7 @@ public class LevelGrid : MonoBehaviour
         GridObject gridObject = gridSystem.GetGridObject(gridPosition);
         gridObject.AddObject(unit.gameObject);
     }
-    public List<GameObject> GetUnitAtGridPosition(GridPosition gridPosition)
+    public List<GameObject> GetObjectsAtGridPosition(GridPosition gridPosition)
     {
         GridObject gridObject = gridSystem.GetGridObject(gridPosition);
         return gridObject.GetGameObjects();

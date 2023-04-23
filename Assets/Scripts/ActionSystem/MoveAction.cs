@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MoveAction : BaseAction
 {
     Vector3 targetPosition;
-    [SerializeField] int maxMoveDistance = 5;
+    [SerializeField] int viewDistance = 100;
     float rotationSpeed = 50f;
     float stoppingDistance = 0.1f;
     float moveSpeed = 5.5f;
@@ -24,6 +25,23 @@ public class MoveAction : BaseAction
     {
         if(IsWithinDistance())
         {
+            GridPosition currentPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+            List<GridPosition> gridPositionList = LevelGrid.Instance.GetGridObjects()[currentPosition].GetAdjacentGridPosition();
+            List<GameObject> gameObjectsOnGrid = LevelGrid.Instance.GetObjectsAtGridPosition(currentPosition);
+      
+            
+            if(gameObjectsOnGrid[0] != this.gameObject)
+            {
+                foreach(GridPosition gridPosition in gridPositionList)
+                {
+                    if (!LevelGrid.Instance.GetGridObjects()[gridPosition].HasObject())
+                    {
+                        targetPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+                        return true;
+                    }
+                }
+            }
+            
             StopRunning();
             return false;
         }
@@ -56,28 +74,22 @@ public class MoveAction : BaseAction
     public override List<GridPosition> GetValidGridPositionList()
     {
         List<GridPosition> validGridPositions = new List<GridPosition>();
-        GridPosition unitGridPosition = unit.GetUnitGridPosition(); 
-        for (int x = -maxMoveDistance; x <= maxMoveDistance; x++)
+        GridPosition moveToMouseGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+        foreach (KeyValuePair<GridPosition, GridObject> gp in LevelGrid.Instance.GetGridObjects())
         {
-            for (int z = -maxMoveDistance; z <= maxMoveDistance; z++)
-            {
-                GridPosition offsetGridPosition = new GridPosition(x, z);
-                GridPosition validatingGridPosition = unitGridPosition + offsetGridPosition;
-                if (!LevelGrid.Instance.IsValidGridPosition(validatingGridPosition)) continue;
-                if(unitGridPosition ==  validatingGridPosition) continue;
-                if(LevelGrid.Instance.HasObjectOnGridPosition(validatingGridPosition)) continue;
-                validGridPositions.Add(validatingGridPosition);
-            }
+            if (LevelGrid.Instance.HasObjectOnGridPosition(gp.Key)) continue;
+            if(moveToMouseGridPosition == gp.Key) continue;
+            validGridPositions.Add(gp.Key);
         }
         return validGridPositions;
     }
+
     bool IsWithinDistance()
     {
         return Vector3.Distance(transform.position, targetPosition) <= stoppingDistance;
     }
     bool Move(GridPosition destination)
     {
-        if (!IsValidActionGridPosition(destination)) return false;
         targetPosition = LevelGrid.Instance.GetWorldPosition(destination);
         if (targetPosition == null) return false;
         return IsRunning();

@@ -9,6 +9,8 @@ public class UnitActionSystem : MonoBehaviour
 {
     public static UnitActionSystem Instance { get; private set; }
     BaseAction currentAction = null;
+    List<BaseAction> unitActionList = new List<BaseAction>();
+    [SerializeField] RTSController controller;
     [SerializeField] Unit selectedUnit;
     [SerializeField] List<Unit> selectedUnitList = new List<Unit>();
     [SerializeField] LayerMask unitLayerMask;
@@ -26,6 +28,7 @@ public class UnitActionSystem : MonoBehaviour
             return;
         }
         Instance = this;
+        controller = GetComponentInChildren<RTSController>();
     }
 
     // Update is called once per frame
@@ -45,56 +48,18 @@ public class UnitActionSystem : MonoBehaviour
 
     private bool TryHandleUnitAction()
     {
-        if (selectedUnit == null)
-        {
-            return false;
-        }
-        if (currentAction == null) return false;
-        return HandleUnitActionExecute();
+        return controller.HandleUnitAction();
     }
 
-    private bool HandleUnitActionExecute()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            TimeSystem.Instance.ExecuteSlowMotion(true);
-        }
-        if (Input.GetMouseButtonUp(1))
-        {
-            //if (currentAction != selectedUnit.GetMoveAction())
-            //{
-            //    selectedUnit.GetMoveAction().Cancel();
-            //}
-            GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetMousePosition());
-            currentAction.Execute(mouseGridPosition);
-            TimeSystem.Instance.ExecuteSlowMotion(false);
-            return true;
-        }
-        return false;
-    }
 
     bool TryHandleSelection()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (!Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, unitLayerMask)) return false;
-            if (!hit.transform.TryGetComponent<Unit>(out Unit unit)) return false;
-            if (unit == selectedUnit) return false;
-            SetSelectedUnit(unit);
-            return true;
-
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-        }
-        return false;
+        return controller.HandleDragSelection();
     }
 
-    private void SetSelectedUnit(Unit unit)
+    private void AddUnitAction(Unit unit)
     {
-        selectedUnit = unit;
-        currentAction = unit.GetMoveAction();
+        unitActionList.Add(unit.GetMoveAction());
         OnSelectedUnitChanged?.Invoke();
     }
     public Unit GetSelectedUnit()
