@@ -75,10 +75,13 @@ public class RTSController : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(1))
         {
-            Queue<GridPosition> validGridPositionQueue = GetMoveToGridList();
+            //Queue<GridPosition> validGridPositionQueue = GetMoveToGridList();
             foreach (Unit unit in selectedUnitList)
             {
-                unit.GetMoveAction().Execute(validGridPositionQueue.Dequeue());
+                //unit.GetMoveAction().Execute(validGridPositionQueue.Dequeue());
+                GridPosition moveToGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetMousePosition());
+                if (!LevelGrid.Instance.IsValidGridPosition(moveToGridPosition)) return false;
+                unit.GetMoveAction().Execute(moveToGridPosition);
             }
             
             TimeSystem.Instance.ExecuteSlowMotion(false);
@@ -93,8 +96,31 @@ public class RTSController : MonoBehaviour
         int phalanxFormation = Mathf.RoundToInt(Mathf.Sqrt(selectedUnitList.Count));
         for(int u = 0, x = 0,z = 0; u < selectedUnitList.Count; u++)
         {
-            GridPosition gridPosition = new GridPosition(moveToMouseGridPosition.x + x, moveToMouseGridPosition.z + z);
-            validGridPositionQueue.Enqueue(gridPosition);
+            int maxWidth = LevelGrid.Instance.GetGridWidth();
+            int maxHeight = LevelGrid.Instance.GetGridHeight();
+            int currentXPosition = moveToMouseGridPosition.x + x;
+            int currentZPosition = moveToMouseGridPosition.z + z;
+            if(currentXPosition >= maxWidth)
+            {
+                currentXPosition = maxWidth - 1;
+            }
+            if(currentZPosition >= maxHeight)
+            {
+                currentZPosition = maxHeight - 1;
+            }
+            if (currentXPosition < 0)
+            {
+                currentXPosition = 0;
+            }
+            if (currentZPosition < 0)
+            {
+                currentZPosition = 0;
+            }
+            if (currentXPosition <  maxWidth && currentZPosition < maxHeight && currentXPosition >= 0 && currentZPosition >= 0)
+            {
+                GridPosition gridPosition = new GridPosition(currentXPosition, currentZPosition);
+                validGridPositionQueue.Enqueue(gridPosition);
+            }
             x++;
             if(x > phalanxFormation)
             {

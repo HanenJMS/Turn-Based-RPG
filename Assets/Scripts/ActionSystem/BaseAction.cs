@@ -40,5 +40,4 @@ public abstract class BaseAction : MonoBehaviour
         isRunning = false;
     }
     protected abstract void PerformLogic();
-    
 }

@@ -9,17 +9,17 @@ public class GridSystem : MonoBehaviour
     int height;
     float cellSize;
     Dictionary<GridPosition, GridObject> grid = new Dictionary<GridPosition, GridObject>();
-    public GridSystem(int width, int height, float cellSize)
+    public GridSystem(int gridMaxWidth, int gridMaxHeight, float cellSize)
     {
-        this.width = width;
-        this.height = height;
+        this.width = gridMaxWidth;
+        this.height = gridMaxHeight;
         this.cellSize = cellSize;
         for(int i = 0; i < width; i++)
         {
             for(int z = 0; z < height; z++)
             {
                 GridPosition gridPosition = new GridPosition(i, z);
-                GridObject newGridTile = new GridObject(this, gridPosition);
+                GridObject newGridTile = new GridObject(this, gridPosition, LevelGrid.Instance.GetGridWidth(), LevelGrid.Instance.GetGridHeight());
                 if(!grid.ContainsKey(gridPosition))
                 {
                     grid.Add(gridPosition, newGridTile);

@@ -25,11 +25,12 @@ public class MoveAction : BaseAction
     {
         if(IsWithinDistance())
         {
-            GridPosition currentPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+            GridPosition currentPosition = unit.GetUnitGridPosition();
             List<GridPosition> gridPositionList = LevelGrid.Instance.GetGridObjects()[currentPosition].GetAdjacentGridPosition();
             List<GameObject> gameObjectsOnGrid = LevelGrid.Instance.GetObjectsAtGridPosition(currentPosition);
       
-            
+            if(gameObjectsOnGrid == null) { return false; }
+            if(gameObjectsOnGrid.Count <=0 ) { return false; }
             if(gameObjectsOnGrid[0] != this.gameObject)
             {
                 foreach(GridPosition gridPosition in gridPositionList)
@@ -40,6 +41,9 @@ public class MoveAction : BaseAction
                         return true;
                     }
                 }
+                GridPosition getNextGridPosition = LevelGrid.Instance.GetGridObjects()[currentPosition].GetNextGridPosition();
+                targetPosition = LevelGrid.Instance.GetWorldPosition(getNextGridPosition);
+                return true;
             }
             
             StopRunning();

@@ -66,5 +66,13 @@ public class LevelGrid : MonoBehaviour
     {
         return cellSize;
     }
+    public int GetGridWidth()
+    {
+        return gridWidth;
+    }
+    public int GetGridHeight()
+    {
+        return gridHeight;
+    }
 }
 
