@@ -8,17 +8,21 @@ public class Unit : MonoBehaviour
 {
 
     GridPosition currentGridPosition;
+    [SerializeField]Inventory inventory;
     public Action OnUnitSelected;
     List<BaseAction> actions;
     bool isSelected = false;
     private void Awake()
     {
-        actions = new List<BaseAction>(GetComponents<BaseAction>()); 
+        actions = new List<BaseAction>(GetComponents<BaseAction>());
+        inventory = GetComponent<Inventory>();
+        
     }
     private void Start()
     {
         currentGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         LevelGrid.Instance.AddUnitAtGridPosition(currentGridPosition, this);
+        
     }
     private void Update()
     {
@@ -27,6 +31,13 @@ public class Unit : MonoBehaviour
         {
             LevelGrid.Instance.UnitMovedGridPosition(this, currentGridPosition, newGridPosition);
             currentGridPosition = newGridPosition;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            Debug.Log("Inventory : " + inventory.GetItemList().Count);
+            if(inventory.GetItemList().Count > 0)
+                Instantiate(inventory.GetItemList()[0].item.prefab, MouseWorld.GetMousePosition(), Quaternion.identity);
+            Debug.Log("Inventory : " + inventory.GetItemList()[0].quantity);
         }
     }
     public List<BaseAction> GetActionList()
@@ -68,5 +79,17 @@ public class Unit : MonoBehaviour
     public bool IsSelected()
     {
         return isSelected;
+    }
+    public Inventory GetInventory()
+    {
+        return inventory;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent<Item>(out Item item))
+        {
+            inventory.PickUpItem(item);
+        }
+        inventory.GetItemList();
     }
 }

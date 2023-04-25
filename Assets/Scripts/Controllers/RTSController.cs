@@ -75,13 +75,13 @@ public class RTSController : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(1))
         {
-            //Queue<GridPosition> validGridPositionQueue = GetMoveToGridList();
+           Queue<GridPosition> validGridPositionQueue = GetMoveToGridList();
             foreach (Unit unit in selectedUnitList)
             {
-                //unit.GetMoveAction().Execute(validGridPositionQueue.Dequeue());
-                GridPosition moveToGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetMousePosition());
-                if (!LevelGrid.Instance.IsValidGridPosition(moveToGridPosition)) return false;
-                unit.GetMoveAction().Execute(moveToGridPosition);
+                unit.GetMoveAction().Execute(validGridPositionQueue.Dequeue());
+                //GridPosition moveToGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetMousePosition());
+                //if (!LevelGrid.Instance.IsValidGridPosition(moveToGridPosition)) return false;
+                //unit.GetMoveAction().Execute(moveToGridPosition);
             }
             
             TimeSystem.Instance.ExecuteSlowMotion(false);

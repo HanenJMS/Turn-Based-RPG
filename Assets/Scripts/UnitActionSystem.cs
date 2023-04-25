@@ -64,6 +64,8 @@ public class UnitActionSystem : MonoBehaviour
     }
     public Unit GetSelectedUnit()
     {
+        if (selectedUnitList != null && selectedUnitList.Count > 0)
+            return selectedUnitList[0];
         return selectedUnit;
     }
     public BaseAction GetCurrentAction()
