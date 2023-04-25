@@ -18,18 +18,36 @@ public class InventoryUI : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.T))
         {
-            CreateUIElements();
+            UpdateVisuals();
         }
     }
     void CreateUIElements()
     {
-        itemSlotList.Clear();
-        foreach(InventorySlot item in inventory.GetItemList())
+        ClearInventorySlots();
+        foreach (InventorySlot item in inventory.GetItemList())
         {
             Transform go = Instantiate(itemSlotUI, itemSlotButtonContainer);
             ItemSlotUI itemSlotUIobject = go.GetComponent<ItemSlotUI>();
-            itemSlotUIobject.SetItem(item.item);
+            itemSlotUIobject.SetItem(item.item, item.quantity);
             itemSlotList.Add(itemSlotUIobject);
+            itemSlotUIobject.Hide();
         }
+    }
+    void UpdateVisuals()
+    {
+        CreateUIElements();
+        foreach(ItemSlotUI itemUI in itemSlotList)
+        {
+            itemUI.Show();
+        }
+    }
+    private void ClearInventorySlots()
+    {
+        foreach (Transform buttons in itemSlotButtonContainer)
+        {
+            Destroy(buttons.gameObject);
+        }
+
+        itemSlotList.Clear();
     }
 }
