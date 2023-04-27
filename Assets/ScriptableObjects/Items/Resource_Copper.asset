@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8eb786d779761140bdb8277fee48b22, type: 3}
-  m_Name: Potion_Health
+  m_Script: {fileID: 11500000, guid: 3a7e524f3a7671847a37091049c0a5a2, type: 3}
+  m_Name: Resource_Copper
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8203200800212830351, guid: 6287b2a392fb8c04495047d4c38c555f, type: 3}
-  type: 8
-  sprite: {fileID: 21300000, guid: 117b17facff65dc42b1b57deb7c21551, type: 3}
+  prefab: {fileID: 7355974348903858497, guid: b1858dd4bcb2c6046823689abb1377dd, type: 3}
+  type: 1
+  sprite: {fileID: 21300000, guid: b3b726454eda80b40a1b30ac1a7a0c7a, type: 3}
   description: 
-  qualityValue: 0
+  qualityValue: 1

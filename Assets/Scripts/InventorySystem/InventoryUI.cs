@@ -9,6 +9,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] Transform itemSlotUI;
     [SerializeField] Transform itemSlotButtonContainer;
     List<ItemSlotUI> itemSlotList = new List<ItemSlotUI>();
+    bool iSActive = false;
     private void Start()
     {
         inventory = UnitActionSystem.Instance.GetSelectedUnit().GetInventory();
@@ -18,7 +19,7 @@ public class InventoryUI : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.T))
         {
-            UpdateVisuals();
+            ToggleUIInventory();
         }
     }
     void CreateUIElements()
@@ -32,6 +33,10 @@ public class InventoryUI : MonoBehaviour
             itemSlotList.Add(itemSlotUIobject);
             itemSlotUIobject.Hide();
         }
+    }
+    void ToggleUIInventory()
+    {
+        UpdateVisuals();
     }
     void UpdateVisuals()
     {

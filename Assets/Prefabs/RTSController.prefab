@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionAreaTransform: {fileID: 1944849634191958754}
+  unitLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &824958568170523734
 PrefabInstance:
   m_ObjectHideFlags: 0
