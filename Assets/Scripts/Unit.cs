@@ -1,14 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
 
     GridPosition currentGridPosition;
-    [SerializeField]Inventory inventory;
+    [SerializeField] Inventory inventory;
     public Action OnUnitSelected;
     List<BaseAction> actions;
     bool isSelected = false;
@@ -16,13 +14,13 @@ public class Unit : MonoBehaviour
     {
         actions = new List<BaseAction>(GetComponents<BaseAction>());
         inventory = GetComponent<Inventory>();
-        
+
     }
     private void Start()
     {
         currentGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         LevelGrid.Instance.AddUnitAtGridPosition(currentGridPosition, this);
-        
+
     }
     private void Update()
     {
@@ -35,7 +33,7 @@ public class Unit : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             Debug.Log("Inventory : " + inventory.GetItemList().Count);
-            if(inventory.GetItemList().Count > 0)
+            if (inventory.GetItemList().Count > 0)
                 Instantiate(inventory.GetItemList()[0].item.prefab, MouseWorld.GetMousePosition(), Quaternion.identity);
             Debug.Log("Inventory : " + inventory.GetItemList()[0].quantity);
         }
@@ -56,9 +54,9 @@ public class Unit : MonoBehaviour
             Debug.Log($"Missing MoveAction on {this.transform.name} on {this.transform.position}");
             return moveAction;
         }
-        foreach(BaseAction action in actions)
+        foreach (BaseAction action in actions)
         {
-            if(action is MoveAction)
+            if (action is MoveAction)
             {
                 moveAction = action;
                 return action;
@@ -86,7 +84,7 @@ public class Unit : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<Item>(out Item item))
+        if (other.TryGetComponent<Item>(out Item item))
         {
             inventory.PickUpItem(item);
         }

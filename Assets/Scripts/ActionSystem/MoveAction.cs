@@ -1,7 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MoveAction : BaseAction
@@ -23,17 +20,17 @@ public class MoveAction : BaseAction
 
     public override bool IsRunning()
     {
-        if(IsWithinDistance())
+        if (IsWithinDistance())
         {
             GridPosition currentPosition = unit.GetUnitGridPosition();
             List<GridPosition> gridPositionList = LevelGrid.Instance.GetGridObjects()[currentPosition].GetAdjacentGridPosition();
             List<GameObject> gameObjectsOnGrid = LevelGrid.Instance.GetObjectsAtGridPosition(currentPosition);
-      
-            if(gameObjectsOnGrid == null) { return false; }
-            if(gameObjectsOnGrid.Count <=0 ) { return false; }
-            if(gameObjectsOnGrid[0] != this.gameObject)
+
+            if (gameObjectsOnGrid == null) { return false; }
+            if (gameObjectsOnGrid.Count <= 0) { return false; }
+            if (gameObjectsOnGrid[0] != this.gameObject)
             {
-                foreach(GridPosition gridPosition in gridPositionList)
+                foreach (GridPosition gridPosition in gridPositionList)
                 {
                     if (!LevelGrid.Instance.GetGridObjects()[gridPosition].HasObject())
                     {
@@ -45,7 +42,7 @@ public class MoveAction : BaseAction
                 targetPosition = LevelGrid.Instance.GetWorldPosition(getNextGridPosition);
                 return true;
             }
-            
+
             StopRunning();
             return false;
         }
@@ -58,11 +55,11 @@ public class MoveAction : BaseAction
 
     private void StartRunning()
     {
-        GetAnimator().SetBool("isRunning", true);
+        SetAnimation("isRunning", true);
     }
     private void StopRunning()
     {
-        GetAnimator().SetBool("isRunning", false);
+        SetAnimation("isRunning", false);
     }
     protected override void PerformLogic()
     {
@@ -82,7 +79,7 @@ public class MoveAction : BaseAction
         foreach (KeyValuePair<GridPosition, GridObject> gp in LevelGrid.Instance.GetGridObjects())
         {
             if (LevelGrid.Instance.HasObjectOnGridPosition(gp.Key)) continue;
-            if(moveToMouseGridPosition == gp.Key) continue;
+            if (moveToMouseGridPosition == gp.Key) continue;
             validGridPositions.Add(gp.Key);
         }
         return validGridPositions;

@@ -9,5 +9,6 @@ public enum ItemType
     Sword,
     Axe,
     HealthPotion,
+    ManaPotion,
     Default
 }

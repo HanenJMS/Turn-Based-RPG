@@ -7,7 +7,7 @@ public abstract class BaseAction : MonoBehaviour
     protected Unit unit { get; private set; }
     protected bool isRunning = true;
     
-    [SerializeField] Animator animator;
+    [SerializeField] UnitAnimatorController animatorController;
     protected virtual void Awake()
     {
         unit = GetComponent<Unit>();
@@ -22,14 +22,14 @@ public abstract class BaseAction : MonoBehaviour
         isRunning = IsRunning();
         PerformLogic();
     }
-    public Animator GetAnimator() 
-    {
-        return  animator; 
-    }
     public bool IsValidActionGridPosition(GridPosition gridPosition)
     {
         List<GridPosition> validGridPositionList = GetValidGridPositionList();
         return validGridPositionList.Contains(gridPosition);
+    }
+    public void SetAnimation(string animationName, bool animationRunningState)
+    {
+        animatorController.SetAnimation(animationName, animationRunningState);
     }
     public abstract string GetActionName();
     public abstract List<GridPosition> GetValidGridPositionList();

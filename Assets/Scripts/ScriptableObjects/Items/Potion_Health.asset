@@ -13,7 +13,14 @@ MonoBehaviour:
   m_Name: Potion_Health
   m_EditorClassIdentifier: 
   prefab: {fileID: 8203200800212830351, guid: 6287b2a392fb8c04495047d4c38c555f, type: 3}
-  type: 8
+  type: 0
   sprite: {fileID: 21300000, guid: 117b17facff65dc42b1b57deb7c21551, type: 3}
-  description: 
+  description: 'restores health to characters.
+
+    is a craftable item.
+
+    potions
+    are a product of crafting, to find them in the wild would be an extremely improbable
+    outcome, unless the places you go are specifically and highly likely to have
+    them. Like a town, although I wouldn''t recommend that option.'
   qualityValue: 1
