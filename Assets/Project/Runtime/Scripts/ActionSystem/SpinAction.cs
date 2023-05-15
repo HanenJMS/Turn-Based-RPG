@@ -1,4 +1,4 @@
-using System.Collections;
+using RPGSandBox.GameUtilities.GridCore;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +9,8 @@ public class SpinAction : BaseAction
 
     public override List<GridPosition> GetValidGridPositionList()
     {
-        return new List<GridPosition> 
-        { 
+        return new List<GridPosition>
+        {
             unit.GetUnitGridPosition()
         };
     }

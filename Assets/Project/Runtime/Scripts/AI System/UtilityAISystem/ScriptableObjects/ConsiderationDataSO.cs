@@ -7,6 +7,7 @@ namespace RPGSandBox.UtilityAISystem.UtilityAISO
     {
         [SerializeField] string Name;
         [SerializeField] AnimationCurve responseCurve;
+        [SerializeField] List<ActionDataSO> actionsToConsiderList = new List<ActionDataSO>();
         float Score;
         public float GetConsiderationScore()
         {
