@@ -1,5 +1,4 @@
 using HanensGameLab.Utilities.ProceduralSystems.TerrainSystem;
-using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,10 +10,14 @@ public class CustomTerrainEditor : Editor
     SerializedProperty customTerrainRandomHeightRange;
     SerializedProperty customTerrainHeightMapScale;
     SerializedProperty customTerrainheightMapImage;
+
     SerializedProperty customTerrainPerlinScaleX;
     SerializedProperty customTerrainPerlinScaleY;
     SerializedProperty customTerrainPerlinScaleOffsetX;
     SerializedProperty customTerrainPerlinScaleOffsetY;
+    SerializedProperty customTerrainPerlinOctave;
+    SerializedProperty customTerrainPerlinPersistence;
+    SerializedProperty customTerrainPerlinHeightScale;
     //fold outs -------------------
     bool showRandom = false;
     bool showLoadHeights = false;
@@ -31,6 +34,9 @@ public class CustomTerrainEditor : Editor
         //heighmap from perlin
         customTerrainPerlinScaleX = serializedObject.FindProperty("perlinScaleX");
         customTerrainPerlinScaleY = serializedObject.FindProperty("perlinScaleY");
+        customTerrainPerlinOctave = serializedObject.FindProperty("perlinOctaves");
+        customTerrainPerlinPersistence = serializedObject.FindProperty("perlinPersistence");
+        customTerrainPerlinHeightScale = serializedObject.FindProperty("perlinHeightScale");
         //perlin offset
         customTerrainPerlinScaleOffsetX = serializedObject.FindProperty("perlinScaleOffsetX");
         customTerrainPerlinScaleOffsetY = serializedObject.FindProperty("perlinScaleOffsetY");
@@ -58,7 +64,7 @@ public class CustomTerrainEditor : Editor
     {
         EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
         showRandom = EditorGUILayout.Foldout(showRandom, "Random Height Generator");
-        
+
         if (showRandom)
         {
             GUILayout.Label("Set Heights Between Random Values", EditorStyles.boldLabel);
@@ -92,10 +98,14 @@ public class CustomTerrainEditor : Editor
         if (showPerlin)
         {
             GUILayout.Label("Using Perlin function to Generate Terrain", EditorStyles.boldLabel);
-            EditorGUILayout.Slider(customTerrainPerlinScaleX, 0,1, new GUIContent("X Scale"));
+            EditorGUILayout.Slider(customTerrainPerlinScaleX, 0, 1, new GUIContent("X Scale"));
             EditorGUILayout.Slider(customTerrainPerlinScaleY, 0, 1, new GUIContent("Y Scale"));
             EditorGUILayout.IntSlider(customTerrainPerlinScaleOffsetX, 0, 10000, new GUIContent("X Offset"));
             EditorGUILayout.IntSlider(customTerrainPerlinScaleOffsetY, 0, 10000, new GUIContent("Y Offset"));
+            EditorGUILayout.IntSlider(customTerrainPerlinOctave, 1, 10, new GUIContent("Octaves"));
+            EditorGUILayout.Slider(customTerrainPerlinPersistence, 0.1f, 10, new GUIContent("Persistence"));
+            EditorGUILayout.Slider(customTerrainPerlinHeightScale, 0, 1, new GUIContent("Heigtmap scale"));
+
             if (GUILayout.Button("Use PerlinNoise generator"))
             {
                 terrain.PerlinTerrainGenerator();

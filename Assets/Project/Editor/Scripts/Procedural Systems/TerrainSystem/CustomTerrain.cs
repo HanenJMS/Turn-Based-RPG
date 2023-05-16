@@ -21,6 +21,9 @@ namespace HanensGameLab.Utilities.ProceduralSystems.TerrainSystem
         [SerializeField] float perlinScaleY = 0.01f;
         [SerializeField] int perlinScaleOffsetX = 0;
         [SerializeField] int perlinScaleOffsetY = 0;
+        [SerializeField] int perlinOctaves = 3;
+        [SerializeField] float perlinPersistence = 8;
+        [SerializeField] float perlinHeightScale = 0.0f;
 
         [SerializeField] Terrain terrain;
         [SerializeField] TerrainData terrainData;
@@ -57,7 +60,9 @@ namespace HanensGameLab.Utilities.ProceduralSystems.TerrainSystem
             {
                 for (int x = 0; x < terrainData.heightmapResolution; x++)
                 {
-                    terrainHeightMap[x, y] = Mathf.PerlinNoise((x + perlinScaleOffsetX) * perlinScaleX, (y + perlinScaleOffsetY) * perlinScaleY);
+                    terrainHeightMap[x, y] = Utils.FBM((x + perlinScaleOffsetX) * perlinScaleX, 
+                                                       (y + perlinScaleOffsetY) * perlinScaleY, 
+                                                       perlinOctaves, perlinPersistence) * perlinHeightScale;
                 }
             }
             terrainData.SetHeights(0, 0, terrainHeightMap);
