@@ -1,4 +1,6 @@
+using EditorGUITable;
 using HanensGameLab.Utilities.ProceduralSystems.TerrainSystem;
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,11 +20,34 @@ public class CustomTerrainEditor : Editor
     SerializedProperty customTerrainPerlinOctave;
     SerializedProperty customTerrainPerlinPersistence;
     SerializedProperty customTerrainPerlinHeightScale;
+    SerializedProperty customTerrainisTerrainAdded;
+
+    GUITableState perlinParameterTable;
+    SerializedProperty customTerrainperlinParameterList;
+
+    SerializedProperty customTerrain_voronoiMountainPeakAmount;
+    SerializedProperty customTerrain_fallOffset;
+    SerializedProperty customTerrain_dropOffset;
+    SerializedProperty customTerrain_minHeight;
+    SerializedProperty customTerrain_maxHeight;
     //fold outs -------------------
     bool showRandom = false;
     bool showLoadHeights = false;
     bool showPerlin = false;
+    bool showPerlinTable = false;
+    bool showVoronoi = false;
+    bool showVoronoiSet = false;
     private void OnEnable()
+    {
+        InitializeSerializedTerrainObject();
+
+        if (customTerrainRandomHeightRange == null)
+        {
+            Debug.Log($"{this.name} is missing a serializedProperty. FindProperty() found nothing. Maybe don't use strings?");
+        }
+    }
+
+    private void InitializeSerializedTerrainObject()
     {
         //random
         customTerrainRandomHeightRange = serializedObject.FindProperty("randomHeightRange");
@@ -41,26 +66,40 @@ public class CustomTerrainEditor : Editor
         customTerrainPerlinScaleOffsetX = serializedObject.FindProperty("perlinScaleOffsetX");
         customTerrainPerlinScaleOffsetY = serializedObject.FindProperty("perlinScaleOffsetY");
 
+        //controls
+        customTerrainisTerrainAdded = serializedObject.FindProperty("isTerrainAdded");
 
-        if (customTerrainRandomHeightRange == null)
-        {
-            Debug.Log($"{this.name} is missing a serializedProperty. FindProperty() found nothing. Maybe don't use strings?");
-        }
+        //Voronoi Configuration
+        customTerrain_voronoiMountainPeakAmount = serializedObject.FindProperty("voronoiMountainPeakAmount");
+        customTerrain_fallOffset = serializedObject.FindProperty("fallOffset");
+        customTerrain_dropOffset = serializedObject.FindProperty("dropOffset");
+        customTerrain_minHeight = serializedObject.FindProperty("minHeight");
+        customTerrain_maxHeight = serializedObject.FindProperty("maxHeight");
+        //perlin table
+        perlinParameterTable = new GUITableState("perlinParameterTable");
+        customTerrainperlinParameterList = serializedObject.FindProperty("perlinParameterList");
     }
+
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
 
         CustomTerrain terrain = (CustomTerrain)target;
+        EditorGUILayout.PropertyField(customTerrainisTerrainAdded);
 
-        HandleRandomTerrainHeightGeneration(terrain);
-        HandleLoadingTerrainHeight(terrain);
-        HandlePerlinTerrainGeneration(terrain);
-        HandleResetTerrain(terrain);
+        HandleTerrainHeightGenerationRandom(terrain);
+        HandleTerrainHeightGenerationTexture(terrain);
+        HandleTerrainHeightGenerationPerlinSingle(terrain);
+        HandleTerrainHeightGenerationPerlinSet(terrain);
+        HandleTerrainHeightGenerationVoronoi(terrain);
+        HandleTerrainHeightGenerationReset(terrain);
 
         serializedObject.ApplyModifiedProperties();
     }
-    private void HandleRandomTerrainHeightGeneration(CustomTerrain terrain)
+
+
+
+    private void HandleTerrainHeightGenerationRandom(CustomTerrain terrain)
     {
         EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
         showRandom = EditorGUILayout.Foldout(showRandom, "Random Height Generator");
@@ -71,11 +110,11 @@ public class CustomTerrainEditor : Editor
             EditorGUILayout.PropertyField(customTerrainRandomHeightRange);
             if (GUILayout.Button("Random Heights"))
             {
-                terrain.GenerateTerrainHeight(false);
+                terrain.TerrainHeightGenerationRandom(false);
             }
         }
     }
-    private void HandleLoadingTerrainHeight(CustomTerrain terrain)
+    private void HandleTerrainHeightGenerationTexture(CustomTerrain terrain)
     {
         EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
         showLoadHeights = EditorGUILayout.Foldout(showLoadHeights, "Load terrain height texture");
@@ -87,17 +126,18 @@ public class CustomTerrainEditor : Editor
             EditorGUILayout.PropertyField(customTerrainheightMapImage);
             if (GUILayout.Button("Height Map Texture from image"))
             {
-                terrain.LoadHeightMapTexture();
+                terrain.TerrainHeightGenerationTexture();
             }
         }
     }
-    private void HandlePerlinTerrainGeneration(CustomTerrain terrain)
+    private void HandleTerrainHeightGenerationPerlinSingle(CustomTerrain terrain)
     {
         EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
         showPerlin = EditorGUILayout.Foldout(showPerlin, "Use Perlin to Generate Terrain");
         if (showPerlin)
         {
             GUILayout.Label("Using Perlin function to Generate Terrain", EditorStyles.boldLabel);
+           
             EditorGUILayout.Slider(customTerrainPerlinScaleX, 0, 1, new GUIContent("X Scale"));
             EditorGUILayout.Slider(customTerrainPerlinScaleY, 0, 1, new GUIContent("Y Scale"));
             EditorGUILayout.IntSlider(customTerrainPerlinScaleOffsetX, 0, 10000, new GUIContent("X Offset"));
@@ -108,16 +148,60 @@ public class CustomTerrainEditor : Editor
 
             if (GUILayout.Button("Use PerlinNoise generator"))
             {
-                terrain.PerlinTerrainGenerator();
+                terrain.TerrainHeightGenerationPerlinSingle();
             }
         }
     }
-    private void HandleResetTerrain(CustomTerrain terrain)
+    private void HandleTerrainHeightGenerationPerlinSet(CustomTerrain terrain)
+    {
+        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+        showPerlinTable = EditorGUILayout.Foldout(showPerlinTable, "Perlin Height Map Table");
+
+        if (showPerlinTable)
+        {
+            GUILayout.Label("Perlin Noise Table", EditorStyles.boldLabel);
+            perlinParameterTable = GUITableLayout.DrawTable(perlinParameterTable, serializedObject.FindProperty("perlinParameterList"));
+            EditorGUILayout.BeginHorizontal();
+            if (GUILayout.Button("+"))
+            {
+                terrain.AddNewPerlin();
+            }
+            if (GUILayout.Button("-"))
+            {
+                terrain.RemovePerlin();
+            }
+            EditorGUILayout.EndHorizontal();
+            if (GUILayout.Button("Apply Multiple Perlin"))
+            {
+                terrain.TerrainHeightGenerationPerlinSet();
+            }
+        }
+    }
+    private void HandleTerrainHeightGenerationVoronoi(CustomTerrain terrain)
+    {
+        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+        showVoronoi = EditorGUILayout.Foldout(showVoronoi, "Terrain Height Generation Voronoi");
+        if(showVoronoi)
+        {
+            GUILayout.Label("Using Voronoi function to Generate Terrain", EditorStyles.boldLabel);
+            EditorGUILayout.IntSlider(customTerrain_voronoiMountainPeakAmount, 0, 10, new GUIContent("number of mountains"));
+            EditorGUILayout.Slider(customTerrain_fallOffset, 0, 10, new GUIContent("Fall off value for side of mountain"));
+            EditorGUILayout.Slider(customTerrain_dropOffset, 0, 10, new GUIContent("Mountain slope drop off value"));
+            EditorGUILayout.Slider(customTerrain_minHeight, 0, 1, new GUIContent("minHeight of each mountain"));
+            EditorGUILayout.Slider(customTerrain_maxHeight, 0, 1, new GUIContent("max height of each mountain"));
+            if (GUILayout.Button("Generate Terrain Voronoi (mountains)"))
+            {
+                terrain.GenerateTerrainHeightMtVoronoi();
+            }
+        }
+    }
+
+    private void HandleTerrainHeightGenerationReset(CustomTerrain terrain)
     {
         EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
         if (GUILayout.Button("Reset Height to Zero"))
         {
-            terrain.GenerateTerrainHeight(true);
+            terrain.TerrainHeightGenerationRandom(true);
         }
     }
 }

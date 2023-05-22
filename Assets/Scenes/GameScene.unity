@@ -497,15 +497,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainTags: []
   randomHeightRange: {x: 0, y: 0.1}
+  isTerrainAdded: 1
   heightMapImage: {fileID: 2800000, guid: 5b2f1d63582f7a7459b69b2b4f3d3684, type: 3}
-  heightMapScale: {x: 2, y: 0.5, z: 2}
-  perlinScaleX: 0.174
-  perlinScaleY: 0.13
+  heightMapScale: {x: 1, y: 1, z: 1}
+  perlinScaleX: 0.341
+  perlinScaleY: 0.239
   perlinScaleOffsetX: 0
   perlinScaleOffsetY: 0
-  perlinOctaves: 1
-  perlinPersistence: 0.1
-  perlinHeightScale: 0.023
+  perlinOctaves: 3
+  perlinPersistence: 8
+  perlinHeightScale: 0.202
+  voronoiMountainPeakAmount: 10
+  fallOffset: 0.5
+  dropOffset: 1.35
+  minHeight: 0
+  maxHeight: 0.232
+  perlinParameterList:
+  - perlinScaleX: 0
+    perlinScaleY: 0
+    perlinScaleOffsetX: 5
+    perlinScaleOffsetY: 5
+    perlinOctaves: 0
+    perlinPersistence: 0
+    perlinHeightScale: 0
+    remove: 1
+  - perlinScaleX: 0
+    perlinScaleY: 0
+    perlinScaleOffsetX: 0
+    perlinScaleOffsetY: 0
+    perlinOctaves: 0
+    perlinPersistence: 0
+    perlinHeightScale: 0
+    remove: 1
+  - perlinScaleX: 0
+    perlinScaleY: 0
+    perlinScaleOffsetX: 0
+    perlinScaleOffsetY: 0
+    perlinOctaves: 0
+    perlinPersistence: 0
+    perlinHeightScale: 0
+    remove: 1
   terrain: {fileID: 941818989}
   terrainData: {fileID: 15600000, guid: 2419eae23e9ce264ca4438567bd77f47, type: 2}
 --- !u!1 &983058943
