@@ -1,16 +1,18 @@
 using RPGSandBox.GameUtilities.GridCore;
+using RPGSandBox.InterfaceSystem;
+using RPGSandBox.UnitSystem;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class BaseAction : MonoBehaviour
 {
-    protected Unit unit { get; private set; }
+    protected IAmAUnit_Old unit { get; private set; }
     protected bool isRunning = true;
 
     [SerializeField] UnitAnimatorController animatorController;
     protected virtual void Awake()
     {
-        unit = GetComponent<Unit>();
+        unit = GetComponent<IAmAUnit_Old>();
     }
     private void FixedUpdate()
     {
@@ -29,7 +31,7 @@ public abstract class BaseAction : MonoBehaviour
     }
     public void SetAnimation(string animationName, bool animationRunningState)
     {
-        animatorController.SetAnimation(animationName, animationRunningState);
+        //animatorController.SetAnimation(animationName, animationRunningState);
     }
     public abstract string GetActionName();
     public abstract List<GridPosition> GetValidGridPositionList();

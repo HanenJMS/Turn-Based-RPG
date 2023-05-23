@@ -1,3 +1,4 @@
+using RPGSandBox.InterfaceSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ public class UnitActionSystemUI : MonoBehaviour
     void CreateActionButtons()
     {
         ClearActionBar();
-        Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
+        IAmAUnit_Old selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
         if (selectedUnit == null) { return; }
         foreach (BaseAction action in selectedUnit.GetActionList())
         {

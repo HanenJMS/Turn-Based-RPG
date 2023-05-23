@@ -12,7 +12,7 @@ public class InventoryUI : MonoBehaviour
     bool iSActive = false;
     private void Start()
     {
-        inventory = UnitActionSystem.Instance.GetSelectedUnit().GetInventory();
+        //inventory = UnitActionSystem.Instance.GetSelectedUnit().GetInventory();
         CreateUIElements();
     }
     private void Update()

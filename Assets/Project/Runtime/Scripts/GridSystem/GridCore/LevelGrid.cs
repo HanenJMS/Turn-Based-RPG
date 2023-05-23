@@ -1,3 +1,4 @@
+using RPGSandBox.InterfaceSystem;
 using System.Collections.Generic;
 using UnityEngine;
 namespace RPGSandBox.GameUtilities.GridCore
@@ -29,7 +30,7 @@ namespace RPGSandBox.GameUtilities.GridCore
             //Debug.Log(gridSystem.GetGridPosition(MouseWorld.GetMousePosition()));
         }
 
-        public void AddUnitAtGridPosition(GridPosition gridPosition, Unit unit)
+        public void AddUnitAtGridPosition(GridPosition gridPosition, IAmAUnit_Old unit)
         {
             GridObject gridObject = gridSystem.GetGridObject(gridPosition);
             gridObject.AddObject(unit.gameObject);
@@ -49,12 +50,12 @@ namespace RPGSandBox.GameUtilities.GridCore
             return gridSystem.GetWorldPosition(gridPosition);
         }
 
-        public void RemoveUnitAtGridPosition(GridPosition gridPosition, Unit unit)
+        public void RemoveUnitAtGridPosition(GridPosition gridPosition, IAmAUnit_Old unit)
         {
             GridObject gridObject = gridSystem.GetGridObject(gridPosition);
             gridObject.RemoveGameObject(unit.gameObject);
         }
-        public void UnitMovedGridPosition(Unit unit, GridPosition fromPosition, GridPosition toPosition)
+        public void UnitMovedGridPosition(IAmAUnit_Old unit, GridPosition fromPosition, GridPosition toPosition)
         {
             RemoveUnitAtGridPosition(fromPosition, unit);
             AddUnitAtGridPosition(toPosition, unit);

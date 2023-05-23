@@ -1,4 +1,5 @@
 using RPGSandBox.GameUtilities.GridCore;
+using RPGSandBox.InterfaceSystem;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,7 +14,7 @@ namespace RPGSandBox.Controller
         Vector3 startPosition;
         bool isDragSelectionActive = false;
 
-        private List<Unit> selectedUnitList = new List<Unit>();
+        private List<IAmAUnit_Old> selectedUnitList = new List<IAmAUnit_Old>();
         private void Awake()
         {
             selectionAreaTransform.gameObject.SetActive(false);
@@ -25,7 +26,7 @@ namespace RPGSandBox.Controller
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (!Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, unitLayerMask)) return false;
-                if (!hit.transform.TryGetComponent<Unit>(out Unit unit)) return false;
+                if (!hit.transform.TryGetComponent<IAmAUnit_Old>(out IAmAUnit_Old unit)) return false;
                 AddUnitToList(unit);
                 return true;
 
@@ -75,7 +76,7 @@ namespace RPGSandBox.Controller
             if (Input.GetMouseButtonUp(1))
             {
                 Queue<GridPosition> validGridPositionQueue = GetMoveToGridList();
-                foreach (Unit unit in selectedUnitList)
+                foreach (IAmAUnit_Old unit in selectedUnitList)
                 {
                     unit.GetMoveAction().Execute(validGridPositionQueue.Dequeue());
                     //GridPosition moveToGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetMousePosition());
@@ -133,19 +134,19 @@ namespace RPGSandBox.Controller
         {
             foreach (Collider collider in colliderArray)
             {
-                if (!collider.TryGetComponent(out Unit unit)) continue;
+                if (!collider.TryGetComponent(out IAmAUnit_Old unit)) continue;
                 AddUnitToList(unit);
             }
         }
 
-        private void AddUnitToList(Unit unit)
+        private void AddUnitToList(IAmAUnit_Old unit)
         {
             if (selectedUnitList.Contains(unit)) return;
             selectedUnitList.Add(unit);
             unit.SetIsSelected(true);
         }
 
-        public List<Unit> GetSelectedUnits()
+        public List<IAmAUnit_Old> GetSelectedUnits()
         {
             return selectedUnitList;
         }
@@ -163,7 +164,7 @@ namespace RPGSandBox.Controller
 
         private void DeselectAllUnits()
         {
-            foreach (Unit unit in selectedUnitList)
+            foreach (IAmAUnit_Old unit in selectedUnitList)
             {
                 unit.SetIsSelected(false);
             }

@@ -1,4 +1,5 @@
 using RPGSandBox.Controller;
+using RPGSandBox.InterfaceSystem;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +11,8 @@ public class UnitActionSystem : MonoBehaviour
     BaseAction currentAction = null;
     List<BaseAction> unitActionList = new List<BaseAction>();
     [SerializeField] RTSController controller;
-    [SerializeField] Unit selectedUnit;
-    [SerializeField] List<Unit> selectedUnitList = new List<Unit>();
+    [SerializeField] IAmAUnit_Old selectedUnit;
+    [SerializeField] List<IAmAUnit_Old> selectedUnitList = new List<IAmAUnit_Old>();
     [SerializeField] LayerMask unitLayerMask;
     public Action OnSelectedUnitChanged;
     public Action OnSelectedActionChanged;
@@ -56,12 +57,12 @@ public class UnitActionSystem : MonoBehaviour
         return controller.HandleDragSelection();
     }
 
-    private void AddUnitAction(Unit unit)
+    private void AddUnitAction(IAmAUnit_Old unit)
     {
         unitActionList.Add(unit.GetMoveAction());
         OnSelectedUnitChanged?.Invoke();
     }
-    public Unit GetSelectedUnit()
+    public IAmAUnit_Old GetSelectedUnit()
     {
         if (selectedUnitList != null && selectedUnitList.Count > 0)
             return selectedUnitList[0];
