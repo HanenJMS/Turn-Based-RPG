@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace RPGSandBox.GameUtilities.GridCore
 {
-    public class GridSystem : MonoBehaviour
+    public class GridSystem
     {
         int width;
         int height;

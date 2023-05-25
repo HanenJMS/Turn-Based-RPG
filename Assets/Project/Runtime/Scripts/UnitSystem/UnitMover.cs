@@ -1,9 +1,10 @@
+using RPGSandBox.InterfaceSystem;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace RPGSandBox.UnitSystem
 {
-    public class UnitMover : MonoBehaviour
+    public class UnitMover : MonoBehaviour, ICanMove
     {
         NavMeshAgent agent;
         private void Awake()

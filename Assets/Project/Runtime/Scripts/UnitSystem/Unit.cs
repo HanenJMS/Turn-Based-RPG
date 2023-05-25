@@ -1,7 +1,4 @@
-using RPGSandBox.GameUtilities.GridCore;
 using RPGSandBox.InterfaceSystem;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -10,29 +7,48 @@ namespace RPGSandBox.UnitSystem
     public class Unit : MonoBehaviour, IAmAUnit
     {
         [SerializeField] Inventory inventory;
-        bool isSelected = false;
-        UnitMover mover;
-
+        ICanMove mover;
+        ICanSpeak voice;
         private void Awake()
         {
-            inventory = GetComponent<Inventory>();
-            mover = GetComponentInChildren<UnitMover>();
+            Initialization();
         }
-
-        public void MoveToDestination(Vector3 destination)
+        public void Move(Vector3 destination)
         {
-            if (mover == null) mover = GetComponentInChildren<UnitMover>();
             mover.MoveToDestination(destination);
         }
-
+        public void Speak(string message)
+        {
+            voice.Speaking(message);
+        }
         public bool IsSelected()
         {
+            bool isSelected = false;
+            if (UnitSelectionSystem.Instance.GetUnit() == this.gameObject.GetComponent<IAmAUnit>())
+            {
+                isSelected = true;
+            }
             return isSelected;
         }
 
-        public void OnSelected()
+        private void Initialization()
         {
-            isSelected = !isSelected;
+            if (!IsInitialized())
+            {
+                Initialize();
+            }
+        }
+        private bool IsInitialized()
+        {
+            if (mover == null) return false;
+            if (inventory == null) return false;
+            return true;
+        }
+        private void Initialize()
+        {
+            inventory = GetComponent<Inventory>();
+            mover = GetComponent<ICanMove>();
+            voice = GetComponentInChildren<ICanSpeak>();
         }
     }
 }

@@ -1,27 +1,31 @@
 using RPGSandBox.InterfaceSystem;
-using System.Collections;
-using System.Collections.Generic;
+using RPGSandBox.UnitSystem;
 using UnityEngine;
 
 public class UnitSelectedVisual : MonoBehaviour
 {
     [SerializeField] IAmAUnit unit;
-    MeshRenderer renderer;
+    [SerializeField] MeshRenderer renderer;
     private void Awake()
     {
         renderer = GetComponent<MeshRenderer>();
         unit = GetComponentInParent<IAmAUnit>();
     }
-    private void Update()
+    private void Start()
     {
-       UpdateVisual();
+        UnitSelectionSystem.Instance.OnSelectedUnit += UnitOnUnitSelected_OnUnitSelected;
+        UpdateVisual();
     }
     void UpdateVisual()
     {
         renderer.enabled = unit.IsSelected();
     }
+    void UnitOnUnitSelected_OnUnitSelected()
+    {
+        UpdateVisual();
+    }
     private void OnDestroy()
     {
-        //unit.OnUnitSelected -= UnitOnUnitSelected_OnUnitSelected;
+        UnitSelectionSystem.Instance.OnSelectedUnit -= UnitOnUnitSelected_OnUnitSelected;
     }
 }

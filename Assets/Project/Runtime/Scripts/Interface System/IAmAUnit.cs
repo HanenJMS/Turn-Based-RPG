@@ -8,7 +8,7 @@ namespace RPGSandBox.InterfaceSystem
     public interface IAmAUnit : IAmInteractable
     {
         bool IsSelected();
-        void OnSelected();
-        void MoveToDestination(Vector3 destination);
+        void Move(Vector3 destination);
+        void Speak(string message);
     }
 }

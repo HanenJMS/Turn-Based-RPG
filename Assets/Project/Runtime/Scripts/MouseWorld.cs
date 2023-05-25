@@ -18,7 +18,6 @@ public class MouseWorld : MonoBehaviour
     }
     private void Update()
     {
-
         transform.position = GetMousePosition();
     }
     public static Vector3 GetMousePosition()
