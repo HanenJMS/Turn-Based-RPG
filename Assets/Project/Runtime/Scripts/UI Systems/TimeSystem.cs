@@ -16,7 +16,7 @@ public class TimeSystem : MonoBehaviour
     float StartTimeScale;
     float StartFixedDeltaTime;
     //Take at least 2 seconds to slow down
-    float slowDurationTime = 2f;
+    //float slowDurationTime = 2f;
     string currentTime = "00:00:00";
     bool onPause = false;
     bool onAction = false;

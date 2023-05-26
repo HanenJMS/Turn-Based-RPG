@@ -9,7 +9,7 @@ public class ShootAction : BaseAction
     Unit unitTarget;
     Vector3 targetPosition;
     float rotationSpeed = 10f;
-    float currentSpunAmount = float.MaxValue;
+    //float currentSpunAmount = float.MaxValue;
     public override string GetActionName()
     {
         return "Shoot";

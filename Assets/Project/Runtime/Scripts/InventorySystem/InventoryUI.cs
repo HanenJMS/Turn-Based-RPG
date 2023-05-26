@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-    Inventory inventory;
+    Inventory_Old inventory;
     [SerializeField] Transform itemSlotUI;
     [SerializeField] Transform itemSlotButtonContainer;
     List<ItemSlotUI> itemSlotList = new List<ItemSlotUI>();
-    bool iSActive = false;
+    //bool iSActive = false;
     private void Start()
     {
         //inventory = UnitActionSystem.Instance.GetSelectedUnit().GetInventory();

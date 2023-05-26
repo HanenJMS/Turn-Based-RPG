@@ -5,7 +5,6 @@ using UnityEngine;
 public class MoveAction : BaseAction
 {
     Vector3 targetPosition;
-    [SerializeField] int viewDistance = 100;
     float rotationSpeed = 50f;
     float stoppingDistance = 0.1f;
     float moveSpeed = 5.5f;

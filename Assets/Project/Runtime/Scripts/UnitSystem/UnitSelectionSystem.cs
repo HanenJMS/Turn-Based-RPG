@@ -20,52 +20,55 @@ namespace RPGSandBox.UnitSystem
             }
             Instance = this;
         }
-        private void Update()
+        void Update()
         {
             // Handle unit selection
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit = MouseWorld.GetMouseRayCastHit();
+
                 if(hit.transform.TryGetComponent(out IAmAUnit selectedUnit))
                 {
-                    UnitSelected(selectedUnit);
+                    if (currentSelectedUnit != selectedUnit)
+                    {
+                        UnitSelected(selectedUnit);
+                        currentSelectedUnit.Speak("Need Something?", true);
+                    }
+                    
+                }
+
+                if (hit.transform.TryGetComponent(out IAmAUnit unit))
+                {
+                    if (currentSelectedUnit == unit)
+                    {
+                        int random = UnityEngine.Random.Range(0, 3);
+                        if (random == 0)
+                        {
+                            currentSelectedUnit.Speak("what?", false);
+                        }
+                        if (random == 1)
+                        {
+                            currentSelectedUnit.Speak("quit it!", false);
+                        }
+                        if (random == 2)
+                        {
+                            currentSelectedUnit.Speak("stop poking me!", false);
+
+                        }
+
+                    }
                 }
             }
 
             //Handle Unit Movement
             if (Input.GetMouseButton(1))
             {
-                RaycastHit hit = MouseWorld.GetMouseRayCastHit();
-
-                if(hit.transform.TryGetComponent(out IAmAUnit unit))
-                {
-                    if(currentSelectedUnit == unit)
-                    {
-                        int random = UnityEngine.Random.Range(0, 3);
-                        if (random == 0)
-                        {
-                            currentSelectedUnit.Speak("what?");
-                            return;
-                        }
-                        if (random == 1)
-                        {
-                            currentSelectedUnit.Speak("quit it!");
-                            return;
-                        }
-                        if(random == 2)
-                        {
-                            currentSelectedUnit.Speak("stop poking me!");
-                            return;
-                        }
-                        
-                    }
-                    return;
-                }
+                
              
                 if (currentSelectedUnit != null)
                 {
                     currentSelectedUnit.Move(MouseWorld.GetMousePosition());
-                    currentSelectedUnit.Speak("Ok! got it! moving to location.");
+                    currentSelectedUnit.Speak("Ok! got it! moving to location.", true);
                 }
             }
         }
@@ -77,7 +80,6 @@ namespace RPGSandBox.UnitSystem
         {
             if (currentSelectedUnit == selectedUnit) return;
             currentSelectedUnit = selectedUnit;
-            currentSelectedUnit.Speak("Yes? You need something?");
             OnSelectedUnit?.Invoke();
         }
     }

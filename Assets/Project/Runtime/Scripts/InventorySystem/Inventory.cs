@@ -1,59 +1,22 @@
+using RPGSandBox.InterfaceSystem;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Inventory : MonoBehaviour
+namespace RPGSandBox.InventorySystem
 {
-    [SerializeField] List<InventorySlot> inventorySlotList;
-    public Inventory()
+    public class Inventory : MonoBehaviour, IHaveAnInventory
     {
-        inventorySlotList = new List<InventorySlot>();
-    }
-    public void PickUpItem(Item item)
-    {
-        AddItem(item.item, item.quantity);
-        item.PickUpItem();
-    }
-    public void AddItem(ItemSO item, int quantity)
-    {
-        InventorySlot newInventorySlot = GetInventorySlot(item, quantity);
-        if (inventorySlotList.Contains(newInventorySlot))
-        {
-            newInventorySlot.AddToItemQuantity(quantity);
-            return;
-        }
-        AddNewSlot(newInventorySlot);
-        Debug.Log($"Inventory : {inventorySlotList.Count}");
-    }
+        List<IAmAnItem> inventory = new List<IAmAnItem>();
 
-    private void AddNewSlot(InventorySlot newInventorySlot)
-    {
-        inventorySlotList.Add(newInventorySlot);
-    }
 
-    public InventorySlot GetInventorySlot(ItemSO item, int quantity)
-    {
-        foreach (InventorySlot slot in inventorySlotList)
+
+        public void StoreItem(IAmAnItem item)
         {
-            if (slot.item == item)
-            {
-                return slot;
-            }
+            inventory.Add(item);
         }
-        return new InventorySlot(item, quantity);
-    }
-    public List<InventorySlot> GetItemList()
-    {
-        return inventorySlotList;
-    }
-    public Item GetItem(ItemType type)
-    {
-        foreach (InventorySlot slot in inventorySlotList)
+        public void RemoveItem(IAmAnItem item)
         {
-            if (slot.item.type == type)
-            {
-                return slot.item.prefab.GetComponent<Item>();
-            }
+            inventory.Remove(item);
         }
-        return null;
     }
 }
+

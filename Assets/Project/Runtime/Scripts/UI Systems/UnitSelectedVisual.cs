@@ -5,10 +5,10 @@ using UnityEngine;
 public class UnitSelectedVisual : MonoBehaviour
 {
     [SerializeField] IAmAUnit unit;
-    [SerializeField] MeshRenderer renderer;
+    [SerializeField] MeshRenderer selectionRenderer;
     private void Awake()
     {
-        renderer = GetComponent<MeshRenderer>();
+        selectionRenderer = GetComponent<MeshRenderer>();
         unit = GetComponentInParent<IAmAUnit>();
     }
     private void Start()
@@ -18,7 +18,7 @@ public class UnitSelectedVisual : MonoBehaviour
     }
     void UpdateVisual()
     {
-        renderer.enabled = unit.IsSelected();
+        selectionRenderer.enabled = unit.IsSelected();
     }
     void UnitOnUnitSelected_OnUnitSelected()
     {

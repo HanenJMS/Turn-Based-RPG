@@ -9,6 +9,6 @@ namespace RPGSandBox.InterfaceSystem
     {
         bool IsSelected();
         void Move(Vector3 destination);
-        void Speak(string message);
+        void Speak(string message, bool priority);
     }
 }

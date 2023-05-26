@@ -6,7 +6,7 @@ namespace RPGSandBox.UnitSystem
 {
     public class Unit : MonoBehaviour, IAmAUnit
     {
-        [SerializeField] Inventory inventory;
+        [SerializeField] Inventory_Old inventory;
         ICanMove mover;
         ICanSpeak voice;
         private void Awake()
@@ -17,10 +17,11 @@ namespace RPGSandBox.UnitSystem
         {
             mover.MoveToDestination(destination);
         }
-        public void Speak(string message)
+        public void Speak(string message, bool priority)
         {
-            voice.Speaking(message);
+            voice.Speaking(message, priority);
         }
+
         public bool IsSelected()
         {
             bool isSelected = false;
@@ -46,7 +47,7 @@ namespace RPGSandBox.UnitSystem
         }
         private void Initialize()
         {
-            inventory = GetComponent<Inventory>();
+            inventory = GetComponent<Inventory_Old>();
             mover = GetComponent<ICanMove>();
             voice = GetComponentInChildren<ICanSpeak>();
         }
