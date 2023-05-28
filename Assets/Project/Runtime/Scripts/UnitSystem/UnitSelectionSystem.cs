@@ -27,14 +27,14 @@ namespace RPGSandBox.UnitSystem
             {
                 RaycastHit hit = MouseWorld.GetMouseRayCastHit();
 
-                if(hit.transform.TryGetComponent(out IAmAUnit selectedUnit))
+                if (hit.transform.TryGetComponent(out IAmAUnit selectedUnit))
                 {
                     if (currentSelectedUnit != selectedUnit)
                     {
                         UnitSelected(selectedUnit);
                         currentSelectedUnit.Speak("Need Something?", true);
                     }
-                    
+
                 }
 
                 if (hit.transform.TryGetComponent(out IAmAUnit unit))
@@ -63,12 +63,21 @@ namespace RPGSandBox.UnitSystem
             //Handle Unit Movement
             if (Input.GetMouseButton(1))
             {
-                
-             
                 if (currentSelectedUnit != null)
                 {
                     currentSelectedUnit.Move(MouseWorld.GetMousePosition());
                     currentSelectedUnit.Speak("Ok! got it! moving to location.", true);
+                }
+            }
+            if (Input.GetMouseButtonUp(1))
+            {
+                RaycastHit hit = MouseWorld.GetMouseRayCastHit();
+                if (currentSelectedUnit != null)
+                {
+                    if (hit.transform.TryGetComponent<IAmAnItem>(out IAmAnItem item))
+                    {
+                        currentSelectedUnit.Grab(item);
+                    }
                 }
             }
         }

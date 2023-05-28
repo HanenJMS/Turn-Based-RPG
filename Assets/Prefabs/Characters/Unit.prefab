@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7653526715353110653}
   - component: {fileID: 597431886}
   - component: {fileID: 4404704848333840681}
-  - component: {fileID: 3442299282027555413}
+  - component: {fileID: 8133853423266375882}
   - component: {fileID: 597431887}
   - component: {fileID: 6450219612631116809}
   m_Layer: 7
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
---- !u!114 &3442299282027555413
+--- !u!114 &8133853423266375882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,10 +96,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4404704848333840683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f489ab79edb6bba4c8196759fb3f5460, type: 3}
+  m_Script: {fileID: 11500000, guid: 534652a02fb6b4f42a8c42af8b30c0c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySlotList: []
 --- !u!114 &597431887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873c2ac1078b125468d1f75c552d150a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
+  selectionRenderer: {fileID: 0}
 --- !u!1001 &3398388694839572679
 PrefabInstance:
   m_ObjectHideFlags: 0

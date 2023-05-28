@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4409993982173881879}
-  - component: {fileID: 3068879600125559654}
   - component: {fileID: 6777516917695581634}
   - component: {fileID: 9042570881131476733}
+  - component: {fileID: 5136076736522301360}
   m_Layer: 0
   m_Name: Resource_CopperNuggets
   m_TagString: Untagged
@@ -35,22 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3068879600125559654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7355974348903858497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1715ef672dcd46846b5fd6df208e1ccd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 1
-  item: {fileID: 11400000, guid: 2f4b0a596ad79134cba14020a2113fb2, type: 2}
-  quantity: 1
-  quality: 1
 --- !u!65 &6777516917695581634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -80,6 +64,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5136076736522301360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7355974348903858497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707319dc6bc77eb47b2a753cf058efba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 1
+  item: {fileID: 11400000, guid: 2f4b0a596ad79134cba14020a2113fb2, type: 2}
+  quantity: 1
+  quality: 1
 --- !u!1001 &1535770075010986085
 PrefabInstance:
   m_ObjectHideFlags: 0

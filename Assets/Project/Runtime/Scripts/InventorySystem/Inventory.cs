@@ -5,13 +5,13 @@ namespace RPGSandBox.InventorySystem
 {
     public class Inventory : MonoBehaviour, IHaveAnInventory
     {
-        List<IAmAnItem> inventory = new List<IAmAnItem>();
-
-
-
-        public void StoreItem(IAmAnItem item)
+        [SerializeField] List<IAmAnItem> inventory = new List<IAmAnItem>();
+        public bool StoreItem(IAmAnItem item)
         {
-            inventory.Add(item);
+            if (item == null) return false;
+            inventory.Add(item.PickUpItem());
+            Debug.Log($"Inventory count: {inventory.Count}");
+            return true;
         }
         public void RemoveItem(IAmAnItem item)
         {

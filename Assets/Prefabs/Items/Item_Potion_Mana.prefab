@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6234845059587821848}
-  - component: {fileID: 1740226333601270219}
   - component: {fileID: 2378532597912658455}
   - component: {fileID: 8959631794215654773}
+  - component: {fileID: -6458066168411670695}
   m_Layer: 0
   m_Name: Item_Potion_Mana
   m_TagString: Untagged
@@ -35,22 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1740226333601270219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8966669770434500618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1715ef672dcd46846b5fd6df208e1ccd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 9
-  item: {fileID: 11400000, guid: 5519d8e559d333e439677cf68555fcb0, type: 2}
-  quantity: 1
-  quality: 1
 --- !u!54 &2378532597912658455
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -80,6 +64,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6458066168411670695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8966669770434500618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707319dc6bc77eb47b2a753cf058efba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 9
+  item: {fileID: 11400000, guid: 5519d8e559d333e439677cf68555fcb0, type: 2}
+  quantity: 1
+  quality: 1
 --- !u!1001 &7053880985530713947
 PrefabInstance:
   m_ObjectHideFlags: 0

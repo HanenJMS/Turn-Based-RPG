@@ -1,7 +1,4 @@
-﻿using RPGSandBox.GameUtilities.GridCore;
-using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RPGSandBox.InterfaceSystem
 {
@@ -10,5 +7,6 @@ namespace RPGSandBox.InterfaceSystem
         bool IsSelected();
         void Move(Vector3 destination);
         void Speak(string message, bool priority);
+        void Grab(IAmAnItem item);
     }
 }

@@ -10,7 +10,6 @@ namespace RPGSandBox.GameUtilities.GameUISystem
         [SerializeField] SpriteRenderer background;
         [SerializeField] SpriteRenderer icon;
         [SerializeField] TextMeshPro textpro;
-        bool isActive = false;
         float speechTimeLength = 0f;
         float speechTimer = 0f;
         private void Awake()
@@ -26,16 +25,23 @@ namespace RPGSandBox.GameUtilities.GameUISystem
         }
         private void Update()
         {
+            HandleSpeechBubbleWhenActive();
+        }
+
+        private void HandleSpeechBubbleWhenActive()
+        {
+            if (!this.gameObject.activeSelf) return;
             if (speechTimer < speechTimeLength)
             {
                 speechTimer += Time.deltaTime * 1f;
                 transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
             }
-            if(speechTimer >= speechTimeLength)
+            if (speechTimer >= speechTimeLength)
             {
                 this.gameObject.SetActive(false);
             }
         }
+
         public void Speaking(string message, bool priority)
         {
             if (this.gameObject.activeSelf && !priority) return;

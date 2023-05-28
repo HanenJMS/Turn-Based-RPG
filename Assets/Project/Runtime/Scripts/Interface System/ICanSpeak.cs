@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace RPGSandBox.InterfaceSystem
+﻿namespace RPGSandBox.InterfaceSystem
 {
     public interface ICanSpeak
     {
