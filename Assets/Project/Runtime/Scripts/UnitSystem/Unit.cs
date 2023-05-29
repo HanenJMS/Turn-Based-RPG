@@ -8,18 +8,13 @@ namespace RPGSandBox.UnitSystem
     public class Unit : MonoBehaviour, IAmAUnit
     {
         IHaveAnInventory inventory;
+
         ICanMove mover;
         ICanSpeak voice;
-
-        IAmAnItem itemTarget = null;
-        bool withinRange = false;
+        ICanGather gatherer;
         private void Awake()
         {
             Initialization();
-        }
-        private void Update()
-        {
-            TryToGrab();
         }
 
 
@@ -31,25 +26,13 @@ namespace RPGSandBox.UnitSystem
         {
             voice.Speaking(message, priority);
         }
-        public void Grab(IAmAnItem item)
+        public void Gather(IAmAnItem item)
         {
-            withinRange = IsInRange(item);
-            
-            if (!withinRange)
-            {
-                itemTarget = item;
-                return;
-            }
-            if (item.CanBePickedUp())
-            {
-                inventory.StoreItem(item);
-                Speak("I grabbed something.", true);
-            }
-            else if (!item.CanBePickedUp())
-            {
-                Speak("Uhh... There is no item here", true);
-            }
-            itemTarget = null;
+            gatherer.Gather(this, item);
+        }
+        public void Store(IAmAnItem item)
+        {
+            inventory.StoreItem(item);
         }
         public Vector3 MyPosition()
         {
@@ -64,20 +47,6 @@ namespace RPGSandBox.UnitSystem
             }
             return isSelected;
         }
-        private bool IsInRange(IAmAnItem item)
-        {
-            float pickUpDistance = 1f;
-            return Vector3.Distance(item.MyPosition(), MyPosition()) < pickUpDistance;
-        }
-        private void TryToGrab()
-        {
-            if (itemTarget == null) return;
-            if (!withinRange)
-            {
-                Move(itemTarget.MyPosition());
-            }
-            Grab(itemTarget);
-        }
         private void Initialization()
         {
             if (!IsInitialized())
@@ -89,6 +58,7 @@ namespace RPGSandBox.UnitSystem
         {
             if (mover == null) return false;
             if (inventory == null) return false;
+            if (gatherer == null) return false;
             return true;
         }
         private void Initialize()
@@ -96,7 +66,10 @@ namespace RPGSandBox.UnitSystem
             inventory = GetComponent<IHaveAnInventory>();
             mover = GetComponent<ICanMove>();
             voice = GetComponentInChildren<ICanSpeak>();
+            gatherer = GetComponent<ICanGather>();
         }
+
+
     }
 }
 

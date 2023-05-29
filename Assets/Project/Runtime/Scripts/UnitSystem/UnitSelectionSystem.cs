@@ -76,7 +76,7 @@ namespace RPGSandBox.UnitSystem
                 {
                     if (hit.transform.TryGetComponent<IAmAnItem>(out IAmAnItem item))
                     {
-                        currentSelectedUnit.Grab(item);
+                        currentSelectedUnit.Gather(item);
                     }
                 }
             }

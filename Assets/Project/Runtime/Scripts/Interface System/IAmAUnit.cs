@@ -7,6 +7,7 @@ namespace RPGSandBox.InterfaceSystem
         bool IsSelected();
         void Move(Vector3 destination);
         void Speak(string message, bool priority);
-        void Grab(IAmAnItem item);
+        void Gather(IAmAnItem item);
+        void Store(IAmAnItem item);
     }
 }

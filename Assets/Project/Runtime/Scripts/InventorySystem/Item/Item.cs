@@ -18,9 +18,9 @@ namespace RPGSandBox.InventorySystem.Item
             this.quality = quality;
         }
 
-        public bool CanBePickedUp()
+        public bool ItemHasAnOwner()
         {
-            return !isOwned;
+            return isOwned;
         }
 
         public Vector3 MyPosition()
@@ -30,7 +30,7 @@ namespace RPGSandBox.InventorySystem.Item
 
         public IAmAnItem PickUpItem()
         {
-            if (CanBePickedUp()) isOwned = true;
+            if (!ItemHasAnOwner()) isOwned = true;
             IAmAnItem item = this;
             this.gameObject.SetActive(false);
             return item;
