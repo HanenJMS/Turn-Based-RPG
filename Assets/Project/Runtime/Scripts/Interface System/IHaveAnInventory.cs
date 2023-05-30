@@ -2,7 +2,7 @@ namespace RPGSandBox.InterfaceSystem
 {
     public interface IHaveAnInventory
     {
-        bool StoreItem(IAmAnItem item);
+        bool Storing(IAmAnItem item);
         void RemoveItem(IAmAnItem item);
     }
 }

@@ -42,7 +42,7 @@ namespace RPGSandBox.GameUtilities.GameUISystem
             }
         }
 
-        public void Speaking(string message, bool priority)
+        public void Saying(string message, bool priority)
         {
             if (this.gameObject.activeSelf && !priority) return;
             this.gameObject.SetActive(true);

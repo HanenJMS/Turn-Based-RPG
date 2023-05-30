@@ -2,6 +2,6 @@
 {
     public interface ICanSpeak
     {
-        void Speaking(string message, bool priority);
+        void Saying(string message, bool priority);
     }
 }

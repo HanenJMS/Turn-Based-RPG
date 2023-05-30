@@ -11,7 +11,7 @@ namespace RPGSandBox.UnitSystem
         {
             agent = GetComponentInParent<NavMeshAgent>();
         }
-        public void MoveToDestination(Vector3 destination)
+        public void MovingTo(Vector3 destination)
         {
             agent.SetDestination(destination);
         }

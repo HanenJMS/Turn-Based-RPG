@@ -13,7 +13,7 @@ public class Inventory_Old : MonoBehaviour
         AddItem(item.item, item.quantity);
         item.PickUpItem();
     }
-    public void AddItem(ItemSO item, int quantity)
+    public void AddItem(ItemType item, int quantity)
     {
         InventorySlot newInventorySlot = GetInventorySlot(item, quantity);
         if (inventorySlotList.Contains(newInventorySlot))
@@ -30,7 +30,7 @@ public class Inventory_Old : MonoBehaviour
         inventorySlotList.Add(newInventorySlot);
     }
 
-    public InventorySlot GetInventorySlot(ItemSO item, int quantity)
+    public InventorySlot GetInventorySlot(ItemType item, int quantity)
     {
         foreach (InventorySlot slot in inventorySlotList)
         {
@@ -49,10 +49,7 @@ public class Inventory_Old : MonoBehaviour
     {
         foreach (InventorySlot slot in inventorySlotList)
         {
-            if (slot.item.type == type)
-            {
-                return slot.item.prefab.GetComponent<Item_Old>();
-            }
+
         }
         return null;
     }

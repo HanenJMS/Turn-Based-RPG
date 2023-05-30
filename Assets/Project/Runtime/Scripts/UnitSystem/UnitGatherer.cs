@@ -16,7 +16,7 @@ namespace RPGSandBox.UnitSystem
         {
             unit = GetComponent<IAmAUnit>();
         }
-        public void Gather(IAmAUnit gatheringUnit, IAmAnItem item)
+        public void Gathering(IAmAUnit gatheringUnit, IAmAnItem item)
         {
             withinRange = IsInRange(item);
             if (unit == null || unit != gatheringUnit) unit = gatheringUnit;
@@ -36,7 +36,6 @@ namespace RPGSandBox.UnitSystem
             }
             itemTarget = null;
         }
-
         private void TryToGather()
         {
             if (itemTarget == null) return;

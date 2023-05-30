@@ -4,6 +4,6 @@ namespace RPGSandBox.InterfaceSystem
 {
     public interface ICanMove
     {
-        void MoveToDestination(Vector3 destination);
+        void MovingTo(Vector3 destination);
     }
 }

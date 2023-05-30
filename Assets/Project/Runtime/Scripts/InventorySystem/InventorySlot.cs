@@ -1,9 +1,9 @@
 [System.Serializable]
 public class InventorySlot
 {
-    public ItemSO item;
+    public ItemType item;
     public int quantity;
-    public InventorySlot(ItemSO item, int quantity)
+    public InventorySlot(ItemType item, int quantity)
     {
         this.item = item;
         this.quantity = quantity;

@@ -6,7 +6,7 @@ namespace RPGSandBox.InventorySystem
     public class Inventory : MonoBehaviour, IHaveAnInventory
     {
         [SerializeField] List<IAmAnItem> inventory = new List<IAmAnItem>();
-        public bool StoreItem(IAmAnItem item)
+        public bool Storing(IAmAnItem item)
         {
             if (item == null) return false;
             inventory.Add(item.PickUpItem());

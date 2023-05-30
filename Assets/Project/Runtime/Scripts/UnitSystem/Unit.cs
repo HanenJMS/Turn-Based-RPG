@@ -12,6 +12,7 @@ namespace RPGSandBox.UnitSystem
         ICanMove mover;
         ICanSpeak voice;
         ICanGather gatherer;
+
         private void Awake()
         {
             Initialization();
@@ -20,19 +21,23 @@ namespace RPGSandBox.UnitSystem
 
         public void Move(Vector3 destination)
         {
-            mover.MoveToDestination(destination);
+            mover.MovingTo(destination);
         }
         public void Speak(string message, bool priority)
         {
-            voice.Speaking(message, priority);
+            voice.Saying(message, priority);
         }
         public void Gather(IAmAnItem item)
         {
-            gatherer.Gather(this, item);
+            gatherer.Gathering(this, item);
         }
         public void Store(IAmAnItem item)
         {
-            inventory.StoreItem(item);
+            inventory.Storing(item);
+        }
+        public void Interact(IAmInteractable interact)
+        {
+
         }
         public Vector3 MyPosition()
         {
@@ -68,8 +73,6 @@ namespace RPGSandBox.UnitSystem
             voice = GetComponentInChildren<ICanSpeak>();
             gatherer = GetComponent<ICanGather>();
         }
-
-
     }
 }
 

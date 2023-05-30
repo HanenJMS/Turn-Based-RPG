@@ -3,11 +3,11 @@ using UnityEngine;
 public class Item_Old : MonoBehaviour
 {
     public ItemType itemType;
-    public ItemSO item;
+    public ItemType item;
     public int quantity;
     public int quality;
 
-    public Item_Old(ItemType itemType, ItemSO item, int quantity, int quality)
+    public Item_Old(ItemType itemType, ItemType item, int quantity, int quality)
     {
         this.itemType = itemType;
         this.item = item;

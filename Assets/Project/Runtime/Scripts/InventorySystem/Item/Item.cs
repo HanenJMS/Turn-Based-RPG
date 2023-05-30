@@ -4,15 +4,13 @@ namespace RPGSandBox.InventorySystem.Item
 {
     public class Item : MonoBehaviour, IAmAnItem
     {
-        public ItemType itemType;
-        public ItemSO item;
+        public ItemType item;
         public int quantity;
         public int quality;
         public bool isOwned = false;
 
-        public Item(ItemType itemType, ItemSO item, int quantity, int quality)
+        public Item(ItemType item, int quantity, int quality)
         {
-            this.itemType = itemType;
             this.item = item;
             this.quantity = quantity;
             this.quality = quality;
@@ -34,6 +32,10 @@ namespace RPGSandBox.InventorySystem.Item
             IAmAnItem item = this;
             this.gameObject.SetActive(false);
             return item;
+        }
+        public void Interact(IAmInteractable interact)
+        {
+
         }
     }
 }
