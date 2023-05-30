@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 780.8
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 106
+  controlID: 108
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -414,30 +414,30 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 14f3fbff
-      m_LastClickedID: -265452
-      m_ExpandedIDs: 12fbffff
+      m_SelectedIDs: c840e9ff
+      m_LastClickedID: -1490744
+      m_ExpandedIDs: 10fbffff12fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Item_Resource_CopperIngot
+        m_OriginalName: Item_Resource_CopperIngot
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -2188
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
     m_LockTracker:
-      m_IsLocked: 0
+      m_IsLocked: 1
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: 170f49efaf2cd7d4fadbcb6c7e6718b7
 --- !u!114 &14
@@ -699,9 +699,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 15.09951, y: 0.17868027, z: 9.641067}
+    m_Target: {x: 14.141033, y: -1.7325045, z: 14.89378}
     speed: 2
-    m_Value: {x: 15.09951, y: 0.17868027, z: 9.641067}
+    m_Value: {x: 14.141033, y: -1.7325045, z: 14.89378}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 2
@@ -747,13 +747,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.39079222, y: -0.05682994, z: 0.024187025, w: -0.9183895}
+    m_Target: {x: -0.1972845, y: -0.10740128, z: 0.021744777, w: -0.9741823}
     speed: 2
-    m_Value: {x: -0.39079762, y: -0.056830723, z: 0.024187358, w: -0.91840214}
+    m_Value: {x: -0.19728844, y: -0.10740342, z: 0.021745209, w: -0.9742017}
   m_Size:
-    m_Target: 2.741932
+    m_Target: 9.1227665
     speed: 2
-    m_Value: 2.741932
+    m_Value: 8.72992
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -771,7 +771,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+  m_LastSceneViewRotation: {x: 0.004780032, y: 0.9949447, z: -0.077480435, w: 0.06272545}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -965,36 +965,36 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Items
+    - Assets/Project/Runtime/Scripts/InventorySystem
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefabs/Items
+  - Assets/Project/Runtime/Scripts/InventorySystem
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Hanen\Desktop\Unity Projects\Turn Based RPG
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 60}
-    m_SelectedIDs: c4730000
-    m_LastClickedID: 29636
-    m_ExpandedIDs: 0000000090730000927300009473000096730000987300009a7300009c7300009e730000a2730000a4730000c8730000ca73000090740000dcde0000dede000000ca9a3b
+    scrollPos: {x: 0, y: 230.20001}
+    m_SelectedIDs: 26740000
+    m_LastClickedID: 29734
+    m_ExpandedIDs: 00000000d2730000d4730000d6730000da730000dc730000de730000e2730000e4730000e8730000ea730000ec730000ee7300000e74000070f6000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Item_ScriptableObjects
+      m_OriginalName: Item_ScriptableObjects
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 63088
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
@@ -1008,7 +1008,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000090730000927300009473000096730000987300009a7300009c7300009e730000a0730000a2730000a4730000
+    m_ExpandedIDs: 00000000d2730000d4730000d6730000d8730000da730000dc730000de730000e0730000e2730000e4730000e6730000e8730000ea730000ec730000ee730000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1039,15 +1039,15 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000829e0000cca000000ac50000a4be00002cc6000030c6000028c600009e7000009870000092700000d870000000000000667600003e7a0000967c00009e7c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Item_Resource_Copper
-      m_OriginalName: Item_Resource_Copper
+      m_Name: InventorySlot
+      m_OriginalName: InventorySlot
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 30374
+      m_UserData: 65016
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -2018,7 +2018,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -1326
+  m_LastSelectedObjectID: -1688
 --- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52

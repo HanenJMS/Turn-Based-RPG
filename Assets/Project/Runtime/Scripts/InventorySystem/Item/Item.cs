@@ -4,18 +4,35 @@ namespace RPGSandBox.InventorySystem.Item
 {
     public class Item : MonoBehaviour, IAmAnItem
     {
-        public ItemType item;
-        public int quantity;
-        public int quality;
-        public bool isOwned = false;
+        [SerializeField] ItemType itemType;
+        [SerializeField] int quantity;
+        [SerializeField] int quality;
+        [SerializeField] bool isOwned = false;
 
-        public Item(ItemType item, int quantity, int quality)
+        public Item(ItemType itemType, int quantity, int quality)
         {
-            this.item = item;
+            this.itemType = itemType;
             this.quantity = quantity;
             this.quality = quality;
         }
+        public ItemType ItemType()
+        {
+            return itemType;
+        }
 
+        public int QuantityIs()
+        {
+            return quantity;
+        }
+
+        public int ItemQualityIs()
+        {
+            return quality;
+        }
+        public void AddingQuantity(int quantity)
+        {
+            this.quantity += quantity;
+        }
         public bool ItemHasAnOwner()
         {
             return isOwned;
@@ -37,6 +54,8 @@ namespace RPGSandBox.InventorySystem.Item
         {
 
         }
+
+
     }
 }
 

@@ -25,7 +25,7 @@ public class InventoryUI_Old : MonoBehaviour
     void CreateUIElements()
     {
         ClearInventorySlots();
-        foreach (InventorySlot item in inventory.GetItemList())
+        foreach (InventorySlot_Old item in inventory.GetItemList())
         {
             Transform go = Instantiate(itemSlotUI, itemSlotButtonContainer);
             ItemSlotUI_Old itemSlotUIobject = go.GetComponent<ItemSlotUI_Old>();

@@ -10,7 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b30a902d079d724fb38c27466a41783, type: 3}
-  m_Name: CopperIngot
+  m_Name: Recipe_CopperIngot
   m_EditorClassIdentifier: 
-  item: []
-  outputItem: {fileID: 0}
+  item:
+  - item: {fileID: 11400000, guid: 30ab5bfb8d5c3344cbc0fd48136b827f, type: 2}
+    qty: 3
+  outputItem:
+    item: {fileID: 11400000, guid: 1c73f8c02a19558429d5764b8b5de188, type: 2}
+    qty: 1

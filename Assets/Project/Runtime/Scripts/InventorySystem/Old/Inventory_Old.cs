@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Inventory_Old : MonoBehaviour
 {
-    [SerializeField] List<InventorySlot> inventorySlotList;
+    [SerializeField] List<InventorySlot_Old> inventorySlotList;
     public Inventory_Old()
     {
-        inventorySlotList = new List<InventorySlot>();
+        inventorySlotList = new List<InventorySlot_Old>();
     }
     public void PickUpItem(Item_Old item)
     {
@@ -15,7 +15,7 @@ public class Inventory_Old : MonoBehaviour
     }
     public void AddItem(ItemType item, int quantity)
     {
-        InventorySlot newInventorySlot = GetInventorySlot(item, quantity);
+        InventorySlot_Old newInventorySlot = GetInventorySlot(item, quantity);
         if (inventorySlotList.Contains(newInventorySlot))
         {
             newInventorySlot.AddToItemQuantity(quantity);
@@ -25,29 +25,29 @@ public class Inventory_Old : MonoBehaviour
         Debug.Log($"Inventory : {inventorySlotList.Count}");
     }
 
-    private void AddNewSlot(InventorySlot newInventorySlot)
+    private void AddNewSlot(InventorySlot_Old newInventorySlot)
     {
         inventorySlotList.Add(newInventorySlot);
     }
 
-    public InventorySlot GetInventorySlot(ItemType item, int quantity)
+    public InventorySlot_Old GetInventorySlot(ItemType item, int quantity)
     {
-        foreach (InventorySlot slot in inventorySlotList)
+        foreach (InventorySlot_Old slot in inventorySlotList)
         {
             if (slot.item == item)
             {
                 return slot;
             }
         }
-        return new InventorySlot(item, quantity);
+        return new InventorySlot_Old(item, quantity);
     }
-    public List<InventorySlot> GetItemList()
+    public List<InventorySlot_Old> GetItemList()
     {
         return inventorySlotList;
     }
     public Item_Old GetItem(ItemType type)
     {
-        foreach (InventorySlot slot in inventorySlotList)
+        foreach (InventorySlot_Old slot in inventorySlotList)
         {
 
         }

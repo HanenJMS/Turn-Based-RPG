@@ -1,15 +1,23 @@
-[System.Serializable]
-public class InventorySlot
+using RPGSandBox.InterfaceSystem;
+namespace RPGSandBox.InventorySystem
 {
-    public ItemType item;
-    public int quantity;
-    public InventorySlot(ItemType item, int quantity)
+    [System.Serializable]
+    public class InventorySlot
     {
-        this.item = item;
-        this.quantity = quantity;
-    }
-    public void AddToItemQuantity(int quantity)
-    {
-        this.quantity += quantity;
+        public IAmAnItem item;
+        public string itemName;
+        public int quantity;
+        public InventorySlot(IAmAnItem item)
+        {
+            this.item = item;
+            this.itemName = item.ItemType().ToString();
+            this.quantity = item.QuantityIs();
+        }
+        public void AddToItemQuantity(int quantity)
+        {
+            item.AddingQuantity(quantity);
+            this.quantity = item.QuantityIs();
+        }
     }
 }
+
