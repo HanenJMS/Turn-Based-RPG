@@ -96,10 +96,20 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 4109700188848143359, guid: 9c23742d77cfcf0408f96de91891ac03,
         type: 3}
+      propertyPath: quality
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109700188848143359, guid: 9c23742d77cfcf0408f96de91891ac03,
+        type: 3}
       propertyPath: itemType
       value: 
       objectReference: {fileID: 11400000, guid: 678fd5a8519b3c84b863fcf3c75da676,
         type: 2}
+    - target: {fileID: 4109700188848143359, guid: 9c23742d77cfcf0408f96de91891ac03,
+        type: 3}
+      propertyPath: quantity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4566960288469037712, guid: 9c23742d77cfcf0408f96de91891ac03,
         type: 3}
       propertyPath: m_Name

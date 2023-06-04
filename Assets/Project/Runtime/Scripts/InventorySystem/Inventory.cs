@@ -27,6 +27,25 @@ namespace RPGSandBox.InventorySystem
         {
             //inventory.Remove(GetInventorySlot(item));
         }
+        public bool Checking(IAmAnItem item, int qty)
+        {
+            if (!Contains(item)) return false;
+            InventorySlot slot = GetInventorySlot(item);
+            if (slot.quantity < qty) return false;
+            return true;
+        }
+
+        private bool Contains(IAmAnItem item)
+        {
+            foreach (InventorySlot slot in inventory)
+            {
+                if (slot.item.ItemType() == item.ItemType())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         private InventorySlot GetInventorySlot(IAmAnItem item)
         {

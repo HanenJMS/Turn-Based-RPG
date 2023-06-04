@@ -11,6 +11,7 @@ namespace RPGSandBox.UnitSystem
 
         ICanMove mover;
         ICanSpeak voice;
+        ICanCraft crafter;
         ICanGather gatherer;
 
         private void Awake()
@@ -27,6 +28,10 @@ namespace RPGSandBox.UnitSystem
         {
             voice.Saying(message, priority);
         }
+        public void Craft(IAmACraftingStation station)
+        {
+            crafter.Crafting(this, station);
+        }
         public void Gather(IAmAnItem item)
         {
             gatherer.Gathering(this, item);
@@ -34,6 +39,10 @@ namespace RPGSandBox.UnitSystem
         public void Store(IAmAnItem item)
         {
             inventory.Storing(item);
+        }
+        public bool Check(IAmAnItem item, int qty)
+        {
+            return inventory.Checking(item, qty);
         }
         public void Interact(IAmInteractable interact)
         {
@@ -64,6 +73,7 @@ namespace RPGSandBox.UnitSystem
             if (mover == null) return false;
             if (inventory == null) return false;
             if (gatherer == null) return false;
+            if (crafter == null) return false;
             return true;
         }
         private void Initialize()
@@ -72,6 +82,7 @@ namespace RPGSandBox.UnitSystem
             mover = GetComponent<ICanMove>();
             voice = GetComponentInChildren<ICanSpeak>();
             gatherer = GetComponent<ICanGather>();
+            crafter = GetComponent<ICanCraft>();
         }
     }
 }

@@ -75,8 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707319dc6bc77eb47b2a753cf058efba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 10
-  item: {fileID: 0}
-  quantity: 0
-  quality: 0
+  itemType: {fileID: 0}
+  quantity: 1
+  quality: 1
   isOwned: 0

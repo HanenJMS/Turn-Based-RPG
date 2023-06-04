@@ -1949,6 +1949,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7734773129386741806, guid: 2784232a07318d9439b7756bfda765ce,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2784232a07318d9439b7756bfda765ce, type: 3}
+--- !u!1 &1242351662769985847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2572493462194549842, guid: 2784232a07318d9439b7756bfda765ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1242351662769985846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1242351662769985848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242351662769985847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fe489eac90e064eaeb63d33c48b9c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableRecipes:
+  - {fileID: 11400000, guid: e5cf93f7c3781c2428d58ee05b1ff509, type: 2}
