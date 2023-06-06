@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UnitActionSystem : MonoBehaviour
+public class UnitActionSystem_Old : MonoBehaviour
 {
-    public static UnitActionSystem Instance { get; private set; }
+    public static UnitActionSystem_Old Instance { get; private set; }
     BaseAction currentAction = null;
     List<BaseAction> unitActionList = new List<BaseAction>();
     [SerializeField] RTSController controller;

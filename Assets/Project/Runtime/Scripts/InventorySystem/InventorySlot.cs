@@ -11,12 +11,17 @@ namespace RPGSandBox.InventorySystem
         {
             this.item = item;
             this.itemName = item.ItemType().ToString();
-            this.quantity = item.QuantityIs();
+            this.quantity = item.GetQuantity();
         }
         public void AddToItemQuantity(int quantity)
         {
             item.AddingQuantity(quantity);
-            this.quantity = item.QuantityIs();
+            this.quantity = item.GetQuantity();
+        }
+        public void RemoveToItemQuantity(int quantity)
+        {
+            item.RemovingQuantity(quantity);
+            this.quantity = item.GetQuantity();
         }
     }
 }

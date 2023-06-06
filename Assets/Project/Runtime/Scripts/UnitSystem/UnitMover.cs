@@ -7,13 +7,24 @@ namespace RPGSandBox.UnitSystem
     public class UnitMover : MonoBehaviour, ICanMove
     {
         NavMeshAgent agent;
+        IAmAUnit unit;
         private void Awake()
         {
-            agent = GetComponentInParent<NavMeshAgent>();
+            agent = GetComponent<NavMeshAgent>();
+            unit = GetComponent<IAmAUnit>();
         }
-        public void MovingTo(Vector3 destination)
+        public void Moving(Vector3 destination)
         {
             agent.SetDestination(destination);
+        }
+        public void SetToMoving(Vector3 destination)
+        {
+            unit.Execute(this);
+            Moving(destination);
+        }
+        public void Cancel()
+        {
+            agent.SetDestination(this.transform.position);
         }
     }
 }

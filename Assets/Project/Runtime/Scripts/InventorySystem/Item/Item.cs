@@ -20,18 +20,22 @@ namespace RPGSandBox.InventorySystem.Item
             return itemType;
         }
 
-        public int QuantityIs()
+        public int GetQuantity()
         {
             return quantity;
         }
 
-        public int ItemQualityIs()
+        public int GetQuality()
         {
             return quality;
         }
         public void AddingQuantity(int quantity)
         {
             this.quantity += quantity;
+        }
+        public void RemovingQuantity(int quantity)
+        {
+            this.quantity -= quantity;
         }
         public bool ItemHasAnOwner()
         {
@@ -47,7 +51,8 @@ namespace RPGSandBox.InventorySystem.Item
         {
             if (!ItemHasAnOwner()) isOwned = true;
             IAmAnItem item = this;
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
             return item;
         }
         public void Interact(IAmInteractable interact)

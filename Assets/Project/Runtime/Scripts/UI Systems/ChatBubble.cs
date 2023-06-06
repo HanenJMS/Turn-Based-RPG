@@ -73,6 +73,11 @@ namespace RPGSandBox.GameUtilities.GameUISystem
             Vector2 offset = new Vector2(-padding.x / 2, 0f);
             icon.transform.localPosition = new Vector2(-background.size.x / 2f, 0f) + offset;
         }
+
+        public void Cancel()
+        {
+            
+        }
     }
 }
 

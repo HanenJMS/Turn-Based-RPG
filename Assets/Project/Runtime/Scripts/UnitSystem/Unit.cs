@@ -14,15 +14,16 @@ namespace RPGSandBox.UnitSystem
         ICanCraft crafter;
         ICanGather gatherer;
 
+        IHaveAnAction actioner;
         private void Awake()
         {
             Initialization();
         }
 
-
+        //Actions
         public void Move(Vector3 destination)
         {
-            mover.MovingTo(destination);
+            mover.Moving(destination);
         }
         public void Speak(string message, bool priority)
         {
@@ -40,17 +41,13 @@ namespace RPGSandBox.UnitSystem
         {
             inventory.Storing(item);
         }
+        public void Remove(IAmAnItem item, int qty)
+        {
+            inventory.Removing(item, qty);
+        }
         public bool Check(IAmAnItem item, int qty)
         {
             return inventory.Checking(item, qty);
-        }
-        public void Interact(IAmInteractable interact)
-        {
-
-        }
-        public Vector3 MyPosition()
-        {
-            return this.transform.position;
         }
         public bool IsSelected()
         {
@@ -60,6 +57,23 @@ namespace RPGSandBox.UnitSystem
                 isSelected = true;
             }
             return isSelected;
+        }
+
+        public void Execute(IAmAnAction action)
+        {
+            actioner.Executing(action);
+        }
+        public void SetToMove(Vector3 destination)
+        {
+            mover.SetToMoving(destination);
+        }
+        public void Interact(IAmInteractable interact)
+        {
+
+        }
+        public Vector3 MyPosition()
+        {
+            return this.transform.position;
         }
         private void Initialization()
         {
@@ -74,6 +88,7 @@ namespace RPGSandBox.UnitSystem
             if (inventory == null) return false;
             if (gatherer == null) return false;
             if (crafter == null) return false;
+            if (actioner == null) return false;
             return true;
         }
         private void Initialize()
@@ -83,6 +98,7 @@ namespace RPGSandBox.UnitSystem
             voice = GetComponentInChildren<ICanSpeak>();
             gatherer = GetComponent<ICanGather>();
             crafter = GetComponent<ICanCraft>();
+            actioner = GetComponent<IHaveAnAction>();
         }
     }
 }

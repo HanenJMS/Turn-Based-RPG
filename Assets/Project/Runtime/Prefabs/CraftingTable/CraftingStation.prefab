@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7337970693866266158}
   - component: {fileID: 7734773129386741806}
   - component: {fileID: 8414970350900885681}
+  - component: {fileID: 5687180815639134412}
   m_Layer: 0
   m_Name: CraftingStation
   m_TagString: Untagged
@@ -29,10 +30,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7626486376468965430}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7734773129386741806
 BoxCollider:
@@ -63,80 +63,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1001 &7627227068008979076
-PrefabInstance:
+--- !u!114 &5687180815639134412
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 2
-    m_TransformParent: {fileID: 7337970693866266158}
-    m_Modifications:
-    - target: {fileID: 1843292089870526, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
-      propertyPath: m_Name
-      value: SM_Prop_Anvil_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471062299587250, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471062299587250, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471062299587250, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471062299587250, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471062299587250, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471062299587250, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471062299587250, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471062299587250, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471062299587250, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471062299587250, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471062299587250, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471062299587250, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471062299587250, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471062299587250, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_AddedGameObjects: []
-  m_SourcePrefab: {fileID: 100100000, guid: f02bab0916b694b4fb39ee47ccb08d9a, type: 3}
---- !u!4 &7626486376468965430 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4471062299587250, guid: f02bab0916b694b4fb39ee47ccb08d9a,
-    type: 3}
-  m_PrefabInstance: {fileID: 7627227068008979076}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2572493462194549842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fe489eac90e064eaeb63d33c48b9c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableRecipes: []

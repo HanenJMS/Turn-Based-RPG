@@ -23,6 +23,7 @@ namespace RPGSandBox.UnitSystem
             if (!withinRange)
             {
                 itemTarget = item;
+                gatheringUnit.Execute(this);
                 return;
             }
             if (!item.ItemHasAnOwner())
@@ -47,8 +48,14 @@ namespace RPGSandBox.UnitSystem
         }
         private bool IsInRange(IAmAnItem item)
         {
-            float pickUpDistance = 1f;
+            float pickUpDistance = 2f;
             return Vector3.Distance(item.MyPosition(), unit.MyPosition()) < pickUpDistance;
+        }
+
+        public void Cancel()
+        {
+            itemTarget = null;
+            withinRange = false;
         }
     }
 }

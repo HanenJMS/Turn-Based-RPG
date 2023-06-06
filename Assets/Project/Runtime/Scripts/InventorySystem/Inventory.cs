@@ -15,7 +15,7 @@ namespace RPGSandBox.InventorySystem
             InventorySlot slot = GetInventorySlot(item.PickUpItem());
             if(CheckingInventoryHas(slot))
             {
-                slot.AddToItemQuantity(item.QuantityIs());
+                slot.AddToItemQuantity(item.GetQuantity());
                 Debug.Log($"Inventory count: {GetInventoryCount()}");
                 return;
             }
@@ -23,9 +23,13 @@ namespace RPGSandBox.InventorySystem
             inventory.Add(slot);
             Debug.Log($"Inventory count: {GetInventoryCount()}");
         }
-        public void RemoveItem(IAmAnItem item)
+        public void Removing(IAmAnItem item, int qty)
         {
-            //inventory.Remove(GetInventorySlot(item));
+            if(!Checking(item, qty)) return;
+            InventorySlot slot = GetInventorySlot(item);
+            slot.RemoveToItemQuantity(qty);
+            if (slot.quantity == 0) inventory.Remove(slot);
+            
         }
         public bool Checking(IAmAnItem item, int qty)
         {
@@ -34,7 +38,6 @@ namespace RPGSandBox.InventorySystem
             if (slot.quantity < qty) return false;
             return true;
         }
-
         private bool Contains(IAmAnItem item)
         {
             foreach (InventorySlot slot in inventory)
@@ -46,7 +49,6 @@ namespace RPGSandBox.InventorySystem
             }
             return false;
         }
-
         private InventorySlot GetInventorySlot(IAmAnItem item)
         {
             foreach (InventorySlot slot in inventory)
@@ -73,7 +75,7 @@ namespace RPGSandBox.InventorySystem
             int count = 0;
             foreach(InventorySlot slot in inventory)
             {
-                count += slot.item.QuantityIs();
+                count += slot.item.GetQuantity();
             }
             return count;
         }

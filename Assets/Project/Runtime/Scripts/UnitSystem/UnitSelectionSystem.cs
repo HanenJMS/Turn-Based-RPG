@@ -65,7 +65,7 @@ namespace RPGSandBox.UnitSystem
             {
                 if (currentSelectedUnit != null)
                 {
-                    currentSelectedUnit.Move(MouseWorld.GetMousePosition());
+                    currentSelectedUnit.SetToMove(MouseWorld.GetMousePosition());
                     currentSelectedUnit.Speak("Ok! got it! moving to location.", true);
                 }
             }

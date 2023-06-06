@@ -26,12 +26,12 @@ public class ActionButtonUI : MonoBehaviour
         textMeshProUGUI.text = baseAction.GetActionName();
         button.onClick.AddListener(() =>
         {
-            UnitActionSystem.Instance.SetSelectedAction(baseAction);
+            UnitActionSystem_Old.Instance.SetSelectedAction(baseAction);
         });
     }
     void UpdateVisual()
     {
-        if(UnitActionSystem.Instance.GetCurrentAction() == action)
+        if(UnitActionSystem_Old.Instance.GetCurrentAction() == action)
         {
             Show();
         }

@@ -52,8 +52,8 @@ namespace RPGSandBox.GameUtilities.GridSystemVisuals
         public void UpdateGridVisual()
         {
             HideAllGridPositions();
-            if (UnitActionSystem.Instance.GetCurrentAction() == null) return;
-            List<GridPosition> gridPositions = UnitActionSystem.Instance.GetCurrentAction().GetValidGridPositionList();
+            if (UnitActionSystem_Old.Instance.GetCurrentAction() == null) return;
+            List<GridPosition> gridPositions = UnitActionSystem_Old.Instance.GetCurrentAction().GetValidGridPositionList();
             if (gridPositions == null) return;
             ShowGridPositionList(gridPositions);
         }

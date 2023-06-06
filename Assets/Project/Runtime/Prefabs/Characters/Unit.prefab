@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 597431887}
   - component: {fileID: 3375285483754913747}
   - component: {fileID: 4498262866502068156}
-  - component: {fileID: 6268857027729737795}
+  - component: {fileID: 3021285544298949015}
   - component: {fileID: 6450219612631116809}
   m_Layer: 7
   m_Name: Unit
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534652a02fb6b4f42a8c42af8b30c0c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: []
 --- !u!114 &597431887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0091ae2319a7c4e449a6008041d4aae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6268857027729737795
+--- !u!114 &3021285544298949015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +147,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4404704848333840683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb31b1689194d440b87be12d00d6e86, type: 3}
+  m_Script: {fileID: 11500000, guid: 894ef8e4632a00f4bb5e0fb744ad94ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6450219612631116809

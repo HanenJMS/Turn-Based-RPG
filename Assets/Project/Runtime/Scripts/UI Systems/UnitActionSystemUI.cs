@@ -11,8 +11,8 @@ public class UnitActionSystemUI : MonoBehaviour
     List<ActionButtonUI> actionButtons = new List<ActionButtonUI>();
     private void Start()
     {
-        UnitActionSystem.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSelectedUnitChanged;
-        UnitActionSystem.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
+        UnitActionSystem_Old.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSelectedUnitChanged;
+        UnitActionSystem_Old.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
         CreateActionButtons();
     }
     private void UnitActionSystem_OnSelectedUnitChanged()
@@ -29,7 +29,7 @@ public class UnitActionSystemUI : MonoBehaviour
     void CreateActionButtons()
     {
         ClearActionBar();
-        IAmAUnit_Old selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
+        IAmAUnit_Old selectedUnit = UnitActionSystem_Old.Instance.GetSelectedUnit();
         if (selectedUnit == null) { return; }
         foreach (BaseAction action in selectedUnit.GetActionList())
         {
