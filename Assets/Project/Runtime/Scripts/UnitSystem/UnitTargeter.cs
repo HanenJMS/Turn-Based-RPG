@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using RPGSandBox.InterfaceSystem;
 using UnityEngine;
 
-public class UnitTargeter : MonoBehaviour
+namespace RPGSandBox.UnitSystem
 {
-    // Start is called before the first frame update
-    void Start()
+    public class UnitTargeter : MonoBehaviour, IHaveATarget
     {
-        
-    }
+        IAmInteractable currentTarget;
+        float range;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void Targeting(IAmInteractable target, float range)
+        {
+            currentTarget = target;
+            this.range = range;
+        }
+
+        public bool CheckingRange()
+        {
+            return Vector3.Distance(currentTarget.MyPosition(), this.transform.position) < range;
+        }
     }
 }
+

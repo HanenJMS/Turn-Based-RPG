@@ -8,8 +8,9 @@ namespace RPGSandBox.InventorySystem
         //Dictionarys are currently not necessary. But just incase, Dictionary hashing system is already in place.
         //[SerializeField] Dictionary<ItemType, InventorySlot> inventory = new Dictionary<ItemType, InventorySlot>();
         [SerializeField] List<InventorySlot> inventory = new List<InventorySlot> ();
-        public void Storing(IAmAnItem item)
+        public void Storing(IAmInteractable interactable)
         {
+            IAmAnItem item = interactable as IAmAnItem;
             if (item == null) return;
 
             InventorySlot slot = GetInventorySlot(item.PickUpItem());
@@ -23,16 +24,18 @@ namespace RPGSandBox.InventorySystem
             inventory.Add(slot);
             Debug.Log($"Inventory count: {GetInventoryCount()}");
         }
-        public void Removing(IAmAnItem item, int qty)
+        public void Removing(IAmInteractable interactable, int qty)
         {
-            if(!Checking(item, qty)) return;
+            IAmAnItem item = interactable as IAmAnItem;
+            if (!Checking(item, qty)) return;
             InventorySlot slot = GetInventorySlot(item);
             slot.RemoveToItemQuantity(qty);
             if (slot.quantity == 0) inventory.Remove(slot);
             
         }
-        public bool Checking(IAmAnItem item, int qty)
+        public bool Checking(IAmInteractable interactable, int qty)
         {
+            IAmAnItem item = interactable as IAmAnItem;
             if (!Contains(item)) return false;
             InventorySlot slot = GetInventorySlot(item);
             if (slot.quantity < qty) return false;

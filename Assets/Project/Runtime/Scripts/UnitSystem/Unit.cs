@@ -15,12 +15,13 @@ namespace RPGSandBox.UnitSystem
         ICanGather gatherer;
 
         IHaveAnAction actioner;
+        IHaveATarget targeter;
         private void Awake()
         {
             Initialization();
         }
 
-        //Actions
+        //Action states?
         public void Move(Vector3 destination)
         {
             mover.Moving(destination);
@@ -31,12 +32,14 @@ namespace RPGSandBox.UnitSystem
         }
         public void Craft(IAmACraftingStation station)
         {
-            crafter.Crafting(this, station);
+            crafter.Crafting(station);
         }
         public void Gather(IAmAnItem item)
         {
-            gatherer.Gathering(this, item);
+            gatherer.Gathering(item);
         }
+
+        //action behaviours?
         public void Store(IAmAnItem item)
         {
             inventory.Storing(item);
@@ -49,6 +52,22 @@ namespace RPGSandBox.UnitSystem
         {
             return inventory.Checking(item, qty);
         }
+        public void Execute(IAmAnAction action)
+        {
+            actioner.Executing(action);
+        }
+        public void Target(IAmInteractable target, float range)
+        {
+            targeter.Targeting(target, range);
+        }
+        public bool CheckIsInRange()
+        {
+            return targeter.CheckingRange();
+        }
+        public void SetToMove(Vector3 destination)
+        {
+            mover.SetToMoving(destination);
+        }
         public bool IsSelected()
         {
             bool isSelected = false;
@@ -57,15 +76,6 @@ namespace RPGSandBox.UnitSystem
                 isSelected = true;
             }
             return isSelected;
-        }
-
-        public void Execute(IAmAnAction action)
-        {
-            actioner.Executing(action);
-        }
-        public void SetToMove(Vector3 destination)
-        {
-            mover.SetToMoving(destination);
         }
         public void Interact(IAmInteractable interact)
         {
@@ -89,6 +99,7 @@ namespace RPGSandBox.UnitSystem
             if (gatherer == null) return false;
             if (crafter == null) return false;
             if (actioner == null) return false;
+            if (targeter == null) return false;
             return true;
         }
         private void Initialize()
@@ -99,6 +110,7 @@ namespace RPGSandBox.UnitSystem
             gatherer = GetComponent<ICanGather>();
             crafter = GetComponent<ICanCraft>();
             actioner = GetComponent<IHaveAnAction>();
+            targeter = GetComponent<IHaveATarget>();
         }
     }
 }

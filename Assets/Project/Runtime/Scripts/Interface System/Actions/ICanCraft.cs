@@ -2,7 +2,7 @@ namespace RPGSandBox.InterfaceSystem
 {
     public interface ICanCraft : IAmAnAction
     {
-        void Crafting(IAmAUnit unit, IAmACraftingStation station);
+        void Crafting(IAmACraftingStation station);
         
     }
 }

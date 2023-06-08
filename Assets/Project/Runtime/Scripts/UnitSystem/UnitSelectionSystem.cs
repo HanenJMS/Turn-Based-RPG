@@ -78,7 +78,7 @@ namespace RPGSandBox.UnitSystem
                     {
                         currentSelectedUnit.Gather(item);
                     }
-                    if(hit.transform.TryGetComponent<IAmACraftingStation>(out IAmACraftingStation station))
+                    if (hit.transform.TryGetComponent<IAmACraftingStation>(out IAmACraftingStation station))
                     {
                         currentSelectedUnit.Craft(station);
                     }
