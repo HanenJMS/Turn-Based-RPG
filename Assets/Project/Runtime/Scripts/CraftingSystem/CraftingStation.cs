@@ -9,10 +9,13 @@ namespace RPGSandBox.CraftingSystem
         [SerializeField] List<CraftingRecipe> availableRecipes = new List<CraftingRecipe>();
         public bool Craft(IAmAUnit crafter, IHaveACraftingRecipe recipe)
         {
-            if (recipe == null) recipe = availableRecipes[0];
-            if (!CanBeCrafted(crafter, recipe)) return false;
-            CraftingExchange(crafter, recipe);
-            Instantiate(recipe.Product().item.prefab, this.transform.position, Quaternion.identity);
+            foreach(CraftingRecipe recipes in availableRecipes)
+            {
+                recipe = recipes;
+                if (!CanBeCrafted(crafter, recipe)) continue;
+                CraftingExchange(crafter, recipe);
+                Instantiate(recipe.Product().item.prefab, this.transform.position, Quaternion.identity);
+            }
             return true;
         }
 
