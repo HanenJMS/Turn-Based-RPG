@@ -1,13 +1,9 @@
-using RPGSandBox.InterfaceSystem;
-using UnityEngine;
+using RPGSandBox.HealthSystem;
+
 namespace RPGSandBox.UnitSystem
 {
-    public class UnitHealth : MonoBehaviour, IHaveHealth
+    public class UnitHealth : Health
     {
-        int currentHealth;
-        int maxHealth;
-
-
     }
 }
 

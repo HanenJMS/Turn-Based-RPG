@@ -1,4 +1,5 @@
 using RPGSandBox.InterfaceSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace RPGSandBox.CraftingSystem
     public class CraftingStation : MonoBehaviour, IAmACraftingStation
     {
         [SerializeField] List<CraftingRecipe> availableRecipes = new List<CraftingRecipe>();
+        int time = 4, currentTimer = 0;
         public bool Craft(IAmAUnit crafter, IHaveACraftingRecipe recipe)
         {
             foreach(CraftingRecipe recipes in availableRecipes)
@@ -14,13 +16,30 @@ namespace RPGSandBox.CraftingSystem
                 recipe = recipes;
                 if (!CanBeCrafted(crafter, recipe)) continue;
                 CraftingExchange(crafter, recipe);
-                Instantiate(recipe.Product().item.prefab, this.transform.position, Quaternion.identity);
+                GameObject craftedItem = Instantiate(recipe.Product().item.prefab, this.transform.position, Quaternion.identity);
+                if (!craftedItem.TryGetComponent(out IAmAnItem item)) continue;
+                item.SetOwner(crafter);
+                currentTimer = time;
+                StartCoroutine(WaitAFewSeconds(crafter, item));
+                
             }
             return true;
         }
 
 
-
+        private IEnumerator WaitAFewSeconds(IAmAUnit crafter, IAmAnItem item)
+        {
+            
+            if (currentTimer > 0)
+            {
+                currentTimer--;
+                yield return new WaitForSeconds(1);
+            }
+            if (item != null)
+            {
+                crafter.Store(item);
+            }
+        }
         private bool CanBeCrafted(IAmAUnit crafter, IHaveACraftingRecipe recipe)
         {
             List<RecipeReference> neededMaterials = recipe.NeededMaterials();

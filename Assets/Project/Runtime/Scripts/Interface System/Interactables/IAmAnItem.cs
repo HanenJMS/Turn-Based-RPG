@@ -7,8 +7,10 @@ namespace RPGSandBox.InterfaceSystem
         int GetQuality();
         void AddingQuantity(int quantity);
         void RemovingQuantity(int quantity);
+        void SetOwner(IAmAUnit owner);
         IAmAnItem PickUpItem();
-        bool ItemHasAnOwner();
+        bool HasAnOwner();
+        bool OwnedBy(IAmAUnit owner);
     }
 }
 

@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 780.8
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 115
+  controlID: 91
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -314,23 +314,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c6faffff
-      m_LastClickedID: -1338
-      m_ExpandedIDs: a4e8e5ff12fbffff10690000
+      m_SelectedIDs: fa760000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 12fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: SM_Env_Rock_01
-        m_OriginalName: SM_Env_Rock_01
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -2459326
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -599,9 +599,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 6.15352, y: 1.845363, z: 14.447641}
+    m_Target: {x: 10.264193, y: 4.667996, z: 14.918937}
     speed: 2
-    m_Value: {x: 6.15352, y: 1.845363, z: 14.447641}
+    m_Value: {x: 10.264193, y: 4.667996, z: 14.918937}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 2
@@ -647,13 +647,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.24670967, y: -0.011920418, z: 0.003038424, w: -0.9689831}
+    m_Target: {x: 0.27104732, y: 0.045901537, z: -0.012936494, w: 0.96135277}
     speed: 2
-    m_Value: {x: -0.24671644, y: -0.011920745, z: 0.0030385074, w: -0.9690097}
+    m_Value: {x: -0.27104732, y: -0.045901537, z: 0.012936494, w: -0.96135277}
   m_Size:
-    m_Target: 3.775848
+    m_Target: 0.35750854
     speed: 2
-    m_Value: 3.775848
+    m_Value: 0.34211344
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -671,7 +671,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.17804319, y: -0.43317577, z: 0.08771735, w: -0.8791581}
+  m_LastSceneViewRotation: {x: 0.044481646, y: -0.70946336, z: 0.044987924, w: 0.70185435}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -853,7 +853,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_SearchFilter:
-    m_NameFilter: copper
+    m_NameFilter: 
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -865,33 +865,33 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Project/Runtime/Prefabs/CraftingTable
+    - Assets/Project/Runtime/Prefabs/Items
     m_Globs: []
-    m_OriginalText: copper
+    m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Project/Runtime/Prefabs/CraftingTable
+  - Assets/Project/Runtime/Prefabs/Items
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Hanen\Desktop\Unity Projects\Turn Based RPG
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 239}
-    m_SelectedIDs: 4e750000
-    m_LastClickedID: 30030
-    m_ExpandedIDs: 000000008c7400008e74000090740000927400009474000096740000987400009a7400009c7400009e740000a0740000b8740000be740000c8740000cc740000de740000527500000686000004ed0000f6f4000000ca9a3b
+    scrollPos: {x: 0, y: 592.6}
+    m_SelectedIDs: 46760000
+    m_LastClickedID: 30278
+    m_ExpandedIDs: 00000000d2750000d4750000d6750000d8750000da750000dc750000de750000e0750000e2750000e4750000e6750000e8750000ea750000ec750000ee750000f0750000f2750000f4750000467600007676000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Items
-      m_OriginalName: Items
+      m_Name: Item_CustomPrefabs
+      m_OriginalName: Item_CustomPrefabs
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 30034
+      m_UserData: 30322
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -908,7 +908,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008c7400008e74000090740000927400009474000096740000987400009a7400009c7400009e740000a0740000
+    m_ExpandedIDs: 00000000d2750000d4750000d6750000d8750000da750000dc750000de750000e0750000e2750000e4750000e6750000e8750000ea750000ec750000ee750000f0750000f2750000f4750000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -939,18 +939,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000829e0000cca000000ac50000a4be00002cc6000030c6000028c600009e7000009870000092700000d870000000000000667600003e7a0000967c00009e7c000066c50000866a0000f0920000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: CraftingTable_CopperQuarry
-      m_OriginalName: CraftingTable_CopperQuarry
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 71228
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
@@ -960,7 +960,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 23.600006}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 16
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 209
@@ -1015,9 +1015,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 481.6
+    y: 472
     width: 1120.6
-    height: 301.8
+    height: 311.4
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1909,16 +1909,16 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 537.60004
+    y: 472
     width: 1120.6
-    height: 245.79999
+    height: 311.4
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -1338
+  m_LastSelectedObjectID: -1300
 --- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52

@@ -19,6 +19,7 @@ namespace RPGSandBox.UnitSystem
         }
         public void Crafting(IAmACraftingStation station)
         {
+
             unit.Target(station, 2f);
             if (!unit.CheckIsInRange())
             {

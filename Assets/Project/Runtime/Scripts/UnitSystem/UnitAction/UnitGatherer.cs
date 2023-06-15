@@ -9,6 +9,7 @@ namespace RPGSandBox.UnitSystem
         IAmAUnit unit = null;
         private void Update()
         {
+            if (target == null) return;
             TryToGather();
         }
         private void Start()
@@ -17,6 +18,7 @@ namespace RPGSandBox.UnitSystem
         }
         public void Gathering(IAmAnItem item)
         {
+            if (item == null) return;
             unit.Target(item, 2f);
             if (!unit.CheckIsInRange())
             {
@@ -24,12 +26,12 @@ namespace RPGSandBox.UnitSystem
                 unit.Execute(this);
                 return;
             }
-            if (!item.ItemHasAnOwner())
+            if (item.OwnedBy(unit) || !item.HasAnOwner())
             {
                 unit.Store(item);
                 unit.Speak("I grabbed something.", true);
             }
-            else if (item.ItemHasAnOwner())
+            else if (!item.OwnedBy(unit) || item.HasAnOwner())
             {
                 unit.Speak("Item was already picked up it seems.", true);
             }
