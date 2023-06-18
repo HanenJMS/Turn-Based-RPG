@@ -72,6 +72,14 @@ namespace RPGSandBox.CraftingSystem
         {
             return this.transform.position;
         }
+        public string DescriptionHeader()
+        {
+            return this.gameObject.name;
+        }
+        public string DescriptionContent()
+        {
+            return this.GetType().ToString();
+        }
     }
 }
 

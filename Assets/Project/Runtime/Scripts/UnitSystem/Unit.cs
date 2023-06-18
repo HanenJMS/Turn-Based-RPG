@@ -84,6 +84,14 @@ namespace RPGSandBox.UnitSystem
         {
             return this.transform.position;
         }
+        public string DescriptionHeader()
+        {
+            return this.gameObject.name;
+        }
+        public string DescriptionContent()
+        {
+            return this.gameObject.GetComponent<IAmAUnit>().GetType().ToString();
+        }
         private void Initialization()
         {
             if (!IsInitialized())

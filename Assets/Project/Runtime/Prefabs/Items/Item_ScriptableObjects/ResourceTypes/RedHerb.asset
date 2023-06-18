@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3806631743390194940, guid: 0ff65718bcc0f674fa1eed64069a88df, type: 3}
   sprite: {fileID: 21300000, guid: 8c22d51ad5e36ce4ab113ecbb83e4df1, type: 3}
-  description: 
+  description: Resource item. Can be used for crafting.
   qualityValue: 0

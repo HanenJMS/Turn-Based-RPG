@@ -68,8 +68,15 @@ namespace RPGSandBox.InventorySystem.Item
         {
 
         }
-
-
+        public string DescriptionHeader()
+        {
+            return itemType.name;
+        }
+        public string DescriptionContent()
+        {
+            string description = itemType.description;
+            return description;    
+        }
     }
 }
 

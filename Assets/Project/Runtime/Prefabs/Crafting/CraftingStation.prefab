@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7734773129386741806}
   - component: {fileID: 8414970350900885681}
   - component: {fileID: 5687180815639134412}
+  - component: {fileID: 1387807770239845677}
   m_Layer: 0
   m_Name: CraftingStation
   m_TagString: Untagged
@@ -76,3 +77,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableRecipes: []
+--- !u!114 &1387807770239845677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2572493462194549842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe748cbf1aa9a8408adc49256361422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
