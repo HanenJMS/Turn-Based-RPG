@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c3da1aa8589c543a303c620a8ef9b1, type: 3}
+  m_Name: RedHerb
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3806631743390194940, guid: 0ff65718bcc0f674fa1eed64069a88df, type: 3}
+  sprite: {fileID: 21300000, guid: 8c22d51ad5e36ce4ab113ecbb83e4df1, type: 3}
+  description: Resource item. Can be used for crafting.
+  qualityValue: 0
