@@ -13,7 +13,14 @@ namespace RPGSandBox.UnitSystem
             currentTarget = target;
             this.range = range;
         }
-
+        public bool IsCurrentlyTargeting(IAmInteractable target)
+        {
+            if(currentTarget == null)
+            {
+                return false;
+            }
+            return currentTarget == target;
+        }
         public bool CheckingRange()
         {
             bool isRanged = true;

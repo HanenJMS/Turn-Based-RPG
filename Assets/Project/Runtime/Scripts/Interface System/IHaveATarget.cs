@@ -4,6 +4,7 @@ namespace RPGSandBox.InterfaceSystem
     {
         void Targeting(IAmInteractable target, float range);
         bool CheckingRange();
+        bool IsCurrentlyTargeting(IAmInteractable target);
     }
 }
 

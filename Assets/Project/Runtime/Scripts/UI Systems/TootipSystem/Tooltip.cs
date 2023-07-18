@@ -20,6 +20,7 @@ namespace RPGSandBox.GameUtilities.GameUISystem
             header = transform.Find("Header").GetComponent<TextMeshProUGUI>();
             content = transform.Find("Content").GetComponent<TextMeshProUGUI>();
             layoutElement = transform.GetComponent<LayoutElement>();
+            fadingCanvas = transform.GetComponent<CanvasGroup>();
         }
 
         private void Update()

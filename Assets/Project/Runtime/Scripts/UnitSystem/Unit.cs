@@ -59,6 +59,10 @@ namespace RPGSandBox.UnitSystem
         {
             targeter.Targeting(target, range);
         }
+        public bool IsTargeting(IAmInteractable target)
+        {
+            return targeter.IsCurrentlyTargeting(target);
+        }
         public bool CheckIsInRange()
         {
             return targeter.CheckingRange();

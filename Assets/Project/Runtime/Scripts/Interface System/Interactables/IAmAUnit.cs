@@ -14,6 +14,7 @@ namespace RPGSandBox.InterfaceSystem
         bool Check(IAmAnItem item, int qty);
         void Execute(IAmAnAction action);
         void Target(IAmInteractable target, float range);
+        bool IsTargeting(IAmInteractable target);
         bool CheckIsInRange();
         void SetToMove(Vector3 destination);
     }

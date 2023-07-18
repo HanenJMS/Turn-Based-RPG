@@ -19,6 +19,7 @@ namespace RPGSandBox.UnitSystem
         public void Gathering(IAmAnItem item)
         {
             if (item == null) return;
+            if (item == target) return;
             unit.Target(item, 2f);
             if (!unit.CheckIsInRange())
             {
@@ -43,6 +44,7 @@ namespace RPGSandBox.UnitSystem
             if (!unit.CheckIsInRange())
             {
                 unit.Move(target.MyPosition());
+
             }
             unit.Gather(target);
         }

@@ -6,6 +6,7 @@ namespace RPGSandBox.UnitSystem
     public class UnitActioner : MonoBehaviour, IHaveAnAction
     {
         IAmAnAction currentAction = null;
+        IHaveATarget targeter;
         public void Executing(IAmAnAction action)
         {
             if (currentAction == action) return;

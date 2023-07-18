@@ -74,6 +74,8 @@ namespace RPGSandBox.UnitSystem
                 RaycastHit hit = MouseWorld.GetMouseRayCastHit();
                 if (currentSelectedUnit != null)
                 {
+                    hit.transform.TryGetComponent<IAmInteractable>(out IAmInteractable interactable);
+                    if (currentSelectedUnit.IsTargeting(interactable)) return;
                     if (hit.transform.TryGetComponent<IAmAnItem>(out IAmAnItem item))
                     {
                         currentSelectedUnit.Gather(item);
