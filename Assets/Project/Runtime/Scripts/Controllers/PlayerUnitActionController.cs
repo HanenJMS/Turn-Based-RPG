@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PlayerUnitActionController : MonoBehaviour
+namespace RPGSandBox.Controller
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerUnitActionController : MonoBehaviour
     {
-        
+        // Start is called before the first frame update
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            HandleRightMouseClick();
+        }
+
+        private static void HandleRightMouseClick()
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
+

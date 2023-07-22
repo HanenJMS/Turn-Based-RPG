@@ -1,18 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
+using RPGSandBox.InterfaceSystem;
+using RPGSandBox.UnitSystem;
 using UnityEngine;
-
-public class PlayerController : MonoBehaviour
+namespace RPGSandBox.Controller
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerController : PlayerControllerSystem
     {
-        
-    }
+        public static PlayerController instance { get; private set; }
+        Vector3 mousePositionStart;
+        private void Awake()
+        {
+            if (instance != null)
+            {
+                Destroy(this.gameObject);
+            }
+            instance = this;
+        }
+        public override void HandleLeftMouseDownStart()
+        {
+            throw new System.NotImplementedException();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override void HandleLeftMouseDownMid()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void HandleLeftMouseDownEnd()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void HandleRightMouseDownStart()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void HandleRightMouseDownMid()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void HandleRightMouseDownEnd()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
+

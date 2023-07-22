@@ -4,11 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitActionSystemUI : MonoBehaviour
+public class UnitActionSystemUI_Old : MonoBehaviour
 {
     [SerializeField] Transform actionButtonPrefab;
     [SerializeField] Transform actionButtonContainer;
-    List<ActionButtonUI> actionButtons = new List<ActionButtonUI>();
+    List<ActionButtonUI_Old> actionButtons = new List<ActionButtonUI_Old>();
     private void Start()
     {
         UnitActionSystem_Old.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSelectedUnitChanged;
@@ -21,7 +21,7 @@ public class UnitActionSystemUI : MonoBehaviour
     }
     void UnitActionSystem_OnSelectedActionChanged()
     {
-        foreach(ActionButtonUI actionButton in actionButtons)
+        foreach(ActionButtonUI_Old actionButton in actionButtons)
         {
             actionButton.UnitActionSystem_OnSelectedUnitChanged();
         }
@@ -34,7 +34,7 @@ public class UnitActionSystemUI : MonoBehaviour
         foreach (BaseAction action in selectedUnit.GetActionList())
         {
             Transform actionButtonTransform = Instantiate(actionButtonPrefab, actionButtonContainer);
-            ActionButtonUI actionButton = actionButtonTransform.GetComponent<ActionButtonUI>();
+            ActionButtonUI_Old actionButton = actionButtonTransform.GetComponent<ActionButtonUI_Old>();
             actionButton.SetBaseAction(action);
             actionButton.UnitActionSystem_OnSelectedUnitChanged();
             actionButtons.Add(actionButton);

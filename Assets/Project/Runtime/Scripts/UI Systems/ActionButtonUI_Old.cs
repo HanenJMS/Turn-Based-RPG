@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ActionButtonUI : MonoBehaviour
+public class ActionButtonUI_Old : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI textMeshProUGUI;
     [SerializeField] Button button;
@@ -31,7 +27,7 @@ public class ActionButtonUI : MonoBehaviour
     }
     void UpdateVisual()
     {
-        if(UnitActionSystem_Old.Instance.GetCurrentAction() == action)
+        if (UnitActionSystem_Old.Instance.GetCurrentAction() == action)
         {
             Show();
         }
