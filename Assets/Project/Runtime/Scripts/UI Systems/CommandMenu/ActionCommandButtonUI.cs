@@ -1,23 +1,30 @@
+using RPGSandBox.Controller;
 using RPGSandBox.InterfaceSystem;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ActionCommandButtonUI : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI textMeshProUGUI;
+    [SerializeField] TextMeshProUGUI actionName, actionTarget;
     [SerializeField] Button button;
     [SerializeField] Image image;
-
-    void SetButtonCommandAction(IAmAnAction action, Vector3 location)
+    IAmAnAction action;
+    public void SetButtonCommandAction(IAmAnAction action, object interactable)
     {
-        textMeshProUGUI.text = $"{action.ToString()},{location.ToString()}";
+        this.action = action;
+        actionName.text = action.ActionName();
+        actionTarget.text = interactable.GetType().ToString();
+        button.onClick.AddListener(() =>
+        {
+            PlayerActionSystem.instance.ExecuteAction(this.action, interactable);
+        });
     }
-    void EnableCommandUI()
+    public void DisableUI()
     {
-
+        Destroy(this);
     }
 
 }

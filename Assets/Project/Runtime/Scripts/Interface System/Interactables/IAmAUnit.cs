@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace RPGSandBox.InterfaceSystem
 {
@@ -17,5 +18,6 @@ namespace RPGSandBox.InterfaceSystem
         bool IsTargeting(IAmInteractable target);
         bool CheckIsInRange();
         void SetToMove(Vector3 destination);
+        List<IAmAnAction> MyActionsList();
     }
 }

@@ -26,6 +26,22 @@ namespace RPGSandBox.UnitSystem
         {
             agent.SetDestination(this.transform.position);
         }
+
+        public void Execute(object target)
+        {
+            Vector3 destination = (Vector3)target;
+            SetToMoving(destination);
+        }
+
+        public bool CanExecute(object target)
+        {
+            return target is Vector3;
+        }
+
+        public string ActionName()
+        {
+            return "Move To";
+        }
     }
 }
 

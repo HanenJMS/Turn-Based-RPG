@@ -78,6 +78,21 @@ namespace RPGSandBox.GameUtilities.GameUISystem
         {
             
         }
+
+        public void Execute(object t)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool CanExecute(object target)
+        {
+            return false;
+        }
+
+        public string ActionName()
+        {
+            return "Say Something";
+        }
     }
 }
 

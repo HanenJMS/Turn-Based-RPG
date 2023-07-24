@@ -53,6 +53,23 @@ namespace RPGSandBox.UnitSystem
         {
             target = null;
         }
+
+        public void Execute(object interactable)
+        {
+            if (interactable == null) return;
+            if ((IAmAnItem)interactable == null) return;
+            Gathering((IAmAnItem)interactable);
+        }
+
+        public bool CanExecute(object target)
+        {
+            return target is IAmAnItem;
+        }
+
+        public string ActionName()
+        {
+            return "Gather";
+        }
     }
 }
 

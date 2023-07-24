@@ -3,14 +3,18 @@ using RPGSandBox.UnitSystem;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 namespace RPGSandBox.Controller
 {
     public class PlayerActionSystem : PlayerControllerSystem
     {
         public static PlayerActionSystem instance { get; private set; }
         List<IAmAnAction> executableActions;
-        public Action OnMouseRightClick;
-        IAmAUnit unit;
+        public Action<object> OnMouseRightClick;
+        public Action OnMouseLeftClick;
+        public Action OnButtonClick;
+        IAmAUnit currentUnit;
         private void Awake()
         {
             if(instance != null)
@@ -24,9 +28,11 @@ namespace RPGSandBox.Controller
         {
             UnitSelectionSystem.Instance.OnSelectedUnit += OnSelectedUnit;
         }
-        public void ExecuteAction(IAmAnAction action)
+        public void ExecuteAction(IAmAnAction action, object target)
         {
-
+            action.Execute(target);
+            OnButtonClick?.Invoke();
+            //currentUnit.Execute(action);
         }
         public List<IAmAnAction> ExecutableActions()
         {
@@ -34,13 +40,16 @@ namespace RPGSandBox.Controller
         }
         void OnSelectedUnit()
         {
-            unit = UnitSelectionSystem.Instance.GetUnit();
-            
+            currentUnit = UnitSelectionSystem.Instance.GetUnit();
+            executableActions = currentUnit.MyActionsList();
         }
 
         public override void HandleLeftMouseDownStart()
         {
-
+            if(!EventSystem.current.IsPointerOverGameObject())
+            {
+                OnMouseLeftClick?.Invoke();
+            }
         }
 
         public override void HandleLeftMouseDownMid()
@@ -53,7 +62,13 @@ namespace RPGSandBox.Controller
 
         public override void HandleRightMouseDownStart()
         {
-            OnMouseRightClick?.Invoke();
+            RaycastHit hit = MouseWorld.GetMouseRayCastHit();
+            if(hit.transform.TryGetComponent(out IAmInteractable interactable))
+            {
+                OnMouseRightClick?.Invoke(interactable);
+                return;
+            }
+            OnMouseRightClick?.Invoke(MouseWorld.GetMousePosition());
         }
 
         public override void HandleRightMouseDownMid()

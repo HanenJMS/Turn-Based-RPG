@@ -50,5 +50,24 @@ namespace RPGSandBox.UnitSystem
         {
             target = null;
         }
+
+        public void Execute(object interactable)
+        {
+            if (interactable == null) return;
+            if ((IAmACraftingStation)interactable == null) return;
+            Crafting((IAmACraftingStation) interactable);
+        }
+
+        public bool CanExecute(object target)
+        {
+            return target is IAmACraftingStation;
+
+
+        }
+
+        public string ActionName()
+        {
+            return "Use machine";
+        }
     }
 }

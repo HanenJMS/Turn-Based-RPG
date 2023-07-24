@@ -1,4 +1,5 @@
 using RPGSandBox.InterfaceSystem;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -122,6 +123,11 @@ namespace RPGSandBox.UnitSystem
             crafter = GetComponent<ICanCraft>();
             actioner = GetComponent<IHaveAnAction>();
             targeter = GetComponent<IHaveATarget>();
+        }
+
+        public List<IAmAnAction> MyActionsList()
+        {
+            return actioner.MyActionsList();
         }
     }
 }
