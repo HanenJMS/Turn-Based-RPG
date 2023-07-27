@@ -1,10 +1,6 @@
 using RPGSandBox.InterfaceSystem;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 namespace RPGSandBox.Controller
 {
@@ -20,15 +16,15 @@ namespace RPGSandBox.Controller
             PlayerActionSystem.instance.OnButtonClick += DeactivateUI;
             PlayerActionSystem.instance.OnMouseLeftClick += DeactivateUI;
             this.gameObject.SetActive(false);
-            
+
         }
         void ActivateUI(object hit)
         {
+            if (PlayerActionSystem.instance.ExecutableActions() == null) return;
             this.gameObject.SetActive(true);
             CommandButtonLayout.GetComponent<RectTransform>().SetPositionAndRotation(Input.mousePosition, this.transform.rotation);
 
             ClearButtons();
-            if (PlayerActionSystem.instance.ExecutableActions() == null) return;
             foreach (IAmAnAction action in PlayerActionSystem.instance.ExecutableActions())
             {
                 if (action.CanExecute(hit))
@@ -46,7 +42,7 @@ namespace RPGSandBox.Controller
         }
         public void ClearButtons()
         {
-            foreach(ActionCommandButtonUI button in ActionCommandButtons)
+            foreach (ActionCommandButtonUI button in ActionCommandButtons)
             {
                 Destroy(button.gameObject);
             }

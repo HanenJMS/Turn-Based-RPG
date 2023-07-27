@@ -179,5 +179,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CommandButtonLayout: {fileID: 3032339857807638986}
-  CommandButtonPrefabs: {fileID: 3732661781281871268, guid: 76fbe09af6c6534459ca0b365936feed,
+  CommandButtonPrefabs: {fileID: 123640897261852521, guid: cb6caab0de7fdbf46a30897d0127a460,
     type: 3}

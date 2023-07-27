@@ -61,8 +61,6 @@ namespace RPGSandBox.UnitSystem
         public bool CanExecute(object target)
         {
             return target is IAmACraftingStation;
-
-
         }
 
         public string ActionName()

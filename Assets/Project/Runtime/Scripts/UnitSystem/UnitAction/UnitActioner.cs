@@ -24,15 +24,6 @@ namespace RPGSandBox.UnitSystem
             myActionsList = new List<IAmAnAction>(gameObject.GetComponents<IAmAnAction>());
             return myActionsList;
         }
-        //private void TryToExecute()
-        //{
-        //    if (target == null) return;
-        //    if (!unit.CheckIsRange())
-        //    {
-        //        unit.Move(target.MyPosition());
-        //    }
-        //    unit.Gather(target);
-        //}
     }
 }
 
