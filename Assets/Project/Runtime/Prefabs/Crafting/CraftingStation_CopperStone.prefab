@@ -11,7 +11,12 @@ PrefabInstance:
     - target: {fileID: 2572493462194549842, guid: 2784232a07318d9439b7756bfda765ce,
         type: 3}
       propertyPath: m_Name
-      value: CraftingTable_CopperQuarry
+      value: CraftingStation_CopperStone
+      objectReference: {fileID: 0}
+    - target: {fileID: 5687180815639134412, guid: 2784232a07318d9439b7756bfda765ce,
+        type: 3}
+      propertyPath: interactableName
+      value: Copper Mine
       objectReference: {fileID: 0}
     - target: {fileID: 5687180815639134412, guid: 2784232a07318d9439b7756bfda765ce,
         type: 3}

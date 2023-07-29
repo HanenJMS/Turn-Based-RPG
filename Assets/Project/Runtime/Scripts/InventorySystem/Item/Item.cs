@@ -77,6 +77,11 @@ namespace RPGSandBox.InventorySystem.Item
             string description = itemType.description;
             return description;    
         }
+
+        public string InteractableName()
+        {
+            return itemType.name;
+        }
     }
 }
 

@@ -15,54 +15,35 @@ namespace RPGSandBox.UnitSystem
         }
         private void Update()
         {
-            TryToCraft();
+            if (!CanExecute(target)) return;
+            if (!unit.CheckIsInRange()) return;
+            Crafting(target);
+            unit.Execute(null);
         }
         public void Crafting(IAmACraftingStation station)
         {
-
-            unit.Target(station, 2f);
-            if (!unit.CheckIsInRange())
-            {
-                target = station;
-                unit.Execute(this);
-                return;
-            }
-            if (!station.Craft(unit, recipe))
-            {
-                unit.Speak("I can't Craft that", true);
-                return;
-            }
-            unit.Speak("Crafting", true);
-            target = null;
-        }
-
-        private void TryToCraft()
-        {
-            if (target == null) return;
-            if (!unit.CheckIsInRange())
-            {
-                unit.Move(target.MyPosition());
-            }
-            unit.Craft(target);
-        }
-
-        public void Cancel()
-        {
-            target = null;
+            target.Craft(unit, recipe);
         }
 
         public void Execute(object interactable)
         {
-            if (interactable == null) return;
-            if ((IAmACraftingStation)interactable == null) return;
-            Crafting((IAmACraftingStation) interactable);
+            if (!CanExecute(interactable)) return;
+            target = interactable as IAmACraftingStation;
+            unit.Target(target, 2f);
+            unit.Execute(this);
+            unit.Move(target.MyPosition());
         }
 
         public bool CanExecute(object target)
         {
-            return target is IAmACraftingStation;
+            if (target == null) return false;
+            if (!(target is IAmACraftingStation)) return false;
+            return true;
         }
-
+        public void Cancel()
+        {
+            target = null;
+        }
         public string ActionName()
         {
             return "Use machine";

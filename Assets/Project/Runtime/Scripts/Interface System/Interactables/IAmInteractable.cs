@@ -6,6 +6,7 @@ namespace RPGSandBox.InterfaceSystem
     {
         Vector3 MyPosition();
         void Interact(IAmInteractable interact);
+        string InteractableName();
         string DescriptionHeader();
         string DescriptionContent();
     }

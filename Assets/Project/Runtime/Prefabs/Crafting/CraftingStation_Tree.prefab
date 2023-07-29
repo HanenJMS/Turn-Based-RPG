@@ -80,6 +80,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5687180815639134412, guid: 2784232a07318d9439b7756bfda765ce,
         type: 3}
+      propertyPath: interactableName
+      value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 5687180815639134412, guid: 2784232a07318d9439b7756bfda765ce,
+        type: 3}
       propertyPath: availableRecipes.Array.size
       value: 1
       objectReference: {fileID: 0}

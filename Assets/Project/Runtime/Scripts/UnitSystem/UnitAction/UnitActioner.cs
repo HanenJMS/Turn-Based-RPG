@@ -7,12 +7,11 @@ namespace RPGSandBox.UnitSystem
     public class UnitActioner : MonoBehaviour, IHaveAnAction
     {
         IAmAnAction currentAction = null;
-        IHaveATarget targeter;
         List<IAmAnAction> myActionsList;
         public void Executing(IAmAnAction action)
         {
             if (currentAction == action) return;
-            if (currentAction != null)
+            if (currentAction is not null)
             {
                 currentAction.Cancel();
             }

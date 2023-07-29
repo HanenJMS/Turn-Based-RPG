@@ -129,6 +129,11 @@ namespace RPGSandBox.UnitSystem
         {
             return actioner.MyActionsList();
         }
+
+        public string InteractableName()
+        {
+            return "Unit";
+        }
     }
 }
 

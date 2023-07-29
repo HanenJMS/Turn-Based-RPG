@@ -8,6 +8,7 @@ namespace RPGSandBox.CraftingSystem
     public class CraftingStation : MonoBehaviour, IAmACraftingStation
     {
         [SerializeField] List<CraftingRecipe> availableRecipes = new List<CraftingRecipe>();
+        [SerializeField] string interactableName;
         int time = 4, currentTimer = 0;
         public bool Craft(IAmAUnit crafter, IHaveACraftingRecipe recipe)
         {
@@ -79,6 +80,11 @@ namespace RPGSandBox.CraftingSystem
         public string DescriptionContent()
         {
             return this.GetType().ToString();
+        }
+
+        public string InteractableName()
+        {
+            return interactableName;
         }
     }
 }

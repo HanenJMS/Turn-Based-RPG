@@ -15,7 +15,14 @@ public class ActionCommandButtonUI : MonoBehaviour
     {
         this.action = action;
         actionName.text = action.ActionName();
+
         actionTarget.text = interactable.ToString();
+        if(interactable is IAmInteractable)
+        {
+            IAmInteractable interactableObject = (IAmInteractable)interactable;
+            actionTarget.text = $"({interactableObject.InteractableName()})";
+        }
+        
         button.onClick.AddListener(() =>
         {
             PlayerActionSystem.instance.ExecuteAction(this.action, interactable);
