@@ -15,6 +15,7 @@ namespace RPGSandBox.Controller
         public Action OnMouseLeftClick;
         public Action OnButtonClick;
         IAmAUnit currentUnit;
+        [SerializeField] float principal = 0, interest = 0, timePeriod = 0, increment = 0; 
         private void Awake()
         {
             if(instance != null)
@@ -54,6 +55,7 @@ namespace RPGSandBox.Controller
 
         public override void HandleLeftMouseDownMid()
         {
+
         }
 
         public override void HandleLeftMouseDownEnd()
@@ -62,21 +64,28 @@ namespace RPGSandBox.Controller
 
         public override void HandleRightMouseDownStart()
         {
+            UpdateActionButtonUI();
+        }
+
+
+
+        public override void HandleRightMouseDownMid()
+        {
+            UpdateActionButtonUI();
+        }
+
+        public override void HandleRightMouseDownEnd()
+        {
+        }
+        private void UpdateActionButtonUI()
+        {
             RaycastHit hit = MouseWorld.GetMouseRayCastHit();
-            if(hit.transform.TryGetComponent(out IAmInteractable interactable))
+            if (hit.transform.TryGetComponent(out IAmInteractable interactable))
             {
                 OnMouseRightClick?.Invoke(interactable);
                 return;
             }
             OnMouseRightClick?.Invoke(MouseWorld.GetMousePosition());
-        }
-
-        public override void HandleRightMouseDownMid()
-        {
-        }
-
-        public override void HandleRightMouseDownEnd()
-        {
         }
     }
 }

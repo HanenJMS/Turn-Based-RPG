@@ -8,6 +8,7 @@ namespace RPGSandBox.UnitSystem
     {
         IAmAnAction currentAction = null;
         List<IAmAnAction> myActionsList;
+        Queue<IAmAnAction> queuedActions = new Queue<IAmAnAction>();
         public void Executing(IAmAnAction action)
         {
             if (currentAction == action) return;

@@ -16,7 +16,10 @@ namespace RPGSandBox.UnitSystem
         {
             if (!CanExecute(target)) return;
             if (!unit.CheckIsInRange()) return;
-            Gathering(target);
+            if(unit.CheckIsInRange())
+            {
+                unit.Gather(target);
+            }
             unit.Execute(null);
         }
         public void Gathering(IAmAnItem item)

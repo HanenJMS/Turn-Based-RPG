@@ -42,6 +42,10 @@ namespace RPGSandBox.UnitSystem
         {
             return "Move To";
         }
+        public bool HasPath()
+        {
+            return agent.hasPath;
+        }
     }
 }
 

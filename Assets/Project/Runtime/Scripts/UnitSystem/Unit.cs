@@ -68,6 +68,10 @@ namespace RPGSandBox.UnitSystem
         {
             return targeter.CheckingRange();
         }
+        public bool HasPath()
+        {
+            return mover.HasPath();
+        }
         public void SetToMove(Vector3 destination)
         {
             mover.SetToMoving(destination);
@@ -85,6 +89,7 @@ namespace RPGSandBox.UnitSystem
         {
 
         }
+        
         public Vector3 MyPosition()
         {
             return this.transform.position;

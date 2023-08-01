@@ -18,6 +18,7 @@ namespace RPGSandBox.InterfaceSystem
         bool IsTargeting(IAmInteractable target);
         bool CheckIsInRange();
         void SetToMove(Vector3 destination);
+        bool HasPath();
         List<IAmAnAction> MyActionsList();
     }
 }

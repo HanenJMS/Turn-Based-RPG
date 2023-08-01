@@ -23,10 +23,10 @@ namespace RPGSandBox.UnitSystem
         }
         public bool CheckingRange()
         {
-            bool isRanged = true;
+            bool isRanged = false;
             if(currentTarget != null)
             {
-                isRanged = Vector3.Distance(currentTarget.MyPosition(), this.transform.position) < range;
+                isRanged = Vector3.Distance(this.transform.position, currentTarget.MyPosition()) < range;
             }
             return isRanged;
         }

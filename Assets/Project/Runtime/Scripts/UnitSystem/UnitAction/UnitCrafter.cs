@@ -17,7 +17,10 @@ namespace RPGSandBox.UnitSystem
         {
             if (!CanExecute(target)) return;
             if (!unit.CheckIsInRange()) return;
-            Crafting(target);
+            if (unit.CheckIsInRange())
+            {
+                unit.Craft(target); 
+            }
             unit.Execute(null);
         }
         public void Crafting(IAmACraftingStation station)
@@ -36,7 +39,7 @@ namespace RPGSandBox.UnitSystem
 
         public bool CanExecute(object target)
         {
-            if (target == null) return false;
+            if (target is null) return false;
             if (!(target is IAmACraftingStation)) return false;
             return true;
         }

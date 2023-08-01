@@ -6,5 +6,6 @@ namespace RPGSandBox.InterfaceSystem
     {
         void Moving(Vector3 destination);
         void SetToMoving(Vector3 destination);
+        bool HasPath();
     }
 }
