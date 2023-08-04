@@ -15,12 +15,10 @@ namespace RPGSandBox.InventorySystem
             if(CheckingInventoryHas(slot))
             {
                 slot.AddToItemQuantity(item.GetQuantity());
-                Debug.Log($"Inventory count: {GetInventoryCount()}");
                 return;
             }
             //inventory.Add(item.ItemType(), slot);
             inventory.Add(slot);
-            Debug.Log($"Inventory count: {GetInventoryCount()}");
         }
         public void Removing(IAmAnItem item, int qty)
         {

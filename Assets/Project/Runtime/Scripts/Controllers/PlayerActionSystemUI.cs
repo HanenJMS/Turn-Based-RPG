@@ -22,6 +22,7 @@ namespace RPGSandBox.Controller
         {
             if (PlayerActionSystem.instance.ExecutableActions() == null) return;
             this.gameObject.SetActive(true);
+
             CommandButtonLayout.GetComponent<RectTransform>().SetPositionAndRotation(Input.mousePosition, this.transform.rotation);
 
             ClearButtons();
