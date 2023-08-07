@@ -1,13 +1,13 @@
 using RPGSandBox.InterfaceSystem;
 using UnityEngine;
 
-public abstract class PlayerControllerSystem : MonoBehaviour
+public abstract class MouseInputController : MonoBehaviour
 {
     IAmInteractable interactOnButtonDown,
                     interactOnButton,
                     interactOnButtonUp;
 
-    private void Update()
+    public virtual void Update()
     {
         HandleLeftClick();
         HandleRightClick();

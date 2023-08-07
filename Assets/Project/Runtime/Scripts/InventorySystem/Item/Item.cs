@@ -70,7 +70,7 @@ namespace RPGSandBox.InventorySystem.Item
         }
         public string DescriptionHeader()
         {
-            return itemType.name;
+            return itemType.itemName;
         }
         public string DescriptionContent()
         {
@@ -80,7 +80,7 @@ namespace RPGSandBox.InventorySystem.Item
 
         public string InteractableName()
         {
-            return itemType.name;
+            return itemType.itemName;
         }
     }
 }

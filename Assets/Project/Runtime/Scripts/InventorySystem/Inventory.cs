@@ -36,6 +36,10 @@ namespace RPGSandBox.InventorySystem
             if (slot.quantity < qty) return false;
             return true;
         }
+        public object GetInventoryList()
+        {
+            return inventory;
+        }
         private bool Contains(IAmAnItem item)
         {
             foreach (InventorySlot slot in inventory)
@@ -77,6 +81,7 @@ namespace RPGSandBox.InventorySystem
             }
             return count;
         }
+
     }
 }
 

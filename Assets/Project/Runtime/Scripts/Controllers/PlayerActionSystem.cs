@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 namespace RPGSandBox.Controller
 {
-    public class PlayerActionSystem : PlayerControllerSystem
+    public class PlayerActionSystem : MouseInputController
     {
         public static PlayerActionSystem instance { get; private set; }
         List<IAmAnAction> executableActions;
@@ -15,7 +15,6 @@ namespace RPGSandBox.Controller
         public Action OnMouseLeftClick;
         public Action OnButtonClick;
         IAmAUnit currentUnit;
-        [SerializeField] float principal = 0, interest = 0, timePeriod = 0, increment = 0; 
         private void Awake()
         {
             if(instance != null)

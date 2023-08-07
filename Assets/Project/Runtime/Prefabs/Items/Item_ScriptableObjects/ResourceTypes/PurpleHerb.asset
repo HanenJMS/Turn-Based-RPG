@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 8955795172921677241, guid: 179f35f04666cae41b330018a5bcf289, type: 3}
   sprite: {fileID: 21300000, guid: 5e019c12e8005544eb4ae6ca8914936f, type: 3}
+  itemName: PurpleHerb
   description: Resource item. Can be used for crafting.
   qualityValue: 0

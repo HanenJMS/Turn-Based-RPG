@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6006393377069982085}
   - component: {fileID: 6006393377069982091}
-  - component: {fileID: 6006393377069982090}
+  - component: {fileID: 5004012171212936632}
   - component: {fileID: 6006393377069982084}
+  - component: {fileID: 1039907485837726984}
   m_Layer: 0
-  m_Name: CraftingFactory
+  m_Name: IndustryFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +48,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6006393377069982090
+--- !u!114 &5004012171212936632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,7 +57,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6006393377069982088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f7aeb1648600c4478494d614e5549c4, type: 3}
+  m_Script: {fileID: 11500000, guid: ce5f078531114ad40a31ddcabab9fc33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6006393377069982084
@@ -71,3 +72,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe748cbf1aa9a8408adc49256361422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1039907485837726984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006393377069982088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534652a02fb6b4f42a8c42af8b30c0c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: []

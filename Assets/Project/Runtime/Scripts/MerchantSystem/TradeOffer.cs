@@ -1,19 +1,13 @@
-using RPGSandBox.InterfaceSystem;
-using System.Collections.Generic;
-using UnityEngine;
+using RPGSandBox.GameInteractionStatesSystem;
 
 namespace RPGSandBox.MerchantSystem
 {
-    public class TradeOffer : MonoBehaviour, IAmATradeOffer
+    [System.Serializable]
+    public class TradeOffer
     {
-        Dictionary<IAmAnItem, int> tradeOffers = new Dictionary<IAmAnItem, int>();
-        public TradeOffer(Dictionary<IAmAnItem, int> tradeOffers = null)
-        {
-            if(tradeOffers != null)
-            {
-                this.tradeOffers = tradeOffers;
-            }
-        }
+        public ItemType item;
+        public int qty;
+        public TradeOfferState tradeType;
     }
 }
 

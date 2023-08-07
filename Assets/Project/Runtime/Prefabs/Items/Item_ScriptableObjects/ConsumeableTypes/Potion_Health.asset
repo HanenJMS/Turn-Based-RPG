@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 8090289830727068612, guid: 6c70c55688d5f78418ffdfab91b495e7, type: 3}
   sprite: {fileID: 21300000, guid: 117b17facff65dc42b1b57deb7c21551, type: 3}
+  itemName: Health Potion
   description: Restores health.
   qualityValue: 0

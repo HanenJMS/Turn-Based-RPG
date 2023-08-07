@@ -3,7 +3,7 @@ using RPGSandBox.UnitSystem;
 using UnityEngine;
 namespace RPGSandBox.Controller
 {
-    public class PlayerController : PlayerControllerSystem
+    public class PlayerController : MouseInputController
     {
         public static PlayerController instance { get; private set; }
         Vector3 mousePositionStart;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RPGSandBox.UnitSystem
 {
-    public class UnitSelectionSystem : PlayerControllerSystem
+    public class UnitSelectionSystem : MouseInputController
     {
         public static UnitSelectionSystem Instance { get; private set; }
         [SerializeField] private LayerMask layerMask;

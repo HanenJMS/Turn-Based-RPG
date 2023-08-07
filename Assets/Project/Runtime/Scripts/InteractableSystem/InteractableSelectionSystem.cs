@@ -1,20 +1,29 @@
 using RPGSandBox.InterfaceSystem;
 using System;
 using UnityEngine;
+
 namespace RPGSandBox.InteractableSystem
 {
-    public class InteractableSelectionSystem : PlayerControllerSystem
+    public class InteractableSelectionSystem : MouseInputController
     {
-        public static InteractableSelectionSystem instance;
+        public static InteractableSelectionSystem instance { get; private set; }
         [SerializeField] IAmInteractable selected;
-        public Action OnInteractableSelected;
+        public Action<IAmInteractable> OnInteractableSelected;
+        public Action OnActivateInteractableUI;
+        
         private void Awake()
         {
-            if(instance != null)
+            if (instance != null)
             {
                 Destroy(this.gameObject);
+                return;
             }
             instance = this;
+        }
+        public override void Update()
+        {
+            base.Update();
+            HandleInputInterfaceKey();
         }
         public override void HandleLeftMouseDownEnd()
         {
@@ -27,10 +36,11 @@ namespace RPGSandBox.InteractableSystem
         public override void HandleLeftMouseDownStart()
         {
             RaycastHit hit = MouseWorld.GetMouseRayCastHit();
-            if(hit.transform.TryGetComponent(out IAmInteractable interactable))
+            selected = null;
+            if (hit.transform.TryGetComponent(out IAmInteractable interactable))
             {
                 selected = interactable;
-                OnInteractableSelected?.Invoke();
+                OnInteractableSelected?.Invoke(selected);
             }
         }
 
@@ -44,6 +54,14 @@ namespace RPGSandBox.InteractableSystem
 
         public override void HandleRightMouseDownStart()
         {
+        }
+
+        public void HandleInputInterfaceKey()
+        {
+            if (Input.GetKeyUp(KeyCode.I))
+            {
+                OnActivateInteractableUI?.Invoke();
+            }
         }
     }
 }

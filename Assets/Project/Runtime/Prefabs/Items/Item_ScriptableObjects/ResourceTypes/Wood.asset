@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3949457540160727877, guid: 10f2530d19c7ba24c86537624b8e7704, type: 3}
   sprite: {fileID: 21300000, guid: 0e1ccb64303778e4081913a6d9cca677, type: 3}
+  itemName: Wood
   description: Resource item. Can be used for crafting.
   qualityValue: 0
