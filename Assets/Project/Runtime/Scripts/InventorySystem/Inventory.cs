@@ -36,7 +36,11 @@ namespace RPGSandBox.InventorySystem
             if (slot.quantity < qty) return false;
             return true;
         }
-        public object GetInventoryList()
+        public IHaveAnInventory GetInventoryList()
+        {
+            return this;
+        }
+        public List<InventorySlot> GetInventorySlots()
         {
             return inventory;
         }

@@ -10,7 +10,8 @@ namespace RPGSandBox.InteractableSystem
         [SerializeField] IAmInteractable selected;
         public Action<IAmInteractable> OnInteractableSelected;
         public Action OnActivateInteractableUI;
-        
+        public Action OnActivateInventoryUI;
+        public Action OnClearUI;
         private void Awake()
         {
             if (instance != null)
@@ -23,7 +24,7 @@ namespace RPGSandBox.InteractableSystem
         public override void Update()
         {
             base.Update();
-            HandleInputInterfaceKey();
+            HandleInterface();
         }
         public override void HandleLeftMouseDownEnd()
         {
@@ -37,6 +38,7 @@ namespace RPGSandBox.InteractableSystem
         {
             RaycastHit hit = MouseWorld.GetMouseRayCastHit();
             selected = null;
+            OnClearUI?.Invoke();
             if (hit.transform.TryGetComponent(out IAmInteractable interactable))
             {
                 selected = interactable;
@@ -56,10 +58,26 @@ namespace RPGSandBox.InteractableSystem
         {
         }
 
-        public void HandleInputInterfaceKey()
+        public void HandleInterface()
+        {
+            HandleInterfaceToggleKey();
+            HandleInterfaceInventoryKey();
+        }
+
+        private void HandleInterfaceInventoryKey()
+        {
+            if(Input.GetKey(KeyCode.B))
+            {
+                OnClearUI?.Invoke();
+                OnActivateInventoryUI?.Invoke();
+            }
+        }
+
+        private void HandleInterfaceToggleKey()
         {
             if (Input.GetKeyUp(KeyCode.I))
             {
+                OnClearUI?.Invoke();
                 OnActivateInteractableUI?.Invoke();
             }
         }

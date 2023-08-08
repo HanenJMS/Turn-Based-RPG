@@ -6,6 +6,7 @@ namespace RPGSandBox.GameUtilities.GameUISystem
     public class TooltipTrigger : MonoBehaviour
     {
         IAmInteractable interactable;
+
         LTDescr delay;
         private void Awake()
         {

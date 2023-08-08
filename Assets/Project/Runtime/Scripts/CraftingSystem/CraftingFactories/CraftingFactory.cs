@@ -37,5 +37,8 @@ public class CraftingFactory : MonoBehaviour, IAmACraftsmanBuilding
         return this.transform.position;
     }
 
-
+    public IHaveAnInventory GetMyInventory()
+    {
+        return inventory;
+    }
 }

@@ -131,6 +131,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1039907485837726984, guid: 3aa6cefb8f6e9b94eaab7a450e0fdc7a,
+        type: 3}
+      propertyPath: inventory.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5004012171212936632, guid: 3aa6cefb8f6e9b94eaab7a450e0fdc7a,
         type: 3}
       propertyPath: industry
@@ -3624,10 +3629,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 993365507c49c1845834757b0968e58d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  principal: 0
-  interest: 0
-  timePeriod: 0
-  increment: 0
 --- !u!1001 &1525558012
 PrefabInstance:
   m_ObjectHideFlags: 0

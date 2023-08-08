@@ -1,14 +1,11 @@
-using Codice.Client.Selector;
 using RPGSandBox.InteractableSystem;
 using RPGSandBox.InterfaceSystem;
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace RPGSandBox.GameUI
 {
-    public class InteractableSystemUI : MonoBehaviour
+    public class InformationSystemUI : MonoBehaviour
     {
         [SerializeField] TextMeshProUGUI Header;
         [SerializeField] TextMeshProUGUI Body;
@@ -17,6 +14,7 @@ namespace RPGSandBox.GameUI
         {
             InteractableSelectionSystem.instance.OnActivateInteractableUI += ToggleUI;
             InteractableSelectionSystem.instance.OnInteractableSelected += Onselected;
+            InteractableSelectionSystem.instance.OnClearUI += ClearUI;
         }
 
         private void Onselected(IAmInteractable interactable)
@@ -35,11 +33,11 @@ namespace RPGSandBox.GameUI
         }
         void ToggleUI()
         {
-            if(this.gameObject.activeSelf)
+            if (this.gameObject.activeSelf)
             {
                 DeactivateUI();
             }
-            else if(!this.gameObject.activeSelf)
+            else if (!this.gameObject.activeSelf)
             {
                 ActivateUI();
             }

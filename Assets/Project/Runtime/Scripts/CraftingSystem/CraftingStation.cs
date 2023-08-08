@@ -86,6 +86,11 @@ namespace RPGSandBox.CraftingSystem
         {
             return interactableName;
         }
+
+        public IHaveAnInventory GetMyInventory()
+        {
+            return null;
+        }
     }
 }
 

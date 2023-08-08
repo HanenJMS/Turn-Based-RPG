@@ -82,6 +82,11 @@ namespace RPGSandBox.InventorySystem.Item
         {
             return itemType.itemName;
         }
+
+        public IHaveAnInventory GetMyInventory()
+        {
+            return null;
+        }
     }
 }
 

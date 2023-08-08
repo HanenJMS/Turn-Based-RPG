@@ -139,6 +139,11 @@ namespace RPGSandBox.UnitSystem
         {
             return "Unit";
         }
+
+        public IHaveAnInventory GetMyInventory()
+        {
+            return inventory;
+        }
     }
 }
 
