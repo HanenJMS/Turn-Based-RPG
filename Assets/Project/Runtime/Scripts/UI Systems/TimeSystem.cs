@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TimeSystem : MonoBehaviour
@@ -8,7 +6,7 @@ public class TimeSystem : MonoBehaviour
     public static TimeSystem Instance { get; private set; }
     public Action OnTimerChanged;
     public Action OnTimerPaused;
-    float day=0f, hour=0f, min=0f, sec=0f;
+    float day = 0f, hour = 0f, min = 0f, sec = 0f;
     float standardMinute = 60f;
     float standardHour = 60f;
     float standardDay = 24f;
@@ -36,15 +34,15 @@ public class TimeSystem : MonoBehaviour
     }
     private void Update()
     {
-        if(onPause)
+        if (onPause)
         {
             return;
         }
-        if(Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             ExecuteSlowMotion(true);
         }
-        if(Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             ExecuteSlowMotion(false);
         }
@@ -53,11 +51,11 @@ public class TimeSystem : MonoBehaviour
     public void PauseTimer()
     {
         onPause = !onPause;
-        if(onPause)
+        if (onPause)
         {
             Time.timeScale = 0f;
         }
-        else if(!onPause)
+        else if (!onPause)
         {
             StopSlowMotion();
         }
@@ -65,7 +63,7 @@ public class TimeSystem : MonoBehaviour
     public void ExecuteSlowMotion(bool update)
     {
         onAction = update;
-        
+
     }
     void StopSlowMotion()
     {
@@ -93,7 +91,7 @@ public class TimeSystem : MonoBehaviour
         {
             sec = 0f;
             min++;
-            
+
         }
         if (min >= standardHour)
         {

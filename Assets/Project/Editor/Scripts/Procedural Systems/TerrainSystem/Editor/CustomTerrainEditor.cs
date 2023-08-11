@@ -1,6 +1,5 @@
 using EditorGUITable;
 using HanensGameLab.Utilities.ProceduralSystems.TerrainSystem;
-using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -137,7 +136,7 @@ public class CustomTerrainEditor : Editor
         if (showPerlin)
         {
             GUILayout.Label("Using Perlin function to Generate Terrain", EditorStyles.boldLabel);
-           
+
             EditorGUILayout.Slider(customTerrainPerlinScaleX, 0, 1, new GUIContent("X Scale"));
             EditorGUILayout.Slider(customTerrainPerlinScaleY, 0, 1, new GUIContent("Y Scale"));
             EditorGUILayout.IntSlider(customTerrainPerlinScaleOffsetX, 0, 10000, new GUIContent("X Offset"));
@@ -181,7 +180,7 @@ public class CustomTerrainEditor : Editor
     {
         EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
         showVoronoi = EditorGUILayout.Foldout(showVoronoi, "Terrain Height Generation Voronoi");
-        if(showVoronoi)
+        if (showVoronoi)
         {
             GUILayout.Label("Using Voronoi function to Generate Terrain", EditorStyles.boldLabel);
             EditorGUILayout.IntSlider(customTerrain_voronoiMountainPeakAmount, 0, 10, new GUIContent("number of mountains"));

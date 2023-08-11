@@ -17,7 +17,7 @@ namespace RPGSandBox.Controller
         IAmAUnit currentUnit;
         private void Awake()
         {
-            if(instance != null)
+            if (instance != null)
             {
                 Destroy(this.gameObject);
                 return;
@@ -46,7 +46,7 @@ namespace RPGSandBox.Controller
 
         public override void HandleLeftMouseDownStart()
         {
-            if(!EventSystem.current.IsPointerOverGameObject())
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
                 OnMouseLeftClick?.Invoke();
             }

@@ -1,6 +1,4 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -19,7 +17,7 @@ public class CameraController : MonoBehaviour
         cineMachineTransposer = cinemachineCamera.GetCinemachineComponent<CinemachineTransposer>();
         targetFollowOffset = cineMachineTransposer.m_FollowOffset;
     }
-    
+
     private void Update()
     {
         HandleCameraMovement();

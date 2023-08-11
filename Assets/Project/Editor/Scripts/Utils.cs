@@ -21,9 +21,9 @@ namespace HanensGameLab.Utilities
         }
         public static Vector3 Voronoi(int heightMapResolution, float minHeight, float maxHeight)
         {
-            return new Vector3(UnityEngine.Random.Range(0, heightMapResolution -1), // x coordinate
+            return new Vector3(UnityEngine.Random.Range(0, heightMapResolution - 1), // x coordinate
                                UnityEngine.Random.Range(minHeight, maxHeight),  // y coordinate
-                               UnityEngine.Random.Range(0, heightMapResolution-1));// z coordinate
+                               UnityEngine.Random.Range(0, heightMapResolution - 1));// z coordinate
         }
     }
 }

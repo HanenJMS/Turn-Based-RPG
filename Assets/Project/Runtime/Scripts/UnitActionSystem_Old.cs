@@ -10,7 +10,7 @@ public class UnitActionSystem_Old : MonoBehaviour
     public static UnitActionSystem_Old Instance { get; private set; }
     BaseAction currentAction = null;
     List<BaseAction> unitActionList = new List<BaseAction>();
-    [SerializeField] RTSController controller;
+    [SerializeField] RTSController_Old controller;
     [SerializeField] IAmAUnit_Old selectedUnit;
     [SerializeField] List<IAmAUnit_Old> selectedUnitList = new List<IAmAUnit_Old>();
     [SerializeField] LayerMask unitLayerMask;
@@ -28,7 +28,7 @@ public class UnitActionSystem_Old : MonoBehaviour
             return;
         }
         Instance = this;
-        controller = GetComponentInChildren<RTSController>();
+        controller = GetComponentInChildren<RTSController_Old>();
     }
 
     // Update is called once per frame

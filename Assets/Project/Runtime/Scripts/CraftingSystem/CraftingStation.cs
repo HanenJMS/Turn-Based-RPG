@@ -12,7 +12,7 @@ namespace RPGSandBox.CraftingSystem
         int time = 4, currentTimer = 0;
         public bool Craft(IAmAUnit crafter, IHaveACraftingRecipe recipe)
         {
-            foreach(CraftingRecipe recipes in availableRecipes)
+            foreach (CraftingRecipe recipes in availableRecipes)
             {
                 recipe = recipes;
                 if (!CanBeCrafted(crafter, recipe)) continue;
@@ -22,7 +22,7 @@ namespace RPGSandBox.CraftingSystem
                 item.SetOwner(crafter);
                 currentTimer = time;
                 StartCoroutine(WaitAFewSeconds(crafter, item));
-                
+
             }
             return true;
         }
@@ -30,7 +30,7 @@ namespace RPGSandBox.CraftingSystem
 
         private IEnumerator WaitAFewSeconds(IAmAUnit crafter, IAmAnItem item)
         {
-            
+
             if (currentTimer > 0)
             {
                 currentTimer--;
@@ -66,7 +66,7 @@ namespace RPGSandBox.CraftingSystem
         }
         public void Interact(IAmInteractable interact)
         {
-            
+
         }
 
         public Vector3 MyPosition()

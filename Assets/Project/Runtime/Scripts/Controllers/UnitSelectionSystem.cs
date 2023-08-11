@@ -41,7 +41,7 @@ namespace RPGSandBox.UnitSystem
         public override void HandleLeftMouseDownStart()
         {
             RaycastHit hit = MouseWorld.GetMouseRayCastHit();
-            if(hit.transform.TryGetComponent(out IAmAUnit unit))
+            if (hit.transform.TryGetComponent(out IAmAUnit unit))
             {
                 SetSelectedUnit(unit);
             }
@@ -49,27 +49,27 @@ namespace RPGSandBox.UnitSystem
 
         public override void HandleLeftMouseDownMid()
         {
-            
+
         }
 
         public override void HandleLeftMouseDownEnd()
         {
-            
+
         }
 
         public override void HandleRightMouseDownStart()
         {
-            
+
         }
 
         public override void HandleRightMouseDownMid()
         {
-            
+
         }
 
         public override void HandleRightMouseDownEnd()
         {
-            
+
         }
     }
 }

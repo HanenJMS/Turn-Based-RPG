@@ -13,7 +13,6 @@ namespace RPGSandBox.InventorySystem
             this.item = item;
             this.image.sprite = item.sprite;
             countText.text = $"{count}";
-
         }
     }
 }

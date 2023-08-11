@@ -7,12 +7,12 @@ namespace RPGSandBox.InventorySystem
     {
         //Dictionarys are currently not necessary. But just incase, Dictionary hashing system is already in place.
         //[SerializeField] Dictionary<ItemType, InventorySlot> inventory = new Dictionary<ItemType, InventorySlot>();
-        [SerializeField] List<InventorySlot> inventory = new List<InventorySlot> ();
+        [SerializeField] List<InventorySlot> inventory = new List<InventorySlot>();
         public void Storing(IAmAnItem item)
         {
             if (item == null) return;
             InventorySlot slot = GetInventorySlot(item.PickUpItem());
-            if(CheckingInventoryHas(slot))
+            if (CheckingInventoryHas(slot))
             {
                 slot.AddToItemQuantity(item.GetQuantity());
                 return;
@@ -27,7 +27,7 @@ namespace RPGSandBox.InventorySystem
             InventorySlot slot = GetInventorySlot(item);
             slot.RemoveToItemQuantity(qty);
             if (slot.quantity == 0) inventory.Remove(slot);
-            
+
         }
         public bool Checking(IAmAnItem item, int qty)
         {
@@ -79,7 +79,7 @@ namespace RPGSandBox.InventorySystem
         private int GetInventoryCount()
         {
             int count = 0;
-            foreach(InventorySlot slot in inventory)
+            foreach (InventorySlot slot in inventory)
             {
                 count += slot.item.GetQuantity();
             }

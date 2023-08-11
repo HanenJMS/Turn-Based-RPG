@@ -1,21 +1,14 @@
-using RPGSandBox.InterfaceSystem;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 public class MouseWorld : MonoBehaviour
 {
     static MouseWorld instance;
-    
+
     [SerializeField] LayerMask mousePlaneLayerMask;
 
     private void Awake()
     {
-        if(instance != null)
+        if (instance != null)
         {
             Destroy(this.gameObject);
         }

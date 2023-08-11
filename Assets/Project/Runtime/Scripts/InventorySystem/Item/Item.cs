@@ -52,12 +52,12 @@ namespace RPGSandBox.InventorySystem.Item
         }
         public void SetOwner(IAmAUnit owner)
         {
-            if(!OwnedBy(owner))
+            if (!OwnedBy(owner))
                 this.owner = owner;
         }
         public IAmAnItem PickUpItem()
         {
-            
+
             IAmAnItem item = this;
             if (item == null) return null;
             //this.gameObject.SetActive(false);
@@ -75,7 +75,7 @@ namespace RPGSandBox.InventorySystem.Item
         public string DescriptionContent()
         {
             string description = itemType.description;
-            return description;    
+            return description;
         }
 
         public string InteractableName()

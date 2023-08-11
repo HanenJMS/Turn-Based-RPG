@@ -76,7 +76,7 @@ namespace RPGSandBox.GameUtilities.GameUISystem
 
         public void Cancel()
         {
-            
+
         }
 
         public void Execute(object t)

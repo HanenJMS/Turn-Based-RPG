@@ -11,7 +11,7 @@ public class CraftingFactory : MonoBehaviour, IAmACraftsmanBuilding
     {
         inventory = GetComponent<IHaveAnInventory>();
     }
-    
+
     public string DescriptionContent()
     {
         return "Crafting Factory";
@@ -24,7 +24,7 @@ public class CraftingFactory : MonoBehaviour, IAmACraftsmanBuilding
 
     public void Interact(IAmInteractable interact)
     {
-        
+
     }
 
     public string InteractableName()

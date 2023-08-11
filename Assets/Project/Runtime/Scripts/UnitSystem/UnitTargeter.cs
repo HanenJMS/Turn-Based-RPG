@@ -15,7 +15,7 @@ namespace RPGSandBox.UnitSystem
         }
         public bool IsCurrentlyTargeting(IAmInteractable target)
         {
-            if(currentTarget == null)
+            if (currentTarget == null)
             {
                 return false;
             }
@@ -24,7 +24,7 @@ namespace RPGSandBox.UnitSystem
         public bool CheckingRange()
         {
             bool isRanged = false;
-            if(currentTarget != null)
+            if (currentTarget != null)
             {
                 isRanged = Vector3.Distance(this.transform.position, currentTarget.MyPosition()) < range;
             }

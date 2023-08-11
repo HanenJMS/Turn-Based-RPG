@@ -1,5 +1,3 @@
-using RPGSandBox.InterfaceSystem;
-using RPGSandBox.UnitSystem;
 using UnityEngine;
 namespace RPGSandBox.Controller
 {

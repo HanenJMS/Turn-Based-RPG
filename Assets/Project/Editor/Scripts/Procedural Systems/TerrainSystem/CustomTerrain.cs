@@ -167,7 +167,7 @@ namespace HanensGameLab.Utilities.ProceduralSystems.TerrainSystem
                     if (!(x == peak.x && y == peak.z))
                     {
                         float distanceToPeak = Vector2.Distance(peakLocation, new Vector2(x, y)) / maxDistance;
-                        float h = peak.y - distanceToPeak * fallOffset - 
+                        float h = peak.y - distanceToPeak * fallOffset -
                                 Mathf.Pow(distanceToPeak, dropOffset);
 
                         if (terrainHeightMap[x, y] < h)

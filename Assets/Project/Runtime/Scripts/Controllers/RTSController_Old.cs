@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 namespace RPGSandBox.Controller
 {
-    public class RTSController : MonoBehaviour
+    public class RTSController_Old : MonoBehaviour
     {
         [SerializeField] private Transform selectionAreaTransform = null;
         [SerializeField] LayerMask unitLayerMask;

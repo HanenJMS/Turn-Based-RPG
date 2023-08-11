@@ -1,83 +1,81 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using EditorGUITable;
 using UnityEditor;
-using EditorGUITable;
+using UnityEngine;
 
 [CustomEditor(typeof(SimpleExample))]
-public class SimpleExampleEditor : Editor 
+public class SimpleExampleEditor : Editor
 {
 
-	GUITableState tableState;
+    GUITableState tableState;
 
-	bool reorderable = true;
+    bool reorderable = true;
 
-	void OnEnable ()
-	{
-		tableState = new GUITableState("tableState");
-	}
+    void OnEnable()
+    {
+        tableState = new GUITableState("tableState");
+    }
 
-	public override void OnInspectorGUI ()
-	{
-		GUILayout.Label ("Default display", EditorStyles.boldLabel);
-		EditorGUILayout.PropertyField (serializedObject.FindProperty("simpleObjects"), true);
+    public override void OnInspectorGUI()
+    {
+        GUILayout.Label("Default display", EditorStyles.boldLabel);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("simpleObjects"), true);
 
-		GUILayout.Space (20f);
+        GUILayout.Space(20f);
 
-		GUILayout.Label ("Table display", EditorStyles.boldLabel);
-		DrawObjectsTable ();
-	}
+        GUILayout.Label("Table display", EditorStyles.boldLabel);
+        DrawObjectsTable();
+    }
 
-	void DrawSimple ()
-	{
-		reorderable = EditorGUILayout.Toggle ("Reorderable", reorderable);
-		tableState = GUITableLayout.DrawTable (
-			tableState, 
-			serializedObject.FindProperty("simpleObjects"), 
-			GUITableOption.Reorderable(reorderable));
-	}
+    void DrawSimple()
+    {
+        reorderable = EditorGUILayout.Toggle("Reorderable", reorderable);
+        tableState = GUITableLayout.DrawTable(
+            tableState,
+            serializedObject.FindProperty("simpleObjects"),
+            GUITableOption.Reorderable(reorderable));
+    }
 
-	void DrawObjectsTable ()
-	{
+    void DrawObjectsTable()
+    {
 
-		GUILayout.Label ("Simply Display the Whole list (click to sort, drag to resize)", EditorStyles.boldLabel);
+        GUILayout.Label("Simply Display the Whole list (click to sort, drag to resize)", EditorStyles.boldLabel);
 
-		DrawSimple ();
+        DrawSimple();
 
-		GUILayout.Space (20f);
+        GUILayout.Space(20f);
 
-		GUILayout.BeginHorizontal ();
-		GUILayout.Label ("Customize the properties", EditorStyles.boldLabel, GUILayout.Width(170f));
-		if (GUILayout.Button("Window Example", GUILayout.Width (120f)))
-			EditorWindow.GetWindow<CustomPropertiesWindow>().Show();
-		GUILayout.EndHorizontal ();
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Customize the properties", EditorStyles.boldLabel, GUILayout.Width(170f));
+        if (GUILayout.Button("Window Example", GUILayout.Width(120f)))
+            EditorWindow.GetWindow<CustomPropertiesWindow>().Show();
+        GUILayout.EndHorizontal();
 
-		GUILayout.Space (10f);
+        GUILayout.Space(10f);
 
-		GUILayout.BeginHorizontal ();
-		GUILayout.Label ("Customize the columns", EditorStyles.boldLabel, GUILayout.Width(170f));
-		if (GUILayout.Button("Window Example", GUILayout.Width (120f)))
-			EditorWindow.GetWindow<CustomColumnsWindow>().Show();
-		GUILayout.EndHorizontal ();
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Customize the columns", EditorStyles.boldLabel, GUILayout.Width(170f));
+        if (GUILayout.Button("Window Example", GUILayout.Width(120f)))
+            EditorWindow.GetWindow<CustomColumnsWindow>().Show();
+        GUILayout.EndHorizontal();
 
-		GUILayout.Space (10f);
+        GUILayout.Space(10f);
 
-		GUILayout.BeginHorizontal ();
-		GUILayout.Label ("Customize the selectors", EditorStyles.boldLabel, GUILayout.Width(170f));
-		if (GUILayout.Button("Window Example", GUILayout.Width (120f)))
-			EditorWindow.GetWindow<CustomSelectorsWindow>().Show();
-		GUILayout.EndHorizontal ();
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Customize the selectors", EditorStyles.boldLabel, GUILayout.Width(170f));
+        if (GUILayout.Button("Window Example", GUILayout.Width(120f)))
+            EditorWindow.GetWindow<CustomSelectorsWindow>().Show();
+        GUILayout.EndHorizontal();
 
-		GUILayout.Space (10f);
+        GUILayout.Space(10f);
 
-		GUILayout.BeginHorizontal ();
-		GUILayout.Label ("Customize the cells", EditorStyles.boldLabel, GUILayout.Width(170f));
-		if (GUILayout.Button("Window Example", GUILayout.Width (120f)))
-			EditorWindow.GetWindow<CustomCellsWindow>().Show();
-		GUILayout.EndHorizontal ();
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Customize the cells", EditorStyles.boldLabel, GUILayout.Width(170f));
+        if (GUILayout.Button("Window Example", GUILayout.Width(120f)))
+            EditorWindow.GetWindow<CustomCellsWindow>().Show();
+        GUILayout.EndHorizontal();
 
-		GUILayout.FlexibleSpace();
+        GUILayout.FlexibleSpace();
 
-	}
+    }
 
 }

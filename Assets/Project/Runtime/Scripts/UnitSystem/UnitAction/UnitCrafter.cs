@@ -19,7 +19,7 @@ namespace RPGSandBox.UnitSystem
             if (!unit.CheckIsInRange()) return;
             if (unit.CheckIsInRange())
             {
-                unit.Craft(target); 
+                unit.Craft(target);
             }
             unit.Execute(null);
         }

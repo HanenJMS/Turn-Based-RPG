@@ -1,7 +1,5 @@
 using RPGSandBox.UtilityAISystem.UtilityAISO;
-using System;
 using System.Collections;
-using System.Diagnostics.Tracing;
 using UnityEngine;
 
 namespace RPGSandBox.UtilityAISystem.UtilityAIActions

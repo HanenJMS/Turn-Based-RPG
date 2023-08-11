@@ -1,34 +1,34 @@
-﻿using System.Collections;
+﻿using EditorGUITable;
 using System.Collections.Generic;
 using UnityEngine;
-using EditorGUITable;
 
 
-public class PropertyAttributeExample : MonoBehaviour {
-	
-	[System.Serializable]
-	public class SimpleObject
-	{
-		public string stringProperty;
-		public float floatProperty;
-		public GameObject objectProperty;
-		public Vector2 v2Property;
-	}
+public class PropertyAttributeExample : MonoBehaviour
+{
 
-	public List<SimpleObject> simpleObjectsDefaultDisplay;
+    [System.Serializable]
+    public class SimpleObject
+    {
+        public string stringProperty;
+        public float floatProperty;
+        public GameObject objectProperty;
+        public Vector2 v2Property;
+    }
 
-	[Table]
-	public List<SimpleObject> simpleObjectsUsingTableAttribute;
+    public List<SimpleObject> simpleObjectsDefaultDisplay;
 
-	[ReorderableTable(new string[] { "stringProperty", "floatProperty:Width(40),Title(float)", "v2Property" }, "RowHeight(22)")]
-	public List<SimpleObject> simpleObjectsUsingReorderableTableAttribute;
+    [Table]
+    public List<SimpleObject> simpleObjectsUsingTableAttribute;
 
-	[Table]
-	public List <Enemy> enemies;
+    [ReorderableTable(new string[] { "stringProperty", "floatProperty:Width(40),Title(float)", "v2Property" }, "RowHeight(22)")]
+    public List<SimpleObject> simpleObjectsUsingReorderableTableAttribute;
 
-	void OnGUI ()
-	{
-		GUILayout.Label ("Select the PropertyAttribute scene object to visualize the table in the inspector");
-	}
+    [Table]
+    public List<Enemy> enemies;
+
+    void OnGUI()
+    {
+        GUILayout.Label("Select the PropertyAttribute scene object to visualize the table in the inspector");
+    }
 
 }

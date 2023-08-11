@@ -1,24 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
-using System.Linq;
+﻿using UnityEditor;
 
 namespace EditorGUITable
 {
-	
-	[CustomPropertyDrawer(typeof(ReorderableTableAttribute))]
-	public class ReorderableTableDrawer : TableDrawer 
-	{
 
-		protected override GUITableOption[] forcedTableOptions
-		{
-			get 
-			{
-				return new GUITableOption[] {GUITableOption.AllowScrollView(false), GUITableOption.Reorderable(true)};
-			}
-		}
+    [CustomPropertyDrawer(typeof(ReorderableTableAttribute))]
+    public class ReorderableTableDrawer : TableDrawer
+    {
 
-	}
+        protected override GUITableOption[] forcedTableOptions => new GUITableOption[] { GUITableOption.AllowScrollView(false), GUITableOption.Reorderable(true) };
+
+    }
 
 }

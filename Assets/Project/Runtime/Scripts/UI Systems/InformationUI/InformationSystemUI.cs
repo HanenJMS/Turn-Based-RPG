@@ -1,20 +1,18 @@
-using RPGSandBox.InteractableSystem;
+using RPGSandBox.Controller;
 using RPGSandBox.InterfaceSystem;
 using TMPro;
 using UnityEngine;
 
 namespace RPGSandBox.GameUI
 {
-    public class InformationSystemUI : MonoBehaviour
+    public class InformationSystemUI : MonoBehaviour, IAmAGameUI
     {
         [SerializeField] TextMeshProUGUI Header;
         [SerializeField] TextMeshProUGUI Body;
         [SerializeField] IAmInteractable selectedInteractable;
         private void Start()
         {
-            InteractableSelectionSystem.instance.OnActivateInteractableUI += ToggleUI;
-            InteractableSelectionSystem.instance.OnInteractableSelected += Onselected;
-            InteractableSelectionSystem.instance.OnClearUI += ClearUI;
+            InterfaceControllerSystem.instance.OnActivateInformationUI += ToggleUI;
         }
 
         private void Onselected(IAmInteractable interactable)
@@ -35,24 +33,24 @@ namespace RPGSandBox.GameUI
         {
             if (this.gameObject.activeSelf)
             {
-                DeactivateUI();
+                DeActivateUI();
             }
             else if (!this.gameObject.activeSelf)
             {
                 ActivateUI();
             }
         }
-        void ClearUI()
+        public void ClearUI()
         {
             Header.text = "";
             Body.text = "";
         }
-        private void ActivateUI()
+        public void ActivateUI()
         {
             this.gameObject.SetActive(true);
             UpdateUI();
         }
-        private void DeactivateUI()
+        public void DeActivateUI()
         {
             UpdateUI();
             this.gameObject.SetActive(false);

@@ -1,6 +1,4 @@
 using RPGSandBox.InterfaceSystem;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +19,7 @@ public class UnitActionSystemUI_Old : MonoBehaviour
     }
     void UnitActionSystem_OnSelectedActionChanged()
     {
-        foreach(ActionButtonUI_Old actionButton in actionButtons)
+        foreach (ActionButtonUI_Old actionButton in actionButtons)
         {
             actionButton.UnitActionSystem_OnSelectedUnitChanged();
         }

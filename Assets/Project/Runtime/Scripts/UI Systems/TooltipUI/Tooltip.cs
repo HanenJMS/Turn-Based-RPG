@@ -25,7 +25,7 @@ namespace RPGSandBox.GameUtilities.GameUISystem
 
         private void Update()
         {
-            if(Application.isEditor)
+            if (Application.isEditor)
             {
                 int headerLength = header.text.Length;
                 int contentLength = content.text.Length;

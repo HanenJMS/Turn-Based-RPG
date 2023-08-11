@@ -2,7 +2,7 @@ namespace RPGSandBox.StatSystem
 {
     public enum StatType
     {
-        Strength, Magic, 
+        Strength, Magic,
     }
 }
 
