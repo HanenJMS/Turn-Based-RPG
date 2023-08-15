@@ -14,7 +14,7 @@ namespace RPGSandBox.GameUtilities.GameUISystem
         }
         private void OnMouseEnter()
         {
-            if (interactable != null)
+            if (interactable != null && TooltipSystem.instance != null)
             {
                 delay = LeanTween.delayedCall(0.5f, () =>
                 {
@@ -25,6 +25,7 @@ namespace RPGSandBox.GameUtilities.GameUISystem
         private void OnMouseExit()
         {
             if (delay == null) return;
+            if (interactable == null || TooltipSystem.instance == null) return;
             LeanTween.cancel(delay.uniqueId);
             TooltipSystem.instance.Hide();
         }

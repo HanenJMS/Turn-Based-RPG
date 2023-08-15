@@ -7,18 +7,6 @@ namespace RPGSandBox.InterfaceSystem
     public interface IAmAUnit_Old : IAmInteractable
     {
         void MoveToDestination(Vector3 destination);
-
-
-
-
-
-
-
-
-
-
-
-
         GameObject gameObject { get; }
         IEnumerable<BaseAction> GetActionList();
         MoveAction GetMoveAction();

@@ -9,24 +9,25 @@ namespace RPGSandBox.GameUI
     {
         [SerializeField] TextMeshProUGUI Header;
         [SerializeField] TextMeshProUGUI Body;
-        [SerializeField] IAmInteractable selectedInteractable;
+        [SerializeField] IAmInteractable interactable;
         private void Start()
         {
-            InterfaceControllerSystem.instance.OnActivateInformationUI += ToggleUI;
+            InterfaceControllerSystem.Instance.OnActivateInformationUI += ToggleUI;
+            InteractableControllerSystem.Instance.OnInteractableSelcted += Onselected;
         }
 
-        private void Onselected(IAmInteractable interactable)
+        private void Onselected()
         {
-            selectedInteractable = interactable;
+            this.interactable = InteractableControllerSystem.Instance.GetSelected();
             UpdateUI();
         }
         void UpdateUI()
         {
             ClearUI();
-            if (selectedInteractable != null)
+            if (interactable != null)
             {
-                Header.text = selectedInteractable.InteractableName();
-                Body.text = selectedInteractable.DescriptionContent();
+                Header.text = interactable.InteractableName();
+                Body.text = interactable.DescriptionContent();
             }
         }
         void ToggleUI()

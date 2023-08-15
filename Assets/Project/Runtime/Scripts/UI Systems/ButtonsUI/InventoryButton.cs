@@ -11,7 +11,7 @@ namespace RPGSandBox.GameUI
             closeButton = GetComponentInChildren<Button>();
             closeButton.onClick.AddListener(() =>
             {
-                InterfaceControllerSystem.instance.OnActivateInventoryUI();
+                InterfaceControllerSystem.Instance.OnActivateInventoryUI();
             });
         }
     }

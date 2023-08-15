@@ -33,7 +33,7 @@ RectTransform:
   m_Children:
   - {fileID: 2079364058026296284}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -72,7 +72,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 32520
+  m_SortingOrder: 32767
   m_TargetDisplay: 0
 --- !u!114 &443532241772452054
 MonoBehaviour:
@@ -138,12 +138,12 @@ PrefabInstance:
     - target: {fileID: 5869893536997967252, guid: cb6ed44eb21b29747abcb85c9da007ce,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 1.0371835
       objectReference: {fileID: 0}
     - target: {fileID: 5869893536997967252, guid: cb6ed44eb21b29747abcb85c9da007ce,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 2.5619068
       objectReference: {fileID: 0}
     - target: {fileID: 5869893536997967252, guid: cb6ed44eb21b29747abcb85c9da007ce,
         type: 3}
@@ -218,12 +218,12 @@ PrefabInstance:
     - target: {fileID: 5869893536997967252, guid: cb6ed44eb21b29747abcb85c9da007ce,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -705.2342
+      value: 573.81165
       objectReference: {fileID: 0}
     - target: {fileID: 5869893536997967252, guid: cb6ed44eb21b29747abcb85c9da007ce,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -396.6942
+      value: 1237.144
       objectReference: {fileID: 0}
     - target: {fileID: 5869893536997967252, guid: cb6ed44eb21b29747abcb85c9da007ce,
         type: 3}

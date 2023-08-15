@@ -6,7 +6,7 @@ public class CraftingFactory : MonoBehaviour, IAmACraftsmanBuilding
 {
     List<IAmACraftingJob> craftingJobs = new List<IAmACraftingJob>();
     IHaveAnInventory inventory;
-    IAmAMerchant merchant;
+    IAmATrader merchant;
     private void Awake()
     {
         inventory = GetComponent<IHaveAnInventory>();

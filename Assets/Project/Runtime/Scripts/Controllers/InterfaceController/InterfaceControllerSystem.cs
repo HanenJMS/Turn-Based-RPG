@@ -5,17 +5,17 @@ namespace RPGSandBox.Controller
 {
     public class InterfaceControllerSystem : MonoBehaviour
     {
-        public static InterfaceControllerSystem instance { get; private set; }
+        public static InterfaceControllerSystem Instance { get; private set; }
         public Action OnActivateInventoryUI;
         public Action OnActivateInformationUI;
         private void Awake()
         {
-            if (instance != null)
+            if (Instance != null)
             {
                 Destroy(this.gameObject);
                 return;
             }
-            instance = this;
+            Instance = this;
         }
         private void Update()
         {

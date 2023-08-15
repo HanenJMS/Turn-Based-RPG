@@ -16,11 +16,10 @@ namespace RPGSandBox.GameUI
         IAmAUnit selectedUnit;
         [SerializeField] IHaveAnInventory selectedInventory;
         [SerializeField] List<ItemSlotUI> slots = new List<ItemSlotUI>();
-        [SerializeField] float gridScale = 50f;
         private void Start()
         {
             UnitSelectionSystem.Instance.OnSelectedUnit += OnselectedInteractable;
-            InterfaceControllerSystem.instance.OnActivateInventoryUI += ActivateUI;
+            InterfaceControllerSystem.Instance.OnActivateInventoryUI += ActivateUI;
         }
 
         public void ActivateUI()
@@ -37,8 +36,6 @@ namespace RPGSandBox.GameUI
 
                     ItemSlotUI slotUI = ui.GetComponent<ItemSlotUI>();
                     slotUI.SetItem(inventorySlot.item.ItemType(), inventorySlot.item.GetQuantity());
-                    slotUI.GetComponent<LayoutElement>().minHeight = gridScale;
-                    slotUI.GetComponent<LayoutElement>().minWidth = gridScale;
                     slots.Add(slotUI);
                 }
             }
@@ -62,8 +59,6 @@ namespace RPGSandBox.GameUI
             selectedUnit = UnitSelectionSystem.Instance.GetUnit();
             selectedInventory = selectedUnit.GetMyInventory();
         }
-
-
     }
 }
 

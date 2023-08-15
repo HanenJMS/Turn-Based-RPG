@@ -1,6 +1,6 @@
 namespace RPGSandBox.InterfaceSystem
 {
-    public interface IAmAMerchant : IAmInteractable
+    public interface IAmATrader : IAmInteractable
     {
 
 
