@@ -2,7 +2,7 @@ using RPGSandBox.InterfaceSystem;
 using System;
 using UnityEngine;
 
-namespace RPGSandBox.UnitSystem
+namespace RPGSandBox.Controller
 {
     public class UnitSelectionSystem : MouseInputController
     {

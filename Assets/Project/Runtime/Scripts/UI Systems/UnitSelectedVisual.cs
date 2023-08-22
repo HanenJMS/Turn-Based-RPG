@@ -1,5 +1,5 @@
+using RPGSandBox.Controller;
 using RPGSandBox.InterfaceSystem;
-using RPGSandBox.UnitSystem;
 using UnityEngine;
 
 public class UnitSelectedVisual : MonoBehaviour
