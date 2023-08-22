@@ -5,7 +5,7 @@ namespace RPGSandBox.UnitSystem
 {
     public class UnitTrader : UnitActionBase, ICanTrade
     {
-        IHaveAnInventory inventory;
+        IAmAnInventory inventory;
         IAmAUnit target;
         IAmAMerchant merchant;
         public void Trade(IAmAUnit target)
@@ -35,7 +35,7 @@ namespace RPGSandBox.UnitSystem
         {
             base.Execute(target);
             SetTarget(target);
-            unit.Move(this.target.MyPosition());
+            unit.Mover().Moving(this.target.MyPosition());
         }
 
 
@@ -43,7 +43,7 @@ namespace RPGSandBox.UnitSystem
         {
 
             this.target = target as IAmAUnit;
-            unit.Target(this.target, 1f);
+            unit.Targeter().Targeting(this.target, 1f);
         }
 
         public override void ExecuteBaseAction()
@@ -54,7 +54,7 @@ namespace RPGSandBox.UnitSystem
         public override void Initialize()
         {
             base.Initialize();
-            inventory = GetComponent<IHaveAnInventory>();
+            inventory = GetComponent<IAmAnInventory>();
             actionName = "Trade";
         }
     }

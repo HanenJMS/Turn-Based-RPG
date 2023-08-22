@@ -14,7 +14,7 @@ namespace RPGSandBox.GameUI
         [SerializeField] RectTransform itemSlot;
         [SerializeField] GridLayoutGroup gridLayout;
         IAmAUnit selectedUnit;
-        [SerializeField] IHaveAnInventory selectedInventory;
+        [SerializeField] IAmAnInventory selectedInventory;
         [SerializeField] List<ItemSlotUI> slots = new List<ItemSlotUI>();
         private void Start()
         {

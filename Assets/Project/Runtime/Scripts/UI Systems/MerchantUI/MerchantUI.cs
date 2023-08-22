@@ -5,7 +5,7 @@ namespace RPGSandBox.GameUI
 {
     public class MerchantUI : MonoBehaviour, IAmAGameUI
     {
-        IHaveAnInventory merchant1, merchant2;
+        IAmAnInventory merchant1, merchant2;
         private void Start()
         {
             GameMerchantSystem.Instance.OnActivateTradeUI += ActivateUICustom;

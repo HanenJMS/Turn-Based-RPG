@@ -9,39 +9,55 @@ namespace RPGSandBox.Controller
 {
     public class PlayerActionController : MouseInputController
     {
-        public static PlayerActionController instance { get; private set; }
-        List<IAmAnAction> executableActions;
+        public static PlayerActionController Instance { get; private set; }
         public Action<object> OnMouseRightClick;
         public Action OnMouseLeftClick;
         public Action OnButtonClick;
         IAmAUnit currentUnit;
         private void Awake()
         {
-            if (instance != null)
+            if (Instance != null)
             {
                 Destroy(this.gameObject);
                 return;
             }
-            instance = this;
+            Instance = this;
         }
         private void Start()
         {
             UnitSelectionSystem.Instance.OnSelectedUnit += OnSelectedUnit;
         }
+        //MODIFY MODIFY MODIFY MODIFY MODIFY!!!!!!! Player Controller enters here. You can have it launch the UI and let the UI Execute the command.
         public void ExecuteAction(IAmAnAction action, object target)
         {
-            action.Execute(target);
+            if(action is ICanTrade)
+            {
+
+            }
+            if(action is ICanMove)
+            {
+
+            }
+            if(action is ICanGather)
+            {
+
+            }
+            if(action is ICanCraft)
+            {
+
+            }
+            action.PlayerExecute(target);
             OnButtonClick?.Invoke();
             currentUnit.Execute(action);
         }
-        public List<IAmAnAction> ExecutableActions()
-        {
-            return executableActions;
-        }
+        public List<IAmAnAction> ExecutableActions() => currentUnit.ActionList();
+        //{
+        //    return executableActions;
+        //}
         public void OnSelectedUnit()
         {
             currentUnit = UnitSelectionSystem.Instance.GetUnit();
-            executableActions = currentUnit.ActionList();
+            //executableActions = currentUnit.ActionList();
         }
 
         public override void HandleLeftMouseDownStart()
