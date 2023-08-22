@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace RPGSandBox.InterfaceSystem
 {
-    public interface IHaveAnInventory
+    public interface IAmAnInventory
     {
         void Storing(IAmAnItem item);
         void Removing(IAmAnItem item, int qty);
         bool Checking(IAmAnItem item, int qty);
-        IHaveAnInventory GetInventoryList();
+        IAmAnInventory GetInventoryList();
         List<InventorySlot> GetInventorySlots();
     }
 }

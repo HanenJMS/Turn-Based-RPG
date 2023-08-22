@@ -7,7 +7,7 @@ namespace RPGSandBox.UnitSystem
 {
     public class Unit : MonoBehaviour, IAmAUnit
     {
-        IHaveAnInventory inventory;
+        IAmAnInventory inventory;
 
         //actions
         ICanMove mover;
@@ -17,82 +17,52 @@ namespace RPGSandBox.UnitSystem
         ICanTrade trader;
 
 
-        IHaveAnAction actioner;
+        IHaveAnAction myAction;
         IHaveATarget targeter;
         private void Awake()
         {
             Initialization();
         }
-
-        //Action states?
-        public void Trade(IAmAUnit target)
+        public ICanTrade Trader()
         {
-            trader.Trade(target);
+            return trader;
         }
-        public void Move(Vector3 destination)
+        public ICanMove Mover()
         {
-            mover.Moving(destination);
+            return mover;
+        }
+        public ICanCraft Crafter()
+        {
+            return crafter;
+        }
+        public ICanGather Gatherer()
+        {
+            return gatherer;
+        }
+        public IHaveATarget Targeter()
+        {
+            return targeter;
+        }
+        public IAmAnInventory Inventory()
+        {
+            return inventory;
         }
         public void Speak(string message, bool priority)
         {
             voice.Saying(message, priority);
         }
-        public void Craft(IAmACraftingStation station)
-        {
-            crafter.Crafting(station);
-        }
-        public void Gather(IAmAnItem item)
-        {
-            gatherer.Gathering(item);
-        }
-
-        //action behaviours?
-        public void Store(IAmAnItem item)
-        {
-            inventory.Storing(item);
-        }
-        public void Remove(IAmAnItem item, int qty)
-        {
-            inventory.Removing(item, qty);
-        }
-        public bool Check(IAmAnItem item, int qty)
-        {
-            return inventory.Checking(item, qty);
-        }
         public void Execute(IAmAnAction action)
         {
-            actioner.Executing(action);
-        }
-        public void Target(object target, float range)
-        {
-            targeter.Targeting(target, range);
-        }
-        public bool IsTargeting(object target)
-        {
-            return targeter.IsCurrentlyTargeting(target);
-        }
-        public bool CheckIsInRange()
-        {
-            return targeter.CheckingRange();
-        }
-        public bool HasPath()
-        {
-            return mover.HasPath();
+            myAction.Executing(action);
         }
         public bool IsSelected()
         {
-            bool isSelected = false;
-            if (UnitSelectionSystem.Instance.GetUnit() == this.gameObject.GetComponent<IAmAUnit>())
-            {
-                isSelected = true;
-            }
-            return isSelected;
+            return UnitSelectionSystem.Instance.GetUnit() == this.gameObject.GetComponent<IAmAUnit>();
         }
         public bool CanInteract(IAmInteractable interact)
         {
             return false;
         }
-
         public Vector3 MyPosition()
         {
             return this.transform.position;
@@ -118,36 +88,29 @@ namespace RPGSandBox.UnitSystem
             if (inventory == null) return false;
             if (gatherer == null) return false;
             if (crafter == null) return false;
-            if (actioner == null) return false;
+            if (myAction == null) return false;
             if (targeter == null) return false;
             if (trader == null) return false;
             return true;
         }
         private void Initialize()
         {
-            inventory = GetComponent<IHaveAnInventory>();
+            inventory = GetComponent<IAmAnInventory>();
             mover = GetComponent<ICanMove>();
             voice = GetComponentInChildren<ICanSpeak>();
             gatherer = GetComponent<ICanGather>();
             crafter = GetComponent<ICanCraft>();
-            actioner = GetComponent<IHaveAnAction>();
+            myAction = GetComponent<IHaveAnAction>();
             targeter = GetComponent<IHaveATarget>();
             trader = GetComponent<ICanTrade>();
         }
-
         public List<IAmAnAction> ActionList()
         {
-            return actioner.MyActionsList();
+            return myAction.MyActionsList();
         }
-
         public string InteractableName()
         {
             return this.gameObject.name;
-        }
-
-        public IHaveAnInventory Inventory()
-        {
-            return inventory;
         }
     }
 }

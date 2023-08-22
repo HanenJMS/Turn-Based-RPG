@@ -15,8 +15,8 @@ namespace RPGSandBox.UnitSystem
         {
             if (!isRunning) return;
             if (!CanExecute(actionTarget)) return;
-            if (!unit.CheckIsInRange()) return;
-            if (unit.CheckIsInRange())
+            if (!unit.Targeter().CheckingRange()) return;
+            if (unit.Targeter().CheckingRange())
             {
                 ExecuteBaseAction();
             }
@@ -45,7 +45,7 @@ namespace RPGSandBox.UnitSystem
         public virtual void Cancel()
         {
             isRunning = false;
-            unit.Target(null, 0f);
+            unit.Targeter().Targeting(null, 0f);
         }
         public abstract void ExecuteBaseAction();
         public virtual void Initialize()

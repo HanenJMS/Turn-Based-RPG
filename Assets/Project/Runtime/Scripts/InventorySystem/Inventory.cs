@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace RPGSandBox.InventorySystem
 {
-    public class Inventory : MonoBehaviour, IHaveAnInventory
+    public class Inventory : MonoBehaviour, IAmAnInventory
     {
         //Dictionarys are currently not necessary. But just incase, Dictionary hashing system is already in place.
         //[SerializeField] Dictionary<ItemType, InventorySlot> inventory = new Dictionary<ItemType, InventorySlot>();
@@ -36,7 +36,7 @@ namespace RPGSandBox.InventorySystem
             if (slot.quantity < qty) return false;
             return true;
         }
-        public IHaveAnInventory GetInventoryList()
+        public IAmAnInventory GetInventoryList()
         {
             return this;
         }

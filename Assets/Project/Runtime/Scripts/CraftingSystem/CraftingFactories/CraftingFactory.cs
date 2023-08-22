@@ -5,11 +5,11 @@ using UnityEngine;
 public class CraftingFactory : MonoBehaviour, IAmACraftsmanBuilding
 {
     List<IAmACraftingJob> craftingJobs = new List<IAmACraftingJob>();
-    IHaveAnInventory inventory;
+    IAmAnInventory inventory;
     IAmATrader merchant;
     private void Awake()
     {
-        inventory = GetComponent<IHaveAnInventory>();
+        inventory = GetComponent<IAmAnInventory>();
     }
 
     public string DescriptionContent()
@@ -37,7 +37,7 @@ public class CraftingFactory : MonoBehaviour, IAmACraftsmanBuilding
         return this.transform.position;
     }
 
-    public IHaveAnInventory GetMyInventory()
+    public IAmAnInventory GetMyInventory()
     {
         return inventory;
     }
