@@ -70,7 +70,7 @@ namespace RPGSandBox.GameUtilities.GameUISystem
             Vector2 textSize = textpro.GetRenderedValues(false);
             Vector2 padding = textSize * 0.20f;
             background.size = textSize + padding;
-            Vector2 offset = new Vector2(-padding.x / 2, 0f);
+            Vector2 offset = new (-padding.x / 2, 0f);
             icon.transform.localPosition = new Vector2(-background.size.x / 2f, 0f) + offset;
         }
 
@@ -105,6 +105,11 @@ namespace RPGSandBox.GameUtilities.GameUISystem
         }
 
         public void SetTarget(object target)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void PlayerExecute(object target)
         {
             throw new System.NotImplementedException();
         }

@@ -12,21 +12,21 @@ namespace RPGSandBox.Controller
         //button
         private void Start()
         {
-            PlayerActionController.instance.OnMouseRightClick += ActivateUI;
-            PlayerActionController.instance.OnButtonClick += DeActivateUI;
-            PlayerActionController.instance.OnMouseLeftClick += DeActivateUI;
+            PlayerActionController.Instance.OnMouseRightClick += ActivateUI;
+            PlayerActionController.Instance.OnButtonClick += DeActivateUI;
+            PlayerActionController.Instance.OnMouseLeftClick += DeActivateUI;
             this.gameObject.SetActive(false);
 
         }
         void ActivateUI(object hit)
         {
-            if (PlayerActionController.instance.ExecutableActions() == null) return;
+            if (PlayerActionController.Instance.ExecutableActions() == null) return;
             ActivateUI();
 
             CommandButtonLayout.GetComponent<RectTransform>().SetPositionAndRotation(Input.mousePosition, this.transform.rotation);
 
             ClearUI();
-            foreach (IAmAnAction action in PlayerActionController.instance.ExecutableActions())
+            foreach (IAmAnAction action in PlayerActionController.Instance.ExecutableActions())
             {
                 if (action.CanExecute((object)hit))
                 {

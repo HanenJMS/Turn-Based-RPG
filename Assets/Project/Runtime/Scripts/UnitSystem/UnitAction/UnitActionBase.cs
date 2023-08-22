@@ -53,6 +53,11 @@ namespace RPGSandBox.UnitSystem
             unit = GetComponent<IAmAUnit>();
             isRunning = false;
         }
+
+        public void PlayerExecute(object target)
+        {
+            
+        }
     }
 }
 
