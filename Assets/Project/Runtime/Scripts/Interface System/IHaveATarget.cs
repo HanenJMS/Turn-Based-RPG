@@ -2,9 +2,9 @@ namespace RPGSandBox.InterfaceSystem
 {
     public interface IHaveATarget
     {
-        void Targeting(IAmInteractable target, float range);
+        void Targeting(object target, float range);
         bool CheckingRange();
-        bool IsCurrentlyTargeting(IAmInteractable target);
+        bool IsCurrentlyTargeting(object target);
     }
 }
 

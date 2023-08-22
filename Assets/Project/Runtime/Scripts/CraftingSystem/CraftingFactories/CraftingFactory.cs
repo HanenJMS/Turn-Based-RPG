@@ -22,9 +22,9 @@ public class CraftingFactory : MonoBehaviour, IAmACraftsmanBuilding
         return "Building for Craftsmen to collect together to craft things. They hold job listings for demand of the factory.";
     }
 
-    public void Interact(IAmInteractable interact)
+    public bool CanInteract(IAmInteractable interact)
     {
-
+        return false;
     }
 
     public string InteractableName()

@@ -4,44 +4,49 @@ using UnityEngine;
 
 namespace RPGSandBox.Controller
 {
-    public class PlayerActionSystemUI : MonoBehaviour
+    public class PlayerActionControllerUI : MonoBehaviour, IAmAGameUI
     {
-        [SerializeField] GameObject CommandButtonLayout;
+        [SerializeField] RectTransform CommandButtonLayout;
         [SerializeField] ActionCommandButtonUI CommandButtonPrefabs;
         List<ActionCommandButtonUI> ActionCommandButtons = new List<ActionCommandButtonUI>();
         //button
         private void Start()
         {
-            PlayerActionSystem.instance.OnMouseRightClick += ActivateUI;
-            PlayerActionSystem.instance.OnButtonClick += DeactivateUI;
-            PlayerActionSystem.instance.OnMouseLeftClick += DeactivateUI;
+            PlayerActionController.instance.OnMouseRightClick += ActivateUI;
+            PlayerActionController.instance.OnButtonClick += DeActivateUI;
+            PlayerActionController.instance.OnMouseLeftClick += DeActivateUI;
             this.gameObject.SetActive(false);
 
         }
         void ActivateUI(object hit)
         {
-            if (PlayerActionSystem.instance.ExecutableActions() == null) return;
-            this.gameObject.SetActive(true);
+            if (PlayerActionController.instance.ExecutableActions() == null) return;
+            ActivateUI();
 
             CommandButtonLayout.GetComponent<RectTransform>().SetPositionAndRotation(Input.mousePosition, this.transform.rotation);
 
-            ClearButtons();
-            foreach (IAmAnAction action in PlayerActionSystem.instance.ExecutableActions())
+            ClearUI();
+            foreach (IAmAnAction action in PlayerActionController.instance.ExecutableActions())
             {
-                if (action.CanExecute(hit))
+                if (action.CanExecute((object)hit))
                 {
-                    ActionCommandButtonUI commandUI = Instantiate(CommandButtonPrefabs, CommandButtonLayout.transform);
+                    ActionCommandButtonUI commandUI = Instantiate(CommandButtonPrefabs, CommandButtonLayout);
                     commandUI.SetButtonCommandAction(action, hit);
                     ActionCommandButtons.Add(commandUI);
                 }
             }
+             
         }
-        void DeactivateUI()
+        public void ActivateUI()
         {
-            ClearButtons();
+            this.gameObject.SetActive(true);
+        }
+        public void DeActivateUI()
+        {
+            ClearUI();
             this.gameObject.SetActive(false);
         }
-        public void ClearButtons()
+        public void ClearUI()
         {
             foreach (ActionCommandButtonUI button in ActionCommandButtons)
             {

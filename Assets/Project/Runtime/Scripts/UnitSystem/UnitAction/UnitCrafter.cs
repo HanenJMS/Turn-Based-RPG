@@ -3,23 +3,17 @@ using UnityEngine;
 
 namespace RPGSandBox.UnitSystem
 {
-    public class UnitCrafter : MonoBehaviour, ICanCraft
+    public class UnitCrafter : UnitActionBase, ICanCraft
     {
-
-        IAmAUnit unit = null;
         IAmACraftingStation target = null;
         IHaveACraftingRecipe recipe = null;
-        private void Awake()
-        {
-            unit = GetComponent<IAmAUnit>();
-        }
         private void Update()
         {
             if (!CanExecute(target)) return;
             if (!unit.CheckIsInRange()) return;
             if (unit.CheckIsInRange())
             {
-                unit.Craft(target);
+                ExecuteBaseAction();
             }
             unit.Execute(null);
         }
@@ -28,28 +22,43 @@ namespace RPGSandBox.UnitSystem
             target.Craft(unit, recipe);
         }
 
-        public void Execute(object interactable)
+        public override void Execute(object target)
         {
-            if (!CanExecute(interactable)) return;
-            target = interactable as IAmACraftingStation;
-            unit.Target(target, 2f);
-            unit.Execute(this);
-            unit.Move(target.MyPosition());
+            base.Execute(target);
+            SetTarget(target);
+            unit.Move(this.target.MyPosition());
         }
 
-        public bool CanExecute(object target)
+        public override bool CanExecute(object target)
         {
             if (target is null) return false;
             if (!(target is IAmACraftingStation)) return false;
             return true;
         }
-        public void Cancel()
+        public override void Cancel()
         {
+            base.Cancel();
             target = null;
         }
-        public string ActionName()
+        
+
+        public override void SetTarget(object target)
         {
-            return "Use machine";
+            this.target = target as IAmACraftingStation;
+            actionTarget = target;
+            unit.Target(this.target, 2f);
+        }
+
+
+        public override void ExecuteBaseAction()
+        {
+            Crafting(target);
+        }
+
+        public override void Initialize()
+        {
+            base.Initialize();
+            actionName = "Use";
         }
     }
 }

@@ -9,10 +9,13 @@ namespace RPGSandBox.UnitSystem
     {
         IHaveAnInventory inventory;
 
+        //actions
         ICanMove mover;
         ICanSpeak voice;
         ICanCraft crafter;
         ICanGather gatherer;
+        ICanTrade trader;
+
 
         IHaveAnAction actioner;
         IHaveATarget targeter;
@@ -22,6 +25,10 @@ namespace RPGSandBox.UnitSystem
         }
 
         //Action states?
+        public void Trade(IAmAUnit target)
+        {
+            trader.Trade(target);
+        }
         public void Move(Vector3 destination)
         {
             mover.Moving(destination);
@@ -56,11 +63,11 @@ namespace RPGSandBox.UnitSystem
         {
             actioner.Executing(action);
         }
-        public void Target(IAmInteractable target, float range)
+        public void Target(object target, float range)
         {
             targeter.Targeting(target, range);
         }
-        public bool IsTargeting(IAmInteractable target)
+        public bool IsTargeting(object target)
         {
             return targeter.IsCurrentlyTargeting(target);
         }
@@ -72,10 +79,6 @@ namespace RPGSandBox.UnitSystem
         {
             return mover.HasPath();
         }
-        public void SetToMove(Vector3 destination)
-        {
-            mover.SetToMoving(destination);
-        }
         public bool IsSelected()
         {
             bool isSelected = false;
@@ -85,9 +88,9 @@ namespace RPGSandBox.UnitSystem
             }
             return isSelected;
         }
-        public void Interact(IAmInteractable interact)
+        public bool CanInteract(IAmInteractable interact)
         {
-
+            return false;
         }
 
         public Vector3 MyPosition()
@@ -117,6 +120,7 @@ namespace RPGSandBox.UnitSystem
             if (crafter == null) return false;
             if (actioner == null) return false;
             if (targeter == null) return false;
+            if (trader == null) return false;
             return true;
         }
         private void Initialize()
@@ -128,19 +132,20 @@ namespace RPGSandBox.UnitSystem
             crafter = GetComponent<ICanCraft>();
             actioner = GetComponent<IHaveAnAction>();
             targeter = GetComponent<IHaveATarget>();
+            trader = GetComponent<ICanTrade>();
         }
 
-        public List<IAmAnAction> MyActionsList()
+        public List<IAmAnAction> ActionList()
         {
             return actioner.MyActionsList();
         }
 
         public string InteractableName()
         {
-            return "Unit";
+            return this.gameObject.name;
         }
 
-        public IHaveAnInventory GetMyInventory()
+        public IHaveAnInventory Inventory()
         {
             return inventory;
         }

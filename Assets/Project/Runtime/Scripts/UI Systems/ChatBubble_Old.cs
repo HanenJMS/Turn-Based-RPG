@@ -93,6 +93,21 @@ namespace RPGSandBox.GameUtilities.GameUISystem
         {
             return "Say Something";
         }
+
+        public void Execute()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetTarget(IAmInteractable target)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetTarget(object target)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
 

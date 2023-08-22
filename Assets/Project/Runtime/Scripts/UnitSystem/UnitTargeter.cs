@@ -5,28 +5,41 @@ namespace RPGSandBox.UnitSystem
 {
     public class UnitTargeter : MonoBehaviour, IHaveATarget
     {
-        IAmInteractable currentTarget;
+        IAmInteractable targetDestination = null;
+        Vector3 worldDestination;
         float range;
 
-        public void Targeting(IAmInteractable target, float range)
+        public void Targeting(object target, float range)
         {
-            currentTarget = target;
+            if(target is IAmInteractable)
+            {
+                targetDestination = target as IAmInteractable;
+                worldDestination = targetDestination.MyPosition();
+            }
+            if(target is Vector3)
+            {
+                worldDestination = (Vector3)target;
+            }
+            if(target is null)
+            {
+                worldDestination = this.transform.position;
+            }
             this.range = range;
         }
-        public bool IsCurrentlyTargeting(IAmInteractable target)
+        public bool IsCurrentlyTargeting(object target)
         {
-            if (currentTarget == null)
+            if (targetDestination == null)
             {
                 return false;
             }
-            return currentTarget == target;
+            return targetDestination == target;
         }
         public bool CheckingRange()
         {
             bool isRanged = false;
-            if (currentTarget != null)
+            if (worldDestination != null)
             {
-                isRanged = Vector3.Distance(this.transform.position, currentTarget.MyPosition()) < range;
+                isRanged = Vector3.Distance(this.transform.position, worldDestination) <= range;
             }
             return isRanged;
         }

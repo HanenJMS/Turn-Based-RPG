@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class ActionCommandButtonUI : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI actionName, actionTarget;
+    [SerializeField] TextMeshProUGUI actionButtonName;
+    string actionName="", actionTarget="";
     [SerializeField] RectTransform actionRectTransform;
     [SerializeField] Button button;
     [SerializeField] Image image;
@@ -15,17 +16,17 @@ public class ActionCommandButtonUI : MonoBehaviour
     public void SetButtonCommandAction(IAmAnAction action, object interactable)
     {
         this.action = action;
-        actionName.text = action.ActionName();
-        actionTarget.text = interactable.ToString();
+        actionTarget = interactable.ToString();
+        actionName = action.ActionName();
         if (interactable is IAmInteractable)
         {
             IAmInteractable interactableObject = (IAmInteractable)interactable;
-            actionTarget.text = $"({interactableObject.InteractableName()})";
+            actionTarget = $"({interactableObject.InteractableName()})";
         }
-
+        actionButtonName.text = $"{actionName}{actionTarget}";
         button.onClick.AddListener(() =>
         {
-            PlayerActionSystem.instance.ExecuteAction(this.action, interactable);
+            PlayerActionController.instance.ExecuteAction(this.action, interactable);
         });
     }
 }

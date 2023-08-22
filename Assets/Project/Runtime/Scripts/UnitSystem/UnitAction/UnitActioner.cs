@@ -9,6 +9,11 @@ namespace RPGSandBox.UnitSystem
         IAmAnAction currentAction = null;
         List<IAmAnAction> myActionsList;
         Queue<IAmAnAction> queuedActions = new Queue<IAmAnAction>();
+        private void Initialize()
+        {
+            myActionsList = new List<IAmAnAction>(gameObject.GetComponents<IAmAnAction>());
+        }
+
         public void Executing(IAmAnAction action)
         {
             if (currentAction == action) return;
@@ -21,7 +26,7 @@ namespace RPGSandBox.UnitSystem
 
         public List<IAmAnAction> MyActionsList()
         {
-            myActionsList = new List<IAmAnAction>(gameObject.GetComponents<IAmAnAction>());
+            Initialize();
             return myActionsList;
         }
     }

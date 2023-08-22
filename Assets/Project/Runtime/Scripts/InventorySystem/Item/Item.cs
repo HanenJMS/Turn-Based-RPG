@@ -64,9 +64,9 @@ namespace RPGSandBox.InventorySystem.Item
             Destroy(this.gameObject);
             return item;
         }
-        public void Interact(IAmInteractable interact)
+        public bool CanInteract(IAmInteractable interact)
         {
-
+            return false;
         }
         public string DescriptionHeader()
         {
@@ -81,11 +81,6 @@ namespace RPGSandBox.InventorySystem.Item
         public string InteractableName()
         {
             return itemType.itemName;
-        }
-
-        public IHaveAnInventory GetMyInventory()
-        {
-            return null;
         }
     }
 }

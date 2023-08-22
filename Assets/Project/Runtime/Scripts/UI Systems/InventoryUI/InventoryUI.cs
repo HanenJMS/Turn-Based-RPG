@@ -57,7 +57,7 @@ namespace RPGSandBox.GameUI
         private void OnselectedInteractable()
         {
             selectedUnit = UnitSelectionSystem.Instance.GetUnit();
-            selectedInventory = selectedUnit.GetMyInventory();
+            selectedInventory = selectedUnit.Inventory();
         }
     }
 }

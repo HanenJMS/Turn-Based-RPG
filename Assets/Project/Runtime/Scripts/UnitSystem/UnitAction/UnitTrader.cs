@@ -1,41 +1,62 @@
 using RPGSandBox.InterfaceSystem;
 using UnityEngine;
+
 namespace RPGSandBox.UnitSystem
 {
-    public class UnitTrader : MonoBehaviour, IAmATrader
+    public class UnitTrader : UnitActionBase, ICanTrade
     {
         IHaveAnInventory inventory;
-        public string DescriptionContent()
+        IAmAUnit target;
+        IAmAMerchant merchant;
+        public void Trade(IAmAUnit target)
         {
-            return "";
+            Debug.Log($"{this.gameObject.name} is trading with {target.InteractableName()}");
+            merchant.Sucker(target);
         }
 
-        public string DescriptionHeader()
+        public override void Cancel()
         {
-            return "";
+            base.Cancel();
+            target.Execute(null);
+            target = null;
         }
 
-        public IHaveAnInventory GetMyInventory()
+        public override bool CanExecute(object target)
         {
-            return null;
+            if (inventory == null)
+            {
+                return false;
+            }
+
+            return target is IAmAUnit;
         }
 
-        public void Interact(IAmInteractable interact)
+        public override void Execute(object target)
         {
-            
-        }
-
-        public string InteractableName()
-        {
-            return "";
-        }
-
-        public Vector3 MyPosition()
-        {
-            return this.transform.position;
+            base.Execute(target);
+            SetTarget(target);
+            unit.Move(this.target.MyPosition());
         }
 
 
+        public override void SetTarget(object target)
+        {
+
+            this.target = target as IAmAUnit;
+            unit.Target(this.target, 1f);
+        }
+
+        public override void ExecuteBaseAction()
+        {
+            Trade(target);
+        }
+
+        public override void Initialize()
+        {
+            base.Initialize();
+            inventory = GetComponent<IHaveAnInventory>();
+            actionName = "Trade";
+        }
     }
 }
 

@@ -64,9 +64,9 @@ namespace RPGSandBox.CraftingSystem
                 crafter.Remove(item, qty);
             }
         }
-        public void Interact(IAmInteractable interact)
+        public bool CanInteract(IAmInteractable interact)
         {
-
+            return false;
         }
 
         public Vector3 MyPosition()
@@ -85,11 +85,6 @@ namespace RPGSandBox.CraftingSystem
         public string InteractableName()
         {
             return interactableName;
-        }
-
-        public IHaveAnInventory GetMyInventory()
-        {
-            return null;
         }
     }
 }

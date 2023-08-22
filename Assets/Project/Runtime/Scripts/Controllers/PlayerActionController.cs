@@ -7,9 +7,9 @@ using UnityEngine.EventSystems;
 
 namespace RPGSandBox.Controller
 {
-    public class PlayerActionSystem : MouseInputController
+    public class PlayerActionController : MouseInputController
     {
-        public static PlayerActionSystem instance { get; private set; }
+        public static PlayerActionController instance { get; private set; }
         List<IAmAnAction> executableActions;
         public Action<object> OnMouseRightClick;
         public Action OnMouseLeftClick;
@@ -32,16 +32,16 @@ namespace RPGSandBox.Controller
         {
             action.Execute(target);
             OnButtonClick?.Invoke();
-            //currentUnit.Execute(action);
+            currentUnit.Execute(action);
         }
         public List<IAmAnAction> ExecutableActions()
         {
             return executableActions;
         }
-        void OnSelectedUnit()
+        public void OnSelectedUnit()
         {
             currentUnit = UnitSelectionSystem.Instance.GetUnit();
-            executableActions = currentUnit.MyActionsList();
+            executableActions = currentUnit.ActionList();
         }
 
         public override void HandleLeftMouseDownStart()

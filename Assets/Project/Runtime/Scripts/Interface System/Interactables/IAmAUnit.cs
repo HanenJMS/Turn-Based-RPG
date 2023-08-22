@@ -6,6 +6,7 @@ namespace RPGSandBox.InterfaceSystem
     public interface IAmAUnit : IAmInteractable
     {
         bool IsSelected();
+        void Trade(IAmAUnit target);
         void Move(Vector3 destination);
         void Speak(string message, bool priority);
         void Craft(IAmACraftingStation station);
@@ -14,11 +15,11 @@ namespace RPGSandBox.InterfaceSystem
         void Remove(IAmAnItem item, int qty);
         bool Check(IAmAnItem item, int qty);
         void Execute(IAmAnAction action);
-        void Target(IAmInteractable target, float range);
-        bool IsTargeting(IAmInteractable target);
+        void Target(object target, float range);
+        bool IsTargeting(object target);
         bool CheckIsInRange();
-        void SetToMove(Vector3 destination);
         bool HasPath();
-        List<IAmAnAction> MyActionsList();
+        IHaveAnInventory Inventory();
+        List<IAmAnAction> ActionList();
     }
 }
