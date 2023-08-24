@@ -9,13 +9,13 @@ namespace RPGSandBox.UnitSystem
     public class Unit : MonoBehaviour, IAmAUnit
     {
         IAmAnInventory inventory;
-
+        IAmATrader trader;
         //actions
-        ICanMove mover;
-        ICanSpeak voice;
-        ICanCraft crafter;
-        ICanGather gatherer;
-        ICanTrade trader;
+        ICanMove movingAction;
+        ICanSpeak speakingAction;
+        ICanCraft craftingAction;
+        ICanGather gatheringAction;
+        ICanTrade tradingAction;
 
 
         IHaveAnAction myAction;
@@ -24,23 +24,23 @@ namespace RPGSandBox.UnitSystem
         {
             Initialization();
         }
-        public ICanTrade Trader()
+        public ICanTrade Trade()
         {
-            return trader;
+            return tradingAction;
         }
-        public ICanMove Mover()
+        public ICanMove Move()
         {
-            return mover;
+            return movingAction;
         }
-        public ICanCraft Crafter()
+        public ICanCraft Craft()
         {
-            return crafter;
+            return craftingAction;
         }
-        public ICanGather Gatherer()
+        public ICanGather Gather()
         {
-            return gatherer;
+            return gatheringAction;
         }
-        public IHaveATarget Targeter()
+        public IHaveATarget Target()
         {
             return targeter;
         }
@@ -48,9 +48,13 @@ namespace RPGSandBox.UnitSystem
         {
             return inventory;
         }
+        public IAmATrader Trader()
+        {
+            return trader;
+        }
         public void Speak(string message, bool priority)
         {
-            voice.Saying(message, priority);
+            speakingAction.Saying(message, priority);
         }
         public void Execute(IAmAnAction action)
         {
@@ -85,25 +89,27 @@ namespace RPGSandBox.UnitSystem
         }
         private bool IsInitialized()
         {
-            if (mover == null) return false;
+            if (movingAction == null) return false;
             if (inventory == null) return false;
-            if (gatherer == null) return false;
-            if (crafter == null) return false;
+            if (trader == null) return false;
+            if (gatheringAction == null) return false;
+            if (craftingAction == null) return false;
             if (myAction == null) return false;
             if (targeter == null) return false;
-            if (trader == null) return false;
+            if (tradingAction == null) return false;
             return true;
         }
         private void Initialize()
         {
             inventory = GetComponent<IAmAnInventory>();
-            mover = GetComponent<ICanMove>();
-            voice = GetComponentInChildren<ICanSpeak>();
-            gatherer = GetComponent<ICanGather>();
-            crafter = GetComponent<ICanCraft>();
+            trader = GetComponent<IAmATrader>();
+            movingAction = GetComponent<ICanMove>();
+            speakingAction = GetComponentInChildren<ICanSpeak>();
+            gatheringAction = GetComponent<ICanGather>();
+            craftingAction = GetComponent<ICanCraft>();
             myAction = GetComponent<IHaveAnAction>();
             targeter = GetComponent<IHaveATarget>();
-            trader = GetComponent<ICanTrade>();
+            tradingAction = GetComponent<ICanTrade>();
         }
         public List<IAmAnAction> ActionList()
         {

@@ -36,7 +36,7 @@ namespace RPGSandBox.UnitSystem
             {
                 destination = (Vector3)target;
             }
-            unit.Mover().Moving(destination);
+            unit.Move().Moving(destination);
         }
         public override void Cancel()
         {

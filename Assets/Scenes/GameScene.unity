@@ -8596,6 +8596,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 954091891}
+  - component: {fileID: 954091892}
   m_Layer: 0
   m_Name: TradingController
   m_TagString: Untagged
@@ -8618,6 +8619,18 @@ Transform:
   m_Father: {fileID: 581870349}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &954091892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954091890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1143b8ae712d9064faa57a1294ba6f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &969699943
 PrefabInstance:
   m_ObjectHideFlags: 0

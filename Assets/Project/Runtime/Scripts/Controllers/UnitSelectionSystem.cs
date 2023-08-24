@@ -1,6 +1,7 @@
 using RPGSandBox.InterfaceSystem;
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace RPGSandBox.Controller
 {
@@ -41,7 +42,7 @@ namespace RPGSandBox.Controller
         public override void HandleLeftMouseDownStart()
         {
             RaycastHit hit = MouseWorld.GetMouseRayCastHit();
-            if (hit.transform.TryGetComponent(out IAmAUnit unit))
+            if (hit.transform.TryGetComponent(out IAmAUnit unit) && !EventSystem.current.IsPointerOverGameObject())
             {
                 SetSelectedUnit(unit);
             }

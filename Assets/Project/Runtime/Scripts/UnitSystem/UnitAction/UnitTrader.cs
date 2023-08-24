@@ -3,15 +3,13 @@ using UnityEngine;
 
 namespace RPGSandBox.UnitSystem
 {
-    public class UnitTrader : UnitActionBase, ICanTrade
+    public class UnitTrader : UnitActionBase, ICanTrade, IAmATrader
     {
         IAmAnInventory inventory;
         IAmAUnit target;
-        IAmAMerchant merchant;
         public void Trade(IAmAUnit target)
         {
             Debug.Log($"{this.gameObject.name} is trading with {target.InteractableName()}");
-            merchant.Sucker(target);
         }
 
         public override void Cancel()
@@ -35,7 +33,7 @@ namespace RPGSandBox.UnitSystem
         {
             base.Execute(target);
             SetTarget(target);
-            unit.Mover().Moving(this.target.MyPosition());
+            unit.Move().Moving(this.target.MyPosition());
         }
 
 
@@ -43,7 +41,7 @@ namespace RPGSandBox.UnitSystem
         {
 
             this.target = target as IAmAUnit;
-            unit.Targeter().Targeting(this.target, 1f);
+            unit.Target().Targeting(this.target, 1f);
         }
 
         public override void ExecuteBaseAction()

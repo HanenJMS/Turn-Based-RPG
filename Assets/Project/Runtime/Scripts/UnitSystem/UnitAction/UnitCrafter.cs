@@ -10,8 +10,8 @@ namespace RPGSandBox.UnitSystem
         private void Update()
         {
             if (!CanExecute(target)) return;
-            if (!unit.Targeter().CheckingRange()) return;
-            if (unit.Targeter().CheckingRange())
+            if (!unit.Target().CheckingRange()) return;
+            if (unit.Target().CheckingRange())
             {
                 ExecuteBaseAction();
             }
@@ -26,7 +26,7 @@ namespace RPGSandBox.UnitSystem
         {
             base.Execute(target);
             SetTarget(target);
-            unit.Mover().Moving(this.target.MyPosition());
+            unit.Move().Moving(this.target.MyPosition());
         }
 
         public override bool CanExecute(object target)
@@ -46,7 +46,7 @@ namespace RPGSandBox.UnitSystem
         {
             this.target = target as IAmACraftingStation;
             actionTarget = target;
-            unit.Targeter().Targeting(this.target, 2f);
+            unit.Target().Targeting(this.target, 2f);
         }
 
 

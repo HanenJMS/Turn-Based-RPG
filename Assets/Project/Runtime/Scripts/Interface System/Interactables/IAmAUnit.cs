@@ -6,12 +6,13 @@ namespace RPGSandBox.InterfaceSystem
     public interface IAmAUnit : IAmInteractable
     {
         bool IsSelected();
-        ICanTrade Trader();
-        ICanMove Mover();
-        ICanCraft Crafter();
-        ICanGather Gatherer();
+        ICanTrade Trade();
+        ICanMove Move();
+        ICanCraft Craft();
+        ICanGather Gather();
         IAmAnInventory Inventory();
-        IHaveATarget Targeter();
+        IAmATrader Trader();
+        IHaveATarget Target();
         void Speak(string message, bool priority);
         void Execute(IAmAnAction action);
         List<IAmAnAction> ActionList();

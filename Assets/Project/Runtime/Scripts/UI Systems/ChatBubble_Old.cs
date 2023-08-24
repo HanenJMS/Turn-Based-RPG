@@ -108,11 +108,6 @@ namespace RPGSandBox.GameUtilities.GameUISystem
         {
             throw new System.NotImplementedException();
         }
-
-        public void PlayerExecute(object target)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
 

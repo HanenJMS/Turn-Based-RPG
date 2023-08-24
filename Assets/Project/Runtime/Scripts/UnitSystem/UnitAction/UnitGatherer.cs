@@ -28,19 +28,19 @@ namespace RPGSandBox.UnitSystem
         {
             this.target = target as IAmAnItem;
             actionTarget = target;
-            unit.Targeter().Targeting(this.target, 1f);
+            unit.Target().Targeting(this.target, 1f);
         }
 
         public override void ExecuteBaseAction()
         {
-            unit.Gatherer().Gathering(target);
+            unit.Gather().Gathering(target);
         }
 
         public override void Execute(object target)
         {
             base.Execute(target);
             SetTarget(target);
-            unit.Mover().Moving(this.target.MyPosition());
+            unit.Move().Moving(this.target.MyPosition());
         }
 
         public override void Initialize()

@@ -15,8 +15,8 @@ namespace RPGSandBox.UnitSystem
         {
             if (!isRunning) return;
             if (!CanExecute(actionTarget)) return;
-            if (!unit.Targeter().CheckingRange()) return;
-            if (unit.Targeter().CheckingRange())
+            if (!unit.Target().CheckingRange()) return;
+            if (unit.Target().CheckingRange())
             {
                 ExecuteBaseAction();
             }
@@ -45,18 +45,13 @@ namespace RPGSandBox.UnitSystem
         public virtual void Cancel()
         {
             isRunning = false;
-            unit.Targeter().Targeting(null, 0f);
+            unit.Target().Targeting(null, 0f);
         }
         public abstract void ExecuteBaseAction();
         public virtual void Initialize()
         {
             unit = GetComponent<IAmAUnit>();
             isRunning = false;
-        }
-
-        public void PlayerExecute(object target)
-        {
-            
         }
     }
 }

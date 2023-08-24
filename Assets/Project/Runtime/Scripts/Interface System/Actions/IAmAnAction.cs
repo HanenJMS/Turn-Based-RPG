@@ -8,7 +8,6 @@ namespace RPGSandBox.InterfaceSystem
         void SetTarget(object target);
         void Cancel();
         string ActionName();
-        void PlayerExecute(object target);
     }
 }
 

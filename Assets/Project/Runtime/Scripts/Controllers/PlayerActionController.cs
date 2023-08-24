@@ -13,7 +13,9 @@ namespace RPGSandBox.Controller
         public Action<object> OnMouseRightClick;
         public Action OnMouseLeftClick;
         public Action OnButtonClick;
+        public Action<object> playerStartsTrade;
         IAmAUnit currentUnit;
+        List<IAmAnAction> actionList;
         private void Awake()
         {
             if (Instance != null)
@@ -32,24 +34,30 @@ namespace RPGSandBox.Controller
         {
             if(action is ICanTrade)
             {
-
+                playerStartsTrade?.Invoke(target);
             }
             if(action is ICanMove)
             {
-
+                PlayerStartsUnit(action, target);
             }
-            if(action is ICanGather)
+            if (action is ICanGather)
             {
-
+                PlayerStartsUnit(action, target);
             }
             if(action is ICanCraft)
             {
-
+                PlayerStartsUnit(action, target);
             }
-            action.PlayerExecute(target);
             OnButtonClick?.Invoke();
+        }
+
+        private void PlayerStartsUnit(IAmAnAction action, object target)
+        {
+            action.Execute(target);
+            
             currentUnit.Execute(action);
         }
+
         public List<IAmAnAction> ExecutableActions() => currentUnit.ActionList();
         //{
         //    return executableActions;
@@ -95,6 +103,7 @@ namespace RPGSandBox.Controller
         private void UpdateActionButtonUI()
         {
             RaycastHit hit = MouseWorld.GetMouseRayCastHit();
+            if (currentUnit == null) return;
             if (hit.transform.TryGetComponent(out IAmInteractable interactable))
             {
                 OnMouseRightClick?.Invoke(interactable);

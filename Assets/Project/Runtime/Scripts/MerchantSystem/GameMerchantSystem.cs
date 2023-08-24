@@ -1,3 +1,4 @@
+using RPGSandBox.Controller;
 using RPGSandBox.InterfaceSystem;
 using System;
 using UnityEngine;
@@ -6,7 +7,7 @@ namespace RPGSandBox.MerchantSystem
     public class GameMerchantSystem : MonoBehaviour
     {
         public static GameMerchantSystem Instance { get; private set; }
-        IAmATrader merchant1, merchant2;
+        IAmATrader merchantPlayerSelected, merchantPlayerSelectedTarget;
         public Action<IAmATrader, IAmATrader> OnActivateTradeUI;
         private void Awake()
         {
@@ -17,11 +18,20 @@ namespace RPGSandBox.MerchantSystem
             }
             Instance = this;
         }
-        public void StartTrade(IAmATrader merchant1, IAmATrader merchant2)
+        private void Start()
         {
-            this.merchant1 = merchant1;
-            this.merchant2 = merchant2;
-            OnActivateTradeUI?.Invoke(merchant1, merchant2);
+            PlayerActionController.Instance.playerStartsTrade += StartTrade;
+            UnitSelectionSystem.Instance.OnSelectedUnit += OnSelectedUnit;
+        }
+        private void OnSelectedUnit()
+        {
+            merchantPlayerSelected = UnitSelectionSystem.Instance.GetUnit().Trader();
+        }
+        public void StartTrade(object target)
+        {
+            IAmAUnit unitTarget = target as IAmAUnit;
+            merchantPlayerSelectedTarget = unitTarget.Trader();
+            OnActivateTradeUI?.Invoke(merchantPlayerSelected, merchantPlayerSelectedTarget);
         }
     }
 }
