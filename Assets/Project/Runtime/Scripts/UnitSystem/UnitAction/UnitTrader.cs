@@ -7,11 +7,15 @@ namespace RPGSandBox.UnitSystem
     {
         IAmAnInventory inventory;
         IAmAUnit target;
+
         public void Trade(IAmAUnit target)
         {
             Debug.Log($"{this.gameObject.name} is trading with {target.InteractableName()}");
         }
-
+        public IAmAnInventory Inventory()
+        {
+            return inventory;
+        }
         public override void Cancel()
         {
             base.Cancel();

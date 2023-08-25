@@ -3,15 +3,17 @@ using RPGSandBox.MerchantSystem;
 using UnityEngine;
 namespace RPGSandBox.GameUI
 {
-    public class MerchantUI : MonoBehaviour, IAmAGameUI
+    public class TradingUI : MonoBehaviour, IAmAGameUI
     {
-        IAmAnInventory merchant1, merchant2;
+        IAmAnInventory playerMerchant, playerMerchantTarget;
         private void Start()
         {
             GameMerchantSystem.Instance.OnActivateTradeUI += ActivateUICustom;
         }
-        void ActivateUICustom(IAmATrader merchant1, IAmATrader merchant2)
+        void ActivateUICustom(IAmATrader playerMerchant, IAmATrader playerMerchantTarget)
         {
+            this.playerMerchant = playerMerchant.Inventory();
+            this.playerMerchantTarget = playerMerchantTarget.Inventory();
             ActivateUI();
         }
         public void ActivateUI()

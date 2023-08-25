@@ -1,5 +1,4 @@
 using RPGSandBox.InterfaceSystem;
-using RPGSandBox.UnitSystem;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,8 +13,9 @@ namespace RPGSandBox.Controller
         public Action OnMouseLeftClick;
         public Action OnButtonClick;
         public Action<object> playerStartsTrade;
-        IAmAUnit currentUnit;
-        List<IAmAnAction> actionList;
+        public Action playerStartsCraft;
+        IAmAUnit playerSelectedUnit;
+        object playerTarget;
         private void Awake()
         {
             if (Instance != null)
@@ -32,39 +32,44 @@ namespace RPGSandBox.Controller
         //MODIFY MODIFY MODIFY MODIFY MODIFY!!!!!!! Player Controller enters here. You can have it launch the UI and let the UI Execute the command.
         public void ExecuteAction(IAmAnAction action, object target)
         {
-            if(action is ICanTrade)
+            playerTarget = target;
+            if (action is ICanTrade)
             {
-                playerStartsTrade?.Invoke(target);
+                playerStartsTrade?.Invoke(playerTarget);
             }
-            if(action is ICanMove)
+            if (action is ICanMove)
             {
-                PlayerStartsUnit(action, target);
+                PlayerStartsActions(action, playerTarget);
             }
             if (action is ICanGather)
             {
-                PlayerStartsUnit(action, target);
+                PlayerStartsActions(action, playerTarget);
             }
-            if(action is ICanCraft)
+            if (action is ICanCraft)
             {
-                PlayerStartsUnit(action, target);
+                playerStartsCraft?.Invoke();
             }
             OnButtonClick?.Invoke();
         }
 
-        private void PlayerStartsUnit(IAmAnAction action, object target)
+        private void PlayerStartsActions(IAmAnAction action, object target)
         {
             action.Execute(target);
-            
-            currentUnit.Execute(action);
+
+            playerSelectedUnit.Execute(action);
         }
 
-        public List<IAmAnAction> ExecutableActions() => currentUnit.ActionList();
+        public List<IAmAnAction> ExecutableActions()
+        {
+            return playerSelectedUnit.ActionList();
+        }
+
         //{
         //    return executableActions;
         //}
         public void OnSelectedUnit()
         {
-            currentUnit = UnitSelectionSystem.Instance.GetUnit();
+            playerSelectedUnit = UnitSelectionSystem.Instance.GetUnit();
             //executableActions = currentUnit.ActionList();
         }
 
@@ -103,10 +108,11 @@ namespace RPGSandBox.Controller
         private void UpdateActionButtonUI()
         {
             RaycastHit hit = MouseWorld.GetMouseRayCastHit();
-            if (currentUnit == null) return;
-            if (hit.transform.TryGetComponent(out IAmInteractable interactable))
+            if (playerSelectedUnit == null) return;
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (hit.transform.TryGetComponent(out IAmInteractable interactableTarget))
             {
-                OnMouseRightClick?.Invoke(interactable);
+                OnMouseRightClick?.Invoke(interactableTarget);
                 return;
             }
             OnMouseRightClick?.Invoke(MouseWorld.GetMousePosition());

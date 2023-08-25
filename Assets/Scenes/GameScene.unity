@@ -5753,6 +5753,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 581870349}
+  - component: {fileID: 581870350}
   m_Layer: 0
   m_Name: MerchantTradingSystem
   m_TagString: Untagged
@@ -5776,6 +5777,18 @@ Transform:
   m_Father: {fileID: 1325485879}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &581870350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581870348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59665e1e1284ac24c86e32b663f300b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &589369001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 397318894104118135, guid: 30d56801807983741baa796a48cc555c,
@@ -10882,50 +10895,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1369313105}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1375417067
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1375417068}
-  - component: {fileID: 1375417069}
-  m_Layer: 0
-  m_Name: MerchantSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1375417068
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375417067}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1375417069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375417067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59665e1e1284ac24c86e32b663f300b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1382347178
 GameObject:
   m_ObjectHideFlags: 0
