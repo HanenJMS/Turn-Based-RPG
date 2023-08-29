@@ -14,7 +14,7 @@ namespace RPGSandBox.UnitSystem
             if(target is IAmInteractable)
             {
                 targetDestination = target as IAmInteractable;
-                worldDestination = targetDestination.MyPosition();
+                worldDestination = targetDestination.GetCurrentWorldPosition();
             }
             if(target is Vector3)
             {

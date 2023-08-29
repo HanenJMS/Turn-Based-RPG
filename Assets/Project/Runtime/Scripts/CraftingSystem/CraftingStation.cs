@@ -19,7 +19,7 @@ namespace RPGSandBox.CraftingSystem
                 CraftingExchange(crafter, recipe);
                 GameObject craftedItem = Instantiate(recipe.Product().item.prefab, this.transform.position, Quaternion.identity);
                 if (!craftedItem.TryGetComponent(out IAmAnItem item)) continue;
-                item.SetOwner(crafter);
+                //item.SetOwner(crafter);
                 currentTimer = time;
                 StartCoroutine(WaitAFewSeconds(crafter, item));
 
@@ -69,7 +69,7 @@ namespace RPGSandBox.CraftingSystem
             return false;
         }
 
-        public Vector3 MyPosition()
+        public Vector3 GetCurrentWorldPosition()
         {
             return this.transform.position;
         }

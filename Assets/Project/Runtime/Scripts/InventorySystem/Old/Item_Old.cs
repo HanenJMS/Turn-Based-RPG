@@ -1,3 +1,4 @@
+using RPGSandBox.InventorySystem;
 using UnityEngine;
 
 public class Item_Old : MonoBehaviour

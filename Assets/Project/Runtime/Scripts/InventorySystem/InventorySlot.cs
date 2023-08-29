@@ -1,27 +1,29 @@
 using RPGSandBox.InterfaceSystem;
+using UnityEngine;
+
 namespace RPGSandBox.InventorySystem
 {
     [System.Serializable]
     public class InventorySlot
     {
-        public IAmAnItem item;
-        public string itemName;
-        public int quantity;
-        public InventorySlot(IAmAnItem item)
+        [SerializeField] Item item;
+        [SerializeField] int quantity = 0;
+        public InventorySlot(Item item, int quantity = 0)
         {
             this.item = item;
-            this.itemName = item.ItemType().ToString();
-            this.quantity = item.GetQuantity();
+            this.quantity = quantity;
         }
+
+        public string ItemName() => item.ItemType().itemName;
+        public IAmAnItem Item() => item;
+        public int Quantity() => quantity;
         public void AddToItemQuantity(int quantity)
         {
-            item.AddingQuantity(quantity);
-            this.quantity = item.GetQuantity();
+            this.quantity += quantity;
         }
         public void RemoveToItemQuantity(int quantity)
         {
-            item.RemovingQuantity(quantity);
-            this.quantity = item.GetQuantity();
+            this.quantity -= quantity;
         }
     }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace RPGSandBox.GameUI
 {
-    public class ItemSlotUI : MonoBehaviour
+    public class ItemFrameUI
+        : MonoBehaviour
     {
         [SerializeField] Image image;
         [SerializeField] TextMeshProUGUI countText;
@@ -17,4 +18,3 @@ namespace RPGSandBox.GameUI
         }
     }
 }
-

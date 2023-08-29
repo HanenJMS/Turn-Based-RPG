@@ -37,7 +37,7 @@ namespace RPGSandBox.UnitSystem
         {
             base.Execute(target);
             SetTarget(target);
-            unit.Move().Moving(this.target.MyPosition());
+            unit.Move().Moving(this.target.GetCurrentWorldPosition());
         }
 
 

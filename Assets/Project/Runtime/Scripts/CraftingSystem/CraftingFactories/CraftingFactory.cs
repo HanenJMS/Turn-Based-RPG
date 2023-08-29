@@ -32,7 +32,7 @@ public class CraftingFactory : MonoBehaviour, IAmACraftsmanBuilding
         return "Crafting Building";
     }
 
-    public Vector3 MyPosition()
+    public Vector3 GetCurrentWorldPosition()
     {
         return this.transform.position;
     }

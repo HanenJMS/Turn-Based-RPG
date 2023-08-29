@@ -77,8 +77,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: {fileID: 0}
-  quantity: 1
-  quality: 1
 --- !u!114 &8880338151315436033
 MonoBehaviour:
   m_ObjectHideFlags: 0

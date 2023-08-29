@@ -14,7 +14,7 @@ namespace RPGSandBox.InventorySystem
             InventorySlot slot = GetInventorySlot(item.PickUpItem());
             if (CheckingInventoryHas(slot))
             {
-                slot.AddToItemQuantity(item.GetQuantity());
+                //slot.AddToItemQuantity(item);
                 return;
             }
             //inventory.Add(item.ItemType(), slot);
@@ -26,14 +26,14 @@ namespace RPGSandBox.InventorySystem
             if (!Checking(item, qty)) return;
             InventorySlot slot = GetInventorySlot(item);
             slot.RemoveToItemQuantity(qty);
-            if (slot.quantity == 0) inventory.Remove(slot);
+            if (slot.Quantity() == 0) inventory.Remove(slot);
 
         }
         public bool Checking(IAmAnItem item, int qty)
         {
             if (!Contains(item)) return false;
             InventorySlot slot = GetInventorySlot(item);
-            if (slot.quantity < qty) return false;
+            if (slot.Quantity() < qty) return false;
             return true;
         }
         public IAmAnInventory GetInventoryList()
@@ -48,7 +48,7 @@ namespace RPGSandBox.InventorySystem
         {
             foreach (InventorySlot slot in inventory)
             {
-                if (slot.item.ItemType() == item.ItemType())
+                if (slot.Item().ItemType() == item.ItemType())
                 {
                     return true;
                 }
@@ -59,7 +59,7 @@ namespace RPGSandBox.InventorySystem
         {
             foreach (InventorySlot slot in inventory)
             {
-                if (slot.item.ItemType() == item.ItemType())
+                if (slot.Item().ItemType() == item.ItemType())
                 {
                     return slot;
                 }
@@ -69,7 +69,7 @@ namespace RPGSandBox.InventorySystem
             //{
             //    return inventory[item.ItemType()];
             //}
-            return new InventorySlot(item);
+            return new InventorySlot(item.GetItem());
         }
         private bool CheckingInventoryHas(InventorySlot slot)
         {
@@ -81,7 +81,7 @@ namespace RPGSandBox.InventorySystem
             int count = 0;
             foreach (InventorySlot slot in inventory)
             {
-                count += slot.item.GetQuantity();
+                //count += slot.item.GetQuantity();
             }
             return count;
         }

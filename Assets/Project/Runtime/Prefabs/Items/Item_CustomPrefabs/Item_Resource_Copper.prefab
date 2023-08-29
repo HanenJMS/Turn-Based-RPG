@@ -115,6 +115,16 @@ PrefabInstance:
       propertyPath: quantity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6952474882670708782, guid: ba8241c662b332f4cbe1c3e955f12280,
+        type: 3}
+      propertyPath: inventorySlot.item
+      value: 
+      objectReference: {fileID: 3711713418322959725}
+    - target: {fileID: 6952474882670708782, guid: ba8241c662b332f4cbe1c3e955f12280,
+        type: 3}
+      propertyPath: inventorySlot.quantity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7355974348903858497, guid: ba8241c662b332f4cbe1c3e955f12280,
         type: 3}
       propertyPath: m_Name
@@ -127,6 +137,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1372678390663061025}
   m_SourcePrefab: {fileID: 100100000, guid: ba8241c662b332f4cbe1c3e955f12280, type: 3}
+--- !u!114 &3711713418322959725 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6952474882670708782, guid: ba8241c662b332f4cbe1c3e955f12280,
+    type: 3}
+  m_PrefabInstance: {fileID: 6052416381773223235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707319dc6bc77eb47b2a753cf058efba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7984304383368934228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4409993982173881879, guid: ba8241c662b332f4cbe1c3e955f12280,

@@ -1,3 +1,5 @@
+using RPGSandBox.InventorySystem;
+
 [System.Serializable]
 public class InventorySlot_Old
 {

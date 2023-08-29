@@ -1,3 +1,5 @@
+using RPGSandBox.InventorySystem;
+
 namespace RPGSandBox.CraftingSystem
 {
     [System.Serializable]

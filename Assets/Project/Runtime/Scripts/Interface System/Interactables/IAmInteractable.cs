@@ -4,7 +4,7 @@ namespace RPGSandBox.InterfaceSystem
 {
     public interface IAmInteractable
     {
-        Vector3 MyPosition();
+        Vector3 GetCurrentWorldPosition();
         bool CanInteract(IAmInteractable interact);
         string InteractableName();
         string DescriptionHeader();

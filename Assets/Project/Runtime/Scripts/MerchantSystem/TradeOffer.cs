@@ -1,4 +1,5 @@
 using RPGSandBox.GameInteractionStatesSystem;
+using RPGSandBox.InventorySystem;
 
 namespace RPGSandBox.MerchantSystem
 {

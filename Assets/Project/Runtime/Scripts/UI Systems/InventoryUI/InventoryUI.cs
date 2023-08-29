@@ -1,10 +1,8 @@
 using RPGSandBox.Controller;
 using RPGSandBox.InterfaceSystem;
 using RPGSandBox.InventorySystem;
-using RPGSandBox.UnitSystem;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace RPGSandBox.GameUI
 {
@@ -12,7 +10,6 @@ namespace RPGSandBox.GameUI
     {
         [SerializeField] RectTransform inventoryBodyContainer;
         [SerializeField] RectTransform itemSlot;
-        [SerializeField] GridLayoutGroup gridLayout;
         IAmAUnit selectedUnit;
         [SerializeField] IAmAnInventory selectedInventory;
         [SerializeField] List<ItemSlotUI> slots = new List<ItemSlotUI>();
@@ -35,7 +32,7 @@ namespace RPGSandBox.GameUI
                     RectTransform ui = Instantiate(itemSlot, inventoryBodyContainer);
 
                     ItemSlotUI slotUI = ui.GetComponent<ItemSlotUI>();
-                    slotUI.SetItem(inventorySlot.item.ItemType(), inventorySlot.item.GetQuantity());
+                    slotUI.SetItem(inventorySlot.Item().ItemType(), inventorySlot.Quantity());
                     slots.Add(slotUI);
                 }
             }

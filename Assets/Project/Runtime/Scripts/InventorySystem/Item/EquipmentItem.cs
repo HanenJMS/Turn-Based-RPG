@@ -1,3 +1,4 @@
+using RPGSandBox.InventorySystem;
 using UnityEngine;
 [CreateAssetMenu(fileName = "EquipmentItem", menuName = "InventorySystem/Items/EquipmentItem")]
 
