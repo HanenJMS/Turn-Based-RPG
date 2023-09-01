@@ -26,7 +26,7 @@ namespace RPGSandBox.UnitSystem
         {
             base.Execute(target);
             SetTarget(target);
-            unit.Move().Moving(this.target.GetCurrentWorldPosition());
+            unit.Move().Moving(this.target.GetWorldPosition());
         }
 
         public override bool CanExecute(object target)

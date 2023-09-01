@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Seeds_Sapling
   m_EditorClassIdentifier: 
   prefab: {fileID: 3403221359115473532, guid: daf5da2738954214186087f3ff051f4c, type: 3}
-  sprite: {fileID: 0}
-  itemName: Seeds_Sapling
-  description: 
+  sprite: {fileID: 21300000, guid: f1d443a7d7c5f554599302b19e1ec2af, type: 3}
+  itemName: Seeds Sapling
+  description: Seeds used for planting.
   qualityValue: 0

@@ -50,7 +50,8 @@ namespace RPGSandBox.CraftingSystem
             {
                 IAmAnItem item = material.item.prefab.GetComponent<IAmAnItem>();
                 int qty = material.qty;
-                if (!crafter.Inventory().Checking(item, qty)) return false;
+                item.GetItemWorldInventorySlot().AddToItemQuantity(qty);
+                if (!crafter.Inventory().Checking(item)) return false;
             }
             return true;
         }
@@ -61,7 +62,8 @@ namespace RPGSandBox.CraftingSystem
             {
                 IAmAnItem item = material.item.prefab.GetComponent<IAmAnItem>();
                 int qty = material.qty;
-                crafter.Inventory().Removing(item, qty);
+                item.GetItemWorldInventorySlot().AddToItemQuantity(qty);
+                crafter.Inventory().Removing(item);
             }
         }
         public bool CanInteract(IAmInteractable interact)
@@ -69,7 +71,7 @@ namespace RPGSandBox.CraftingSystem
             return false;
         }
 
-        public Vector3 GetCurrentWorldPosition()
+        public Vector3 GetWorldPosition()
         {
             return this.transform.position;
         }

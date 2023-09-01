@@ -5,11 +5,9 @@ namespace RPGSandBox.InterfaceSystem
 {
     public interface IAmAnInventory
     {
+        bool Checking(IAmAnItem item);
+        void Removing(IAmAnItem item);
         void Storing(IAmAnItem item);
-        void Removing(IAmAnItem item, int qty);
-        bool Checking(IAmAnItem item, int qty);
-        IAmAnInventory GetInventoryList();
-        List<InventorySlot> GetInventorySlots();
     }
 }
 

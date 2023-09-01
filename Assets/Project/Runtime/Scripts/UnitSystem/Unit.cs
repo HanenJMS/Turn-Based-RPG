@@ -68,7 +68,7 @@ namespace RPGSandBox.UnitSystem
         {
             return false;
         }
-        public Vector3 GetCurrentWorldPosition()
+        public Vector3 GetWorldPosition()
         {
             return this.transform.position;
         }

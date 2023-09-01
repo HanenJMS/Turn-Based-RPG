@@ -5,87 +5,81 @@ namespace RPGSandBox.InventorySystem
 {
     public class Inventory : MonoBehaviour, IAmAnInventory
     {
-        //Dictionarys are currently not necessary. But just incase, Dictionary hashing system is already in place.
-        //[SerializeField] Dictionary<ItemType, InventorySlot> inventory = new Dictionary<ItemType, InventorySlot>();
-        [SerializeField] List<InventorySlot> inventory = new List<InventorySlot>();
-        public void Storing(IAmAnItem item)
+        [SerializeField] Dictionary<string, InventorySlot> inventory = new();
+
+        [SerializeField] int currentInventoryCount = 0;
+        [SerializeField] int totalInventoryCount = 5;
+        public bool Checking(IAmAnItem item)
         {
-            if (item == null) return;
-            InventorySlot slot = GetInventorySlot(item.PickUpItem());
-            if (CheckingInventoryHas(slot))
+            return inventory.ContainsKey(item.ItemType().itemName);
+        }
+        public void Removing(IAmAnItem item)
+        {
+            RemovingFromInventory(item.GetItemWorldInventorySlot());
+        }
+        public void Storing(IAmAnItem item) 
+        {
+            AddingToInventory(item.GetItemWorldInventorySlot());
+            if(item.GetItemWorldInventorySlot().Quantity() == 0)
             {
-                //slot.AddToItemQuantity(item);
+                item.PickUpItem();
+            }
+        }
+        void AddingToInventory(InventorySlot transferringSlot)
+        {
+            if (transferringSlot == null) return;
+            ItemType itemType = transferringSlot.GetItemType();
+            int itemTransferringQuantity = transferringSlot.Quantity();
+            if (itemTransferringQuantity > (totalInventoryCount - currentInventoryCount)) return;
+            if (inventory.ContainsKey(itemType.itemName))
+            {
+                inventory[itemType.itemName].AddToItemQuantity(itemTransferringQuantity);
+                transferringSlot.RemoveFromItemQuantity(itemTransferringQuantity);
+            }
+            else
+            {
+                InventorySlot newSlot = new(itemType, itemTransferringQuantity);
+                inventory.Add(itemType.itemName, newSlot);
+                transferringSlot.RemoveFromItemQuantity(itemTransferringQuantity);
+            }
+            
+            CalculateCurrentInventoryCount();
+        }
+        void RemovingFromInventory(InventorySlot transferringSlot)
+        {
+            if (transferringSlot == null)
+            {
+                Debug.Log("Did you try to give me nothing? Inventory.cs RemoveFromInventory()");
                 return;
             }
-            //inventory.Add(item.ItemType(), slot);
-            inventory.Add(slot);
-        }
-        public void Removing(IAmAnItem item, int qty)
-        {
-            if (item == null) return;
-            if (!Checking(item, qty)) return;
-            InventorySlot slot = GetInventorySlot(item);
-            slot.RemoveToItemQuantity(qty);
-            if (slot.Quantity() == 0) inventory.Remove(slot);
-
-        }
-        public bool Checking(IAmAnItem item, int qty)
-        {
-            if (!Contains(item)) return false;
-            InventorySlot slot = GetInventorySlot(item);
-            if (slot.Quantity() < qty) return false;
-            return true;
-        }
-        public IAmAnInventory GetInventoryList()
-        {
-            return this;
-        }
-        public List<InventorySlot> GetInventorySlots()
-        {
-            return inventory;
-        }
-        private bool Contains(IAmAnItem item)
-        {
-            foreach (InventorySlot slot in inventory)
+            ItemType itemType = transferringSlot.GetItemType();
+            int itemTransferringQuantity = transferringSlot.Quantity();
+            if (!inventory.ContainsKey(itemType.itemName))
             {
-                if (slot.Item().ItemType() == item.ItemType())
-                {
-                    return true;
-                }
+                Debug.Log("Can't give you what I don't have. Inventory.cs RemoveFromInventory()");
+                return;
             }
-            return false;
-        }
-        private InventorySlot GetInventorySlot(IAmAnItem item)
-        {
-            foreach (InventorySlot slot in inventory)
+            if (inventory[itemType.itemName].Quantity() < itemTransferringQuantity)
             {
-                if (slot.Item().ItemType() == item.ItemType())
-                {
-                    return slot;
-                }
-
+                Debug.Log("I don't have that many. Inventory.cs RemoveFromInventory()");
+                return;
             }
-            //if (CheckingSlotHas(item))
-            //{
-            //    return inventory[item.ItemType()];
-            //}
-            return new InventorySlot(item.GetItem());
-        }
-        private bool CheckingInventoryHas(InventorySlot slot)
-        {
-            if (slot == null) return false;
-            return inventory.Contains(slot);
-        }
-        private int GetInventoryCount()
-        {
-            int count = 0;
-            foreach (InventorySlot slot in inventory)
+            if (inventory.ContainsKey(itemType.itemName))
             {
-                //count += slot.item.GetQuantity();
+                inventory[itemType.itemName].RemoveFromItemQuantity(itemTransferringQuantity);
+                transferringSlot.AddToItemQuantity(itemTransferringQuantity);
             }
-            return count;
+            
+            CalculateCurrentInventoryCount();
         }
-
+        void CalculateCurrentInventoryCount()
+        {
+            currentInventoryCount = 0;
+            foreach (KeyValuePair<string, InventorySlot> kvp in inventory)
+            {
+                currentInventoryCount += kvp.Value.Quantity();
+            }
+        }
     }
 }
 

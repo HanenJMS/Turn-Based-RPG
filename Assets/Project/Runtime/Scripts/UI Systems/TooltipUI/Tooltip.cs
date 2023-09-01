@@ -46,7 +46,6 @@ namespace RPGSandBox.GameUtilities.GameUISystem
         public void Hide()
         {
             this.gameObject.SetActive(false);
-
             LeanTween.alphaCanvas(fadingCanvas, 0, 0.5f);
         }
         public void SetTooltipText(string headerText, string contentText)

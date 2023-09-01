@@ -2,13 +2,14 @@ using RPGSandBox.InterfaceSystem;
 using UnityEngine;
 namespace RPGSandBox.InventorySystem
 {
-    public class Item : MonoBehaviour, IAmAnItem
+    public class ItemWorld : MonoBehaviour, IAmAnItem
     {
         [SerializeField] ItemType itemType;
         [SerializeField] InventorySlot ItemWorldInventorySlot;
-        public Item(ItemType itemType)
+        [SerializeField] int startingCount = 1;
+        private void Start()
         {
-            this.itemType = itemType;
+            ItemWorldInventorySlot = new InventorySlot(itemType, startingCount);
         }
         public ItemType ItemType()
         {
@@ -18,7 +19,7 @@ namespace RPGSandBox.InventorySystem
         {
             return ItemWorldInventorySlot;
         }
-        public Vector3 GetCurrentWorldPosition()
+        public Vector3 GetWorldPosition()
         {
             return this.transform.position;
         }
@@ -49,12 +50,6 @@ namespace RPGSandBox.InventorySystem
         {
             return itemType.itemName;
         }
-
-        public Item GetItem()
-        {
-            return this;
-        }
-
     }
 }
 

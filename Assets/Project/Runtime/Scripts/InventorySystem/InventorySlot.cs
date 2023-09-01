@@ -6,23 +6,24 @@ namespace RPGSandBox.InventorySystem
     [System.Serializable]
     public class InventorySlot
     {
-        [SerializeField] Item item;
+        [SerializeField] ItemType itemType;
         [SerializeField] int quantity = 0;
-        public InventorySlot(Item item, int quantity = 0)
+        public InventorySlot(ItemType item, int quantity = 0)
         {
-            this.item = item;
+            this.itemType = item;
             this.quantity = quantity;
         }
 
-        public string ItemName() => item.ItemType().itemName;
-        public IAmAnItem Item() => item;
+        public string ItemName() => itemType.itemName;
+        public ItemType GetItemType() => itemType;
         public int Quantity() => quantity;
         public void AddToItemQuantity(int quantity)
         {
             this.quantity += quantity;
         }
-        public void RemoveToItemQuantity(int quantity)
+        public void RemoveFromItemQuantity(int quantity)
         {
+
             this.quantity -= quantity;
         }
     }

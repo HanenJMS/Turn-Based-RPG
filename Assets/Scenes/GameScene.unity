@@ -666,6 +666,11 @@ PrefabInstance:
       propertyPath: slots.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5206838755161442967, guid: 30d56801807983741baa796a48cc555c,
+        type: 3}
+      propertyPath: totalInventoryCount
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4421570264259171121, guid: 30d56801807983741baa796a48cc555c, type: 3}
     - {fileID: 4794076212195566757, guid: 30d56801807983741baa796a48cc555c, type: 3}

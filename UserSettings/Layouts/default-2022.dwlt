@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 116
+  controlID: 99
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,8 +189,8 @@ MonoBehaviour:
     y: 0
     width: 324.8
     height: 468
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -215,8 +215,8 @@ MonoBehaviour:
     y: 0
     width: 860.00006
     height: 468
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 15}
@@ -441,7 +441,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 707d0000
       m_LastClickedID: 0
       m_ExpandedIDs: 
       m_RenameOverlay:
@@ -693,9 +693,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 432.55798, y: 307.3442, z: 6.7473526}
+    m_Target: {x: 452.0158, y: 271.2149, z: 11.650975}
     speed: 2
-    m_Value: {x: 432.55798, y: 307.3442, z: 6.7473526}
+    m_Value: {x: 452.0158, y: 271.2149, z: 11.650975}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -745,9 +745,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 218.81148
+    m_Target: 276.6509
     speed: 2
-    m_Value: 218.81148
+    m_Value: 276.6509
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -843,22 +843,22 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Project/Runtime/Prefabs/Items/Item_DefaultPrefabs
+    - Assets/Project/Runtime/Scripts/SkillSystem/MagicAttunement/Elementals
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Project/Runtime/Prefabs/Items/Item_DefaultPrefabs
+  - Assets/Project/Runtime/Scripts/SkillSystem/MagicAttunement/Elementals
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Hanen\Desktop\Unity Projects\Turn Based RPG
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 202.20001}
-    m_SelectedIDs: d67a0000
-    m_LastClickedID: 31446
-    m_ExpandedIDs: 000000009e7a0000a07a0000a27a0000a47a0000a67a0000a87a0000aa7a000000ca9a3b
+    scrollPos: {x: 0, y: 750.2}
+    m_SelectedIDs: 4c7d0000
+    m_LastClickedID: 32076
+    m_ExpandedIDs: 00000000d07a0000d27a0000d67a0000da7a0000de7a0000e07a0000027c00002c7d00003c7d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -886,7 +886,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: b2780000
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009e7a0000a07a0000a27a0000a47a0000a67a0000a87a0000aa7a0000
+    m_ExpandedIDs: 00000000d07a0000d27a0000d47a0000d67a0000d87a0000da7a0000dc7a0000de7a0000e07a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -917,18 +917,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c623000098790000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: WindAttunement1
+      m_OriginalName: WindAttunement1
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 32112
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
@@ -1002,7 +1002,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 32142
+  m_LastSelectedObjectID: -5046
 --- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
