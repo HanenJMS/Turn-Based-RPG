@@ -9,7 +9,7 @@ namespace RPGSandBox.InterfaceSystem
         ICanTrade Trade();
         ICanMove Move();
         ICanCraft Craft();
-        ICanGather Gather();
+        ICanGather Gatherer();
         IAmAnInventory Inventory();
         IAmATrader Trader();
         IHaveATarget Target();

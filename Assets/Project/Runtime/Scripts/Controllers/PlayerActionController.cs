@@ -109,7 +109,7 @@ namespace RPGSandBox.Controller
         {
             RaycastHit hit = MouseWorld.GetMouseRayCastHit();
             if (playerSelectedUnit == null) return;
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            //if (EventSystem.current.IsPointerOverGameObject()) return;
             if (hit.transform.TryGetComponent(out IAmInteractable interactableTarget))
             {
                 OnMouseRightClick?.Invoke(interactableTarget);

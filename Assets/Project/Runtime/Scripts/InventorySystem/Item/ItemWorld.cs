@@ -1,5 +1,6 @@
 using RPGSandBox.InterfaceSystem;
 using UnityEngine;
+
 namespace RPGSandBox.InventorySystem
 {
     public class ItemWorld : MonoBehaviour, IAmAnItem
@@ -9,7 +10,7 @@ namespace RPGSandBox.InventorySystem
         [SerializeField] int startingCount = 1;
         private void Start()
         {
-            ItemWorldInventorySlot = new InventorySlot(itemType, startingCount);
+            ItemWorldInventorySlot = new(itemType, startingCount);
         }
         public ItemType ItemType()
         {

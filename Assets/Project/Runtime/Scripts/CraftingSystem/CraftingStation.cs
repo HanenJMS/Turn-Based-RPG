@@ -38,7 +38,7 @@ namespace RPGSandBox.CraftingSystem
             }
             if (item != null)
             {
-                crafter.Inventory().Storing(item);
+                //crafter.Inventory().Storing(item);
             }
         }
         private bool CanBeCrafted(IAmAUnit crafter, IHaveACraftingRecipe recipe)
@@ -51,7 +51,7 @@ namespace RPGSandBox.CraftingSystem
                 IAmAnItem item = material.item.prefab.GetComponent<IAmAnItem>();
                 int qty = material.qty;
                 item.GetItemWorldInventorySlot().AddToItemQuantity(qty);
-                if (!crafter.Inventory().Checking(item)) return false;
+                //if (!crafter.Inventory().Checking(item)) return false;
             }
             return true;
         }
@@ -63,7 +63,7 @@ namespace RPGSandBox.CraftingSystem
                 IAmAnItem item = material.item.prefab.GetComponent<IAmAnItem>();
                 int qty = material.qty;
                 item.GetItemWorldInventorySlot().AddToItemQuantity(qty);
-                crafter.Inventory().Removing(item);
+                //crafter.Inventory().Removing(item);
             }
         }
         public bool CanInteract(IAmInteractable interact)

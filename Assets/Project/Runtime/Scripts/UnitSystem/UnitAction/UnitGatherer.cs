@@ -8,7 +8,7 @@ namespace RPGSandBox.UnitSystem
         IAmAnItem target = null;
         public void Gathering(IAmAnItem item)
         {
-            unit.Inventory().Storing(item);
+            //unit.Inventory().Storing(item);
         }
 
         public override void Cancel()
@@ -33,7 +33,7 @@ namespace RPGSandBox.UnitSystem
 
         public override void ExecuteBaseAction()
         {
-            unit.Gather().Gathering(target);
+            unit.Gatherer().Gathering(target);
         }
 
         public override void Execute(object target)

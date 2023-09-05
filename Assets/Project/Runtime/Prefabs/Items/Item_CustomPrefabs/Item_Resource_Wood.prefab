@@ -211,6 +211,11 @@ PrefabInstance:
       propertyPath: quantity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6952474882670708782, guid: ba8241c662b332f4cbe1c3e955f12280,
+        type: 3}
+      propertyPath: startingCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7355974348903858497, guid: ba8241c662b332f4cbe1c3e955f12280,
         type: 3}
       propertyPath: m_Name

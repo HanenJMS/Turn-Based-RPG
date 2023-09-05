@@ -4,11 +4,11 @@ using UnityEngine;
 namespace RPGSandBox.InventorySystem
 {
     [System.Serializable]
-    public class InventorySlot
+    public class InventorySlot :  IAmAnInventorySlot
     {
         [SerializeField] ItemType itemType;
         [SerializeField] int quantity = 0;
-        public InventorySlot(ItemType item, int quantity = 0)
+        public InventorySlot(ItemType item, int quantity = 1)
         {
             this.itemType = item;
             this.quantity = quantity;
@@ -23,7 +23,6 @@ namespace RPGSandBox.InventorySystem
         }
         public void RemoveFromItemQuantity(int quantity)
         {
-
             this.quantity -= quantity;
         }
     }

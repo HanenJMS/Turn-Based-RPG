@@ -36,7 +36,7 @@ namespace RPGSandBox.UnitSystem
         {
             return craftingAction;
         }
-        public ICanGather Gather()
+        public ICanGather Gatherer()
         {
             return gatheringAction;
         }

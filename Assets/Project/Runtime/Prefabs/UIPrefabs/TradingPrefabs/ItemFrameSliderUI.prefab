@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 8758546959838176608}
   - component: {fileID: 1927576092133607446}
   m_Layer: 5
-  m_Name: ItemFrameUI
+  m_Name: ItemFrameSliderUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

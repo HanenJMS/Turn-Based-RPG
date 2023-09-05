@@ -26,15 +26,15 @@ namespace RPGSandBox.GameUI
 
             if (selectedInventory != null)
             {
-                //List<InventorySlot> inventory = selectedInventory.GetInventorySlots();
-                //foreach (InventorySlot inventorySlot in selectedInventory)
-                //{
-                //    RectTransform ui = Instantiate(itemSlot, inventoryBodyContainer);
+                List<InventorySlot> inventory = selectedInventory.GetInventoryList();
+                foreach (InventorySlot inventorySlot in inventory)
+                {
+                    RectTransform ui = Instantiate(itemSlot, inventoryBodyContainer);
 
-                //    ItemSlotUI slotUI = ui.GetComponent<ItemSlotUI>();
-                //    slotUI.SetItem(inventorySlot.GetItemType(), inventorySlot.Quantity());
-                //    slots.Add(slotUI);
-                //}
+                    ItemSlotUI slotUI = ui.GetComponent<ItemSlotUI>();
+                    slotUI.SetItem(inventorySlot.GetItemType(), inventorySlot.Quantity());
+                    slots.Add(slotUI);
+                }
             }
         }
         public void DeActivateUI()
