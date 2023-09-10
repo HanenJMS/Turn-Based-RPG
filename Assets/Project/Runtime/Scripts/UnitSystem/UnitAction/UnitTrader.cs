@@ -6,57 +6,59 @@ namespace RPGSandBox.UnitSystem
     public class UnitTrader : UnitActionBase, ICanTrade, IAmATrader
     {
         IAmAnInventory inventory;
-        IAmAUnit target;
-
-        public void Trade(IAmAUnit target)
+        IAmAUnit targetWorld;
+        IAmATrader targetTrader;
+        IHaveAMarket market;
+        public void Trade(IAmATrader target)
         {
-            Debug.Log($"{this.gameObject.name} is trading with {target.InteractableName()}");
+            Debug.Log($"{this.gameObject.name} is trading with {targetWorld.InteractableName()}");
         }
-        public IAmAnInventory Inventory()
+        public IHaveAMarket Market()
         {
-            return inventory;
+            return market;
         }
         public override void Cancel()
         {
             base.Cancel();
-            target.Execute(null);
-            target = null;
+            targetWorld.Execute(null);
+            targetWorld = null;
+            targetTrader = null;
         }
 
         public override bool CanExecute(object target)
         {
-            if (inventory == null)
+            if (market == null)
             {
                 return false;
             }
 
-            return target is IAmAUnit;
+            return target is IAmATrader;
         }
 
         public override void Execute(object target)
         {
             base.Execute(target);
             SetTarget(target);
-            unit.Move().Moving(this.target.GetWorldPosition());
+            unit.Move().Moving(this.targetWorld.GetWorldPosition());
         }
 
 
         public override void SetTarget(object target)
         {
-
-            this.target = target as IAmAUnit;
-            unit.Target().Targeting(this.target, 1f);
+            this.targetWorld = target as IAmAUnit;
+            this.targetTrader = target as IAmATrader;
+            unit.Target().Targeting(this.targetTrader, 1f);
         }
 
         public override void ExecuteBaseAction()
         {
-            Trade(target);
+            Trade(targetTrader);
         }
 
         public override void Initialize()
         {
             base.Initialize();
-            inventory = GetComponent<IAmAnInventory>();
+            market = GetComponent<IHaveAMarket>();
             actionName = "Trade";
         }
     }

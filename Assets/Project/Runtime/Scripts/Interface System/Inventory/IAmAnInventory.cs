@@ -7,7 +7,8 @@ namespace RPGSandBox.InterfaceSystem
     {
         bool AddToInventory(IAmAnInventorySlot itemTradeSlot);
         bool RemoveFromInventory(IAmAnInventorySlot itemTradeSlot);
-        bool CheckInventory(IAmAnInventorySlot itemTradeSlot);
+        bool Contains(IAmAnInventorySlot itemTradeSlot);
+        InventorySlot GetInventorySlot(ItemType itemType);
         List<InventorySlot> GetInventoryList();
     }
 }

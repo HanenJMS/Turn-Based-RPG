@@ -1,13 +1,14 @@
 using RPGSandBox.Controller;
 using RPGSandBox.InterfaceSystem;
+using RPGSandBox.InventorySystem;
 using System;
 using UnityEngine;
-namespace RPGSandBox.MerchantSystem
+namespace RPGSandBox.TradingSystem
 {
-    public class GameMerchantSystem : MonoBehaviour
+    public class GameTradingSystem : MonoBehaviour
     {
-        public static GameMerchantSystem Instance { get; private set; }
-        IAmATrader merchantPlayerSelected, merchantPlayerSelectedTarget;
+        public static GameTradingSystem Instance { get; private set; }
+        IAmATrader playerTrader, targetedTrader;
         public Action<IAmATrader, IAmATrader> OnActivateTradeUI;
         private void Awake()
         {
@@ -25,13 +26,16 @@ namespace RPGSandBox.MerchantSystem
         }
         private void OnSelectedUnit()
         {
-            merchantPlayerSelected = UnitSelectionSystem.Instance.GetUnit().Trader();
+            playerTrader = UnitSelectionSystem.Instance.GetUnit().Trader();
         }
         public void StartTrade(object target)
         {
-            IAmAUnit unitTarget = target as IAmAUnit;
-            merchantPlayerSelectedTarget = unitTarget.Trader();
-            OnActivateTradeUI?.Invoke(merchantPlayerSelected, merchantPlayerSelectedTarget);
+            if (target is not IAmATrader) return;
+            targetedTrader = target as IAmATrader;
+            OnActivateTradeUI?.Invoke(playerTrader, targetedTrader);
+            
+            playerTrader.Market().GetDemandList();
+            playerTrader.Market().GetSupplyList();
         }
     }
 }

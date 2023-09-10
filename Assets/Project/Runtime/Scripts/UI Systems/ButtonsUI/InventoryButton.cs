@@ -5,11 +5,11 @@ namespace RPGSandBox.GameUI
 {
     public class InventoryButton : MonoBehaviour
     {
-        Button closeButton;
+        Button inventoryButton;
         private void Start()
         {
-            closeButton = GetComponentInChildren<Button>();
-            closeButton.onClick.AddListener(() =>
+            inventoryButton = GetComponentInChildren<Button>();
+            inventoryButton.onClick.AddListener(() =>
             {
                 InterfaceControllerSystem.Instance.OnActivateInventoryUI();
             });

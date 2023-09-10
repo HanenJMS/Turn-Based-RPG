@@ -1,9 +1,10 @@
+using UnityEngine;
+
 namespace RPGSandBox.InterfaceSystem
 {
     public interface IAmATrader
     {
-        IAmAnInventory Inventory();
-
+        IHaveAMarket Market();
     }
 }
 

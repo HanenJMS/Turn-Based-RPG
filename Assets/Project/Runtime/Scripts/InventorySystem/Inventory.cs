@@ -9,11 +9,20 @@ namespace RPGSandBox.InventorySystem
         [SerializeField] List<InventorySlot> exposedInventory = new();
         [SerializeField] int currentInventoryCount = 0;
         [SerializeField] int totalInventoryCount = 5;
+
+        //functions needed to add to interfaces
+        public void SetInventoryCount(int count)
+        {
+            totalInventoryCount = count;
+        }
+        public InventorySlot GetInventorySlot(ItemType itemType)
+        {
+            return inventory[itemType];
+        }
         public List<InventorySlot> GetInventoryList()
         {
             return exposedInventory;
         }
-
         public bool AddToInventory(IAmAnInventorySlot transferringSlot)
         {
             if (transferringSlot == null) return false;
@@ -58,7 +67,7 @@ namespace RPGSandBox.InventorySystem
             CalculateCurrentInventoryCount();
             return true;
         }
-        public bool CheckInventory(IAmAnInventorySlot itemTradeSlot)
+        public bool Contains(IAmAnInventorySlot itemTradeSlot)
         {
             if (!inventory.ContainsKey(itemTradeSlot.GetItemType())) return false;
             if (inventory[itemTradeSlot.GetItemType()].Quantity() < itemTradeSlot.Quantity()) return false;

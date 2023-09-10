@@ -1,60 +1,21 @@
-using RPGSandBox.Controller;
 using RPGSandBox.InterfaceSystem;
-using RPGSandBox.InventorySystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 namespace RPGSandBox.GameUI
 {
-    public class InventoryUI : MonoBehaviour, IAmAGameUI
+    public class InventoryUI : MonoBehaviour
     {
-        [SerializeField] RectTransform inventoryBodyContainer;
-        [SerializeField] RectTransform itemSlot;
-        IAmAUnit selectedUnit;
-        [SerializeField] IAmAnInventory selectedInventory;
-        [SerializeField] List<ItemSlotUI> slots = new List<ItemSlotUI>();
-        private void Start()
-        {
-            UnitSelectionSystem.Instance.OnSelectedUnit += OnselectedInteractable;
-            InterfaceControllerSystem.Instance.OnActivateInventoryUI += ActivateUI;
-        }
+        [SerializeField] ItemSlotUI itemSlotUI;
 
-        public void ActivateUI()
+        public virtual void DisplayInventoryItems(IAmAnInventory inventory)
         {
-            this.gameObject.SetActive(true);
-            ClearUI();
-
-            if (selectedInventory != null)
+            foreach(IAmAnInventorySlot inventorySlot in inventory.GetInventoryList())
             {
-                List<InventorySlot> inventory = selectedInventory.GetInventoryList();
-                foreach (InventorySlot inventorySlot in inventory)
-                {
-                    RectTransform ui = Instantiate(itemSlot, inventoryBodyContainer);
-
-                    ItemSlotUI slotUI = ui.GetComponent<ItemSlotUI>();
-                    slotUI.SetItem(inventorySlot.GetItemType(), inventorySlot.Quantity());
-                    slots.Add(slotUI);
-                }
+                itemSlotUI = new();
+                itemSlotUI.SetItemSlotUI(inventorySlot);
+                Instantiate(itemSlotUI, this.transform);
             }
-        }
-        public void DeActivateUI()
-        {
-            ClearUI();
-            this.gameObject.SetActive(false);
-        }
-        public void ClearUI()
-        {
-            if (slots == null) return;
-            foreach (ItemSlotUI slotUI in slots)
-            {
-                Destroy(slotUI.gameObject);
-            }
-            slots.Clear();
-        }
-        private void OnselectedInteractable()
-        {
-            selectedUnit = UnitSelectionSystem.Instance.GetUnit();
-            selectedInventory = selectedUnit.Inventory();
         }
     }
 }

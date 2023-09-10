@@ -13,20 +13,20 @@ public class ActionCommandButtonUI : MonoBehaviour
     [SerializeField] Image image;
 
     IAmAnAction action;
-    public void SetButtonCommandAction(IAmAnAction action, object interactable)
+    public void SetButtonCommandAction(IAmAnAction action, object target)
     {
         this.action = action;
-        actionTarget = interactable.ToString();
+        actionTarget = target.ToString();
         actionName = action.ActionName();
-        if (interactable is IAmInteractable)
+        if (target is IAmInteractable)
         {
-            IAmInteractable interactableObject = (IAmInteractable)interactable;
+            IAmInteractable interactableObject = (IAmInteractable)target;
             actionTarget = $"({interactableObject.InteractableName()})";
         }
         actionButtonName.text = $"{actionName}{actionTarget}";
         button.onClick.AddListener(() =>
         {
-            PlayerActionController.Instance.ExecuteAction(this.action, interactable);
+            PlayerActionController.Instance.ExecuteAction(this.action, target);
         });
     }
 }

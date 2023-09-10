@@ -96,9 +96,7 @@ MonoBehaviour:
   inventoryBodyContainer: {fileID: 6799324720455538365}
   itemSlot: {fileID: 2444342491194711609, guid: 5e217a3091340a14faa206b16973930a,
     type: 3}
-  gridLayout: {fileID: 5971352890341377887}
   slots: []
-  gridScale: 50
 --- !u!1001 &1623820469773649395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -315,7 +313,7 @@ PrefabInstance:
     - target: {fileID: 4300608076021608615, guid: e9ec2f90323e5e443b7a3a495f83dde2,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4300608076021608615, guid: e9ec2f90323e5e443b7a3a495f83dde2,
         type: 3}
@@ -325,7 +323,7 @@ PrefabInstance:
     - target: {fileID: 4300608076021608615, guid: e9ec2f90323e5e443b7a3a495f83dde2,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4300608076021608615, guid: e9ec2f90323e5e443b7a3a495f83dde2,
         type: 3}
@@ -380,7 +378,7 @@ PrefabInstance:
     - target: {fileID: 4300608076021608615, guid: e9ec2f90323e5e443b7a3a495f83dde2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -175
       objectReference: {fileID: 0}
     - target: {fileID: 4300608076021608615, guid: e9ec2f90323e5e443b7a3a495f83dde2,
         type: 3}
@@ -430,18 +428,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e9ec2f90323e5e443b7a3a495f83dde2, type: 3}
---- !u!114 &5971352890341377887 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3975649729990467909, guid: e9ec2f90323e5e443b7a3a495f83dde2,
-    type: 3}
-  m_PrefabInstance: {fileID: 7346173143456245274}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &6799324720455538365 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4300608076021608615, guid: e9ec2f90323e5e443b7a3a495f83dde2,

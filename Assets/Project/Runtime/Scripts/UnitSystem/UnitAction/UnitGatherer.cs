@@ -8,7 +8,8 @@ namespace RPGSandBox.UnitSystem
         IAmAnItem target = null;
         public void Gathering(IAmAnItem item)
         {
-            //unit.Inventory().Storing(item);
+            unit.Inventory().AddToInventory(item.GetItemWorldInventorySlot());
+            item.PickUpItem();
         }
 
         public override void Cancel()

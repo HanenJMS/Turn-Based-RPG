@@ -30,7 +30,10 @@ namespace RPGSandBox.InventorySystem
 
             IAmAnItem item = this;
             if (item == null) return null;
-            Destroy(this.gameObject);
+            if (GetItemWorldInventorySlot().Quantity() <= 0)
+            {
+                Destroy(this.gameObject);
+            }
             return item;
         }
         public bool CanInteract(IAmInteractable interact)
