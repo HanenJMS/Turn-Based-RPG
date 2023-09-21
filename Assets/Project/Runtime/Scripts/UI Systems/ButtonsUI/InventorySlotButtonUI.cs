@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace RPGSandBox.GameUI
 {
-    public class ItemButtonUI : ItemSlotUI
+    public abstract class InventorySlotButtonUI : InventorySlotUI
     {
         [SerializeField] Button itemButton;
 
@@ -14,15 +14,14 @@ namespace RPGSandBox.GameUI
         {
             itemButton = GetComponent<Button>();
         }
-        private void OnEnable()
+        private void Start()
         {
-            GameTradingSystem.Instance.OnActivateTradeUI += something;
+            itemButton.onClick.AddListener(() =>
+            {
+                DoButtonLogic();
+            });
         }
-
-        private void something(IAmATrader trader1, IAmATrader trader2)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void DoButtonLogic();
     }
 }
 

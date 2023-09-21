@@ -12,7 +12,7 @@ namespace RPGSandBox.GameUI
         [SerializeField] RectTransform itemSlot;
         IAmAUnit selectedUnit;
         [SerializeField] IAmAnInventory selectedInventory;
-        [SerializeField] List<ItemSlotUI> slots = new List<ItemSlotUI>();
+        [SerializeField] List<InventorySlotUI> slots = new List<InventorySlotUI>();
         private void Start()
         {
             UnitSelectionSystem.Instance.OnSelectedUnit += OnselectedInteractable;
@@ -30,7 +30,7 @@ namespace RPGSandBox.GameUI
                 {
                     RectTransform ui = Instantiate(itemSlot, inventoryBodyContainer);
 
-                    ItemSlotUI slotUI = ui.GetComponent<ItemSlotUI>();
+                    InventorySlotUI slotUI = ui.GetComponent<InventorySlotUI>();
                     slotUI.SetItemSlotUI(inventorySlot);
                     slots.Add(slotUI);
                 }
@@ -44,7 +44,7 @@ namespace RPGSandBox.GameUI
         public void ClearUI()
         {
             if (slots == null) return;
-            foreach (ItemSlotUI slotUI in slots)
+            foreach (InventorySlotUI slotUI in slots)
             {
                 Destroy(slotUI.gameObject);
             }

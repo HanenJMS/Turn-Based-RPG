@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace RPGSandBox.TradingSystem
 {
-    public class Supply : MarketInventory
+    public class Supply : MarketType
     {
     }
 }

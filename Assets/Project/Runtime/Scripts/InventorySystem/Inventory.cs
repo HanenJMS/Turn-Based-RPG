@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace RPGSandBox.InventorySystem
 {
-    public class Inventory : MonoBehaviour, IAmAnInventory
+    [System.Serializable]
+    public class Inventory : IAmAnInventory
     {
         [SerializeField] Dictionary<ItemType, InventorySlot> inventory = new();
         [SerializeField] List<InventorySlot> exposedInventory = new();

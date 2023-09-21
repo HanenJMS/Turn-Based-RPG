@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 4093112305765366635}
   countText: {fileID: 9181803540443308021}
-  itemName: {fileID: 0}
+  itemName: {fileID: 8658070807775729816}
   slider: {fileID: 4093112306539211636}
 --- !u!114 &1533287140119808593
 MonoBehaviour:

@@ -1,5 +1,6 @@
 using RPGSandBox.Controller;
 using RPGSandBox.InterfaceSystem;
+using RPGSandBox.InventorySystem;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace RPGSandBox.UnitSystem
 {
     public class Unit : MonoBehaviour, IAmAUnit
     {
+        [SerializeField] Inventory inventoryWorld;
         IAmAnInventory inventory;
         IAmATrader trader;
         //actions
@@ -101,7 +103,8 @@ namespace RPGSandBox.UnitSystem
         }
         private void Initialize()
         {
-            inventory = GetComponent<IAmAnInventory>();
+            inventoryWorld = new Inventory();
+            inventory = inventoryWorld;
             trader = GetComponent<IAmATrader>();
             movingAction = GetComponent<ICanMove>();
             speakingAction = GetComponentInChildren<ICanSpeak>();

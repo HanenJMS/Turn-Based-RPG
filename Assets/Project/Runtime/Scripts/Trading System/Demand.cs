@@ -1,6 +1,6 @@
 namespace RPGSandBox.TradingSystem
 {
-    public class Demand : MarketInventory
+    public class Demand : MarketType
     {
     }
 }

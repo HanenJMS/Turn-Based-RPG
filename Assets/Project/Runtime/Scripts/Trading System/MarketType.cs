@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace RPGSandBox.TradingSystem
 {
-    public abstract class MarketInventory : MonoBehaviour
+    public abstract class MarketType
     {
-        Inventory inventory = new();
+        [SerializeField] Inventory inventory = new();
         [SerializeField] int inventoryCountLimiter = 10000;
         private void Start()
         {

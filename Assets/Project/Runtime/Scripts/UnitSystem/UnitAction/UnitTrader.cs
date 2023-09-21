@@ -31,8 +31,7 @@ namespace RPGSandBox.UnitSystem
             {
                 return false;
             }
-
-            return target is IAmATrader;
+            return target is IAmAUnit;
         }
 
         public override void Execute(object target)
@@ -46,7 +45,7 @@ namespace RPGSandBox.UnitSystem
         public override void SetTarget(object target)
         {
             this.targetWorld = target as IAmAUnit;
-            this.targetTrader = target as IAmATrader;
+            this.targetTrader = targetWorld.Trader();
             unit.Target().Targeting(this.targetTrader, 1f);
         }
 

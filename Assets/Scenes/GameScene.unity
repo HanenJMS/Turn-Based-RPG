@@ -755,7 +755,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: IndustryFactory
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1039907485837726984, guid: 3aa6cefb8f6e9b94eaab7a450e0fdc7a, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aa6cefb8f6e9b94eaab7a450e0fdc7a, type: 3}
 --- !u!4 &85767042 stripped

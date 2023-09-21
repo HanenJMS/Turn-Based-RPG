@@ -121,7 +121,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5417872609013253761}
   m_HandleRect: {fileID: 5417872609013253790}
   m_Direction: 2
-  m_Value: 1.0000004
+  m_Value: 1.0000008
   m_Size: 0.75
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -380,7 +380,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5417872609719614174}
   - component: {fileID: 5417872609719614145}
-  - component: {fileID: 5417872609719614144}
+  - component: {fileID: 7827997274208509430}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 1
   m_ConstraintCount: 6
---- !u!114 &5417872609719614144
+--- !u!114 &7827997274208509430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -441,10 +441,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5417872609719614175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 831d2f07c95b3ee42a0f4472414765b9, type: 3}
+  m_Script: {fileID: 11500000, guid: f1093913734a10341992f6ac55aeeee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSlotUI: {fileID: 3121590522491943370, guid: ccf93b934e48eed4c9834df83def7a80,
+  inventorySlotUI: {fileID: 6566344616418135706, guid: 5cbf091f00b84c24c9e3a42b9d8111b1,
     type: 3}
 --- !u!1 &5417872609780832136
 GameObject:

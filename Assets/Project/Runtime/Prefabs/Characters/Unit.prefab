@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 7653526715353110653}
   - component: {fileID: 597431886}
   - component: {fileID: 4404704848333840681}
-  - component: {fileID: 8133853423266375882}
   - component: {fileID: 597431887}
   - component: {fileID: 3375285483754913747}
   - component: {fileID: 4498262866502068156}
@@ -54,6 +53,7 @@ GameObject:
   - component: {fileID: 6450219612631116809}
   - component: {fileID: 6713547056870325759}
   - component: {fileID: 7077834323693635776}
+  - component: {fileID: -6305206937710704314}
   m_Layer: 7
   m_Name: Unit
   m_TagString: Untagged
@@ -126,21 +126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae506ae4f559d04fbed0b7b3e170279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8133853423266375882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4404704848333840683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 534652a02fb6b4f42a8c42af8b30c0c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exposedInventory: []
-  currentInventoryCount: 0
-  totalInventoryCount: 5
 --- !u!114 &597431887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +241,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 215a90cd7bd0d0543b165d18d8ca1848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6305206937710704314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4404704848333840683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bcb151aae1d69e47b71a27e628da574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5596062722435883088

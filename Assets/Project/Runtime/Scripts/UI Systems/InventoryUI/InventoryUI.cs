@@ -1,22 +1,10 @@
-using RPGSandBox.InterfaceSystem;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-namespace RPGSandBox.GameUI
+﻿namespace RPGSandBox.GameUI
 {
-    public class InventoryUI : MonoBehaviour
+    public class InventoryUI : InventoryUI_Base
     {
-        [SerializeField] ItemSlotUI itemSlotUI;
-
-        public virtual void DisplayInventoryItems(IAmAnInventory inventory)
+        public override void ExtendInventorySlotUI(InventorySlotUI newItemSlotUI)
         {
-            foreach(IAmAnInventorySlot inventorySlot in inventory.GetInventoryList())
-            {
-                itemSlotUI = new();
-                itemSlotUI.SetItemSlotUI(inventorySlot);
-                Instantiate(itemSlotUI, this.transform);
-            }
+
         }
     }
 }
-

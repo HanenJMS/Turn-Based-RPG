@@ -8,6 +8,7 @@ namespace RPGSandBox.Controller
         public static InterfaceControllerSystem Instance { get; private set; }
         public Action OnActivateInventoryUI;
         public Action OnActivateInformationUI;
+        public Action OnActivateTradeUI;
         private void Awake()
         {
             if (Instance != null)
@@ -48,6 +49,10 @@ namespace RPGSandBox.Controller
         public void ActivateInformationUI()
         {
             OnActivateInformationUI?.Invoke();
+        }
+        public void ActivateTradeUI()
+        {
+            OnActivateTradeUI?.Invoke();
         }
     }
 }
