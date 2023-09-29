@@ -7,6 +7,7 @@ namespace RPGSandBox.GameUI
     public abstract class InventoryUI_Base : MonoBehaviour, IAmAGameUI
     {
         [SerializeField] RectTransform inventorySlotUI;
+        [SerializeField] RectTransform contentUIrectTransform;
         [SerializeField] List<InventorySlotUI> inventorySlots;
 
 
@@ -16,9 +17,10 @@ namespace RPGSandBox.GameUI
             ClearUI();
             foreach (IAmAnInventorySlot inventorySlot in inventory.GetInventoryList())
             {
-                RectTransform newItemSlotTransform = Instantiate(inventorySlotUI, this.transform);
+                RectTransform newItemSlotTransform = Instantiate(inventorySlotUI, this.contentUIrectTransform);
                 InventorySlotUI newItemSlotUI = newItemSlotTransform.GetComponent<InventorySlotUI>();
                 newItemSlotUI.SetItemSlotUI(inventorySlot);
+                inventorySlots.Add(newItemSlotUI);
                 ExtendInventorySlotUI(newItemSlotUI);
             }
         }
@@ -26,19 +28,23 @@ namespace RPGSandBox.GameUI
         {
             DisplayInventoryItems(inventory);
         }
-        public void ActivateUI()
+        public virtual void ActivateUI()
         {
-            
+            this.gameObject.SetActive(true);
         }
 
         public void ClearUI()
         {
+            foreach(InventorySlotUI uiSlot in inventorySlots)
+            {
+                Destroy(uiSlot.gameObject);
+            }
             inventorySlots.Clear();
         }
 
         public void DeActivateUI()
         {
-            throw new System.NotImplementedException();
+            this.gameObject.SetActive(false);
         }
         public abstract void ExtendInventorySlotUI(InventorySlotUI newItemSlotUI);
     }

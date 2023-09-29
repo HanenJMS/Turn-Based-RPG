@@ -6,12 +6,14 @@ using UnityEngine.EventSystems;
 
 namespace RPGSandBox.Controller
 {
-    public class PlayerActionController : MouseInputController
+    public class PlayerActionControllerSystem : MouseInputController
     {
-        public static PlayerActionController Instance { get; private set; }
+        public static PlayerActionControllerSystem Instance { get; private set; }
         public Action<object> OnMouseRightClick;
         public Action OnMouseLeftClick;
         public Action OnButtonClick;
+
+
         public Action<object> playerStartsTrade;
         public Action playerStartsCraft;
         IAmAUnit playerSelectedUnit;
@@ -29,7 +31,7 @@ namespace RPGSandBox.Controller
         {
             UnitSelectionSystem.Instance.OnSelectedUnit += OnSelectedUnit;
         }
-        //MODIFY MODIFY MODIFY MODIFY MODIFY!!!!!!! Player Controller enters here. You can have it launch the UI and let the UI Execute the command.
+        
         public void ExecuteAction(IAmAnAction action, object target)
         {
             playerTarget = target;

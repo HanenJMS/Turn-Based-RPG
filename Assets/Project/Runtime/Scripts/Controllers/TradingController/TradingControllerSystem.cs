@@ -25,7 +25,7 @@ namespace RPGSandBox.Controller
         }
         private void Start()
         {
-            PlayerActionController.Instance.playerStartsTrade += StartTrade;
+            PlayerActionControllerSystem.Instance.playerStartsTrade += StartTrade;
             UnitSelectionSystem.Instance.OnSelectedUnit += OnSelectedUnit;
         }
         public void StartTrade(object target)

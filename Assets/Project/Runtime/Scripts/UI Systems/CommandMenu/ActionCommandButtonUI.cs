@@ -26,7 +26,7 @@ public class ActionCommandButtonUI : MonoBehaviour
         actionButtonName.text = $"{actionName}{actionTarget}";
         button.onClick.AddListener(() =>
         {
-            PlayerActionController.Instance.ExecuteAction(this.action, target);
+            PlayerActionControllerSystem.Instance.ExecuteAction(this.action, target);
         });
     }
 }
