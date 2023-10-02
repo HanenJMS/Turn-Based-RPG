@@ -1,11 +1,5 @@
-using PlasticGui;
 using RPGSandBox.Controller;
-using RPGSandBox.GameUI;
-using RPGSandBox.InterfaceSystem;
 using RPGSandBox.TradingSystem;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 namespace RPGSandBox.GameUI
 {
     public class MarketItemButtonUI : InventorySlotButtonUI
