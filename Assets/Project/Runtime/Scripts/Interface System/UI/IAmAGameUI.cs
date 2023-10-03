@@ -5,6 +5,7 @@ namespace RPGSandBox.InterfaceSystem
         void ActivateUI();
         void DeActivateUI();
         void ClearUI();
+        void UpdateUI();
     }
 }
 

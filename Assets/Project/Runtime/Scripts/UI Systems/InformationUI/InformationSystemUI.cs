@@ -21,7 +21,7 @@ namespace RPGSandBox.GameUI
             this.interactable = InteractableControllerSystem.Instance.GetSelected();
             UpdateUI();
         }
-        void UpdateUI()
+        public void UpdateUI()
         {
             ClearUI();
             if (interactable != null)

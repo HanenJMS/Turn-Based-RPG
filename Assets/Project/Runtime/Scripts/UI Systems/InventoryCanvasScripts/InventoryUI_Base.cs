@@ -47,6 +47,11 @@ namespace RPGSandBox.GameUI
             this.gameObject.SetActive(false);
         }
         public abstract void ExtendInventorySlotUI(InventorySlotUI newItemSlotUI);
+
+        public void UpdateUI()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
 

@@ -45,6 +45,10 @@ namespace RPGSandBox.GameUI
             ItemTradeWindowTransform.gameObject.SetActive(false);
         }
 
+        public void UpdateUI()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
 

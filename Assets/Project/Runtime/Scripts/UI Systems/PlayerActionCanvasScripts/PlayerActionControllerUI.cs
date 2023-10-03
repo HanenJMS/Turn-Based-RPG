@@ -54,5 +54,10 @@ namespace RPGSandBox.Controller
             }
             ActionCommandButtons.Clear();
         }
+
+        public void UpdateUI()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
