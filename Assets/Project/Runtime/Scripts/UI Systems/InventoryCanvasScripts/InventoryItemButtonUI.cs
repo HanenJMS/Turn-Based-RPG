@@ -1,8 +1,6 @@
-﻿using System;
+﻿using RPGSandBox.Controller;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UnityEngine;
 
 namespace RPGSandBox.GameUI
 {
@@ -10,7 +8,7 @@ namespace RPGSandBox.GameUI
     {
         public override void DoButtonLogic()
         {
-            
+            InterfaceControllerSystem.Instance.ActivateItemInteractionWindowUI(GetInventorySlot());
         }
     }
 }

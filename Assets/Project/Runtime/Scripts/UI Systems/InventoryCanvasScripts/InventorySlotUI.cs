@@ -9,27 +9,38 @@ namespace RPGSandBox.GameUI
     {
         [SerializeField] Image image;
         [SerializeField] TextMeshProUGUI countText;
-        ItemType item;
+        [SerializeField] TextMeshProUGUI nameText;
+        IAmAnInventorySlot inventorySlot;
         public virtual void SetItemSlotUI(IAmAnInventorySlot inventorySlot)
         {
-            SetItemType(inventorySlot);
-            SetItemImage();
-            SetCounterText(inventorySlot.Quantity().ToString());
+            this.inventorySlot = inventorySlot;
+            InitializeUI();
         }
 
-        private void SetItemType(IAmAnInventorySlot inventorySlot)
+        private void InitializeUI()
         {
-            this.item = inventorySlot.GetItemType();
+            SetItemImage();
+            SetCounterText(this.inventorySlot.Quantity().ToString());
+            SetNameText();
         }
 
         private void SetItemImage()
         {
-            this.image.sprite = item.sprite;
+            this.image.sprite = inventorySlot.GetItemType().sprite;
         }
 
         public void SetCounterText(string CounterText)
         {
             countText.text = CounterText;
+        }
+        public void SetNameText()
+        {
+            if (nameText == null) return;
+            nameText.text = inventorySlot.GetItemType().itemName;
+        }
+        public IAmAnInventorySlot GetInventorySlot()
+        {
+            return inventorySlot;
         }
     }
 }

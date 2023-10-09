@@ -1,34 +1,54 @@
-﻿using RPGSandBox.Controller;
 using RPGSandBox.InterfaceSystem;
-using System;
-
+using System.Collections.Generic;
+using UnityEngine;
 namespace RPGSandBox.GameUI
 {
-    public class InventoryUI : InventoryUI_Base
+    public class InventoryUI : MonoBehaviour, IAmAGameUI
     {
-        private void Start()
+        [SerializeField] RectTransform inventorySlotButtonObject;
+        [SerializeField] RectTransform contentUIrectTransform;
+        [SerializeField] List<InventorySlotUI> inventorySlots;
+
+
+
+        public void DisplayInventoryItems(IAmAnInventory inventory)
         {
-            InterfaceControllerSystem.Instance.OnActivateInventoryUI += ActivateUI;
+            ClearUI();
+            foreach (IAmAnInventorySlot inventorySlot in inventory.GetInventoryList())
+            {
+                RectTransform newItemSlotTransform = Instantiate(inventorySlotButtonObject, this.contentUIrectTransform);
+                InventorySlotUI newItemSlotUI = newItemSlotTransform.GetComponent<InventorySlotUI>();
+                newItemSlotUI.SetItemSlotUI(inventorySlot);
+                inventorySlots.Add(newItemSlotUI);
+            }
         }
-        IAmAnInventory currentinventory;
-        public override void ActivateUI()
+        public void ActivateUI(IAmAnInventory inventory)
         {
-            base.ActivateUI();
-            if (!TryGetInventory()) return;
-            ActivateUI(currentinventory);
+            DisplayInventoryItems(inventory);
+        }
+        public virtual void ActivateUI()
+        {
+            this.gameObject.SetActive(true);
         }
 
-        private bool TryGetInventory()
+        public void ClearUI()
         {
-            if (UnitSelectionSystem.Instance.GetUnit() == null) return false;
-            if (UnitSelectionSystem.Instance.GetUnit().Inventory() == null) return false;
-            currentinventory = UnitSelectionSystem.Instance.GetUnit().Inventory();
-            return true;
+            foreach (InventorySlotUI uiSlot in inventorySlots)
+            {
+                Destroy(uiSlot.gameObject);
+            }
+            inventorySlots.Clear();
         }
 
-        public override void ExtendInventorySlotUI(InventorySlotUI newItemSlotUI)
+        public void DeActivateUI()
         {
+            this.gameObject.SetActive(false);
+        }
 
+        public void UpdateUI()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
+

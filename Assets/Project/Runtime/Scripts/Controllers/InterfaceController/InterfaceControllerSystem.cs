@@ -1,3 +1,4 @@
+using RPGSandBox.InterfaceSystem;
 using System;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace RPGSandBox.Controller
         public Action OnActivateQuestListUI;
         public Action OnActivateInformationUI;
         public Action OnActivateTradeUI;
+        public Action<IAmAnInventorySlot> OnActivateItemInteractionWindowUI;
         private void Awake()
         {
             if (Instance != null)
@@ -81,6 +83,10 @@ namespace RPGSandBox.Controller
         public void ActivateTradeUI()
         {
             OnActivateTradeUI?.Invoke();
+        }
+        public void ActivateItemInteractionWindowUI(IAmAnInventorySlot slot)
+        {
+            OnActivateItemInteractionWindowUI?.Invoke(slot);
         }
     }
 }
