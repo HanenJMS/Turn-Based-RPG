@@ -70,6 +70,7 @@ namespace RPGSandBox.InventorySystem
         }
         public bool Contains(IAmAnInventorySlot itemTradeSlot)
         {
+            if (itemTradeSlot == null) return false;
             if (!inventory.ContainsKey(itemTradeSlot.GetItemType())) return false;
             if (inventory[itemTradeSlot.GetItemType()].Quantity() < itemTradeSlot.Quantity()) return false;
             return true;

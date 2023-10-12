@@ -9,9 +9,17 @@ namespace RPGSandBox.UnitSystem
         IAmAUnit targetWorld;
         IAmATrader targetTrader;
         IHaveAMarket market;
+        private void Start()
+        {
+            inventory = GetComponent<IAmAUnit>().Inventory();
+        }
         public void Trade(IAmATrader target)
         {
             Debug.Log($"{this.gameObject.name} is trading with {targetWorld.InteractableName()}");
+        }
+        public IAmAnInventory GetInventory()
+        {
+            return inventory;
         }
         public IHaveAMarket Market()
         {

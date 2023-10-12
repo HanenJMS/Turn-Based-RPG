@@ -1,9 +1,8 @@
+using RPGSandBox.GameUI;
 using RPGSandBox.InterfaceSystem;
 using RPGSandBox.InventorySystem;
 using RPGSandBox.TradingSystem;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPGSandBox.Controller
@@ -11,12 +10,9 @@ namespace RPGSandBox.Controller
     public class TradingControllerSystem : MonoBehaviour
     {
         public static TradingControllerSystem Instance { get; private set; }
-        public Action OnStartItemTradeWindow;
-        MarketType marketType;
-        ItemType itemTrade;
+        public Action OnStartTrade;
+        public Action OnUpdatedTradeMenu;
         IAmATrader playerTrader, targetedTrader;
-        IAmAnInventorySlot tradingSlot;
-        public Action<IAmATrader, IAmATrader> OnActivateTradeUI;
         private void Awake()
         {
             if (Instance != null)
@@ -35,48 +31,46 @@ namespace RPGSandBox.Controller
         {
             if (target is not IAmAUnit) return;
             targetedTrader = (target as IAmAUnit).Trader();
-            OnActivateTradeUI?.Invoke(playerTrader, targetedTrader);
+            OnStartTrade?.Invoke();
         }
         private void OnSelectedUnit()
         {
             playerTrader = UnitSelectionSystem.Instance.GetUnit().Trader();
         }
-        public void SetMarketType(MarketType market)
-        {
-            marketType = market;
-        }
-        public void SetTradeItem(ItemType itemType)
-        {
-            itemTrade = itemType;
-        }
-        public void SetTradingSlot(IAmAnInventorySlot tradingSlot)
-        {
-            this.tradingSlot = tradingSlot;
-        }
-        public IAmAnInventorySlot GetTradingSlot()
-        {
-            return this.tradingSlot;
-        }
-        public void OpenItemWindow()
-        {
-            OnActivateTradeUI?.Invoke(playerTrader, targetedTrader);
-            OnStartItemTradeWindow?.Invoke();
-        }
-        internal void Trade(int quantity)
-        {
 
+        public IAmATrader GetTargetTrader()
+        {
+            if (targetedTrader != null) return targetedTrader;
+            OnSelectedUnit();
+            return playerTrader;
+        }
+        internal void AddBuyTrade(IAmAnInventorySlot inventorySlot)
+        {
+            OnSelectedUnit();
+            playerTrader.Market().GetDemandList().Inventory().AddToInventory(inventorySlot);
+        }
+        internal void AddSellTrade(IAmAnInventorySlot inventorySlot)
+        {
+            OnSelectedUnit();
+            playerTrader.Market().GetSupplyList().Inventory().AddToInventory(inventorySlot);
+        }
+        internal void BuyItem(IAmAnInventorySlot inventorySlot)
+        {
+            if (!GetTargetTrader().Market().GetSupplyList().Inventory().Contains(inventorySlot)) return;
+
+            TradingInventorySlot(playerTrader.GetInventory(), GetTargetTrader().Market().GetSupplyList().Inventory(), inventorySlot);
         }
 
-        internal void Buy(int quantity)
+        internal void SellItem(IAmAnInventorySlot inventorySlot)
         {
-            InventorySlot newSlot = new(tradingSlot.GetItemType(), quantity);
-            playerTrader.Market().GetDemandList().Inventory().AddToInventory(newSlot);
+            if (!playerTrader.GetInventory().Contains(inventorySlot)) return;
+            TradingInventorySlot(GetTargetTrader().GetInventory(), playerTrader.GetInventory(), inventorySlot);
         }
 
-        internal void Sell(int quantity)
+        void TradingInventorySlot(IAmAnInventory AddToInventory, IAmAnInventory RemoveFromInventory, IAmAnInventorySlot tradingSlot)
         {
-            InventorySlot newSlot = new(tradingSlot.GetItemType(), quantity);
-            playerTrader.Market().GetSupplyList().Inventory().AddToInventory(newSlot);
+            AddToInventory.AddToInventory(tradingSlot);
+            RemoveFromInventory.RemoveFromInventory(tradingSlot);
         }
     }
 }

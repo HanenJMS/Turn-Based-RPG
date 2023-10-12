@@ -13974,7 +13974,7 @@ PrefabInstance:
     - target: {fileID: 4288462471055408535, guid: 107f72f4ffe72bd4d984f8a55e131148,
         type: 3}
       propertyPath: m_Name
-      value: MerchantTradingSystem
+      value: TradingSystem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

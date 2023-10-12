@@ -1,51 +1,36 @@
 using RPGSandBox.Controller;
 using RPGSandBox.InterfaceSystem;
 using RPGSandBox.TradingSystem;
+using System;
 using UnityEngine;
 namespace RPGSandBox.GameUI
 {
-    public class TradingSystemUI : MonoBehaviour, IAmAGameUI
+    public class TradingSystemUI : MonoBehaviour
     {
-        IAmATrader playerTrader, targetTrader;
         [SerializeField] RectTransform SupplyTradeWindowTransform;
         [SerializeField] RectTransform DemandTradeWindowTransform;
-        [SerializeField] RectTransform ItemTradeWindowTransform;
+        private void OnEnable()
+        {
+            TradingControllerSystem.Instance.OnUpdatedTradeMenu += ActivateUI;
+        }
+        private void OnDisable()
+        {
+            TradingControllerSystem.Instance.OnUpdatedTradeMenu -= ActivateUI;
+        }
         private void Start()
         {
-            TradingControllerSystem.Instance.OnActivateTradeUI += ActivateUICustom;
-            ItemTradeWindowTransform.gameObject.SetActive(false);
-        }
-        void ActivateUICustom(IAmATrader playerTrader, IAmATrader targetTrader)
-        {
-            this.playerTrader = playerTrader;
-            this.targetTrader = targetTrader;
-            //SupplyTradeWindowTransform.GetComponent<MarketTypeUI>().SetMarketUI(targetTrader.Market().GetSupplyList());
-            //DemandTradeWindowTransform.GetComponent<MarketTypeUI>().SetMarketUI(targetTrader.Market().GetDemandList());
+            TradingControllerSystem.Instance.OnStartTrade += ActivateUI;
             
-            ActivateUI();
-        }
-        public void OpenItemWindow(IAmAnInventorySlot inventorySlot)
-        {
-            ItemTradeWindowTransform.gameObject.SetActive(true);
-        }
-        public void ActivateUI()
-        {
-            this.gameObject.SetActive(true);
         }
 
-        public void ClearUI()
+        private void ActivateUI()
         {
+            if (!this.gameObject.activeSelf) return;
+            SupplyTradeWindowTransform.GetComponent<InventoryUI>().ActivateUI(TradingControllerSystem.Instance.GetTargetTrader().Market().GetSupplyList().Inventory());
+            SupplyTradeWindowTransform.GetComponent<InventoryUI>().ActivateUI();
 
-        }
-
-        public void DeActivateUI()
-        {
-            this.gameObject.SetActive(false);
-        }
-
-        public void UpdateUI()
-        {
-            throw new System.NotImplementedException();
+            DemandTradeWindowTransform.GetComponent<InventoryUI>().ActivateUI(TradingControllerSystem.Instance.GetTargetTrader().Market().GetDemandList().Inventory());
+            DemandTradeWindowTransform.GetComponent<InventoryUI>().ActivateUI();
         }
     }
 }

@@ -48,7 +48,7 @@ namespace RPGSandBox.UnitSystem
         }
         public IAmAnInventory Inventory()
         {
-            return inventory;
+            return inventoryWorld;
         }
         public IAmATrader Trader()
         {
