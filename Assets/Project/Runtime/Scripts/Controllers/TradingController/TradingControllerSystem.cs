@@ -1,7 +1,4 @@
-using RPGSandBox.GameUI;
 using RPGSandBox.InterfaceSystem;
-using RPGSandBox.InventorySystem;
-using RPGSandBox.TradingSystem;
 using System;
 using UnityEngine;
 
@@ -47,30 +44,35 @@ namespace RPGSandBox.Controller
         internal void AddBuyTrade(IAmAnInventorySlot inventorySlot)
         {
             OnSelectedUnit();
-            playerTrader.Market().GetDemandList().Inventory().AddToInventory(inventorySlot);
+            TradingInventorySlot(playerTrader.Market().GetDemandList().Inventory(), null, inventorySlot);
+            OnUpdatedTradeMenu?.Invoke();
         }
         internal void AddSellTrade(IAmAnInventorySlot inventorySlot)
         {
             OnSelectedUnit();
-            playerTrader.Market().GetSupplyList().Inventory().AddToInventory(inventorySlot);
+            TradingInventorySlot(playerTrader.Market().GetSupplyList().Inventory(), playerTrader.GetInventory(), inventorySlot);
+            OnUpdatedTradeMenu?.Invoke();
         }
         internal void BuyItem(IAmAnInventorySlot inventorySlot)
         {
             if (!GetTargetTrader().Market().GetSupplyList().Inventory().Contains(inventorySlot)) return;
-
             TradingInventorySlot(playerTrader.GetInventory(), GetTargetTrader().Market().GetSupplyList().Inventory(), inventorySlot);
+            OnUpdatedTradeMenu?.Invoke();
         }
 
         internal void SellItem(IAmAnInventorySlot inventorySlot)
         {
             if (!playerTrader.GetInventory().Contains(inventorySlot)) return;
             TradingInventorySlot(GetTargetTrader().GetInventory(), playerTrader.GetInventory(), inventorySlot);
+            OnUpdatedTradeMenu?.Invoke();
         }
 
         void TradingInventorySlot(IAmAnInventory AddToInventory, IAmAnInventory RemoveFromInventory, IAmAnInventorySlot tradingSlot)
         {
-            AddToInventory.AddToInventory(tradingSlot);
-            RemoveFromInventory.RemoveFromInventory(tradingSlot);
+            if (AddToInventory == null) return;
+            if (!AddToInventory.AddToInventoryQuantity(tradingSlot)) return;
+            if (RemoveFromInventory == null) return;
+            if (!RemoveFromInventory.RemoveFromInventoryQuantity(tradingSlot)) return;
         }
     }
 }

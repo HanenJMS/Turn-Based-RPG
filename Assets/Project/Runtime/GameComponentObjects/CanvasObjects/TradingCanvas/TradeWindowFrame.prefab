@@ -183,7 +183,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6458268475792228103}
   - component: {fileID: 6458268475792228120}
-  - component: {fileID: 9093581918447441967}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -235,21 +234,6 @@ MonoBehaviour:
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 1
   m_ConstraintCount: 6
---- !u!114 &9093581918447441967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6458268475792228102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1093913734a10341992f6ac55aeeee0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventorySlotButtonObject: {fileID: 0}
-  contentUIrectTransform: {fileID: 0}
-  inventorySlots: []
 --- !u!1 &6458268475827738110
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,8 +598,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6458268475958281048}
   m_HandleRect: {fileID: 6458268475958281031}
   m_Direction: 2
-  m_Value: 1.0000004
-  m_Size: 0.75
+  m_Value: 1
+  m_Size: 0.74999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

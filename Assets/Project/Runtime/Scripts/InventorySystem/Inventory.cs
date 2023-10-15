@@ -1,3 +1,4 @@
+using RPGSandBox.Controller;
 using RPGSandBox.InterfaceSystem;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,12 +25,39 @@ namespace RPGSandBox.InventorySystem
         {
             return exposedInventory;
         }
+        public bool AddToInventoryQuantity(IAmAnInventorySlot transferringSlot)
+        {
+            if (transferringSlot == null) return false;
+            ItemType itemType = transferringSlot.GetItemType();
+            int quantity = transferringSlot.Quantity();
+            if (inventory.ContainsKey(itemType))
+            {
+                inventory[itemType].AddToItemQuantity(quantity);
+            }
+            else
+            {
+                inventory.Add(itemType, new InventorySlot(itemType, quantity));
+            }
+            CalculateCurrentInventoryCount();
+            return true;
+        }
+        public bool RemoveFromInventoryQuantity(IAmAnInventorySlot transferringSlot)
+        {
+            if (transferringSlot == null) return false;
+            ItemType itemType = transferringSlot.GetItemType();
+            int quantity = transferringSlot.Quantity();
+            if (!inventory.ContainsKey(itemType)) return false;
+            if (inventory[itemType].Quantity() < quantity) return false;
+            inventory[itemType].RemoveFromItemQuantity(quantity);
+            CalculateCurrentInventoryCount();
+            return true;
+        }
         public bool AddToInventory(IAmAnInventorySlot transferringSlot)
         {
             if (transferringSlot == null) return false;
             ItemType itemType = transferringSlot.GetItemType();
             int itemTransferringQuantity = transferringSlot.Quantity();
-            if (itemTransferringQuantity > (totalInventoryCount - currentInventoryCount)) return false;
+            //if (itemTransferringQuantity > (totalInventoryCount - currentInventoryCount)) return false;
             if (inventory.ContainsKey(itemType))
             {
                 inventory[itemType].AddToItemQuantity(itemTransferringQuantity);
@@ -72,7 +100,7 @@ namespace RPGSandBox.InventorySystem
         {
             if (itemTradeSlot == null) return false;
             if (!inventory.ContainsKey(itemTradeSlot.GetItemType())) return false;
-            if (inventory[itemTradeSlot.GetItemType()].Quantity() < itemTradeSlot.Quantity()) return false;
+            //if (inventory[itemTradeSlot.GetItemType()].Quantity() < itemTradeSlot.Quantity()) return false;
             return true;
         }
         void CalculateCurrentInventoryCount()
@@ -84,6 +112,7 @@ namespace RPGSandBox.InventorySystem
                 exposedInventory.Add(kvp.Value);
                 currentInventoryCount += kvp.Value.Quantity();
             }
+            InterfaceControllerSystem.Instance.ActivateInventoryUI();
         }
     }
 }

@@ -51,11 +51,13 @@ namespace RPGSandBox.GameUI
         public void ActivateUI()
         {
             this.gameObject.SetActive(true);
+
         }
 
         public void DeActivateUI()
         {
             this.gameObject.SetActive(false);
+            
         }
 
         public void ClearUI()
