@@ -1,5 +1,4 @@
 using RPGSandBox.InterfaceSystem;
-using RPGSandBox.InventorySystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

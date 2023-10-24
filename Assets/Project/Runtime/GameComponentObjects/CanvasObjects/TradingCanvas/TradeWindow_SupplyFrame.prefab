@@ -8,6 +8,12 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2893421694540330792, guid: f4a5c015ee9272149bb206573c4a7580,
+        type: 3}
+      propertyPath: inventorySlotButtonObject
+      value: 
+      objectReference: {fileID: 8958160961847299851, guid: 5c31b926c3d4586438ab6b8f672a1ace,
+        type: 3}
     - target: {fileID: 6458268475610772510, guid: f4a5c015ee9272149bb206573c4a7580,
         type: 3}
       propertyPath: m_Name
@@ -186,7 +192,7 @@ PrefabInstance:
     - target: {fileID: 6458268477353560653, guid: f4a5c015ee9272149bb206573c4a7580,
         type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0.9999996
       objectReference: {fileID: 0}
     - target: {fileID: 7455475199143713130, guid: f4a5c015ee9272149bb206573c4a7580,
         type: 3}

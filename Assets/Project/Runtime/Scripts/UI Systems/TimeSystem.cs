@@ -6,6 +6,8 @@ public class TimeSystem : MonoBehaviour
     public static TimeSystem Instance { get; private set; }
     public Action OnTimerChanged;
     public Action OnTimerPaused;
+    public Action OnTriggerDay;
+    public Action OnTriggerNight;
     float day = 0f, hour = 0f, min = 0f, sec = 0f;
     float standardMinute = 60f;
     float standardHour = 60f;

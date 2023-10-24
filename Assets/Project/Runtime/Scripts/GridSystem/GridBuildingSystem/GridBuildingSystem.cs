@@ -26,7 +26,7 @@ namespace RPGSandBox.GameUtilities.GridBuildingSystems
                 if (building == null) { return; }
 
                 float cellSize = (LevelGrid.Instance.GetCellSize() / 10) * placedObjectTypeSO.width;
-                building.SetScale(Vector3.one * cellSize);
+                //building.SetScale(Vector3.one * cellSize);
                 currentGridSystem[gridPosition].AddObject(building.gameObject);
             }
         }

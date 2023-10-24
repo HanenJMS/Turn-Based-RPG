@@ -8,6 +8,21 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6566344614516683942, guid: ccf93b934e48eed4c9834df83def7a80,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566344614516683942, guid: ccf93b934e48eed4c9834df83def7a80,
+        type: 3}
+      propertyPath: m_fontSizeMax
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566344614516683942, guid: ccf93b934e48eed4c9834df83def7a80,
+        type: 3}
+      propertyPath: m_fontSizeMin
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6566344616418135706, guid: ccf93b934e48eed4c9834df83def7a80,
         type: 3}
       propertyPath: m_Pivot.x
@@ -153,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 7467841971720168892}
   countText: {fileID: 7467841970080320454}
+  nameText: {fileID: 0}
   itemButton: {fileID: 7467841971433910780}
 --- !u!114 &7467841971433910780 stripped
 MonoBehaviour:

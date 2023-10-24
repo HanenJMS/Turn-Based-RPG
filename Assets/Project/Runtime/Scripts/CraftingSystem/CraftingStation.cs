@@ -1,4 +1,5 @@
 using RPGSandBox.InterfaceSystem;
+using RPGSandBox.InventorySystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,7 +31,7 @@ namespace RPGSandBox.CraftingSystem
 
         private IEnumerator WaitAFewSeconds(IAmAUnit crafter, IAmAnItem item)
         {
-
+            
             if (currentTimer > 0)
             {
                 currentTimer--;
@@ -38,7 +39,7 @@ namespace RPGSandBox.CraftingSystem
             }
             if (item != null)
             {
-                //crafter.Inventory().Storing(item);
+                crafter.Gatherer().Gathering(item);
             }
         }
         private bool CanBeCrafted(IAmAUnit crafter, IHaveACraftingRecipe recipe)
@@ -50,10 +51,13 @@ namespace RPGSandBox.CraftingSystem
             {
                 IAmAnItem item = material.item.prefab.GetComponent<IAmAnItem>();
                 int qty = material.qty;
-                item.GetItemWorldInventorySlot().AddToItemQuantity(qty);
-                //if (!crafter.Inventory().Checking(item)) return false;
+                InventorySlot newSlot = new(item.ItemType(), qty);
+                if (!crafter.Inventory().Contains(newSlot))
+                {
+                    return false;
+                }
             }
-            return true;
+                return true;
         }
         void CraftingExchange(IAmAUnit crafter, IHaveACraftingRecipe recipe)
         {
@@ -62,8 +66,10 @@ namespace RPGSandBox.CraftingSystem
             {
                 IAmAnItem item = material.item.prefab.GetComponent<IAmAnItem>();
                 int qty = material.qty;
-                item.GetItemWorldInventorySlot().AddToItemQuantity(qty);
-                //crafter.Inventory().Removing(item);
+                InventorySlot newSlot = new(item.ItemType(), qty);
+                crafter.Inventory().Contains(newSlot);
+                crafter.Inventory().RemoveFromInventory(newSlot);
+
             }
         }
         public bool CanInteract(IAmInteractable interact)

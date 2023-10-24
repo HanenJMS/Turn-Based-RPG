@@ -49,7 +49,7 @@ namespace RPGSandBox.Controller
             }
             if (action is ICanCraft)
             {
-                playerStartsCraft?.Invoke();
+                PlayerStartsActions(action, playerTarget);
             }
             OnButtonClick?.Invoke();
         }

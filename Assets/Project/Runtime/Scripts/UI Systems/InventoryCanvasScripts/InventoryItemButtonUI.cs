@@ -9,6 +9,7 @@ namespace RPGSandBox.GameUI
         public override void DoButtonLogic()
         {
             InterfaceControllerSystem.Instance.ActivateItemInteractionWindowUI(GetInventorySlot());
+            InterfaceControllerSystem.Instance.ActivateMerchantButtons();
         }
     }
 }

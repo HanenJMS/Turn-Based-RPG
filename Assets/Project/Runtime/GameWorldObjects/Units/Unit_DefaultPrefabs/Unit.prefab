@@ -126,6 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae506ae4f559d04fbed0b7b3e170279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryWorld:
+    exposedInventory: []
+    currentInventoryCount: 0
+    totalInventoryCount: 5
 --- !u!114 &597431887
 MonoBehaviour:
   m_ObjectHideFlags: 0

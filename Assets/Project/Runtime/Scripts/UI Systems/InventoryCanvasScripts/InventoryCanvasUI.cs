@@ -12,11 +12,13 @@ namespace RPGSandBox.GameUI
         {
             InterfaceControllerSystem.Instance.OnActivateInventoryUI += ActivateUI;
             UnitSelectionSystem.Instance.OnSelectedUnit += SelectedUnit;
+            InterfaceControllerSystem.Instance.OnUpdateInventoryUI += UpdateUI;
         }
 
         private void SelectedUnit()
         {
             inventory = UnitSelectionSystem.Instance.GetUnit().Inventory();
+            UpdateUI();
         }
 
         public void ActivateUI()
@@ -24,6 +26,10 @@ namespace RPGSandBox.GameUI
             this.gameObject.SetActive(true);
             inventoryUI.GetComponent<InventoryUI>().ActivateUI(inventory);
             inventoryUI.GetComponent<InventoryUI>().ActivateUI();
+        }
+        public void UpdateUI()
+        {
+            inventoryUI.GetComponent<InventoryUI>().UpdateUI(inventory);
         }
     }
 

@@ -63,7 +63,7 @@ namespace RPGSandBox.Controller
         internal void SellItem(IAmAnInventorySlot inventorySlot)
         {
             if (!playerTrader.GetInventory().Contains(inventorySlot)) return;
-            TradingInventorySlot(GetTargetTrader().GetInventory(), playerTrader.GetInventory(), inventorySlot);
+            TradingInventorySlot(GetTargetTrader().Market().GetDemandList().Inventory(), playerTrader.GetInventory(), inventorySlot);
             OnUpdatedTradeMenu?.Invoke();
         }
 

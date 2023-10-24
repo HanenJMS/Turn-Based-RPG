@@ -8,6 +8,12 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2893421694540330792, guid: f4a5c015ee9272149bb206573c4a7580,
+        type: 3}
+      propertyPath: inventorySlotButtonObject
+      value: 
+      objectReference: {fileID: 3491311931910315988, guid: 18dcd413b0b597f4c92e87ac282a4105,
+        type: 3}
     - target: {fileID: 6458268475610772510, guid: f4a5c015ee9272149bb206573c4a7580,
         type: 3}
       propertyPath: m_Name
@@ -192,6 +198,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6458268477353560653, guid: f4a5c015ee9272149bb206573c4a7580,
+        type: 3}
+      propertyPath: m_Size
+      value: 0.75000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 6458268477353560653, guid: f4a5c015ee9272149bb206573c4a7580,
+        type: 3}
+      propertyPath: m_Value
+      value: 1.0000004
       objectReference: {fileID: 0}
     - target: {fileID: 7455475199143713130, guid: f4a5c015ee9272149bb206573c4a7580,
         type: 3}

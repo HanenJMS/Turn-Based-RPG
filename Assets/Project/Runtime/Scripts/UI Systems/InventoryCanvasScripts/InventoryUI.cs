@@ -13,10 +13,11 @@ namespace RPGSandBox.GameUI
 
         public void DisplayInventoryItems(IAmAnInventory inventory)
         {
+            if (inventory == null) return;
             ClearUI();
             foreach (IAmAnInventorySlot inventorySlot in inventory.GetInventoryList())
             {
-                if(inventorySlot.Quantity() > 0)
+                if (inventorySlot.Quantity() > 0)
                 {
                     RectTransform newItemSlotTransform = Instantiate(inventorySlotButtonObject, this.contentUIrectTransform);
                     InventorySlotUI newItemSlotUI = newItemSlotTransform.GetComponent<InventorySlotUI>();
@@ -48,10 +49,13 @@ namespace RPGSandBox.GameUI
         {
             this.gameObject.SetActive(false);
         }
-
         public void UpdateUI()
         {
-            throw new System.NotImplementedException();
+
+        }
+        public void UpdateUI(IAmAnInventory inventory)
+        {
+            DisplayInventoryItems(inventory);
         }
     }
 }

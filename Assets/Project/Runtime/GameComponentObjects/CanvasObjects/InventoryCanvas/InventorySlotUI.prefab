@@ -96,7 +96,7 @@ MonoBehaviour:
   m_fontSize: 20
   m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 20
   m_fontSizeMax: 20
   m_fontStyle: 0
@@ -228,6 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1939532469272135164}
   countText: {fileID: 1828857045495128381}
+  nameText: {fileID: 0}
 --- !u!114 &8227644870708627527
 MonoBehaviour:
   m_ObjectHideFlags: 0
