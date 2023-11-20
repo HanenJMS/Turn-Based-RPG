@@ -13,8 +13,8 @@ namespace RPGSandBox.InterfaceSystem
         IAmAnInventory Inventory();
         IAmATrader Trader();
         IHaveATarget Target();
+        IHaveAnAction Actioner();
         void Speak(string message, bool priority);
-        void Execute(IAmAnAction action);
         List<IAmAnAction> ActionList();
     }
 }

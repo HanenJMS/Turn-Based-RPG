@@ -1,7 +1,4 @@
 using RPGSandBox.Controller;
-using RPGSandBox.InterfaceSystem;
-using RPGSandBox.TradingSystem;
-using System;
 using UnityEngine;
 namespace RPGSandBox.GameUI
 {
@@ -9,18 +6,11 @@ namespace RPGSandBox.GameUI
     {
         [SerializeField] RectTransform SupplyTradeWindowTransform;
         [SerializeField] RectTransform DemandTradeWindowTransform;
-        private void OnEnable()
-        {
-            TradingControllerSystem.Instance.OnUpdatedTradeMenu += ActivateUI;
-        }
-        private void OnDisable()
-        {
-            TradingControllerSystem.Instance.OnUpdatedTradeMenu -= ActivateUI;
-        }
+
         private void Start()
         {
             TradingControllerSystem.Instance.OnStartTrade += ActivateUI;
-            
+            TradingControllerSystem.Instance.OnUpdatedTradeMenu += ActivateUI;
         }
 
         private void ActivateUI()

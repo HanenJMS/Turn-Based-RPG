@@ -9,16 +9,17 @@ namespace RPGSandBox.UnitSystem
         public IAmAUnit unit;
         public string actionName = "";
         public bool isRunning = false;
+        public float minimumDistance = 0.5f;
         private void Update()
         {
             if (!isRunning) return;
             if (!CanExecute(actionTarget)) return;
-            if (!unit.Target().CheckingRange()) return;
-            if (unit.Target().CheckingRange())
+            if (!unit.Target().CheckingIsInRange()) return;
+            if (unit.Target().CheckingIsInRange())
             {
                 ExecuteBaseAction();
             }
-            unit.Execute(null);
+            unit.Actioner().Cancel();
         }
         private void OnEnable()
         {
@@ -27,6 +28,10 @@ namespace RPGSandBox.UnitSystem
         public virtual void Awake()
         {
             Initialize();
+        }
+        public bool IsExecuting()
+        {
+            return isRunning;
         }
         public string ActionName()
         {
@@ -37,13 +42,13 @@ namespace RPGSandBox.UnitSystem
         {
             if (!CanExecute(target)) return;
             isRunning = true;
-            unit.Execute(this);
+            unit.Actioner().Executing(this);
         }
         public abstract bool CanExecute(object target);
         public virtual void Cancel()
         {
             isRunning = false;
-            unit.Target().Targeting(null, 0f);
+            unit.Target().SetTarget(null, minimumDistance);
         }
         public abstract void ExecuteBaseAction();
         public virtual void Initialize()

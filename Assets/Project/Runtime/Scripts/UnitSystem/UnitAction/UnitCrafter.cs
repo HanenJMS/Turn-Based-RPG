@@ -10,12 +10,12 @@ namespace RPGSandBox.UnitSystem
         private void Update()
         {
             if (!CanExecute(target)) return;
-            if (!unit.Target().CheckingRange()) return;
-            if (unit.Target().CheckingRange())
+            if (!unit.Target().CheckingIsInRange()) return;
+            if (unit.Target().CheckingIsInRange())
             {
                 ExecuteBaseAction();
             }
-            unit.Execute(null);
+            unit.Actioner().Executing(null);
         }
         public void Crafting(IAmACraftingStation station)
         {
@@ -46,7 +46,7 @@ namespace RPGSandBox.UnitSystem
         {
             this.target = target as IAmACraftingStation;
             actionTarget = target;
-            unit.Target().Targeting(this.target, 2f);
+            unit.Target().SetTarget(this.target, 2f);
         }
 
 

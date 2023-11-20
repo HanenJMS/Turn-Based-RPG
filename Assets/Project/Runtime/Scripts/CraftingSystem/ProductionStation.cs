@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace RPGSandBox.CraftingSystem
 {
-    public class CraftingStation : MonoBehaviour, IAmACraftingStation
+    public class ProductionStation : MonoBehaviour, IAmACraftingStation
     {
         [SerializeField] List<CraftingRecipe> availableRecipes = new List<CraftingRecipe>();
         [SerializeField] string interactableName;

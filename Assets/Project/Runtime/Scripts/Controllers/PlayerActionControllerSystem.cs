@@ -58,7 +58,7 @@ namespace RPGSandBox.Controller
         {
             action.Execute(target);
 
-            playerSelectedUnit.Execute(action);
+            //playerSelectedUnit.Actioner().Executing(action);
         }
 
         public List<IAmAnAction> ExecutableActions()

@@ -28,7 +28,7 @@ namespace RPGSandBox.UnitSystem
         public override void Cancel()
         {
             base.Cancel();
-            targetWorld.Execute(null);
+            targetWorld.Actioner().Executing(null);
             targetWorld = null;
             targetTrader = null;
         }
@@ -54,7 +54,7 @@ namespace RPGSandBox.UnitSystem
         {
             this.targetWorld = target as IAmAUnit;
             this.targetTrader = targetWorld.Trader();
-            unit.Target().Targeting(this.targetTrader, 1f);
+            unit.Target().SetTarget(this.targetTrader, 1f);
         }
 
         public override void ExecuteBaseAction()

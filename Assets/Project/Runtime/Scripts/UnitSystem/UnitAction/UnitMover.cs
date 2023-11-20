@@ -7,6 +7,7 @@ namespace RPGSandBox.UnitSystem
     public class UnitMover : UnitActionBase, ICanMove
     {
         NavMeshAgent agent;
+        Vector3 target;
         public override void Awake()
         {
             base.Awake();
@@ -22,7 +23,7 @@ namespace RPGSandBox.UnitSystem
         }
         public override void SetTarget(object target)
         {
-            actionTarget = target;
+            unit.Target().SetTarget(target, 0.5f);
         }
         public override bool CanExecute(object target)
         {
@@ -31,21 +32,21 @@ namespace RPGSandBox.UnitSystem
         public override void Execute(object target)
         {
             base.Execute(target);
-            Vector3 destination = this.transform.position;
-            if (target is Vector3)
-            {
-                destination = (Vector3)target;
-            }
-            unit.Move().Moving(destination);
+            SetTarget(target);
+            this.actionTarget = (Vector3)target;
+            unit.Move().Moving((Vector3)this.actionTarget);
+            Debug.Log("I Execute movement");
         }
         public override void Cancel()
         {
             base.Cancel();
-            agent.SetDestination(this.transform.position);
+            Debug.Log("I cancel movement");
+            target = this.transform.position;
+            agent.SetDestination(target);
         }
         public override void ExecuteBaseAction()
         {
-            unit.Execute(null);
+            Debug.Log("I Execute movement base action");
         }
         public override void Initialize()
         {

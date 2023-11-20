@@ -58,9 +58,9 @@ namespace RPGSandBox.UnitSystem
         {
             speakingAction.Saying(message, priority);
         }
-        public void Execute(IAmAnAction action)
+        public IHaveAnAction Actioner()
         {
-            myAction.Executing(action);
+            return myAction;
         }
         public bool IsSelected()
         {

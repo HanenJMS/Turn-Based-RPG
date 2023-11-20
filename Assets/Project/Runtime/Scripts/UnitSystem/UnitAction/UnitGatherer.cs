@@ -29,7 +29,7 @@ namespace RPGSandBox.UnitSystem
         {
             this.target = target as IAmAnItem;
             actionTarget = target;
-            unit.Target().Targeting(this.target, 1f);
+            unit.Target().SetTarget(this.target, 1f);
         }
 
         public override void ExecuteBaseAction()

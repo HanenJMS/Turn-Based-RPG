@@ -9,7 +9,7 @@ namespace RPGSandBox.UnitSystem
         Vector3 worldDestination;
         float range;
 
-        public void Targeting(object target, float range)
+        public void SetTarget(object target, float range)
         {
             if(target is IAmInteractable)
             {
@@ -34,7 +34,7 @@ namespace RPGSandBox.UnitSystem
             }
             return targetDestination == target;
         }
-        public bool CheckingRange()
+        public bool CheckingIsInRange()
         {
             bool isRanged = false;
             if (worldDestination != null)
