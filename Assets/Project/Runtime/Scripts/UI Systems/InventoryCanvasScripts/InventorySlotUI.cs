@@ -25,7 +25,7 @@ namespace RPGSandBox.GameUI
 
         private void SetItemImage()
         {
-            this.image.sprite = inventorySlot.GetItemType().sprite;
+            this.image.sprite = inventorySlot.GetItemType().GetInteractableSprite();
         }
 
         public void SetCounterText(string CounterText)
@@ -35,7 +35,7 @@ namespace RPGSandBox.GameUI
         public void SetNameText()
         {
             if (nameText == null) return;
-            nameText.text = inventorySlot.GetItemType().itemName;
+            nameText.text = inventorySlot.GetItemType().name;;
         }
         public IAmAnInventorySlot GetInventorySlot()
         {

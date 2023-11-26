@@ -14,7 +14,7 @@ namespace RPGSandBox.InventorySystem
             this.quantity = quantity;
         }
 
-        public string ItemName() => itemType.itemName;
+        public string ItemName() => itemType.name;
         public ItemType GetItemType() => itemType;
         public int Quantity() => quantity;
         public void AddToItemQuantity(int quantity)

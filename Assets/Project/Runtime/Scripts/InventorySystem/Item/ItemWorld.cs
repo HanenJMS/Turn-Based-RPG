@@ -1,9 +1,10 @@
+using RPGSandBox.InteractableWorldSystem;
 using RPGSandBox.InterfaceSystem;
 using UnityEngine;
 
 namespace RPGSandBox.InventorySystem
 {
-    public class ItemWorld : MonoBehaviour, IAmAnItem
+    public class ItemWorld : InteractableWorldObject, IAmAnItem
     {
         [SerializeField] ItemType itemType;
         [SerializeField] InventorySlot ItemWorldInventorySlot;
@@ -42,17 +43,17 @@ namespace RPGSandBox.InventorySystem
         }
         public string DescriptionHeader()
         {
-            return itemType.itemName;
+            return itemType.name;;
         }
         public string DescriptionContent()
         {
-            string description = itemType.description;
+            string description = itemType.GetInteractableDescription();
             return description;
         }
 
         public string InteractableName()
         {
-            return itemType.itemName;
+            return itemType.name;;
         }
     }
 }

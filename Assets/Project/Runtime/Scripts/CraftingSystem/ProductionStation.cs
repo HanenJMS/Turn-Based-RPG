@@ -1,3 +1,4 @@
+using RPGSandBox.InteractableWorldSystem;
 using RPGSandBox.InterfaceSystem;
 using RPGSandBox.InventorySystem;
 using System.Collections;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace RPGSandBox.CraftingSystem
 {
-    public class ProductionStation : MonoBehaviour, IAmACraftingStation
+    public class ProductionStation : InteractableWorldObject, IAmACraftingStation
     {
         [SerializeField] List<CraftingRecipe> availableRecipes = new List<CraftingRecipe>();
         [SerializeField] string interactableName;
@@ -18,7 +19,7 @@ namespace RPGSandBox.CraftingSystem
                 recipe = recipes;
                 if (!CanBeCrafted(crafter, recipe)) continue;
                 CraftingExchange(crafter, recipe);
-                GameObject craftedItem = Instantiate(recipe.Product().item.prefab, this.transform.position, Quaternion.identity);
+                GameObject craftedItem = Instantiate(recipe.Product().item.GetInteractableModelPrefab(), this.transform.position, Quaternion.identity);
                 if (!craftedItem.TryGetComponent(out IAmAnItem item)) continue;
                 //item.SetOwner(crafter);
                 currentTimer = time;
@@ -49,7 +50,7 @@ namespace RPGSandBox.CraftingSystem
             if (neededMaterials.Count <= 0) return true;
             foreach (RecipeReference material in neededMaterials)
             {
-                IAmAnItem item = material.item.prefab.GetComponent<IAmAnItem>();
+                IAmAnItem item = material.item.GetInteractableModelPrefab().GetComponent<IAmAnItem>();
                 int qty = material.qty;
                 InventorySlot newSlot = new(item.ItemType(), qty);
                 if (!crafter.Inventory().Contains(newSlot))
@@ -64,7 +65,7 @@ namespace RPGSandBox.CraftingSystem
             List<RecipeReference> neededMaterials = recipe.NeededMaterials();
             foreach (RecipeReference material in neededMaterials)
             {
-                IAmAnItem item = material.item.prefab.GetComponent<IAmAnItem>();
+                IAmAnItem item = material.item.GetInteractableModelPrefab().GetComponent<IAmAnItem>();
                 int qty = material.qty;
                 InventorySlot newSlot = new(item.ItemType(), qty);
                 crafter.Inventory().Contains(newSlot);

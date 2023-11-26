@@ -1,15 +1,12 @@
+using RPGSandBox.InteractableWorldSystem;
 using UnityEngine;
 
 namespace RPGSandBox.InventorySystem
 {
-    public abstract class ItemType : ScriptableObject
+    [CreateAssetMenu(fileName = "NormalItem", menuName = "InventorySystem/Items/NormalItem")]
+    public class ItemType : InteractableObjectData
     {
-        public GameObject prefab;
-        public Sprite sprite;
-        public string itemName;
-        [TextArea(15, 20)]
-        public string description;
-        public int qualityValue;
+        
     }
 
 }
