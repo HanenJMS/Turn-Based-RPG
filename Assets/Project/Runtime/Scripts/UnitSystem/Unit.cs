@@ -1,4 +1,5 @@
 using RPGSandBox.Controller;
+using RPGSandBox.GameAISystem;
 using RPGSandBox.InterfaceSystem;
 using RPGSandBox.InventorySystem;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace RPGSandBox.UnitSystem
     public class Unit : MonoBehaviour, IAmAUnit
     {
         [SerializeField] Inventory inventoryWorld;
+        IHaveABrain aiBrain;
         IAmAnInventory inventory;
         IAmATrader trader;
         //actions
@@ -99,12 +101,14 @@ namespace RPGSandBox.UnitSystem
             if (myAction == null) return false;
             if (targeter == null) return false;
             if (tradingAction == null) return false;
+            if (aiBrain == null) return false;
             return true;
         }
         private void Initialize()
         {
             inventoryWorld = new Inventory();
             inventory = inventoryWorld;
+            aiBrain = GetComponent<IHaveABrain>();
             trader = GetComponent<IAmATrader>();
             movingAction = GetComponent<ICanMove>();
             speakingAction = GetComponentInChildren<ICanSpeak>();

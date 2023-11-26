@@ -13766,6 +13766,26 @@ PrefabInstance:
     - {fileID: 4794076212195566757, guid: 30d56801807983741baa796a48cc555c, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 30d56801807983741baa796a48cc555c, type: 3}
+--- !u!1 &327221843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 397318894104118134, guid: 30d56801807983741baa796a48cc555c,
+    type: 3}
+  m_PrefabInstance: {fileID: 327221842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &327221844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327221843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3970ef30045bee048889e49d05328b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goalAmount: 5
+  target: Wood
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -13844,7 +13864,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.3006394, y: 0.000000016410379, z: -0.0000000051729154, w: 0.9537379}
+  m_LocalRotation: {x: 0.3006394, y: -0.000000016410379, z: 0.0000000051729154, w: 0.9537379}
   m_LocalPosition: {x: 0, y: 7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15864,7 +15884,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369112367}
-  m_LocalRotation: {x: 0.3006394, y: 0.000000016410379, z: -0.0000000051729154, w: 0.9537379}
+  m_LocalRotation: {x: 0.3006394, y: -0.000000016410379, z: 0.0000000051729154, w: 0.9537379}
   m_LocalPosition: {x: 0, y: 7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
