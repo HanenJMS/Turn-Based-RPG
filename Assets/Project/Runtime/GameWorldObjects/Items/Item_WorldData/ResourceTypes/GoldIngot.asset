@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c3da1aa8589c543a303c620a8ef9b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 97440562acd0a2a4aa0ff94aee09444b, type: 3}
   m_Name: GoldIngot
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6507493130957105779, guid: 2e3f2ee1ffc5ea54299bd0471a66d8f8, type: 3}
-  sprite: {fileID: 21300000, guid: 39d66829824cb1d4da958035ee18213a, type: 3}
-  itemName: Gold Ingot
-  description: Resource item. Can be used for crafting.
-  qualityValue: 0
+  interactableName: GoldIngot
+  interactableDescription: 
+  interactableModelPrefab: {fileID: 6507493130957105779, guid: 2e3f2ee1ffc5ea54299bd0471a66d8f8,
+    type: 3}
+  interactableSprite: {fileID: 21300000, guid: 39d66829824cb1d4da958035ee18213a, type: 3}
+  interactableType: 4

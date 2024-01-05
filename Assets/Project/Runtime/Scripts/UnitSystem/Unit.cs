@@ -1,5 +1,6 @@
 using RPGSandBox.Controller;
 using RPGSandBox.GameAISystem;
+using RPGSandBox.InteractableSystem;
 using RPGSandBox.InterfaceSystem;
 using RPGSandBox.InventorySystem;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace RPGSandBox.UnitSystem
 {
-    public class Unit : MonoBehaviour, IAmAUnit
+    public class Unit : InteractableWorldObject, IAmAUnit
     {
         [SerializeField] Inventory inventoryWorld;
         IHaveABrain aiBrain;

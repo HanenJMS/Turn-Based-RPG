@@ -1,10 +1,10 @@
-using RPGSandBox.InventorySystem;
+using RPGSandBox.InteractableSystem;
 
 namespace RPGSandBox.InterfaceSystem
 {
     public interface IAmAnInventorySlot
     {
-        ItemType GetItemType();
+        ItemData GetItemType();
         void AddToItemQuantity(int itemTransferringQuantity);
         void RemoveFromItemQuantity(int itemTransferringQuantity);
         int Quantity();

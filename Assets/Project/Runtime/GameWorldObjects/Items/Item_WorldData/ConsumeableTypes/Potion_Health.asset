@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01f3ad0f5d4c7d24cbe697b7bcfb7590, type: 3}
+  m_Script: {fileID: 11500000, guid: c5a9e8072322b4746acf29f000d58ca6, type: 3}
   m_Name: Potion_Health
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8090289830727068612, guid: 6c70c55688d5f78418ffdfab91b495e7, type: 3}
-  sprite: {fileID: 21300000, guid: 117b17facff65dc42b1b57deb7c21551, type: 3}
-  itemName: Health Potion
-  description: Restores health.
-  qualityValue: 0
+  interactableName: Potion_Health
+  interactableDescription: 
+  interactableModelPrefab: {fileID: 8090289830727068612, guid: 6c70c55688d5f78418ffdfab91b495e7,
+    type: 3}
+  interactableSprite: {fileID: 21300000, guid: 117b17facff65dc42b1b57deb7c21551, type: 3}
+  interactableType: 3

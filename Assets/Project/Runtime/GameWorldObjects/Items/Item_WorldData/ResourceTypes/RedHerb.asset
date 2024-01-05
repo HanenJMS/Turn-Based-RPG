@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c3da1aa8589c543a303c620a8ef9b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 97440562acd0a2a4aa0ff94aee09444b, type: 3}
   m_Name: RedHerb
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3806631743390194940, guid: 0ff65718bcc0f674fa1eed64069a88df, type: 3}
-  sprite: {fileID: 21300000, guid: 8c22d51ad5e36ce4ab113ecbb83e4df1, type: 3}
-  itemName: Red Herb
-  description: Resource item. Can be used for crafting.
-  qualityValue: 0
+  interactableName: RedHerb
+  interactableDescription: 
+  interactableModelPrefab: {fileID: 3806631743390194940, guid: 0ff65718bcc0f674fa1eed64069a88df,
+    type: 3}
+  interactableSprite: {fileID: 21300000, guid: b4f7edfccaa5a6a4eac738449284e6fa, type: 3}
+  interactableType: 4

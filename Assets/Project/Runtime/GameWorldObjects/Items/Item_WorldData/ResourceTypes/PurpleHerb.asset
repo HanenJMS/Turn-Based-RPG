@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c3da1aa8589c543a303c620a8ef9b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 97440562acd0a2a4aa0ff94aee09444b, type: 3}
   m_Name: PurpleHerb
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8955795172921677241, guid: 179f35f04666cae41b330018a5bcf289, type: 3}
-  sprite: {fileID: 21300000, guid: 5e019c12e8005544eb4ae6ca8914936f, type: 3}
-  itemName: Purple Herb
-  description: Resource item. Can be used for crafting.
-  qualityValue: 0
+  interactableName: PurpleHerb
+  interactableDescription: 
+  interactableModelPrefab: {fileID: 8955795172921677241, guid: 179f35f04666cae41b330018a5bcf289,
+    type: 3}
+  interactableSprite: {fileID: 21300000, guid: 2fba6db49c2289e48a6107039e0657fa, type: 3}
+  interactableType: 4

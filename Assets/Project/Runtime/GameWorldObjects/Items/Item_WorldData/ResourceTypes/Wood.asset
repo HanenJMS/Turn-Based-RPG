@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c3da1aa8589c543a303c620a8ef9b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 97440562acd0a2a4aa0ff94aee09444b, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3949457540160727877, guid: 10f2530d19c7ba24c86537624b8e7704, type: 3}
-  sprite: {fileID: 21300000, guid: 0e1ccb64303778e4081913a6d9cca677, type: 3}
-  itemName: Wood
-  description: Resource item. Can be used for crafting.
-  qualityValue: 0
+  interactableName: Wood
+  interactableDescription: 
+  interactableModelPrefab: {fileID: 3949457540160727877, guid: 10f2530d19c7ba24c86537624b8e7704,
+    type: 3}
+  interactableSprite: {fileID: 21300000, guid: 0e1ccb64303778e4081913a6d9cca677, type: 3}
+  interactableType: 4

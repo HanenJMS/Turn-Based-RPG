@@ -1,9 +1,10 @@
+using RPGSandBox.InteractableSystem;
 using RPGSandBox.InterfaceSystem;
 using UnityEngine;
 
 namespace RPGSandBox.GameUtilities.GridBuildingSystems
 {
-    public class Building : MonoBehaviour, IAmInteractable
+    public class Building : InteractableWorldObject, IAmInteractable
     {
         [SerializeField] string descriptionHeader;
         [TextArea(5,20)]

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace RPGSandBox.InteractableWorldSystem
+namespace RPGSandBox.InteractableSystem
 {
-    public class InteractableObjectData : ScriptableObject
+    public class InteractableData : ScriptableObject
     {
         [SerializeField] string interactableName;
         [TextArea(15, 20)]

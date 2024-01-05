@@ -1,4 +1,5 @@
 using RPGSandBox.Controller;
+using RPGSandBox.InteractableSystem;
 using RPGSandBox.InterfaceSystem;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace RPGSandBox.InventorySystem
     [System.Serializable]
     public class Inventory : IAmAnInventory
     {
-        [SerializeField] Dictionary<ItemType, InventorySlot> inventory = new();
+        [SerializeField] Dictionary<ItemData, InventorySlot> inventory = new();
         [SerializeField] List<InventorySlot> exposedInventory = new();
         [SerializeField] int currentInventoryCount = 0;
         [SerializeField] int totalInventoryCount = 5;
@@ -17,7 +18,7 @@ namespace RPGSandBox.InventorySystem
         {
             totalInventoryCount = count;
         }
-        public InventorySlot GetInventorySlot(ItemType itemType)
+        public InventorySlot GetInventorySlot(ItemData itemType)
         {
             return inventory[itemType];
         }
@@ -28,7 +29,7 @@ namespace RPGSandBox.InventorySystem
         public bool AddToInventoryQuantity(IAmAnInventorySlot transferringSlot)
         {
             if (transferringSlot == null) return false;
-            ItemType itemType = transferringSlot.GetItemType();
+            ItemData itemType = transferringSlot.GetItemType();
             int quantity = transferringSlot.Quantity();
             if (inventory.ContainsKey(itemType))
             {
@@ -44,7 +45,7 @@ namespace RPGSandBox.InventorySystem
         public bool RemoveFromInventoryQuantity(IAmAnInventorySlot transferringSlot)
         {
             if (transferringSlot == null) return false;
-            ItemType itemType = transferringSlot.GetItemType();
+            ItemData itemType = transferringSlot.GetItemType();
             int quantity = transferringSlot.Quantity();
             if (!inventory.ContainsKey(itemType)) return false;
             if (inventory[itemType].Quantity() < quantity) return false;
@@ -55,7 +56,7 @@ namespace RPGSandBox.InventorySystem
         public bool AddToInventory(IAmAnInventorySlot transferringSlot)
         {
             if (transferringSlot == null) return false;
-            ItemType itemType = transferringSlot.GetItemType();
+            ItemData itemType = transferringSlot.GetItemType();
             int itemTransferringQuantity = transferringSlot.Quantity();
             //if (itemTransferringQuantity > (totalInventoryCount - currentInventoryCount)) return false;
             if (inventory.ContainsKey(itemType))
@@ -79,7 +80,7 @@ namespace RPGSandBox.InventorySystem
                 Debug.Log("Did you try to give me nothing? Inventory.cs RemoveFromInventory()");
                 return false;
             }
-            ItemType itemType = transferringSlot.GetItemType();
+            ItemData itemType = transferringSlot.GetItemType();
             int itemTransferringQuantity = transferringSlot.Quantity();
             if (!inventory.ContainsKey(itemType))
             {
@@ -107,7 +108,7 @@ namespace RPGSandBox.InventorySystem
         {
             currentInventoryCount = 0;
             exposedInventory.Clear();
-            foreach (KeyValuePair<ItemType, InventorySlot> kvp in inventory)
+            foreach (KeyValuePair<ItemData, InventorySlot> kvp in inventory)
             {
                 exposedInventory.Add(kvp.Value);
                 currentInventoryCount += kvp.Value.Quantity();

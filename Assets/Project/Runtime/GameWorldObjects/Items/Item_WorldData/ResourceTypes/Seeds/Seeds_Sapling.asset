@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c3da1aa8589c543a303c620a8ef9b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 97440562acd0a2a4aa0ff94aee09444b, type: 3}
   m_Name: Seeds_Sapling
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3403221359115473532, guid: daf5da2738954214186087f3ff051f4c, type: 3}
-  sprite: {fileID: 21300000, guid: f1d443a7d7c5f554599302b19e1ec2af, type: 3}
-  itemName: Seeds Sapling
-  description: Seeds used for planting.
-  qualityValue: 0
+  interactableName: Seeds_Sapling
+  interactableDescription: 
+  interactableModelPrefab: {fileID: 3403221359115473532, guid: daf5da2738954214186087f3ff051f4c,
+    type: 3}
+  interactableSprite: {fileID: 21300000, guid: f40547cabf5fe894a8a7b91051a4f27f, type: 3}
+  interactableType: 1

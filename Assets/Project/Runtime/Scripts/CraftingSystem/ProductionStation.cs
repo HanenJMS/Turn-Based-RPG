@@ -1,4 +1,4 @@
-using RPGSandBox.InteractableWorldSystem;
+using RPGSandBox.InteractableSystem;
 using RPGSandBox.InterfaceSystem;
 using RPGSandBox.InventorySystem;
 using System.Collections;

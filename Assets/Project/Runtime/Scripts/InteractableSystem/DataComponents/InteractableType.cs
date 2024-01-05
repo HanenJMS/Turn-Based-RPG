@@ -1,4 +1,4 @@
-﻿namespace RPGSandBox.InteractableWorldSystem
+﻿namespace RPGSandBox.InteractableSystem
 {
     public enum InteractableType
     {

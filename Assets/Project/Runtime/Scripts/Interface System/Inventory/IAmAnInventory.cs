@@ -1,3 +1,4 @@
+using RPGSandBox.InteractableSystem;
 using RPGSandBox.InventorySystem;
 using System.Collections.Generic;
 
@@ -11,7 +12,7 @@ namespace RPGSandBox.InterfaceSystem
         bool RemoveFromInventory(IAmAnInventorySlot itemTradeSlot);
 
         bool Contains(IAmAnInventorySlot itemTradeSlot);
-        InventorySlot GetInventorySlot(ItemType itemType);
+        InventorySlot GetInventorySlot(ItemData itemType);
         List<InventorySlot> GetInventoryList();
     }
 }

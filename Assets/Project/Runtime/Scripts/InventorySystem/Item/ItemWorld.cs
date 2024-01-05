@@ -1,4 +1,4 @@
-using RPGSandBox.InteractableWorldSystem;
+using RPGSandBox.InteractableSystem;
 using RPGSandBox.InterfaceSystem;
 using UnityEngine;
 
@@ -6,24 +6,20 @@ namespace RPGSandBox.InventorySystem
 {
     public class ItemWorld : InteractableWorldObject, IAmAnItem
     {
-        [SerializeField] ItemType itemType;
+        [SerializeField] ItemData itemType;
         [SerializeField] InventorySlot ItemWorldInventorySlot;
         [SerializeField] int startingCount = 1;
         private void Start()
         {
             ItemWorldInventorySlot = new(itemType, startingCount);
         }
-        public ItemType ItemType()
+        public ItemData ItemType()
         {
             return itemType;
         }
         public InventorySlot GetItemWorldInventorySlot()
         {
             return ItemWorldInventorySlot;
-        }
-        public Vector3 GetWorldPosition()
-        {
-            return this.transform.position;
         }
 
         public IAmAnItem PickUpItem()

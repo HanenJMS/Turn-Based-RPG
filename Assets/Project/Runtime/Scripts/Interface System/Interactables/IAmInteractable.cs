@@ -1,4 +1,4 @@
-using RPGSandBox.InteractableWorldSystem;
+using RPGSandBox.InteractableSystem;
 using UnityEngine;
 
 namespace RPGSandBox.InterfaceSystem
@@ -7,7 +7,7 @@ namespace RPGSandBox.InterfaceSystem
     {
         Vector3 GetWorldPosition();
         bool CanInteract(IAmInteractable interact);
-        InteractableObjectData GetInteractableData();
+        InteractableData GetInteractableData();
     }
 }
 

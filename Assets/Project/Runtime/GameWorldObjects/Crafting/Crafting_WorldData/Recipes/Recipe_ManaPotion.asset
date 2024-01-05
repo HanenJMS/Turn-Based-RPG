@@ -16,5 +16,5 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 7eda2e2f1d4302046a4b6bf49952be40, type: 2}
     qty: 2
   craftingProduct:
-    item: {fileID: 11400000, guid: 3d4a11ac78b02fe4fa16218460cb7a3d, type: 2}
+    item: {fileID: 11400000, guid: 378a842efe9901241a763c700f8dfca4, type: 2}
     qty: 1

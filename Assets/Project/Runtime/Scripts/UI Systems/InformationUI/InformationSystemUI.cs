@@ -26,8 +26,8 @@ namespace RPGSandBox.GameUI
             ClearUI();
             if (interactable != null)
             {
-                Header.text = interactable.InteractableName();
-                Body.text = interactable.DescriptionContent();
+                Header.text = interactable.GetInteractableData().GetInteractableName();
+                Body.text = interactable.GetInteractableData().GetInteractableDescription();
             }
         }
         void ToggleUI()

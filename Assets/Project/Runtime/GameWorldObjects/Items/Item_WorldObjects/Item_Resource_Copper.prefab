@@ -108,7 +108,7 @@ PrefabInstance:
         type: 3}
       propertyPath: itemType
       value: 
-      objectReference: {fileID: 11400000, guid: 30ab5bfb8d5c3344cbc0fd48136b827f,
+      objectReference: {fileID: 11400000, guid: aede93ae603ca3f4488024ebb3ad86c6,
         type: 2}
     - target: {fileID: 6952474882670708782, guid: ba8241c662b332f4cbe1c3e955f12280,
         type: 3}
@@ -125,6 +125,12 @@ PrefabInstance:
       propertyPath: inventorySlot.item
       value: 
       objectReference: {fileID: 3711713418322959725}
+    - target: {fileID: 6952474882670708782, guid: ba8241c662b332f4cbe1c3e955f12280,
+        type: 3}
+      propertyPath: interactableDataType
+      value: 
+      objectReference: {fileID: 11400000, guid: aede93ae603ca3f4488024ebb3ad86c6,
+        type: 2}
     - target: {fileID: 6952474882670708782, guid: ba8241c662b332f4cbe1c3e955f12280,
         type: 3}
       propertyPath: inventorySlot.quantity
