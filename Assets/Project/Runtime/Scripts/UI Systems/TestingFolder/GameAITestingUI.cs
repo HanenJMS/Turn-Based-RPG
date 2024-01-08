@@ -27,7 +27,7 @@ namespace RPGSandBox.GameCanvas
         private void OnSelectedUnit()
         {
             selectedUnit = UnitSelectionSystem.Instance.GetUnit();
-            currentUnit.text = selectedUnit.InteractableName();
+            currentUnit.text = selectedUnit.GetInteractableData().GetInteractableName();
         }
     }
 }

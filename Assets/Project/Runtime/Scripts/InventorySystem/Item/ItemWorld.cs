@@ -1,28 +1,25 @@
+using RPGSandBox.InteractableSystem;
 using RPGSandBox.InterfaceSystem;
 using UnityEngine;
 
 namespace RPGSandBox.InventorySystem
 {
-    public class ItemWorld : MonoBehaviour, IAmAnItem
+    public class ItemWorld : InteractableWorldObject, IAmAnItem
     {
-        [SerializeField] ItemType itemType;
+        [SerializeField] ItemData itemType;
         [SerializeField] InventorySlot ItemWorldInventorySlot;
         [SerializeField] int startingCount = 1;
         private void Start()
         {
             ItemWorldInventorySlot = new(itemType, startingCount);
         }
-        public ItemType ItemType()
+        public ItemData ItemType()
         {
             return itemType;
         }
         public InventorySlot GetItemWorldInventorySlot()
         {
             return ItemWorldInventorySlot;
-        }
-        public Vector3 GetWorldPosition()
-        {
-            return this.transform.position;
         }
 
         public IAmAnItem PickUpItem()
@@ -42,17 +39,17 @@ namespace RPGSandBox.InventorySystem
         }
         public string DescriptionHeader()
         {
-            return itemType.itemName;
+            return itemType.name;;
         }
         public string DescriptionContent()
         {
-            string description = itemType.description;
+            string description = itemType.GetInteractableDescription();
             return description;
         }
 
         public string InteractableName()
         {
-            return itemType.itemName;
+            return itemType.name;;
         }
     }
 }

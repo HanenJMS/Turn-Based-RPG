@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6806ba5a160cb7c4287351f76f154e60, type: 3}
+  m_Name: BlackSmith
+  m_EditorClassIdentifier: 
+  interactableName: BlackSmith
+  interactableDescription: 'BlackSmith
+
+'
+  interactableModelPrefab: {fileID: 5921820534628409712, guid: 5893657d7d4c67144b6da53300e6449f,
+    type: 3}
+  interactableSprite: {fileID: 21300000, guid: 7b8e0222a006d824e930445c7d435ac3, type: 3}
+  interactableType: 5

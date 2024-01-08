@@ -218,6 +218,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6952474882670708782, guid: ba8241c662b332f4cbe1c3e955f12280,
         type: 3}
+      propertyPath: interactableDataType
+      value: 
+      objectReference: {fileID: 11400000, guid: 41160de55a4f2594e84df371d50e6463,
+        type: 2}
+    - target: {fileID: 6952474882670708782, guid: ba8241c662b332f4cbe1c3e955f12280,
+        type: 3}
       propertyPath: ItemWorldInventorySlot.itemType
       value: 
       objectReference: {fileID: 0}

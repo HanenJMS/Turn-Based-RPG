@@ -1,11 +1,11 @@
-using RPGSandBox.InventorySystem;
+using RPGSandBox.InteractableSystem;
 
 namespace RPGSandBox.CraftingSystem
 {
     [System.Serializable]
     public class RecipeReference
     {
-        public ItemType item;
+        public ItemData item;
         public int qty;
     }
 }

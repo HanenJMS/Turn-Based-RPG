@@ -15,7 +15,7 @@ namespace RPGSandBox.UnitSystem
         }
         public void Trade(IAmATrader target)
         {
-            Debug.Log($"{this.gameObject.name} is trading with {targetWorld.InteractableName()}");
+            Debug.Log($"{this.gameObject.name} is trading with {targetWorld.GetInteractableData().GetInteractableName()}");
         }
         public IAmAnInventory GetInventory()
         {

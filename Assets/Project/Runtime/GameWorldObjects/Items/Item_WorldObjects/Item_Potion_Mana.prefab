@@ -38,7 +38,7 @@ PrefabInstance:
         type: 3}
       propertyPath: itemType
       value: 
-      objectReference: {fileID: 11400000, guid: 3d4a11ac78b02fe4fa16218460cb7a3d,
+      objectReference: {fileID: 11400000, guid: 378a842efe9901241a763c700f8dfca4,
         type: 2}
     - target: {fileID: 4109700188848143359, guid: 9c23742d77cfcf0408f96de91891ac03,
         type: 3}
@@ -50,6 +50,12 @@ PrefabInstance:
       propertyPath: startingCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4109700188848143359, guid: 9c23742d77cfcf0408f96de91891ac03,
+        type: 3}
+      propertyPath: interactableDataType
+      value: 
+      objectReference: {fileID: 11400000, guid: 378a842efe9901241a763c700f8dfca4,
+        type: 2}
     - target: {fileID: 4566960288469037712, guid: 9c23742d77cfcf0408f96de91891ac03,
         type: 3}
       propertyPath: m_Name

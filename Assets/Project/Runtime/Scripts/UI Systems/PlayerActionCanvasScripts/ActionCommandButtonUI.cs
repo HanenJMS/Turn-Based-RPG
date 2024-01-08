@@ -21,7 +21,7 @@ public class ActionCommandButtonUI : MonoBehaviour
         if (target is IAmInteractable)
         {
             IAmInteractable interactableObject = (IAmInteractable)target;
-            actionTarget = $"({interactableObject.InteractableName()})";
+            actionTarget = $"({interactableObject.GetInteractableData().GetInteractableName()})";
         }
         actionButtonName.text = $"{actionName}{actionTarget}";
         button.onClick.AddListener(() =>

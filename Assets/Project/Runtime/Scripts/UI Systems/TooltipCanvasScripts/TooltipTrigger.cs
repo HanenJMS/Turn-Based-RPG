@@ -18,7 +18,7 @@ namespace RPGSandBox.GameUtilities.GameUISystem
             {
                 delay = LeanTween.delayedCall(0.5f, () =>
                 {
-                    TooltipSystem.instance.Show(interactable.InteractableName(), interactable.DescriptionContent());
+                    TooltipSystem.instance.Show(interactable.GetInteractableData().GetInteractableName(), interactable.GetInteractableData().GetInteractableDescription());
                 });
             }
         }

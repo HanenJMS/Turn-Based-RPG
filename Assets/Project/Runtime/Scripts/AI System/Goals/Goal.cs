@@ -1,6 +1,4 @@
-using RPGSandBox.InventorySystem;
-using System.Collections;
-using System.Collections.Generic;
+using RPGSandBox.InteractableSystem;
 using UnityEngine;
 namespace RPGSandBox.GameAISystem.GoalSystem
 {
@@ -8,7 +6,7 @@ namespace RPGSandBox.GameAISystem.GoalSystem
     {
         [SerializeField] bool isComplete = false;
 
-        [SerializeField] ItemType target = null;
+        [SerializeField] ItemData target = null;
 
         [SerializeField] int Qty = 0;
 

@@ -1,8 +1,9 @@
+using RPGSandBox.InteractableSystem;
 using RPGSandBox.InterfaceSystem;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CraftingFactory : MonoBehaviour, IAmACraftsmanBuilding
+public class CraftingFactory : InteractableWorldObject, IAmACraftsmanBuilding
 {
     List<IAmACraftingJob> craftingJobs = new List<IAmACraftingJob>();
     IAmAnInventory inventory;
