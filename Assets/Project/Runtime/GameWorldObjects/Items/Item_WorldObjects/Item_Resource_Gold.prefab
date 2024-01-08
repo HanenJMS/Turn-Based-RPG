@@ -166,6 +166,12 @@ PrefabInstance:
       propertyPath: startingCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6952474882670708782, guid: ba8241c662b332f4cbe1c3e955f12280,
+        type: 3}
+      propertyPath: interactableDataType
+      value: 
+      objectReference: {fileID: 11400000, guid: f328b9448b859b94aab046f4b9abb57b,
+        type: 2}
     - target: {fileID: 7355974348903858497, guid: ba8241c662b332f4cbe1c3e955f12280,
         type: 3}
       propertyPath: m_Name

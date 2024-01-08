@@ -11,13 +11,19 @@ PrefabInstance:
     - target: {fileID: 2572493462194549842, guid: 2784232a07318d9439b7756bfda765ce,
         type: 3}
       propertyPath: m_Name
-      value: CraftingStation_CopperStone
+      value: ResourceNode_CopperStone
       objectReference: {fileID: 0}
     - target: {fileID: 5687180815639134412, guid: 2784232a07318d9439b7756bfda765ce,
         type: 3}
       propertyPath: interactableName
-      value: Copper Mine
+      value: Copper Stone
       objectReference: {fileID: 0}
+    - target: {fileID: 5687180815639134412, guid: 2784232a07318d9439b7756bfda765ce,
+        type: 3}
+      propertyPath: interactableDataType
+      value: 
+      objectReference: {fileID: 11400000, guid: e84516b001454684b9a4f8a33014e32f,
+        type: 2}
     - target: {fileID: 5687180815639134412, guid: 2784232a07318d9439b7756bfda765ce,
         type: 3}
       propertyPath: availableRecipes.Array.size
@@ -102,7 +108,7 @@ PrefabInstance:
     - target: {fileID: 8414970350900885681, guid: 2784232a07318d9439b7756bfda765ce,
         type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
